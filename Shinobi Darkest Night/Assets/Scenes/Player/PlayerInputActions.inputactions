@@ -276,7 +276,7 @@
                     "name": "",
                     "id": "631ba66e-c3d5-4d76-8d45-6bc4578bdedf",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Dush",
