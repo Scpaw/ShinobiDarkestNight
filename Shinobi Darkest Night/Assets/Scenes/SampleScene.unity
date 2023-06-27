@@ -4493,12 +4493,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7795018869357039307, guid: 91909f78f5517a941a9040f71d7154e6, type: 3}
+      propertyPath: dushSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795018869357039307, guid: 91909f78f5517a941a9040f71d7154e6, type: 3}
       propertyPath: dushLenght
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7795018869357039307, guid: 91909f78f5517a941a9040f71d7154e6, type: 3}
       propertyPath: dushCounter
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795018869357039307, guid: 91909f78f5517a941a9040f71d7154e6, type: 3}
+      propertyPath: dushDuration
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7795018869357039307, guid: 91909f78f5517a941a9040f71d7154e6, type: 3}
       propertyPath: dushCoolCounter

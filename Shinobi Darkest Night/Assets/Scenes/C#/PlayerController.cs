@@ -5,36 +5,33 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
-    public float moveSpeed = 1f;
-
-    public float collisionOffset = 0.05f;
-
-    public float dushSpeed = 5f;
-
-    public float dushLenght = 0.5f;
-
-    public float dushCooldown = 1f;
-
-    public float dushCounter;
-
-    public float dushCoolCounter;
+    [Header("Movement Settings")]
+    [SerializeField] float moveSpeed = 1f;
+    [SerializeField] float collisionOffset = 0.05f;
+    Vector2 movementInput;
+    Vector2 movementDirection;
+    public ContactFilter2D movementFilter;
 
     private float activeMoveSpeed;
 
-    public ContactFilter2D movementFilter;
-
-    Vector2 movementInput;
-
+    [Header("Dash Settings")]
+    [SerializeField] float dushSpeed = 10f;
+    [SerializeField] float dushDuration = 1f;
+    [SerializeField] float dushCooldown = 1f;
+    [SerializeField] float dushVelocityReset = 0f;
     float dushInput;
+    bool isDushing;
+    bool canDush = true;
 
     Rigidbody2D rb;
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+
+        canDush = true;
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -42,8 +39,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (isDushing)
+        {
+            return;
+        }
+    }
+
     private void FixedUpdate()
     {
+        if (isDushing)
+        {
+            return;
+        }
+
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+
         //
         if (movementInput != Vector2.zero)
         {
@@ -59,6 +72,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        movementDirection = new Vector2(moveX, moveY).normalized;
     }
 
 
@@ -92,34 +107,27 @@ public class PlayerController : MonoBehaviour
         movementInput = movementValue.Get<Vector2>();
     }
 
+    private IEnumerator Dush()
+    {
+        if (canDush == true)
+        {
+            canDush = false;
+            isDushing = true;
+            rb.velocity = new Vector2(movementDirection.x * dushSpeed, movementDirection.y * dushSpeed);
+            yield return new WaitForSeconds(dushDuration);
+            isDushing = false;
+            rb.velocity = new Vector2(movementDirection.x * dushVelocityReset, movementDirection.y * dushVelocityReset);
+            yield return new WaitForSeconds(dushCooldown);
+            canDush = true;
+
+            Debug.Log("Dush!");
+            yield break;
+        }
+    }
+
     void OnDush()
     {
-        if (dushCoolCounter <= 0 && dushCounter <= 0)
-        {
-            activeMoveSpeed = dushSpeed;
-
-            dushCounter = dushLenght;
-        }
-
-        if (dushCounter > 0)
-        {
-            dushCounter -= Time.deltaTime;
-
-            if (dushCounter <= 0)
-            {
-                activeMoveSpeed = moveSpeed;
-
-                dushCoolCounter = dushCooldown;
-            }
-        }
-
-        if (dushCoolCounter <= 0)
-        {
-            dushCoolCounter -= Time.deltaTime;
-        }
-
-
-        Debug.Log("Dush!");
+        StartCoroutine(Dush());
     }
 
     public void OnAttack()
