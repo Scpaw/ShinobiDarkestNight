@@ -4,7 +4,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
-{
+{       
+        /*
+        This code when inserted in input code like "OnAttack", prevents it from activate when "Dash" is going
+        Do NOT use in "OnMove" input
+
+        if (isDushing == true)
+        {
+          return;
+        }
+        */
+
+    //Movement parameters
     [Header("Movement Settings")]
     [SerializeField] float moveSpeed = 1f;
     [SerializeField] float collisionOffset = 0.05f;
@@ -13,17 +24,27 @@ public class PlayerController : MonoBehaviour
     public ContactFilter2D movementFilter;
 
     private float activeMoveSpeed;
-
+    
+    //Dash parameters
     [Header("Dash Settings")]
-    [SerializeField] float dushSpeed = 10f;
-    [SerializeField] float dushDuration = 1f;
-    [SerializeField] float dushCooldown = 1f;
-    [SerializeField] float dushVelocityReset = 0f;
-    float dushInput;
-    bool isDushing;
-    bool canDush = true;
+    [SerializeField] float dashSpeed = 10f;
+    [SerializeField] float dashDuration = 1f;
+    [SerializeField] float dashCooldown = 1f;
+    private float dashVelocityReset = 0f;
+    bool isDashing;
+    bool canDash = true;
 
-    Rigidbody2D rb;
+    //Attack parameters
+    [Header("Attack Settings")]
+    [SerializeField] float damageValue = 10f;
+    [SerializeField] float damageDuration = 1f;
+    [SerializeField] float damageCooldown = 1f;
+
+    //RigidBody2D
+    protected Rigidbody2D rb;
+    protected Vector2 velocity;
+    protected ContactFilter2D contactFilter;
+
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
@@ -31,7 +52,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
 
-        canDush = true;
+        canDash = true;
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -41,23 +62,24 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (isDushing)
-        {
-            return;
-        }
+
     }
 
     private void FixedUpdate()
     {
-        if (isDushing)
+        //Prevents the Player from using
+        if (isDashing == true)
         {
+            contactFilter.useTriggers = false;
+            contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask (gameObject.layer));
+            contactFilter.useLayerMask = true;
             return;
         }
 
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        //
+        //Prevent the player from blocking on collisions when moving
         if (movementInput != Vector2.zero)
         {
             bool success = TryMove(movementInput);
@@ -77,66 +99,86 @@ public class PlayerController : MonoBehaviour
     }
 
 
-     //Update is called once per frame
+    //The following order of "count"(RigidBody2D's parameters of movement) will be executed when "count" = 0
     private bool TryMove(Vector2 direction)
     {
-        int count = rb.Cast(
-            direction,
-            movementFilter,
-            castCollisions,
-            moveSpeed * Time.fixedDeltaTime + collisionOffset
-            );
-
-        if (count == 0)
+        if (direction != Vector2.zero)
         {
-            rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+            int count = rb.Cast(
+                direction,
+                movementFilter,
+                castCollisions,
+                moveSpeed * Time.fixedDeltaTime + collisionOffset
+                );
 
-            return true;
+            if (count == 0)
+            {
+                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {
             return false;
         }
-
-
-
     }
 
-    void OnMove(InputValue movementValue)
+    //When Dash is pressed, the following order will be executed
+    private IEnumerator Dash()
     {
-        movementInput = movementValue.Get<Vector2>();
-    }
-
-    private IEnumerator Dush()
-    {
-        if (canDush == true)
+        if (canDash == true)
         {
-            canDush = false;
-            isDushing = true;
-            rb.velocity = new Vector2(movementDirection.x * dushSpeed, movementDirection.y * dushSpeed);
-            yield return new WaitForSeconds(dushDuration);
-            isDushing = false;
-            rb.velocity = new Vector2(movementDirection.x * dushVelocityReset, movementDirection.y * dushVelocityReset);
-            yield return new WaitForSeconds(dushCooldown);
-            canDush = true;
+            canDash = false;
+            isDashing = true;
+            rb.velocity = new Vector2(movementDirection.x * dashSpeed, movementDirection.y * dashSpeed);
+            yield return new WaitForSeconds(dashDuration);
+            isDashing = false;
+            rb.velocity = new Vector2(movementDirection.x * dashVelocityReset, movementDirection.y * dashVelocityReset);// <--- This line is necessary if you want to stop the player after initializing "Dush"
+            yield return new WaitForSeconds(dashCooldown);
+            canDash = true;
 
             Debug.Log("Dush!");
             yield break;
         }
     }
 
-    void OnDush()
+    //When one of WSAD was pressed
+    public void OnMove(InputValue movementValue)
     {
-        StartCoroutine(Dush());
+
+        movementInput = movementValue.Get<Vector2>();
+
+        Debug.Log("Move!");
     }
 
+    //When Space was pressed
+    public void OnDash()
+    {
+        StartCoroutine(Dash());
+    }
+
+    //When LeftMouseButton(LMB) was pressed
     public void OnAttack()
     {
-        Debug.Log("Attack");
+        if (isDashing == true)
+        {
+            return;
+        }
+        Debug.Log("Attack!");
     }
 
+    //When RightMouseButton(LMB) was pressed
     public void OnFire()
     {
+        if (isDashing == true)
+        {
+            return;
+        }
         Debug.Log("Fire!");
     }
 

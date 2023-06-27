@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Dush",
+                    "name": "Dash",
                     "type": "Button",
                     "id": "ac7e5eea-ac9e-45f1-a900-0a6259a71be1",
                     "expectedControlType": "Button",
@@ -279,7 +279,7 @@
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Dush",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
