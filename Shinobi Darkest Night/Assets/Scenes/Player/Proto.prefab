@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 3635512946151572111}
   - component: {fileID: 3635512946151572108}
   - component: {fileID: 993641907195509642}
+  - component: {fileID: 6337980296086054906}
   - component: {fileID: 7795018869357039307}
+  - component: {fileID: 7852711712953408155}
   - component: {fileID: 6952023380500638148}
   - component: {fileID: 692765939763154848}
   m_Layer: 0
@@ -118,6 +120,27 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!95 &6337980296086054906
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3635512946151572338}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83c7669ee833d4d488843746fe259441, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7795018869357039307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673b35f0a661bc44b9d8cd0a31b12fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dushSpeed: 20
   moveSpeed: 2
   collisionOffset: 0.05
   movementFilter:
@@ -147,6 +169,36 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  dashSpeed: 10
+  dashDuration: 1
+  dashCooldown: 1
+  dushCooldownSpeed: 10
+  dashMaxCooldown: 1
+  dashMinCooldown: -1
+  dashDelaySlider: {fileID: 0}
+  Canvas: {fileID: 0}
+  damageValue: 10
+  damageDuration: 1
+  damageCooldown: 1
+  xSpeed: 1
+  ySpeed: 1
+  animationIdleTime: 0
+  projectilePrefab: {fileID: 3791444323733091584, guid: 52d2c4e05cb8517439d6f047c6c80ae4, type: 3}
+--- !u!114 &7852711712953408155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3635512946151572338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5c554a5e9f87247a7d5e86cf5b4251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCourrentHealth: 0
+  playerMaxHealth: 100
+  playerHealthSlider: {fileID: 0}
 --- !u!50 &6952023380500638148
 Rigidbody2D:
   serializedVersion: 4
@@ -181,7 +233,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.013755441, y: -2.4302955}
+  m_Offset: {x: -0.00972271, y: -1.9552397}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -192,5 +244,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2309983, y: 0.13940907}
+  m_Size: {x: 4.4240284, y: 0.21702647}
   m_EdgeRadius: 0
