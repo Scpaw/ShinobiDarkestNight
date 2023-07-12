@@ -8,15 +8,23 @@ public class Projectile : MonoBehaviour
     [Header("Projectile properties")]
     [SerializeField] float projectileDamage;
     [SerializeField] float aliveTime;
+    [SerializeField] float moveSpeed;
     bool enemyHit;
     GameObject enemyTrigger;
 
     void Update()
     {
+        ProjectileMovement();
+
         if(enemyHit == true)
         {
             Attack();
         }
+    }
+
+    void ProjectileMovement()
+    {
+        transform.Translate(Vector3.right * Time.deltaTime * moveSpeed);
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -43,7 +51,7 @@ public class Projectile : MonoBehaviour
     void Attack()
     {
         Enemy theEnemyHealth = enemyTrigger.GetComponent<Enemy>();
-        
+
         if (enemyHit == true)
         {
             theEnemyHealth.enemyAddDamage(projectileDamage);

@@ -49,8 +49,8 @@ public class PlayerController : MonoBehaviour
 
     //Attack parameters
     [Header("Attack Settings")]
-    [SerializeField] float damageValue = 10f;
-    [SerializeField] float damageDuration = 1f;
+    //[SerializeField] float damageValue = 10f;
+    //[SerializeField] float damageDuration = 1f;
     [SerializeField] float damageCooldown = 1f;
 
     //RigidBody2D
@@ -59,14 +59,18 @@ public class PlayerController : MonoBehaviour
     protected ContactFilter2D contactFilter;
 
     [Header("Projectile Settings")]
-    [SerializeField] float xSpeed = 1f;
-    [SerializeField] float ySpeed = 1f;
-    float xVelocity = 0f;
-    float yVelocity = 0f;
+    [Header("ProjectileShooter Prefabs")]
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform projectileSpawnPoint;
+    [SerializeField] private GameObject projectileRotation;
+    //[SerializeField] float xSpeed = 1f;
+    //[SerializeField] float ySpeed = 1f;
+    //float xVelocity = 0f;
+    //float yVelocity = 0f;
 
     public float animationIdleTime;
 
-    public GameObject projectilePrefab;
+    //public GameObject projectilePrefab;
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
@@ -136,13 +140,13 @@ public class PlayerController : MonoBehaviour
         float xVector = CurrentVelocity.x;
         float yVector = CurrentVelocity.y;
 
-        float xIdleVector = velocity.x;
-        float yIdleVector = velocity.y;
+        //float xIdleVector = velocity.x;
+        //float yIdleVector = velocity.y;
 
         if (xVector > 0 && yVector == 0)//Right
         {
-            xVelocity = xSpeed;
-            yVelocity = 0f;
+            //xVelocity = xSpeed;
+            //yVelocity = 0f;
 
             myAnim.SetBool("Up", false);
             myAnim.SetBool("Right", true);
@@ -151,8 +155,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (xVector < 0 && yVector == 0)//Left
         {
-            xVelocity = -xSpeed;
-            yVelocity = 0f;
+            //xVelocity = -xSpeed;
+            //yVelocity = 0f;
 
             myAnim.SetBool("Up", false);
             myAnim.SetBool("Right", false);
@@ -161,8 +165,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (xVector == 0 && yVector > 0)//Up
         {
-            xVelocity = 0f;
-            yVelocity = ySpeed;
+            //xVelocity = 0f;
+            //yVelocity = ySpeed;
 
             myAnim.SetBool("Up", true);
             myAnim.SetBool("Right", false);
@@ -171,8 +175,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (xVector == 0 && yVector < 0)//Down
         {
-            xVelocity = 0f;
-            yVelocity = -ySpeed;
+            //xVelocity = 0f;
+            //yVelocity = -ySpeed;
 
             myAnim.SetBool("Up", false);
             myAnim.SetBool("Right", false);
@@ -230,6 +234,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void SpawnPoint()
+    {
+        GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileRotation.transform.rotation);
+    }
+
     //When one of WSAD was pressed
     public void OnMove(InputValue movementValue)
     {
@@ -245,9 +254,10 @@ public class PlayerController : MonoBehaviour
     //When LeftMouseButton(LMB) was pressed
     public void OnAttack()
     {
-        GameObject Projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        Projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(xVelocity, yVelocity);
+        //GameObject Projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        //Projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(xVelocity, yVelocity);
 
+        SpawnPoint();
 
         if (isDashing == true)
         {
