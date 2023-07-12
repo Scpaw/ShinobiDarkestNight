@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDamage: 10
   aliveTime: 1
+  moveSpeed: 5
 --- !u!1 &1071034175272719289
 GameObject:
   m_ObjectHideFlags: 0
