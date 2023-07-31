@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour
     public float attackDamage;
     public float attackCooldown;
     private float startAttackCooldown;
+    public float pushForce;
 
     private void Start()
     {
@@ -326,8 +327,15 @@ public class PlayerController : MonoBehaviour
             }
             foreach (GameObject enemy in hit)
             {
-                Debug.Log("Hit " + enemy.name);
-                enemy.GetComponent<Enemy>().enemyAddDamage(attackDamage);
+                if (enemy.layer == 6)
+                {
+                    Debug.Log("Hit " + enemy.name);
+                    enemy.GetComponent<Enemy>().enemyAddDamage(attackDamage);
+                    if (enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
+                    {
+                        enemy.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
+                    }
+                }
             }
             attackCooldown = startAttackCooldown;
         }

@@ -494,24 +494,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1071034174669369741, guid: 8b90b984a78b5a142943dde9147136f8, type: 3}
   projectileSpawnPoint: {fileID: 8657334677903675734}
   projectileRotation: {fileID: 675484047996214466}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  attackFilter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  enemies: []
+  attackDamage: 0
+  attackCooldown: 0
+  pushForce: 0
 --- !u!114 &6329331368419082897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1093,7 +1078,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8657334677903675734}
-  - component: {fileID: 7142954085576103778}
   - component: {fileID: 6957881919100742712}
   m_Layer: 0
   m_Name: SpawnPoint
@@ -1117,40 +1101,6 @@ Transform:
   m_Father: {fileID: 675484047996214465}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!68 &7142954085576103778
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368647276947891221}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 0.09253749, y: -0.0045124907}
-  - {x: 0.082039796, y: 0.059152007}
-  - {x: 0.0482944, y: 0.12217198}
-  - {x: -0.034404855, y: 0.2014366}
-  - {x: -0.16088915, y: 0.25023958}
-  - {x: -0.00057170633, y: 0.21308419}
-  - {x: 0.13619806, y: 0.118859544}
-  - {x: 0.17313668, y: 0.0040097814}
-  - {x: 0.14599489, y: -0.100124285}
-  - {x: 0.059979163, y: -0.18189313}
-  - {x: -0.10049228, y: -0.24355575}
-  - {x: 0.051215775, y: -0.12926413}
-  - {x: 0.09074841, y: -0.0713189}
-  - {x: 0.09542803, y: -0.007343009}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!114 &6957881919100742712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1163,6 +1113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67221cd871287034585332741d8f1a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemiesThatCanHit: []
 --- !u!1 &2013497558184088007
 GameObject:
   m_ObjectHideFlags: 0
