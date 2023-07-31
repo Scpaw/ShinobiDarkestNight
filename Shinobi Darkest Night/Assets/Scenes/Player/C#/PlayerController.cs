@@ -324,9 +324,11 @@ public class PlayerController : MonoBehaviour
         { 
             saveDirection = Vector2.zero;
         }
+
+        facingDirection = projectileSpawnPoint.position - transform.position;
         canMove = false;
         CurrentState = ThrowAnim;
-        SpawnPoint(); 
+        //SpawnPoint(); 
     }
 
 }
