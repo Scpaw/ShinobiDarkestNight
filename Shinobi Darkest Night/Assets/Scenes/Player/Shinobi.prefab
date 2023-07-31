@@ -494,6 +494,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1071034174669369741, guid: 8b90b984a78b5a142943dde9147136f8, type: 3}
   projectileSpawnPoint: {fileID: 8657334677903675734}
   projectileRotation: {fileID: 675484047996214466}
+  attackDamage: 0
+  attackCooldown: 0
+  pushForce: 0
 --- !u!114 &6329331368419082897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1075,6 +1078,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8657334677903675734}
+  - component: {fileID: 6957881919100742712}
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
@@ -1097,6 +1101,19 @@ Transform:
   m_Father: {fileID: 675484047996214465}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6957881919100742712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368647276947891221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67221cd871287034585332741d8f1a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesThatCanHit: []
 --- !u!1 &2013497558184088007
 GameObject:
   m_ObjectHideFlags: 0

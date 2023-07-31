@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public CharacterState ThrowAnim { get; private set; }
     [field: SerializeField] public CharacterAnimationStateDictionary StateAnimations { get; private set; }
     [field: SerializeField] public float RunVelocityTreshchold { get; private set; } = 0.1f;
-    
+
     public CharacterState CurrentState
     {
         get
@@ -88,6 +88,11 @@ public class PlayerController : MonoBehaviour
     private Vector2 facingDirection;
     private float timeToEndAnimation = 0f;
 
+    //melee attack
+    public float attackDamage;
+    public float attackCooldown;
+    private float startAttackCooldown;
+    public float pushForce;
 
     private void Start()
     {
@@ -97,11 +102,12 @@ public class PlayerController : MonoBehaviour
         Canvas.SetActive(false);
         CurrentState = IdleAnim;
         canMove = true;
+        startAttackCooldown = attackCooldown;
+        attackCooldown = 0;
     }
 
     private void Update()
     {
-        //timeToEndAnimation -= Mathf.Max(timeToEndAnimation - Time.deltaTime);
         timeToEndAnimation = timeToEndAnimation - Time.deltaTime;
 
         if (currentState == ThrowAnim)
@@ -140,12 +146,16 @@ public class PlayerController : MonoBehaviour
             }  
             ChangeClip();
         }
-        Debug.Log(currentState);
         if (!canMove)
         {
             movementInput = Vector2.zero;
         }
 
+        //attack cooldwon
+        if (attackCooldown > 0)
+        { 
+            attackCooldown -= Time.deltaTime;
+        }
     }
 
     private void ChangeClip()
@@ -303,9 +313,31 @@ public class PlayerController : MonoBehaviour
     //When LeftMouseButton(LMB) was pressed
     public void OnAttack()
     {
-        if (isDashing == true)
+        if (attackCooldown <= 0)
         {
-            return;
+            if (isDashing == true)
+            {
+                return;
+            }
+            GameObject[] hit = projectileSpawnPoint.GetComponent<AttackCollider>().enemiesThatCanHit.ToArray();
+
+            if (hit == null || hit.Length == 0)
+            {
+                return;
+            }
+            foreach (GameObject enemy in hit)
+            {
+                if (enemy.layer == 6)
+                {
+                    Debug.Log("Hit " + enemy.name);
+                    enemy.GetComponent<Enemy>().enemyAddDamage(attackDamage);
+                    if (enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
+                    {
+                        enemy.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
+                    }
+                }
+            }
+            attackCooldown = startAttackCooldown;
         }
     }
 
@@ -328,7 +360,5 @@ public class PlayerController : MonoBehaviour
         facingDirection = projectileSpawnPoint.position - transform.position;
         canMove = false;
         CurrentState = ThrowAnim;
-        //SpawnPoint(); 
     }
-
 }
