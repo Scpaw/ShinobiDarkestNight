@@ -87447,7 +87447,7 @@ MonoBehaviour:
   m_Follow: {fileID: 8222550}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 2.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -97046,12 +97046,32 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 675484047565841158, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 675484047565841158, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: m_UpdateMethod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 675484047565841159, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 675484047565841159, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 675484047565841159, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 675484047565841400, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: orthographic size
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 675484047565841400, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: m_AllowDynamicResolution
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 675484047887735429, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
@@ -97162,6 +97182,10 @@ PrefabInstance:
       propertyPath: <IdleAnim>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 4acd3e30a3a76dd4797310304fa2ab06, type: 2}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: <MoveSpeed>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <ThrowAnim>k__BackingField
       value: 

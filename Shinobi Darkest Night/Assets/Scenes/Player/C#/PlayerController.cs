@@ -51,6 +51,9 @@ public class PlayerController : MonoBehaviour
     protected Rigidbody2D rb;
     protected ContactFilter2D contactFilter;
 
+    bool canMove;
+    Vector2 saveDirection;
+
     //Dash parameters
     [Header("Dash Settings")]
     [SerializeField] float dashSpeed = 10f;
@@ -93,25 +96,56 @@ public class PlayerController : MonoBehaviour
         myAnim = GetComponent<Animator>();
         Canvas.SetActive(false);
         CurrentState = IdleAnim;
+        canMove = true;
     }
 
     private void Update()
     {
-        timeToEndAnimation -= Mathf.Max(timeToEndAnimation - Time.deltaTime);
+        //timeToEndAnimation -= Mathf.Max(timeToEndAnimation - Time.deltaTime);
+        timeToEndAnimation = timeToEndAnimation - Time.deltaTime;
 
-        if (currentState.CanExitWhilePlaying = true || timeToEndAnimation <= 0)
+        if (currentState == ThrowAnim)
         {
-            if (movementInput != Vector2.zero)
+            if (timeToEndAnimation <= 0)
             {
-                CurrentState = RunAnim;
+                
+                if (!isDashing)
+                {
+                    if (movementInput != Vector2.zero)
+                    {
+                        CurrentState = RunAnim;
+                    }
+                    else
+                    {
+                        CurrentState = IdleAnim;
+                    }
+                }
+                ChangeClip();
+                movementInput = saveDirection;
+                canMove = true;
             }
-            else
+        }
+        else if (currentState.CanExitWhilePlaying = true || timeToEndAnimation <= 0)
+        {
+            if (!isDashing)
             {
-                CurrentState = IdleAnim;
-            }
-
+                if (movementInput != Vector2.zero)
+                {
+                    CurrentState = RunAnim;
+                }
+                else
+                {
+                    CurrentState = IdleAnim;
+                }
+            }  
             ChangeClip();
         }
+        Debug.Log(currentState);
+        if (!canMove)
+        {
+            movementInput = Vector2.zero;
+        }
+
     }
 
     private void ChangeClip()
@@ -127,55 +161,63 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (currentState.CanMove)
+        if (canMove)
         {
-            Vector2 moveForce = movementInput * MoveSpeed * Time.deltaTime;
-            rb.AddForce(moveForce);
-        }
-
-        //Prevents the Player from using
-        if (isDashing == true)
-        {
-            contactFilter.useTriggers = false;
-            contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
-            contactFilter.useLayerMask = true;
-            return;
-        }
-
-        dashDelaySlider.maxValue = dashMaxCooldown;
-        dashDelaySlider.minValue = dashMinCooldown;
-        dashDelaySlider.value = dashCooldown;
-
-        if (canDash == false)
-        {
-            if (dashCooldown < dashMaxCooldown)
+            if (currentState.CanMove)
             {
-                t += Time.deltaTime / dushCooldownSpeed;
-
-                dashCooldown = Mathf.Lerp(dashMinCooldown, dashMaxCooldown, t);
+                Vector2 moveForce = movementInput * MoveSpeed * Time.deltaTime;
+                rb.AddForce(moveForce);
             }
-        }
 
-        //Prevent the player from blocking on collisions when moving
-        if (movementInput != Vector2.zero)
-        {
-            bool success = TryMove(movementInput);
-
-            if (!success)
+            //Prevents the Player from using
+            if (isDashing == true)
             {
-                success = TryMove(new Vector2(movementInput.x, 0));
+                contactFilter.useTriggers = false;
+                contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
+                contactFilter.useLayerMask = true;
+                return;
+            }
+
+            dashDelaySlider.maxValue = dashMaxCooldown;
+            dashDelaySlider.minValue = dashMinCooldown;
+            dashDelaySlider.value = dashCooldown;
+
+            if (canDash == false)
+            {
+                if (dashCooldown < dashMaxCooldown)
+                {
+                    t += Time.deltaTime / dushCooldownSpeed;
+
+                    dashCooldown = Mathf.Lerp(dashMinCooldown, dashMaxCooldown, t);
+                }
+            }
+
+            //Prevent the player from blocking on collisions when moving
+            if (movementInput != Vector2.zero)
+            {
+                bool success = TryMove(movementInput);
 
                 if (!success)
                 {
-                    success = TryMove(new Vector2(0, movementInput.y));
+                    success = TryMove(new Vector2(movementInput.x, 0));
+
+                    if (!success)
+                    {
+                        success = TryMove(new Vector2(0, movementInput.y));
+                    }
                 }
             }
+
+            float moveX = Input.GetAxisRaw("Horizontal");
+            float moveY = Input.GetAxisRaw("Vertical");
+
+            movementDirection = new Vector2(moveX, moveY).normalized;
         }
-
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
-
-        movementDirection = new Vector2(moveX, moveY).normalized;
+        else
+        {
+            rb.AddForce(Vector2.zero);
+        }
+       
     }
 
     //The following order of "count"(RigidBody2D's parameters of movement) will be executed when "count" = 0
@@ -210,12 +252,13 @@ public class PlayerController : MonoBehaviour
     //When Dash is pressed, the following order will be executed
     private IEnumerator Dash()
     {
-        if (canDash == true)
+        if (canDash && canMove)
         {
-            canDash = false;
+            canDash = false;            
             Canvas.SetActive(true);
             isDashing = true;
-            rb.velocity = new Vector2(movementDirection.x * dashSpeed, movementDirection.y * dashSpeed);
+            CurrentState = DashAnim;
+            rb.velocity = new Vector2(movementDirection.x * dashSpeed, movementDirection.y * dashSpeed);           
             yield return new WaitForSeconds(dashDuration);
             isDashing = false;
             rb.velocity = new Vector2(movementDirection.x * dashVelocityReset, movementDirection.y * dashVelocityReset);// <--- This line is necessary if you want to stop the player after initializing "Dash"
@@ -235,14 +278,20 @@ public class PlayerController : MonoBehaviour
     //When one of WSAD was pressed
     public void OnMove(InputValue movementValue)
     {
-        movementInput = movementValue.Get<Vector2>();
-
-        if(movementInput != Vector2.zero) 
+        if (canMove)
         {
-            facingDirection = movementInput;
-        }
+            movementInput = movementValue.Get<Vector2>();
 
-        CurrentState = RunAnim;
+            if (movementInput != Vector2.zero)
+            {
+                facingDirection = movementInput;
+            }
+        }
+        else
+        { 
+            saveDirection = movementValue.Get<Vector2>();
+        }
+     
     }
 
     //When Space was pressed
@@ -263,15 +312,21 @@ public class PlayerController : MonoBehaviour
     //When RightMouseButton(LMB) was pressed
     public void OnFire()
     {
-        CurrentState = ThrowAnim;
-
-        SpawnPoint();
-
         if (isDashing == true)
         {
             return;
         }
-        Debug.Log("Fire!");
+        if (movementInput != Vector2.zero || movementInput != saveDirection)
+        {
+            saveDirection = movementInput;
+        }
+        else
+        { 
+            saveDirection = Vector2.zero;
+        }
+        canMove = false;
+        CurrentState = ThrowAnim;
+        SpawnPoint(); 
     }
 
 }
