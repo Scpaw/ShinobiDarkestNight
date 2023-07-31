@@ -97126,6 +97126,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3652718473650034602, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652718473650034602, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 5.1216664
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652718473650034602, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 5.1216664
+      objectReference: {fileID: 0}
     - target: {fileID: 3868387399109926067, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -97141,39 +97153,39 @@ PrefabInstance:
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <RunAnim>k__BackingField
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 3cd21ca54cf92d54eb30975e07029747, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <DashAnim>k__BackingField
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 5302b0b5171f02841890fae4994443ce, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <IdleAnim>k__BackingField
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 4acd3e30a3a76dd4797310304fa2ab06, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <ThrowAnim>k__BackingField
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: b019e01b97d6089468c2bcc14a1cb845, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_keys.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_values.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_keys.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: b019e01b97d6089468c2bcc14a1cb845, type: 2}
+      objectReference: {fileID: 11400000, guid: 4acd3e30a3a76dd4797310304fa2ab06, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_keys.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: b019e01b97d6089468c2bcc14a1cb845, type: 2}
+      objectReference: {fileID: 11400000, guid: 3cd21ca54cf92d54eb30975e07029747, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_keys.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: b019e01b97d6089468c2bcc14a1cb845, type: 2}
+      objectReference: {fileID: 11400000, guid: 5302b0b5171f02841890fae4994443ce, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_keys.Array.data[3]
       value: 
@@ -97181,15 +97193,15 @@ PrefabInstance:
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: e726cf76072e5654caa9f8179aace070, type: 2}
+      objectReference: {fileID: 11400000, guid: 3fc774e6528c0c047883e6decde614f1, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: e726cf76072e5654caa9f8179aace070, type: 2}
+      objectReference: {fileID: 11400000, guid: b3fec87c884e6d341a153754a3f01e50, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: e726cf76072e5654caa9f8179aace070, type: 2}
+      objectReference: {fileID: 11400000, guid: 96fac82b4badf1c4eaaf72c527fddc73, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[3]
       value: 

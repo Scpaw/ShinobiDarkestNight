@@ -10,8 +10,6 @@ public class PlayerStamina : MonoBehaviour
     [SerializeField] float playerMaxStamina;
     [SerializeField] Slider playerStaminaSlider;
 
-    bool used = false;
-
     void Awake()
     {
         playerCourrentStamina = playerMaxStamina;
@@ -33,6 +31,5 @@ public class PlayerStamina : MonoBehaviour
     {
         playerCourrentStamina -= Stamina;
         playerStaminaSlider.value = playerCourrentStamina;
-        used = true;
     }
 }

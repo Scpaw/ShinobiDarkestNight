@@ -9,7 +9,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] float projectileDamage;
     [SerializeField] float aliveTime;
     [SerializeField] float moveSpeed;
-    private float direction = 0f;
     private Rigidbody2D prRb;
     private SpriteRenderer projectileSpriteRenderer;
     bool enemyHit;

@@ -17,8 +17,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] float enemyNextDamage;
     [SerializeField] GameObject thePlayer;
 
-    bool damaged = false;
-
     public void Awake()
     {
         enemyHealth = enemyMaxHealth;
@@ -30,7 +28,6 @@ public class Enemy : MonoBehaviour
     {
         enemyHealth -= Damage;
         enemyHealthSlider.value = enemyHealth;
-        damaged = true;
 
         if (enemyHealth <= 0)
         {

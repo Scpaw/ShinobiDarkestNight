@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public CharacterState DashAnim { get; private set; }
     [field: SerializeField] public CharacterState ThrowAnim { get; private set; }
     [field: SerializeField] public CharacterAnimationStateDictionary StateAnimations { get; private set; }
-    [field: SerializeField] public float RunVelocityTreshchold { get; private set; } = 0.05f;
+    [field: SerializeField] public float RunVelocityTreshchold { get; private set; } = 0.1f;
     
     public CharacterState CurrentState
     {
@@ -40,20 +40,16 @@ public class PlayerController : MonoBehaviour
     }
 
     //Movement parameters
+    [field: SerializeField] public float MoveSpeed { get; private set; } = 5f;
+
     [Header("Movement Settings")]
-    [SerializeField] float moveSpeed = 1f;
     [SerializeField] float collisionOffset = 0.05f;
-    Vector2 movementInput;
+    Vector2 movementInput = Vector2.zero;
     Vector2 movementDirection;
     public ContactFilter2D movementFilter;
 
-    private Animator myAnim;
-    private CharacterState currentState;
-    private AnimationClip currentClip;
-    private Vector2 facingDirection;
-    private float timeToEndAnimation = 0f;
-
-    private float activeMoveSpeed;
+    protected Rigidbody2D rb;
+    protected ContactFilter2D contactFilter;
 
     //Dash parameters
     [Header("Dash Settings")]
@@ -71,23 +67,24 @@ public class PlayerController : MonoBehaviour
     bool canDash = true;
 
     //Attack parameters
-    [Header("Attack Settings")]
+    //[Header("Attack Settings")]
     //[SerializeField] float damageValue = 10f;
     //[SerializeField] float damageDuration = 1f;
-    [SerializeField] float damageCooldown = 1f;
-
-    //RigidBody2D
-    protected Rigidbody2D rb;
-    protected Vector2 velocity;
-    protected ContactFilter2D contactFilter;
+    //[SerializeField] float damageCooldown = 1f;
 
     [Header("Projectile Settings")]
-    [Header("ProjectileShooter Prefabs")]
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField] private GameObject projectileRotation;
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+
+    private Animator myAnim;
+    private CharacterState currentState;
+    private AnimationClip currentClip;
+    private Vector2 facingDirection;
+    private float timeToEndAnimation = 0f;
+
 
     private void Start()
     {
@@ -95,7 +92,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
         Canvas.SetActive(false);
-        activeMoveSpeed = moveSpeed;
         CurrentState = IdleAnim;
     }
 
@@ -105,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
         if (currentState.CanExitWhilePlaying = true || timeToEndAnimation <= 0)
         {
-            if (movementInput != Vector2.zero && rb.velocity.magnitude > RunVelocityTreshchold)
+            if (movementInput != Vector2.zero)
             {
                 CurrentState = RunAnim;
             }
@@ -133,7 +129,7 @@ public class PlayerController : MonoBehaviour
     {
         if (currentState.CanMove)
         {
-            Vector2 moveForce = movementInput * moveSpeed * Time.deltaTime;
+            Vector2 moveForce = movementInput * MoveSpeed * Time.deltaTime;
             rb.AddForce(moveForce);
         }
 
@@ -191,12 +187,12 @@ public class PlayerController : MonoBehaviour
                 direction,
                 movementFilter,
                 castCollisions,
-                moveSpeed * Time.fixedDeltaTime + collisionOffset
+                MoveSpeed * Time.fixedDeltaTime + collisionOffset
                 );
 
             if (count == 0)
             {
-                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + direction * MoveSpeed * Time.fixedDeltaTime);
 
                 return true;
             }
@@ -258,10 +254,6 @@ public class PlayerController : MonoBehaviour
     //When LeftMouseButton(LMB) was pressed
     public void OnAttack()
     {
-        CurrentState = ThrowAnim;
-
-        SpawnPoint();
-
         if (isDashing == true)
         {
             return;
@@ -271,6 +263,10 @@ public class PlayerController : MonoBehaviour
     //When RightMouseButton(LMB) was pressed
     public void OnFire()
     {
+        CurrentState = ThrowAnim;
+
+        SpawnPoint();
+
         if (isDashing == true)
         {
             return;
