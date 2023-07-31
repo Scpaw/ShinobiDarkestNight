@@ -87375,7 +87375,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
   m_Origin: {x: -61, y: -41, z: 0}
   m_Size: {x: 165, y: 118, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -97251,8 +97251,16 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: staminaSlider
+      value: 
+      objectReference: {fileID: 1033506929}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: attackCooldown
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: projectileNumber
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: enemyLayer.m_Bits
@@ -97303,6 +97311,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: <AttackAnim>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 75886f69195bd034f8bf5ce881a363fc, type: 2}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: movementFilter.useLayerMask
       value: 1
       objectReference: {fileID: 0}
@@ -97316,11 +97328,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_keys.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_values.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_keys.Array.data[0]
@@ -97339,6 +97351,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b019e01b97d6089468c2bcc14a1cb845, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_keys.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 75886f69195bd034f8bf5ce881a363fc, type: 2}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 3fc774e6528c0c047883e6decde614f1, type: 2}
@@ -97354,6 +97370,10 @@ PrefabInstance:
       propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: e726cf76072e5654caa9f8179aace070, type: 2}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 003d765770655e141b1d0c59c7058867, type: 2}
     - target: {fileID: 6329331368419082897, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: playerHealthSlider
       value: 
@@ -97431,6 +97451,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1033506929 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5277375560786244296, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+  m_PrefabInstance: {fileID: 834762649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1377427477
 PrefabInstance:
   m_ObjectHideFlags: 0

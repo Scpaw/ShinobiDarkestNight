@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
     private SpriteRenderer projectileSpriteRenderer;
     bool enemyHit;
     GameObject enemyTrigger;
-
+    public GameObject afterProjectile;
     void Awake()
     {
         prRb = gameObject.GetComponent<Rigidbody2D>();
@@ -85,5 +85,9 @@ public class Projectile : MonoBehaviour
         {
             theEnemyHealth.enemyAddDamage(projectileDamage);
         }
+    }
+    private void OnDestroy()
+    {
+        Instantiate(afterProjectile, transform.position, transform.rotation);
     }
 }

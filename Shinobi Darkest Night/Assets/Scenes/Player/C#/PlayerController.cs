@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public CharacterState RunAnim { get; private set; }
     [field: SerializeField] public CharacterState DashAnim { get; private set; }
     [field: SerializeField] public CharacterState ThrowAnim { get; private set; }
+    [field: SerializeField] public CharacterState AttackAnim { get; private set; }
     [field: SerializeField] public CharacterAnimationStateDictionary StateAnimations { get; private set; }
     [field: SerializeField] public float RunVelocityTreshchold { get; private set; } = 0.1f;
 
@@ -94,6 +95,17 @@ public class PlayerController : MonoBehaviour
     private float startAttackCooldown;
     public float pushForce;
 
+    //projectile
+    public int projectileNumber;
+    private int maxProjectileNumber;
+    public Text projectileText;
+
+    //stamina
+    public Slider staminaSlider;
+    float stamina = 50;
+    float maxStamina;
+    float staminaReg;
+
     private void Start()
     {
         //facing
@@ -104,13 +116,16 @@ public class PlayerController : MonoBehaviour
         canMove = true;
         startAttackCooldown = attackCooldown;
         attackCooldown = 0;
+        maxProjectileNumber = projectileNumber;
+        maxStamina = stamina;
+        staminaSlider.maxValue = maxStamina;
     }
 
     private void Update()
     {
         timeToEndAnimation = timeToEndAnimation - Time.deltaTime;
 
-        if (currentState == ThrowAnim)
+        if (currentState == ThrowAnim || currentState == AttackAnim)
         {
             if (timeToEndAnimation <= 0)
             {
@@ -155,6 +170,22 @@ public class PlayerController : MonoBehaviour
         if (attackCooldown > 0)
         { 
             attackCooldown -= Time.deltaTime;
+        }
+        projectileText.text = projectileNumber.ToString();
+
+        //stamina
+        staminaSlider.value = stamina;
+        if (stamina < maxStamina)
+        {
+            if (staminaReg > 0)
+            {
+                staminaReg -= Time.deltaTime;
+            }
+            else
+            {
+                staminaReg = 1;
+                stamina += 5;
+            }
         }
     }
 
@@ -283,6 +314,7 @@ public class PlayerController : MonoBehaviour
     private void SpawnPoint()
     {
         GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileRotation.transform.rotation);
+        projectileNumber -= 1;
     }
 
     //When one of WSAD was pressed
@@ -319,8 +351,8 @@ public class PlayerController : MonoBehaviour
             {
                 return;
             }
-            GameObject[] hit = projectileSpawnPoint.GetComponent<AttackCollider>().enemiesThatCanHit.ToArray();
 
+            GameObject[] hit = projectileSpawnPoint.GetComponent<AttackCollider>().enemiesThatCanHit.ToArray();
             if (hit == null || hit.Length == 0)
             {
                 return;
@@ -337,28 +369,50 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+            if (movementInput != Vector2.zero || movementInput != saveDirection)
+            {
+                saveDirection = movementInput;
+            }
+            else
+            {
+                saveDirection = Vector2.zero;
+            }
+            facingDirection = projectileSpawnPoint.position - transform.position;
             attackCooldown = startAttackCooldown;
+            CurrentState = AttackAnim;           
+            canMove = false;
+
         }
     }
 
     //When RightMouseButton(LMB) was pressed
     public void OnFire()
     {
-        if (isDashing == true)
+        if (projectileNumber > 0)
         {
-            return;
-        }
-        if (movementInput != Vector2.zero || movementInput != saveDirection)
-        {
-            saveDirection = movementInput;
-        }
-        else
-        { 
-            saveDirection = Vector2.zero;
-        }
+            if (isDashing == true)
+            {
+                return;
+            }
+            if (movementInput != Vector2.zero || movementInput != saveDirection)
+            {
+                saveDirection = movementInput;
+            }
+            else
+            {
+                saveDirection = Vector2.zero;
+            }
 
-        facingDirection = projectileSpawnPoint.position - transform.position;
-        canMove = false;
-        CurrentState = ThrowAnim;
+            facingDirection = projectileSpawnPoint.position - transform.position;
+            canMove = false;
+            CurrentState = ThrowAnim;
+            UseStamina(5);
+        }
+    }
+
+
+    public void UseStamina(float staminaToUse)
+    {
+        stamina -= staminaToUse;
     }
 }
