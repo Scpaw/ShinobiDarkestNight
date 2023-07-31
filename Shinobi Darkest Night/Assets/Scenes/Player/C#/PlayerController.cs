@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public CharacterState ThrowAnim { get; private set; }
     [field: SerializeField] public CharacterAnimationStateDictionary StateAnimations { get; private set; }
     [field: SerializeField] public float RunVelocityTreshchold { get; private set; } = 0.1f;
-    
+
     public CharacterState CurrentState
     {
         get
@@ -88,9 +88,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 facingDirection;
     private float timeToEndAnimation = 0f;
 
-
-    //main atack
-    public LayerMask enemyLayer;
+    //melee attack
+    public float attackDamage;
+    public float attackCooldown;
+    private float startAttackCooldown;
 
     private void Start()
     {
@@ -100,6 +101,8 @@ public class PlayerController : MonoBehaviour
         Canvas.SetActive(false);
         CurrentState = IdleAnim;
         canMove = true;
+        startAttackCooldown = attackCooldown;
+        attackCooldown = 0;
     }
 
     private void Update()
@@ -147,6 +150,11 @@ public class PlayerController : MonoBehaviour
             movementInput = Vector2.zero;
         }
 
+        //attack cooldwon
+        if (attackCooldown > 0)
+        { 
+            attackCooldown -= Time.deltaTime;
+        }
     }
 
     private void ChangeClip()
@@ -304,24 +312,25 @@ public class PlayerController : MonoBehaviour
     //When LeftMouseButton(LMB) was pressed
     public void OnAttack()
     {
-        if (isDashing == true)
+        if (attackCooldown <= 0)
         {
-            return;
-        }
-        Collider2D[] hit = null;
-        projectileSpawnPoint.GetComponent<Collider2D>().OverlapCollider(contactFilter, hit);
-        if (hit == null)
-        {
-            return;
-        }
-        foreach (Collider2D enemy in hit)
-        {
-            if (enemy.gameObject.layer == enemyLayer)
+            if (isDashing == true)
+            {
+                return;
+            }
+            GameObject[] hit = projectileSpawnPoint.GetComponent<AttackCollider>().enemiesThatCanHit.ToArray();
+
+            if (hit == null || hit.Length == 0)
+            {
+                return;
+            }
+            foreach (GameObject enemy in hit)
             {
                 Debug.Log("Hit " + enemy.name);
+                enemy.GetComponent<Enemy>().enemyAddDamage(attackDamage);
             }
+            attackCooldown = startAttackCooldown;
         }
-
     }
 
     //When RightMouseButton(LMB) was pressed

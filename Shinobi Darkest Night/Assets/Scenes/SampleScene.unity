@@ -97138,6 +97138,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shinobi
       objectReference: {fileID: 0}
+    - target: {fileID: 675484047996214465, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 675484049360491655, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 792433650692628030, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -97167,13 +97175,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: attackDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: enemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <Idle>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 3fc774e6528c0c047883e6decde614f1, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 909042800}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <RunAnim>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 3cd21ca54cf92d54eb30975e07029747, type: 2}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: attackFilter.useTriggers
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <DashAnim>k__BackingField
       value: 
@@ -97183,6 +97215,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 4acd3e30a3a76dd4797310304fa2ab06, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: attackFilter.useLayerMask
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <MoveSpeed>k__BackingField
       value: 3
       objectReference: {fileID: 0}
@@ -97190,6 +97226,10 @@ PrefabInstance:
       propertyPath: <ThrowAnim>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: b019e01b97d6089468c2bcc14a1cb845, type: 2}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: attackFilter.layerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_keys.Array.size
       value: 4
@@ -97234,8 +97274,22 @@ PrefabInstance:
       propertyPath: playerHealthSlider
       value: 
       objectReference: {fileID: 675705515}
-    m_RemovedComponents: []
+    - target: {fileID: 7142954085576103778, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657334677903675734, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7142954085576103778, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+--- !u!70 &909042800 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2352237321646954228, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
+  m_PrefabInstance: {fileID: 1641872388}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &976528622
 GameObject:
   m_ObjectHideFlags: 0
@@ -97423,6 +97477,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 4.26
       objectReference: {fileID: 0}
+    - target: {fileID: 2352237321646954228, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3034708425488045953, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
       propertyPath: m_Size.x
       value: 5.12
@@ -97487,6 +97545,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3034708425488045956, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3034708425488045959, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
       propertyPath: thePlayer
       value: 
@@ -97501,3 +97563,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
+--- !u!1 &2057575291 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1368647276947891221, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+  m_PrefabInstance: {fileID: 834762649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &2057575295
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057575291}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.035279874, y: -0.00066208845}
+  m_Size: {x: 0.41835243, y: 0.50611454}
+  m_Direction: 0
