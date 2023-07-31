@@ -89,6 +89,9 @@ public class PlayerController : MonoBehaviour
     private float timeToEndAnimation = 0f;
 
 
+    //main atack
+    public LayerMask enemyLayer;
+
     private void Start()
     {
         //facing
@@ -101,7 +104,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //timeToEndAnimation -= Mathf.Max(timeToEndAnimation - Time.deltaTime);
         timeToEndAnimation = timeToEndAnimation - Time.deltaTime;
 
         if (currentState == ThrowAnim)
@@ -140,7 +142,6 @@ public class PlayerController : MonoBehaviour
             }  
             ChangeClip();
         }
-        Debug.Log(currentState);
         if (!canMove)
         {
             movementInput = Vector2.zero;
@@ -307,6 +308,20 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+        Collider2D[] hit = null;
+        projectileSpawnPoint.GetComponent<Collider2D>().OverlapCollider(contactFilter, hit);
+        if (hit == null)
+        {
+            return;
+        }
+        foreach (Collider2D enemy in hit)
+        {
+            if (enemy.gameObject.layer == enemyLayer)
+            {
+                Debug.Log("Hit " + enemy.name);
+            }
+        }
+
     }
 
     //When RightMouseButton(LMB) was pressed
@@ -328,7 +343,5 @@ public class PlayerController : MonoBehaviour
         facingDirection = projectileSpawnPoint.position - transform.position;
         canMove = false;
         CurrentState = ThrowAnim;
-        //SpawnPoint(); 
     }
-
 }
