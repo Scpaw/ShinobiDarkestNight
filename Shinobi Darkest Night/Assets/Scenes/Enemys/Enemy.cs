@@ -17,6 +17,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] float enemyNextDamage;
     [SerializeField] GameObject thePlayer;
 
+    Animator EnemyAnim;
+    private bool isdamaged = false;
+
     public void Awake()
     {
         enemyHealth = enemyMaxHealth;
@@ -28,7 +31,8 @@ public class Enemy : MonoBehaviour
     {
         enemyHealth -= Damage;
         enemyHealthSlider.value = enemyHealth;
-
+        isdamaged = true;
+        Debug.Log(isdamaged);
         if (enemyHealth <= 0)
         {
             MakeDead();
@@ -37,8 +41,18 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        EnemyAnim = GetComponent<Animator>();
         GameObject parentGameObject = gameObject;
         DamageRange damageR = parentGameObject.GetComponentInChildren<DamageRange>();
+
+        if(isdamaged == true)
+        {
+            EnemyAnim.SetBool("isDamaged", true);
+        }
+        else
+        {
+            EnemyAnim.SetBool("isDamaged", false);
+        }
 
         if (damageR.playerInRange == true) 
         {
