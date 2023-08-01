@@ -455,6 +455,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator ChangeCamSize()
     {
+
         if (cam.m_Lens.OrthographicSize >= changeLensSize)
         {
             while (cam.m_Lens.OrthographicSize >= changeLensSize)

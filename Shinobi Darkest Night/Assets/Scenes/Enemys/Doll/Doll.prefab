@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8850530770999436330}
   - component: {fileID: 6868882776308178963}
   - component: {fileID: 8685441749057035713}
-  - component: {fileID: 2483686235613012949}
   - component: {fileID: 8982679613982804669}
+  - component: {fileID: 966132093220672587}
   m_Layer: 0
   m_Name: Doll
   m_TagString: Untagged
@@ -73,27 +73,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 675484047887735672, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
   speed: 1
---- !u!114 &2483686235613012949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299556032694334685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebbf21f8e084e2f4fbb77209aa014497, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyMaxHealth: 0
-  enemyHealth: 0
-  enemyHealthSlider: {fileID: 0}
-  enemyCanvas: {fileID: 0}
-  enemyDamage: 0
-  enemyDamageRate: 0
-  enemyNextDamage: 0
-  thePlayer: {fileID: 0}
-  projectiles: []
 --- !u!114 &8982679613982804669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +86,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+--- !u!114 &966132093220672587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299556032694334685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0062560d01ae944458838c3b92b304cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMaxHealth: 100
+  enemyHealth: 100
+  enemyHealthSlider: {fileID: 691301660596158894}
+  enemyCanvas: {fileID: 3092937982863972908}
+  enemyDamage: 5
+  enemyDamageRate: 1
+  enemyNextDamage: 0
+  thePlayer: {fileID: 0}
+  projectiles: []
 --- !u!1 &2989135808808095607
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 2475615527150062768}
   - component: {fileID: 2622148833555900084}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: Grafika
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
