@@ -181,21 +181,13 @@ public class PlayerController : MonoBehaviour
         {
             if (stamina < maxStamina)
             {
-                if (stamina <= 1)
+                if (staminaReg <= 0)
                 {
-                    staminaReg -= Time.deltaTime;
-                    if (staminaReg < 0)
-                    {
-                        stamina += staminaRegRate * Time.deltaTime;
-                    }
+                    stamina += staminaRegRate * Time.deltaTime;
                 }
                 else
                 {
-                    stamina += staminaRegRate * Time.deltaTime;
-                    if (staminaReg <= 0)
-                    {
-                        staminaReg = 2.5f;
-                    }
+                    staminaReg -= Time.deltaTime;
                 }
             }
         }
@@ -392,7 +384,7 @@ public class PlayerController : MonoBehaviour
             attackCooldown = startAttackCooldown;
             CurrentState = AttackAnim;           
             canMove = false;
-            stamina -= 5;
+            UseStamina(5);
 
         }
     }
@@ -430,5 +422,6 @@ public class PlayerController : MonoBehaviour
     public void UseStamina(float staminaToUse)
     {
         stamina -= staminaToUse;
+        staminaReg = 2.5f;
     }
 }

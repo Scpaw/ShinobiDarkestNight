@@ -11,7 +11,6 @@ public class ProjectileToCollect : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log(GetComponent<Rigidbody2D>().velocity.magnitude);
         if (onEnemy && GetComponent<Rigidbody2D>().velocity.magnitude < 0.5f && transform.parent == null)
         { 
             onEnemy = false;

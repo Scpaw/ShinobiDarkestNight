@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
 
     public void enemyAddDamage(float Damage, bool dropProjectiles)
     {
+        EnemyAnim.SetTrigger("isDamaged");
         enemyHealth -= Damage;
         enemyHealthSlider.value = enemyHealth;
         isdamaged = true;
@@ -52,26 +53,10 @@ public class Enemy : MonoBehaviour
         GameObject parentGameObject = gameObject;
         DamageRange damageR = parentGameObject.GetComponentInChildren<DamageRange>();
 
-        if(isdamaged == true)
-        {
-            EnemyAnim.SetBool("isDamaged", true);
-        }
-        else
-        {
-            EnemyAnim.SetBool("isDamaged", false);
-        }
 
         if (damageR.playerInRange == true) 
         {
             Attack();
-        }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            if (GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
-            {
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.RandomRange(-2, 2), Random.RandomRange(-2, 2)), ForceMode2D.Impulse);
-            }
         }
     }
 
@@ -103,9 +88,11 @@ public class Enemy : MonoBehaviour
         {
             projectile.transform.parent = null;
             projectile.GetComponent<Rigidbody2D>().AddForce((projectile.transform.position - transform.position) * 3, ForceMode2D.Impulse);
-            Debug.Log((projectile.transform.position - transform.position) * 3);
         }
-        projectiles.Clear();
+        if (projectiles.Count > 0)
+        {
+            projectiles.Clear();
+        }       
     }
 
     private void OnDestroy()
