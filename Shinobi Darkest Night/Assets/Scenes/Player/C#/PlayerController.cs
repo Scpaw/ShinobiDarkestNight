@@ -105,12 +105,14 @@ public class PlayerController : MonoBehaviour
     float stamina = 50;
     float maxStamina;
     float staminaReg;
+    public float staminaRegRate;
+    bool canRegenStamina;
 
     private void Start()
     {
         //facing
         rb = GetComponent<Rigidbody2D>();
-        myAnim = GetComponent<Animator>();
+        myAnim = transform.Find("Grafika").GetComponent<Animator>();
         Canvas.SetActive(false);
         CurrentState = IdleAnim;
         canMove = true;
@@ -175,16 +177,26 @@ public class PlayerController : MonoBehaviour
 
         //stamina
         staminaSlider.value = stamina;
-        if (stamina < maxStamina)
+        if (canMove && !isDashing)
         {
-            if (staminaReg > 0)
+            if (stamina < maxStamina)
             {
-                staminaReg -= Time.deltaTime;
-            }
-            else
-            {
-                staminaReg = 1;
-                stamina += 5;
+                if (stamina <= 1)
+                {
+                    staminaReg -= Time.deltaTime;
+                    if (staminaReg < 0)
+                    {
+                        stamina += staminaRegRate * Time.deltaTime;
+                    }
+                }
+                else
+                {
+                    stamina += staminaRegRate * Time.deltaTime;
+                    if (staminaReg <= 0)
+                    {
+                        staminaReg = 2.5f;
+                    }
+                }
             }
         }
     }
@@ -311,7 +323,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SpawnPoint()
+    public void SpawnPoint()
     {
         GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileRotation.transform.rotation);
         projectileNumber -= 1;
@@ -345,7 +357,7 @@ public class PlayerController : MonoBehaviour
     //When LeftMouseButton(LMB) was pressed
     public void OnAttack()
     {
-        if (attackCooldown <= 0)
+        if (attackCooldown <= 0 && stamina >= 5)
         {
             if (isDashing == true)
             {
@@ -361,8 +373,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (enemy.layer == 6)
                 {
-                    Debug.Log("Hit " + enemy.name);
-                    enemy.GetComponent<Enemy>().enemyAddDamage(attackDamage);
+                    enemy.GetComponent<Enemy>().enemyAddDamage(attackDamage, true);
                     if (enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
                     {
                         enemy.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
@@ -381,6 +392,7 @@ public class PlayerController : MonoBehaviour
             attackCooldown = startAttackCooldown;
             CurrentState = AttackAnim;           
             canMove = false;
+            stamina -= 5;
 
         }
     }
@@ -388,26 +400,30 @@ public class PlayerController : MonoBehaviour
     //When RightMouseButton(LMB) was pressed
     public void OnFire()
     {
-        if (projectileNumber > 0)
+        if (stamina >= 5)
         {
-            if (isDashing == true)
+            if (projectileNumber > 0)
             {
-                return;
-            }
-            if (movementInput != Vector2.zero || movementInput != saveDirection)
-            {
-                saveDirection = movementInput;
-            }
-            else
-            {
-                saveDirection = Vector2.zero;
-            }
+                if (isDashing == true)
+                {
+                    return;
+                }
+                if (movementInput != Vector2.zero || movementInput != saveDirection)
+                {
+                    saveDirection = movementInput;
+                }
+                else
+                {
+                    saveDirection = Vector2.zero;
+                }
 
-            facingDirection = projectileSpawnPoint.position - transform.position;
-            canMove = false;
-            CurrentState = ThrowAnim;
-            UseStamina(5);
+                facingDirection = projectileSpawnPoint.position - transform.position;
+                canMove = false;
+                CurrentState = ThrowAnim;
+                UseStamina(5);
+            }
         }
+       
     }
 
 

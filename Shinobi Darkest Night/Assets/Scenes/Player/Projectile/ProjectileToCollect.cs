@@ -5,10 +5,18 @@ using UnityEngine;
 
 public class ProjectileToCollect : MonoBehaviour
 {
+    public bool onEnemy;
     public float pickUpSpeed;
+
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        Debug.Log(GetComponent<Rigidbody2D>().velocity.magnitude);
+        if (onEnemy && GetComponent<Rigidbody2D>().velocity.magnitude < 0.5f && transform.parent == null)
+        { 
+            onEnemy = false;
+        }
+        if (collision.gameObject.tag == "Player" && !onEnemy)
         {
             transform.position = Vector2.MoveTowards(transform.position, collision.transform.position,Time.deltaTime * pickUpSpeed);
             if ((transform.position - collision.transform.position).magnitude < 0.1f)
@@ -17,6 +25,6 @@ public class ProjectileToCollect : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-
     }
+
 }

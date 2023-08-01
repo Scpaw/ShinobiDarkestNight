@@ -97134,22 +97134,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 675484047887735430, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
-      propertyPath: m_Size.x
-      value: 5.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 675484047887735430, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
-      propertyPath: m_Size.y
-      value: 5.1216664
-      objectReference: {fileID: 0}
-    - target: {fileID: 675484047887735430, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1525282285, guid: 1e77c5248360bbf468393b5fc251aed0, type: 3}
-    - target: {fileID: 675484047887735430, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 675484047887735672, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: m_Name
       value: Shinobi
@@ -97257,6 +97241,10 @@ PrefabInstance:
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: attackCooldown
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: staminaRegRate
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: projectileNumber
@@ -97405,6 +97393,23 @@ CapsuleCollider2D:
   m_CorrespondingSourceObject: {fileID: 2352237321646954228, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
   m_PrefabInstance: {fileID: 1641872388}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &925884373 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6500740380581021838, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+  m_PrefabInstance: {fileID: 834762649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &925884377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925884373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fba12b9c223914c94abd66c69ac989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &976528622
 GameObject:
   m_ObjectHideFlags: 0
@@ -97471,11 +97476,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2352237321646954228, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
       propertyPath: m_Size.x
-      value: 2.37
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2352237321646954228, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
       propertyPath: m_Size.y
-      value: 4.26
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2352237321646954228, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
       propertyPath: m_IsTrigger
@@ -97571,7 +97576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3034708427007527296, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3034708427401634863, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
       propertyPath: m_AnchorMax.x
@@ -97718,11 +97723,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2352237321646954228, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
       propertyPath: m_Size.x
-      value: 2.37
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2352237321646954228, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
       propertyPath: m_Size.y
-      value: 4.26
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2352237321646954228, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
       propertyPath: m_IsTrigger

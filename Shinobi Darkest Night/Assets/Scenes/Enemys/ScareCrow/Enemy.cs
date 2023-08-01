@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static TreeEditor.TreeEditorHelper;
 
 public class Enemy : MonoBehaviour
 {
@@ -20,28 +21,34 @@ public class Enemy : MonoBehaviour
     Animator EnemyAnim;
     private bool isdamaged = false;
 
+    //projectiles
+    public List<GameObject> projectiles;
+
     public void Awake()
     {
         enemyHealth = enemyMaxHealth;
         enemyHealthSlider.maxValue = enemyMaxHealth;
         enemyHealthSlider.value = enemyHealth;
+        EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
     }
 
-    public void enemyAddDamage(float Damage)
+    public void enemyAddDamage(float Damage, bool dropProjectiles)
     {
         enemyHealth -= Damage;
         enemyHealthSlider.value = enemyHealth;
         isdamaged = true;
-        Debug.Log(isdamaged);
         if (enemyHealth <= 0)
         {
             MakeDead();
+        }
+        if (dropProjectiles)
+        {
+            ProjectilesOff();
         }
     }
 
     void Update()
     {
-        EnemyAnim = GetComponent<Animator>();
         GameObject parentGameObject = gameObject;
         DamageRange damageR = parentGameObject.GetComponentInChildren<DamageRange>();
 
@@ -57,7 +64,14 @@ public class Enemy : MonoBehaviour
         if (damageR.playerInRange == true) 
         {
             Attack();
-            Debug.Log("Attack");
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            if (GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
+            {
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.RandomRange(-2, 2), Random.RandomRange(-2, 2)), ForceMode2D.Impulse);
+            }
         }
     }
 
@@ -72,9 +86,30 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void MakeDead()
-    {
-        Destroy(gameObject, 0);
+    public void AddProjectile(GameObject projectile)
+    { 
+        projectiles.Add(projectile);
     }
 
+    private void MakeDead()
+    {
+        ProjectilesOff();
+        Destroy(gameObject, 0.1f);
+    }
+
+    void ProjectilesOff()
+    {
+        foreach (GameObject projectile in projectiles)
+        {
+            projectile.transform.parent = null;
+            projectile.GetComponent<Rigidbody2D>().AddForce((projectile.transform.position - transform.position) * 3, ForceMode2D.Impulse);
+            Debug.Log((projectile.transform.position - transform.position) * 3);
+        }
+        projectiles.Clear();
+    }
+
+    private void OnDestroy()
+    {
+        ProjectilesOff();
+    }
 }

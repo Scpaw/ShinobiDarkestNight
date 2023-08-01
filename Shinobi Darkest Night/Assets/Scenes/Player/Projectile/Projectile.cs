@@ -44,11 +44,7 @@ public class Projectile : MonoBehaviour
         {
             projectileSpriteRenderer.flipX = false;
         }
-
-        if (enemyHit == true)
-        {
-            Attack();
-        }
+ 
     }
 
     void ProjectileMovement()
@@ -83,11 +79,21 @@ public class Projectile : MonoBehaviour
 
         if (enemyHit == true)
         {
-            theEnemyHealth.enemyAddDamage(projectileDamage);
+            theEnemyHealth.enemyAddDamage(projectileDamage, false);
+
         }
     }
     private void OnDestroy()
     {
-        Instantiate(afterProjectile, transform.position, transform.rotation);
+        if (!enemyHit)
+        {
+            Instantiate(afterProjectile, transform.position, transform.rotation);
+        }
+        else
+        {
+            GameObject hit = Instantiate(afterProjectile, enemyTrigger.transform.InverseTransformDirection(transform.position), transform.rotation, enemyTrigger.transform);
+            hit.GetComponent<ProjectileToCollect>().onEnemy = true;
+            enemyTrigger.GetComponent<Enemy>().AddProjectile(hit);
+        }
     }
 }
