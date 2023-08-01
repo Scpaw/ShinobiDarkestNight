@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public CharacterState DashAnim { get; private set; }
     [field: SerializeField] public CharacterState ThrowAnim { get; private set; }
     [field: SerializeField] public CharacterState AttackAnim { get; private set; }
-    [field: SerializeField] public CharacterState HealAnim { get; private set; }
     [field: SerializeField] public CharacterAnimationStateDictionary StateAnimations { get; private set; }
     [field: SerializeField] public float RunVelocityTreshchold { get; private set; } = 0.1f;
 
@@ -116,7 +115,9 @@ public class PlayerController : MonoBehaviour
     float startLensSize;
     public float changeLensSize;
     private float timeToHeal;
-    private bool canHeal;
+    public bool canHeal;
+    public AnimationClip startHeal;
+    public AnimationClip loopHeal;
 
     private void Start()
     {
@@ -212,12 +213,15 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeClip()
     {
-        AnimationClip expectedClip = StateAnimations.GetFacingClipFromState(currentState, facingDirection);
-
-        if (currentClip == null || currentClip != expectedClip)
+        if (!isHealing)
         {
-            myAnim.Play(expectedClip.name);
-            currentClip = expectedClip;
+            AnimationClip expectedClip = StateAnimations.GetFacingClipFromState(currentState, facingDirection);
+
+            if (currentClip == null || currentClip != expectedClip)
+            {
+                myAnim.Play(expectedClip.name);
+                currentClip = expectedClip;
+            }
         }
     }
 
@@ -385,6 +389,7 @@ public class PlayerController : MonoBehaviour
                     enemy.GetComponent<Enemy>().enemyAddDamage(attackDamage, true);
                     if (enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
                     {
+                        enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         enemy.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
                     }
                 }
@@ -442,13 +447,18 @@ public class PlayerController : MonoBehaviour
             if (!isHealing)
             {
                 isHealing = true;
-                //play animation
                 StartHealing();
+                canMove = false;
             }
             else
             {
                 if (canHeal)
                 {
+                    if (currentClip != loopHeal)
+                    {
+                        myAnim.Play(loopHeal.name);
+                        currentClip = loopHeal;
+                    }
                     GetComponent<PlayerHealth>().AddHealth(3);
                 }
             }
@@ -463,6 +473,7 @@ public class PlayerController : MonoBehaviour
     public void StopHealing()
     {
         StartCoroutine(ChangeCamSizeDown());
+        canMove = true;
     }
 
     public void UseStamina(float staminaToUse)
@@ -475,12 +486,13 @@ public class PlayerController : MonoBehaviour
     {
         if (isHealing)
         {
+            myAnim.Play(startHeal.name);
+            currentClip = startHeal;
             while (cam.m_Lens.OrthographicSize >= changeLensSize)
             {
                 cam.m_Lens.OrthographicSize -= Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
-            canHeal = true;
         }
         else
         {

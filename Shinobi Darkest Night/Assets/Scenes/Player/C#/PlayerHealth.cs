@@ -37,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void AddDamage(float Damage)
     {
+        GetComponent<PlayerController>().StopHealing();
         playerCourrentHealth -= Damage;
         playerHealthSlider.value = playerCourrentHealth;
 

@@ -11,4 +11,9 @@ public class AnimationToCode : MonoBehaviour
             transform.parent.GetComponent<PlayerController>().SpawnPoint();
         }
     }
+
+    public void StartHeal()
+    {
+        transform.parent.GetComponent<PlayerController>().canHeal = true;
+    }
 }

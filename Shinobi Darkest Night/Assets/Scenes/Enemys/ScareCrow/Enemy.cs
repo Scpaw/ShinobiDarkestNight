@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
 
     //projectiles
     public List<GameObject> projectiles;
+    public float stundTime;
 
     public void Awake()
     {
@@ -96,6 +97,14 @@ public class Enemy : MonoBehaviour
         }       
     }
 
+    public IEnumerator Stuned()
+    {
+        while (stundTime > 0)
+        {
+            stundTime -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
     private void OnDestroy()
     {
         ProjectilesOff();
