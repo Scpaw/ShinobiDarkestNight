@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public CharacterState DashAnim { get; private set; }
     [field: SerializeField] public CharacterState ThrowAnim { get; private set; }
     [field: SerializeField] public CharacterState AttackAnim { get; private set; }
+    [field: SerializeField] public CharacterState HealAnim { get; private set; }
     [field: SerializeField] public CharacterAnimationStateDictionary StateAnimations { get; private set; }
     [field: SerializeField] public float RunVelocityTreshchold { get; private set; } = 0.1f;
 
@@ -416,6 +417,12 @@ public class PlayerController : MonoBehaviour
             }
         }
        
+    }
+
+    public void OnHeal()
+    {
+        Debug.Log("Heal");
+        currentState = HealAnim;
     }
 
 

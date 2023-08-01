@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInputActions",
+    "name": "ShinobiInputActions",
     "maps": [
         {
             "name": "Player",
@@ -45,6 +45,15 @@
                     "name": "Fire",
                     "type": "Button",
                     "id": "e4bdc52c-8ee6-455a-bd5a-bd49cd480a15",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Heal",
+                    "type": "Button",
+                    "id": "67faa2f6-35c9-4174-a37f-8e8c5b64947b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -291,6 +300,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "69f03bb3-45f1-441e-a789-2d606cd39013",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Heal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
