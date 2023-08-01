@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3034708425488045954}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &6638979826658503986
 CapsuleCollider2D:
@@ -81,9 +81,9 @@ Transform:
   m_Children:
   - {fileID: 3034708425732982025}
   - {fileID: 3034708427007527297}
-  - {fileID: 3034708427060015173}
   - {fileID: 176757008848252002}
   - {fileID: 7578000768125730583}
+  - {fileID: 3034708427060015173}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -378,7 +378,7 @@ RectTransform:
   m_Children:
   - {fileID: 3034708425650630953}
   m_Father: {fileID: 3034708425488045954}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -666,7 +666,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3034708425488045954}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &857489965442452854
 SpriteRenderer:
