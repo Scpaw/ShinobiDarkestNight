@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -109,6 +110,12 @@ public class PlayerController : MonoBehaviour
     public float staminaRegRate;
     bool canRegenStamina;
 
+    //heal
+    bool isHealing;
+    CinemachineVirtualCamera cam;
+    float startLensSize;
+    public float changeLensSize;
+
     private void Start()
     {
         //facing
@@ -122,6 +129,8 @@ public class PlayerController : MonoBehaviour
         maxProjectileNumber = projectileNumber;
         maxStamina = stamina;
         staminaSlider.maxValue = maxStamina;
+        cam = FindAnyObjectByType<CinemachineVirtualCamera>();
+        startLensSize = cam.m_Lens.OrthographicSize;
     }
 
     private void Update()
@@ -191,6 +200,11 @@ public class PlayerController : MonoBehaviour
                     staminaReg -= Time.deltaTime;
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            StartHealing();
         }
     }
 
@@ -421,14 +435,41 @@ public class PlayerController : MonoBehaviour
 
     public void OnHeal()
     {
-        Debug.Log("Heal");
-        currentState = HealAnim;
+        if (!isHealing)
+        {
+            isHealing = true;
+        }
+        //play animation
     }
 
+    public void StartHealing()
+    {
+        StartCoroutine(ChangeCamSize());
+    }
 
     public void UseStamina(float staminaToUse)
     {
         stamina -= staminaToUse;
         staminaReg = 2.5f;
+    }
+
+    private IEnumerator ChangeCamSize()
+    {
+        if (cam.m_Lens.OrthographicSize >= changeLensSize)
+        {
+            while (cam.m_Lens.OrthographicSize >= changeLensSize)
+            {
+                cam.m_Lens.OrthographicSize -= Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        else 
+        {
+            while (cam.m_Lens.OrthographicSize >= changeLensSize)
+            {
+                cam.m_Lens.OrthographicSize -= Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+        }
     }
 }
