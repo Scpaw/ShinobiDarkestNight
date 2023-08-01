@@ -91,18 +91,18 @@ public class PlayerController : MonoBehaviour
     private Vector2 facingDirection;
     private float timeToEndAnimation = 0f;
 
-    //melee attack
+    [Header("Melee attack")]
     public float attackDamage;
     public float attackCooldown;
     private float startAttackCooldown;
     public float pushForce;
 
-    //projectile
+    [Header("Projectile")]
     public int projectileNumber;
     private int maxProjectileNumber;
     public Text projectileText;
 
-    //stamina
+    [Header("Stamina")]
     public Slider staminaSlider;
     float stamina = 50;
     float maxStamina;
@@ -110,11 +110,13 @@ public class PlayerController : MonoBehaviour
     public float staminaRegRate;
     bool canRegenStamina;
 
-    //heal
-    bool isHealing;
+    [Header("Heal")]
+    public bool isHealing;
     CinemachineVirtualCamera cam;
     float startLensSize;
     public float changeLensSize;
+    private float timeToHeal;
+    private bool canHeal;
 
     private void Start()
     {
@@ -435,16 +437,32 @@ public class PlayerController : MonoBehaviour
 
     public void OnHeal()
     {
-        if (!isHealing)
+        if (GetComponent<PlayerHealth>().playerCourrentHealth < GetComponent<PlayerHealth>().playerMaxHealth)
         {
-            isHealing = true;
-        }
-        //play animation
+            if (!isHealing)
+            {
+                isHealing = true;
+                //play animation
+                StartHealing();
+            }
+            else
+            {
+                if (canHeal)
+                {
+                    GetComponent<PlayerHealth>().AddHealth(3);
+                }
+            }
+        }        
     }
 
     public void StartHealing()
     {
-        StartCoroutine(ChangeCamSize());
+        StartCoroutine(ChangeCamSizeUp());
+    }
+
+    public void StopHealing()
+    {
+        StartCoroutine(ChangeCamSizeDown());
     }
 
     public void UseStamina(float staminaToUse)
@@ -453,22 +471,37 @@ public class PlayerController : MonoBehaviour
         staminaReg = 2.5f;
     }
 
-    private IEnumerator ChangeCamSize()
+    private IEnumerator ChangeCamSizeUp()
     {
-
-        if (cam.m_Lens.OrthographicSize >= changeLensSize)
+        if (isHealing)
         {
             while (cam.m_Lens.OrthographicSize >= changeLensSize)
             {
                 cam.m_Lens.OrthographicSize -= Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
+            canHeal = true;
         }
-        else 
+        else
         {
-            while (cam.m_Lens.OrthographicSize >= changeLensSize)
+            canHeal = false;
+            while (cam.m_Lens.OrthographicSize <= startLensSize)
             {
-                cam.m_Lens.OrthographicSize -= Time.deltaTime;
+                cam.m_Lens.OrthographicSize += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+        }
+    }
+
+    private IEnumerator ChangeCamSizeDown()
+    {
+        if (isHealing)
+        {
+            isHealing = false;
+            canHeal = false;
+            while (cam.m_Lens.OrthographicSize <= startLensSize)
+            {
+                cam.m_Lens.OrthographicSize += Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
         }

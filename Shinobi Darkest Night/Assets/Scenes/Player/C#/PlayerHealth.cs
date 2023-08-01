@@ -7,13 +7,14 @@ public class PlayerHealth : MonoBehaviour
 {
 
     [Header("Player Health")]
-    [SerializeField] float playerCourrentHealth;
-    [SerializeField] float playerMaxHealth;
+    public float playerCourrentHealth;
+    public float playerMaxHealth;
     [SerializeField] Slider playerHealthSlider;
 
     void Awake()
     {
-        playerCourrentHealth = playerMaxHealth;
+        playerCourrentHealth = 3*playerMaxHealth/4;
+        //playerCourrentHealth = playerMaxHealth;
         playerHealthSlider.maxValue = playerMaxHealth;
         playerHealthSlider.value = playerCourrentHealth;
     }
@@ -23,7 +24,13 @@ public class PlayerHealth : MonoBehaviour
         playerCourrentHealth += Health;
         if (playerCourrentHealth > playerMaxHealth) 
         { 
-            playerCourrentHealth = playerMaxHealth; 
+            playerCourrentHealth = playerMaxHealth;
+
+            if (GetComponent<PlayerController>().isHealing)
+            {
+                GetComponent<PlayerController>().StopHealing();
+            }
+
         }
         playerHealthSlider.value = playerCourrentHealth;
     }
