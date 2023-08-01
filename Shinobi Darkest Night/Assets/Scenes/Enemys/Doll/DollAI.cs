@@ -6,7 +6,8 @@ public class DollAI : MonoBehaviour
 {
     private enum State
     {
-        Roaming
+        Roaming,
+        Following        
     }
 
     private State state;
@@ -26,31 +27,41 @@ public class DollAI : MonoBehaviour
 
     private void Update()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
-        direction.Normalize();
-        
-
-        if (distance > 4 && detected == false)
+        if (GetComponent<Enemy>().stundTime <= 0)
         {
-            if(rom == false)
+            distance = Vector2.Distance(transform.position, player.transform.position);
+            //Vector2 direction = player.transform.position - transform.position;
+           // direction.Normalize();
+
+            //Debug.Log(distance);
+            //Debug.Log(direction);
+
+            if (distance > 4 && detected == false)
             {
-                StartCoroutine(RoamingRoutine());
-                rom = true;
+                if (rom == false)
+                {
+                    StartCoroutine(RoamingRoutine());
+                    rom = true;
+                }
+            }
+            else if (distance < 4)
+            {
+                rom = false;
+                detected = true;
+                StopCoroutine(RoamingRoutine());
+                transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+                //dollPathFinding.MoveTo(player.transform.position);
+            }
+
+            if (distance > 4)
+            {
+                detected = false;
             }
         }
-        else if(distance < 4)
+        else
         {
-            rom = false;
-            detected = true;
             StopCoroutine(RoamingRoutine());
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-        }
-
-        if(distance > 4)
-        {
-            detected = false;
-        }
+        }     
     }
 
     private IEnumerator RoamingRoutine()

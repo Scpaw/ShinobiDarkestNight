@@ -1,9 +1,11 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class PlayerController : MonoBehaviour
 {
@@ -95,6 +97,7 @@ public class PlayerController : MonoBehaviour
     public float attackCooldown;
     private float startAttackCooldown;
     public float pushForce;
+    public List<GameObject> enemiesToHit;
 
     [Header("Projectile")]
     public int projectileNumber;
@@ -205,10 +208,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            StartHealing();
-        }
     }
 
     private void ChangeClip()
@@ -377,17 +376,20 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            GameObject[] hit = projectileSpawnPoint.GetComponent<AttackCollider>().enemiesThatCanHit.ToArray();
-            if (hit == null || hit.Length == 0)
+            enemiesToHit = projectileSpawnPoint.GetComponent<AttackCollider>().enemiesThatCanHit;
+            if (enemiesToHit == null || enemiesToHit.Count == 0)
             {
                 return;
             }
-            foreach (GameObject enemy in hit)
+            foreach (GameObject enemy in enemiesToHit)
             {
-                if (enemy.layer == 6)
+                if (enemy.layer == 6 && enemy != null)
                 {
-                    enemy.GetComponent<Enemy>().enemyAddDamage(attackDamage, true);
-                    if (enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
+                    if (enemy.GetComponent<Enemy>())
+                    {
+                        enemy.GetComponent<Enemy>().enemyAddDamage(attackDamage, true);
+                    }
+                    if (enemy.GetComponent<Rigidbody2D>()!= null&& enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
                     {
                         enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         enemy.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
@@ -407,7 +409,6 @@ public class PlayerController : MonoBehaviour
             CurrentState = AttackAnim;           
             canMove = false;
             UseStamina(5);
-
         }
     }
 

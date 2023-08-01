@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static TreeEditor.TreeEditorHelper;
+//using static TreeEditor.TreeEditorHelper;
 
 public class Enemy : MonoBehaviour
 {
@@ -80,7 +80,10 @@ public class Enemy : MonoBehaviour
 
     private void MakeDead()
     {
+        StopAllCoroutines();
         ProjectilesOff();
+        //do naprawy
+        AttackCollider.instance.enemiesThatCanHit.Remove(gameObject);
         Destroy(gameObject, 0.1f);
     }
 
@@ -99,14 +102,17 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator Stuned()
     {
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        stundTime = 3;
         while (stundTime > 0)
         {
             stundTime -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+
     }
     private void OnDestroy()
     {
-        ProjectilesOff();
+        ProjectilesOff();        
     }
 }
