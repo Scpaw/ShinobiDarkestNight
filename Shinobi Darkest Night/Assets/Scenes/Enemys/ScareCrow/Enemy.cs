@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject thePlayer;
 
     Animator EnemyAnim;
-    private bool isdamaged = false;
 
     //projectiles
     public List<GameObject> projectiles;
@@ -39,7 +38,6 @@ public class Enemy : MonoBehaviour
         EnemyAnim.SetTrigger("isDamaged");
         enemyHealth -= Damage;
         enemyHealthSlider.value = enemyHealth;
-        isdamaged = true;
         if (enemyHealth <= 0)
         {
             MakeDead();
@@ -82,8 +80,6 @@ public class Enemy : MonoBehaviour
     {
         StopAllCoroutines();
         ProjectilesOff();
-        //do naprawy
-        AttackCollider.instance.enemiesThatCanHit.Remove(gameObject);
         Destroy(gameObject, 0.1f);
     }
 
@@ -102,7 +98,6 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator Stuned()
     {
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         stundTime = 3;
         while (stundTime > 0)
         {
@@ -110,9 +105,5 @@ public class Enemy : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-    }
-    private void OnDestroy()
-    {
-        ProjectilesOff();        
     }
 }

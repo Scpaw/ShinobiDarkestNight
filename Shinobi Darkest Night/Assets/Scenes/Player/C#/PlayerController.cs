@@ -9,6 +9,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
     /*
     This code when inserted in input code like "OnAttack", prevents it from activate when "Dash" is going
     Do NOT use in "OnMove" input
@@ -106,7 +107,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Stamina")]
     public Slider staminaSlider;
-    float stamina = 50;
+    float stamina = 500;//zmien na 100
     float maxStamina;
     float staminaReg;
     public float staminaRegRate;
@@ -122,6 +123,10 @@ public class PlayerController : MonoBehaviour
     public AnimationClip startHeal;
     public AnimationClip loopHeal;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         //facing
@@ -137,6 +142,8 @@ public class PlayerController : MonoBehaviour
         staminaSlider.maxValue = maxStamina;
         cam = FindAnyObjectByType<CinemachineVirtualCamera>();
         startLensSize = cam.m_Lens.OrthographicSize;
+        movementDirection = Vector2.zero;
+        movementInput = Vector2.zero;
     }
 
     private void Update()
@@ -376,23 +383,24 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            enemiesToHit = projectileSpawnPoint.GetComponent<AttackCollider>().enemiesThatCanHit;
-            if (enemiesToHit == null || enemiesToHit.Count == 0)
+            Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, projectileSpawnPoint.GetComponent<CircleCollider2D>().radius);
+            if (hit == null || hit.Length == 0)
             {
                 return;
             }
-            foreach (GameObject enemy in enemiesToHit)
+            foreach (Collider2D enemy in hit)
             {
-                if (enemy.layer == 6 && enemy != null)
+                if (enemy.gameObject.layer == 6 && enemy.gameObject != null)
                 {
-                    if (enemy.GetComponent<Enemy>())
+                    if (enemy.gameObject.GetComponent<Enemy>())
                     {
-                        enemy.GetComponent<Enemy>().enemyAddDamage(attackDamage, true);
+                        enemy.gameObject.GetComponent<Enemy>().enemyAddDamage(attackDamage, true);
                     }
-                    if (enemy.GetComponent<Rigidbody2D>()!= null&& enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
+                    if (enemy.gameObject.GetComponent<Rigidbody2D>()!= null&& enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
                     {
-                        enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                        enemy.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
+                        enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                        enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
+                        StartCoroutine(enemy.gameObject.GetComponent<Enemy>().Stuned());
                     }
                 }
             }
@@ -518,5 +526,11 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
+    }
+
+
+    public GameObject GetPlayer()
+    {
+        return gameObject;
     }
 }

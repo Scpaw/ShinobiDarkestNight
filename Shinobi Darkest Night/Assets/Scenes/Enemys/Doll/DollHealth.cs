@@ -17,8 +17,6 @@ public class DollHealth : MonoBehaviour
     [SerializeField] float enemyNextDamage;
     [SerializeField] GameObject thePlayer;
 
-    private bool isdamaged = false;
-
     //projectiles
     public List<GameObject> projectiles;
 
@@ -33,7 +31,6 @@ public class DollHealth : MonoBehaviour
     {
         enemyHealth -= Damage;
         enemyHealthSlider.value = enemyHealth;
-        isdamaged = true;
         if (enemyHealth <= 0)
         {
             MakeDead();
