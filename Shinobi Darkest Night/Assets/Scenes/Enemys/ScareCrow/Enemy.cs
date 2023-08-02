@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator Stuned()
     {
-        stundTime = 3;
+        stundTime = 0.75f;
         while (stundTime > 0)
         {
             stundTime -= Time.deltaTime;

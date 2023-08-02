@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Stamina")]
     public Slider staminaSlider;
-    float stamina = 500;//zmien na 100
+    float stamina = 100;
     float maxStamina;
     float staminaReg;
     public float staminaRegRate;
@@ -212,6 +212,16 @@ public class PlayerController : MonoBehaviour
                 {
                     staminaReg -= Time.deltaTime;
                 }
+            }
+        }
+
+        //health
+        if (isHealing && canHeal)
+        {
+            timeToHeal -= Time.deltaTime;
+            if (timeToHeal < 0)
+            {
+                StopHealing();
             }
         }
 
@@ -326,6 +336,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canDash && canMove)
         {
+            UseStamina(10);
             canDash = false;            
             Canvas.SetActive(true);
             isDashing = true;
@@ -453,6 +464,7 @@ public class PlayerController : MonoBehaviour
     {
         if (GetComponent<PlayerHealth>().playerCourrentHealth < GetComponent<PlayerHealth>().playerMaxHealth)
         {
+            timeToHeal = 1;
             if (!isHealing)
             {
                 isHealing = true;
@@ -467,7 +479,7 @@ public class PlayerController : MonoBehaviour
                     {
                         myAnim.Play(loopHeal.name);
                         currentClip = loopHeal;
-                    }
+                    }                    
                     GetComponent<PlayerHealth>().AddHealth(3);
                 }
             }

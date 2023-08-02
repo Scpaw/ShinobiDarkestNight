@@ -44,12 +44,12 @@ public class DollAi1 : MonoBehaviour
 
     private IEnumerator ResetPathf()
     {
-        ai.autoRepath.Reset();
         ai.speed = 0;
         while (enemySpeed > ai.speed)
         {
             ai.speed += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+        Debug.Log("NewPathf");
     }
 }
