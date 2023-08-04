@@ -12,7 +12,7 @@ public class DollAI : MonoBehaviour
 
     private State state;
     private DollPathFinding dollPathFinding;
-    public GameObject player;
+    private GameObject player;
     public float speed;
     private bool detected;
     private float distance;
@@ -23,6 +23,7 @@ public class DollAI : MonoBehaviour
         dollPathFinding = GetComponent<DollPathFinding>();
         state = State.Roaming;
         detected = false;
+        player = GameObject.Find("Shinobi");
     }
 
     private void Update()
