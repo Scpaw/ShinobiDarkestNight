@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject thePlayer;
 
     Animator EnemyAnim;
-
+    private Vector3 startPos;
     //projectiles
     public List<GameObject> projectiles;
     public float stundTime;
@@ -31,6 +31,15 @@ public class Enemy : MonoBehaviour
         enemyHealthSlider.maxValue = enemyMaxHealth;
         enemyHealthSlider.value = enemyHealth;
         EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
+        startPos = transform.position;
+    }
+    private void OnEnable()
+    {
+        enemyHealth = enemyMaxHealth;
+        enemyHealthSlider.maxValue = enemyMaxHealth;
+        enemyHealthSlider.value = enemyHealth;
+        EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
+        transform.position = startPos;
     }
 
     public void enemyAddDamage(float Damage, bool dropProjectiles)
@@ -80,7 +89,8 @@ public class Enemy : MonoBehaviour
     {
         StopAllCoroutines();
         ProjectilesOff();
-        Destroy(gameObject, 0.1f);
+        gameObject.SetActive(false);
+        //Destroy(gameObject, 0.1f);
     }
 
     void ProjectilesOff()
@@ -105,5 +115,12 @@ public class Enemy : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+    }
+    private void OnDisable()
+    {
+        if (transform.parent != null && enemyHealth <=0)
+        {
+            transform.parent.GetComponent<RoomBrain>().SpawnEnemies();
+        }
     }
 }
