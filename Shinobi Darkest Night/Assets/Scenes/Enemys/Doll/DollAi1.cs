@@ -46,7 +46,6 @@ public class DollAi1 : MonoBehaviour
     private IEnumerator ResetPathf()
     {
         ai.SetNewPath();
-        Debug.Log("new path");
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         ai.speed = 0;
         while (enemySpeed > ai.speed)

@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
         enemyHealth = enemyMaxHealth;
         enemyHealthSlider.maxValue = enemyMaxHealth;
         enemyHealthSlider.value = enemyHealth;
-<<<<<<< HEAD
+
         EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
         startPos = transform.position;
     }
@@ -42,12 +42,6 @@ public class Enemy : MonoBehaviour
         enemyHealthSlider.value = enemyHealth;
         EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
         transform.position = startPos;
-=======
-
-        thePlayer = GameObject.Find("Shinobi");
-
-        gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
->>>>>>> 4f9dcca896b92239cd3e66ba8040e6262c13d94d
     }
 
     public void enemyAddDamage(float Damage, bool dropProjectiles)
