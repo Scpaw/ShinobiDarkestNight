@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
     public void enemyAddDamage(float Damage, bool dropProjectiles)
     {
 
-
+        ParticleManager.instance.UseParticle("Blood", transform);
         enemyHealth -= Damage;
         enemyHealthSlider.value = enemyHealth;
         if (enemyHealth <= 0)
