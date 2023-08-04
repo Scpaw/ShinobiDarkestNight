@@ -10,7 +10,6 @@ public class AiBrain : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            Debug.Log("Player!");
             if (!playerIn)
             { 
                 playerIn = true;

@@ -393,6 +393,12 @@ namespace Pathfinding {
 			}
 		}
 
+
+		public void SetNewPath()
+		{
+			Update();
+            SearchPath();
+        }
 		public void OnDisable () {
 			ClearPath();
 			// Make sure we no longer receive callbacks when paths complete
