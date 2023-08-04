@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //Movement parameters
-    [field: SerializeField] public float MoveSpeed { get; private set; } = 5f;
+    [field: SerializeField] public float MoveSpeed { get; private set; } = 3f;
 
     [Header("Movement Settings")]
     [SerializeField] float collisionOffset = 0.05f;
@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour
     float staminaReg;
     public float staminaRegRate;
     bool canRegenStamina;
+    private bool canAttack;
 
     [Header("Heal")]
     public bool isHealing;
@@ -122,6 +123,9 @@ public class PlayerController : MonoBehaviour
     public bool canHeal;
     public AnimationClip startHeal;
     public AnimationClip loopHeal;
+
+    private bool isSpeedingUp;
+    private bool buttonUp;
 
     private void Awake()
     {
@@ -144,6 +148,7 @@ public class PlayerController : MonoBehaviour
         startLensSize = cam.m_Lens.OrthographicSize;
         movementDirection = Vector2.zero;
         movementInput = Vector2.zero;
+        canAttack = true;
     }
 
     private void Update()
@@ -200,7 +205,7 @@ public class PlayerController : MonoBehaviour
 
         //stamina
         staminaSlider.value = stamina;
-        if (canMove && !isDashing)
+        if (canMove && !isDashing && canAttack)
         {
             if (stamina < maxStamina)
             {
@@ -222,6 +227,20 @@ public class PlayerController : MonoBehaviour
             if (timeToHeal < 0)
             {
                 StopHealing();
+            }
+        }
+
+        if (isSpeedingUp)
+        { 
+            UseStamina(4* Time.deltaTime);
+            GetComponent<PlayerHealth>().AddDamage(2* Time.deltaTime);
+            if (stamina <= 0)
+            {
+                isSpeedingUp = false;
+                canDash = true;
+                canAttack = true;
+                MoveSpeed = 3;
+                buttonUp = true;
             }
         }
 
@@ -387,60 +406,35 @@ public class PlayerController : MonoBehaviour
     //When LeftMouseButton(LMB) was pressed
     public void OnAttack()
     {
-        if (attackCooldown <= 0 && stamina >= 5)
+        if (canAttack)
         {
-            if (isDashing == true)
-            {
-                return;
-            }
-
-            Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, projectileSpawnPoint.GetComponent<CircleCollider2D>().radius);
-            if (hit == null || hit.Length == 0)
-            {
-                return;
-            }
-            foreach (Collider2D enemy in hit)
-            {
-                if (enemy.gameObject.layer == 6 && enemy.gameObject != null)
-                {
-                    if (enemy.gameObject.GetComponent<Enemy>())
-                    {
-                        enemy.gameObject.GetComponent<Enemy>().enemyAddDamage(attackDamage, true);
-                    }
-                    if (enemy.gameObject.GetComponent<Rigidbody2D>()!= null&& enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
-                    {
-                        enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                        enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
-                        StartCoroutine(enemy.gameObject.GetComponent<Enemy>().Stuned());
-                    }
-                }
-            }
-            if (movementInput != Vector2.zero || movementInput != saveDirection)
-            {
-                saveDirection = movementInput;
-            }
-            else
-            {
-                saveDirection = Vector2.zero;
-            }
-            facingDirection = projectileSpawnPoint.position - transform.position;
-            attackCooldown = startAttackCooldown;
-            CurrentState = AttackAnim;           
-            canMove = false;
-            UseStamina(5);
-        }
-    }
-
-    //When RightMouseButton(LMB) was pressed
-    public void OnFire()
-    {
-        if (stamina >= 5)
-        {
-            if (projectileNumber > 0)
+            if (attackCooldown <= 0 && stamina >= 5)
             {
                 if (isDashing == true)
                 {
                     return;
+                }
+
+                Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, projectileSpawnPoint.GetComponent<CircleCollider2D>().radius);
+                if (hit == null || hit.Length == 0)
+                {
+                    return;
+                }
+                foreach (Collider2D enemy in hit)
+                {
+                    if (enemy.gameObject.layer == 6 && enemy.gameObject != null)
+                    {
+                        if (enemy.gameObject.GetComponent<Enemy>())
+                        {
+                            enemy.gameObject.GetComponent<Enemy>().enemyAddDamage(attackDamage, true);
+                        }
+                        if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
+                        {
+                            enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                            enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
+                            StartCoroutine(enemy.gameObject.GetComponent<Enemy>().Stuned());
+                        }
+                    }
                 }
                 if (movementInput != Vector2.zero || movementInput != saveDirection)
                 {
@@ -450,49 +444,109 @@ public class PlayerController : MonoBehaviour
                 {
                     saveDirection = Vector2.zero;
                 }
-
                 facingDirection = projectileSpawnPoint.position - transform.position;
+                attackCooldown = startAttackCooldown;
+                CurrentState = AttackAnim;
                 canMove = false;
-                CurrentState = ThrowAnim;
                 UseStamina(5);
             }
-        }
-       
+        }       
+    }
+
+    //When RightMouseButton(LMB) was pressed
+    public void OnFire()
+    {
+        if (canAttack)
+        {
+            if (stamina >= 5)
+            {
+                if (projectileNumber > 0)
+                {
+                    if (isDashing == true)
+                    {
+                        return;
+                    }
+                    if (movementInput != Vector2.zero || movementInput != saveDirection)
+                    {
+                        saveDirection = movementInput;
+                    }
+                    else
+                    {
+                        saveDirection = Vector2.zero;
+                    }
+
+                    facingDirection = projectileSpawnPoint.position - transform.position;
+                    canMove = false;
+                    CurrentState = ThrowAnim;
+                    UseStamina(5);
+                }
+            }
+        }      
     }
 
     public void OnHeal()
     {
-        if (GetComponent<PlayerHealth>().playerCourrentHealth < GetComponent<PlayerHealth>().playerMaxHealth)
+        if (canAttack)
         {
-            timeToHeal = 1;
-            if (!isHealing)
+            if (GetComponent<PlayerHealth>().playerCourrentHealth < GetComponent<PlayerHealth>().playerMaxHealth)
             {
-                isHealing = true;
-                StartHealing();
-                canMove = false;
+                timeToHeal = 1;
+                if (!isHealing)
+                {
+                    isHealing = true;
+                    StartHealing();
+                    canMove = false;
+                }
+                else
+                {
+                    if (canHeal)
+                    {
+                        if (currentClip != loopHeal)
+                        {
+                            myAnim.Play(loopHeal.name);
+                            currentClip = loopHeal;
+                        }
+                        GetComponent<PlayerHealth>().AddHealth(3);
+                    }
+                }
+            }
+        }
+    }
+
+    public void OnSpeedUp()
+    {
+        if (stamina > 0.1f && !buttonUp)
+        {
+            isSpeedingUp = !isSpeedingUp;
+            if (isSpeedingUp)
+            {
+                canDash = false;
+                canAttack = false;
+                MoveSpeed = 4.5f;
             }
             else
             {
-                if (canHeal)
-                {
-                    if (currentClip != loopHeal)
-                    {
-                        myAnim.Play(loopHeal.name);
-                        currentClip = loopHeal;
-                    }                    
-                    GetComponent<PlayerHealth>().AddHealth(3);
-                }
+                canDash = true;
+                canAttack = true;
+                MoveSpeed = 3;
             }
-        }        
+        }
+        else if (buttonUp)
+        {
+            buttonUp = false;
+        }
+
     }
 
     public void StartHealing()
     {
+        StopAllCoroutines();
         StartCoroutine(ChangeCamSizeUp());
     }
 
     public void StopHealing()
     {
+        StopAllCoroutines();
         StartCoroutine(ChangeCamSizeDown());
         canMove = true;
     }
