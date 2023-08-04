@@ -235,7 +235,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 675484047887735429}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &675484047565841400
 Camera:
@@ -355,12 +355,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2045784021613241122}
   - {fileID: 7953199700099307200}
   - {fileID: 675484047565841159}
   - {fileID: 675484049183340735}
   - {fileID: 675484047996214465}
   - {fileID: 3988073326361111738}
-  - {fileID: 2045784021613241122}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -410,10 +410,20 @@ MonoBehaviour:
   <RunAnim>k__BackingField: {fileID: 11400000, guid: 3cd21ca54cf92d54eb30975e07029747, type: 2}
   <DashAnim>k__BackingField: {fileID: 11400000, guid: 5302b0b5171f02841890fae4994443ce, type: 2}
   <ThrowAnim>k__BackingField: {fileID: 11400000, guid: b019e01b97d6089468c2bcc14a1cb845, type: 2}
-  <AttackAnim>k__BackingField: {fileID: 0}
+  <AttackAnim>k__BackingField: {fileID: 11400000, guid: 75886f69195bd034f8bf5ce881a363fc, type: 2}
   <StateAnimations>k__BackingField:
-    m_keys: []
-    m_values: []
+    m_keys:
+    - {fileID: 11400000, guid: 4acd3e30a3a76dd4797310304fa2ab06, type: 2}
+    - {fileID: 11400000, guid: 3cd21ca54cf92d54eb30975e07029747, type: 2}
+    - {fileID: 11400000, guid: 5302b0b5171f02841890fae4994443ce, type: 2}
+    - {fileID: 11400000, guid: b019e01b97d6089468c2bcc14a1cb845, type: 2}
+    - {fileID: 11400000, guid: 75886f69195bd034f8bf5ce881a363fc, type: 2}
+    m_values:
+    - {fileID: 11400000, guid: 3fc774e6528c0c047883e6decde614f1, type: 2}
+    - {fileID: 11400000, guid: b3fec87c884e6d341a153754a3f01e50, type: 2}
+    - {fileID: 11400000, guid: 96fac82b4badf1c4eaaf72c527fddc73, type: 2}
+    - {fileID: 11400000, guid: e726cf76072e5654caa9f8179aace070, type: 2}
+    - {fileID: 11400000, guid: 003d765770655e141b1d0c59c7058867, type: 2}
   <RunVelocityTreshchold>k__BackingField: 0.1
   <MoveSpeed>k__BackingField: 5
   collisionOffset: 0.1
@@ -451,10 +461,10 @@ MonoBehaviour:
   staminaSlider: {fileID: 0}
   staminaRegRate: 0
   isHealing: 0
-  changeLensSize: 0
-  canHeal: 0
-  startHeal: {fileID: 0}
-  loopHeal: {fileID: 0}
+  changeLensSize: 5
+  canHeal: 1
+  startHeal: {fileID: 7400000, guid: 115dbcf0d9b204d458e2bda958533358, type: 2}
+  loopHeal: {fileID: 7400000, guid: c1eea861526d02241a6bc37041546c4a, type: 2}
 --- !u!114 &6329331368419082897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,7 +514,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.031370282, y: -0.39198798}
+  m_Offset: {x: 0, y: -0.27}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -515,7 +525,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8591485, y: 0.09605846}
+  m_Size: {x: 0.31, y: 0.09605846}
   m_EdgeRadius: 0
 --- !u!1 &675484047964013676
 GameObject:
@@ -639,7 +649,7 @@ Transform:
   - {fileID: 675484049360491655}
   - {fileID: 8657334677903675734}
   m_Father: {fileID: 675484047887735429}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &675484047996214464
 MonoBehaviour:
@@ -686,7 +696,7 @@ RectTransform:
   m_Children:
   - {fileID: 675484047964013675}
   m_Father: {fileID: 675484047887735429}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1507,7 +1517,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 675484047887735429}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4600690329009012633
 SpriteRenderer:
@@ -1697,7 +1707,7 @@ RectTransform:
   m_Children:
   - {fileID: 7119801012892495140}
   m_Father: {fileID: 675484047887735429}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1794,7 +1804,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 675484047887735429}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8118392474318906774
 GameObject:

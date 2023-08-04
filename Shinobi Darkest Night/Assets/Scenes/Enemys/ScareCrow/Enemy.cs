@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Pathfinding;
 //using static TreeEditor.TreeEditorHelper;
 
 public class Enemy : MonoBehaviour
@@ -17,7 +18,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float enemyDamage;
     [SerializeField] float enemyDamageRate;
     [SerializeField] float enemyNextDamage;
-    [SerializeField] GameObject thePlayer;
+    [SerializeField] private GameObject thePlayer;
 
     Animator EnemyAnim;
 
@@ -30,12 +31,16 @@ public class Enemy : MonoBehaviour
         enemyHealth = enemyMaxHealth;
         enemyHealthSlider.maxValue = enemyMaxHealth;
         enemyHealthSlider.value = enemyHealth;
-        EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
+
+        thePlayer = GameObject.Find("Shinobi");
+
+        gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
     }
 
     public void enemyAddDamage(float Damage, bool dropProjectiles)
     {
-        EnemyAnim.SetTrigger("isDamaged");
+
+
         enemyHealth -= Damage;
         enemyHealthSlider.value = enemyHealth;
         if (enemyHealth <= 0)
@@ -58,6 +63,7 @@ public class Enemy : MonoBehaviour
         {
             Attack();
         }
+
     }
 
     void Attack()
