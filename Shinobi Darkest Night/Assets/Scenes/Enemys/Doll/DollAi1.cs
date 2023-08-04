@@ -31,25 +31,32 @@ public class DollAi1 : MonoBehaviour
                 if (!ai.canMove)
                 {
                     StartCoroutine(ResetPathf());
-                    ai.canMove = true;
                 }
             }
+            //ai.autoRepath.interval = 0.1f;
         }
         else
         {
             ai.canMove = false;
+            //ai.autoRepath.interval = 1;
         }
 
     }
 
     private IEnumerator ResetPathf()
     {
+        ai.SetNewPath();
+        Debug.Log("new path");
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         ai.speed = 0;
         while (enemySpeed > ai.speed)
         {
+            if (ai.speed > 0.1f)
+            {
+                ai.canMove = true;
+            }
             ai.speed += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-        Debug.Log("NewPathf");
     }
 }
