@@ -45,7 +45,6 @@ public class Enemy : MonoBehaviour
 
     public void enemyAddDamage(float Damage, bool dropProjectiles)
     {
-
         ParticleManager.instance.UseParticle("Blood", transform);
         enemyHealth -= Damage;
         enemyHealthSlider.value = enemyHealth;
@@ -57,7 +56,6 @@ public class Enemy : MonoBehaviour
         {
             MakeDead();
         }
- 
     }
 
     void Update()
@@ -96,7 +94,6 @@ public class Enemy : MonoBehaviour
 
     void ProjectilesOff()
     {
-        Debug.Log("Start projectilesOff");
         foreach (GameObject projectile in projectiles)
         {
             projectile.transform.parent = null;
@@ -106,7 +103,6 @@ public class Enemy : MonoBehaviour
         {
             projectiles.Clear();
         }
-        Debug.Log("End projectilesOff");
     }
 
     public IEnumerator Stuned()

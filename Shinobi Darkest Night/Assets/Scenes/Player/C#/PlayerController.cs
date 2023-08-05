@@ -190,10 +190,7 @@ public class PlayerController : MonoBehaviour
             }  
             ChangeClip();
         }
-        if (!canMove)
-        {
-             movementInput = Vector2.zero;
-        }
+
 
         //attack cooldwon
         if (attackCooldown > 0)
@@ -416,7 +413,7 @@ public class PlayerController : MonoBehaviour
                 {
                     return;
                 }
-
+                int i = 0;
                 Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, projectileSpawnPoint.GetComponent<CircleCollider2D>().radius);
                 if (hit == null || hit.Length == 0)
                 {
@@ -556,6 +553,10 @@ public class PlayerController : MonoBehaviour
         if (movementInput != Vector2.zero && movementInput != saveDirection)
         {
             saveDirection = movementInput;
+        }
+        else if (movementInput == Vector2.zero)
+        {
+            saveDirection = Vector2.zero;
         }
     }
 
