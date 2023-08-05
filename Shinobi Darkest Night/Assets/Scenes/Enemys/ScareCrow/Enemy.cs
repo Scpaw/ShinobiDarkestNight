@@ -31,7 +31,6 @@ public class Enemy : MonoBehaviour
         enemyHealth = enemyMaxHealth;
         enemyHealthSlider.maxValue = enemyMaxHealth;
         enemyHealthSlider.value = enemyHealth;
-
         EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
         startPos = transform.position;
     }
@@ -65,13 +64,10 @@ public class Enemy : MonoBehaviour
     {
         GameObject parentGameObject = gameObject;
         DamageRange damageR = parentGameObject.GetComponentInChildren<DamageRange>();
-
-
         if (damageR.playerInRange == true) 
         {
             Attack();
         }
-
     }
 
     void Attack()

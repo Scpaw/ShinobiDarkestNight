@@ -553,13 +553,9 @@ public class PlayerController : MonoBehaviour
 
     void SaveMovement()
     {
-        if (movementInput != Vector2.zero || movementInput != saveDirection)
+        if (movementInput != Vector2.zero && movementInput != saveDirection)
         {
             saveDirection = movementInput;
-        }
-        else
-        {
-            saveDirection = Vector2.zero;
         }
     }
 
