@@ -50,14 +50,15 @@ public class Enemy : MonoBehaviour
         ParticleManager.instance.UseParticle("Blood", transform);
         enemyHealth -= Damage;
         enemyHealthSlider.value = enemyHealth;
-        if (enemyHealth <= 0)
-        {
-            MakeDead();
-        }
         if (dropProjectiles)
         {
             ProjectilesOff();
         }
+        if (enemyHealth <= 0)
+        {
+            MakeDead();
+        }
+ 
     }
 
     void Update()
@@ -99,6 +100,7 @@ public class Enemy : MonoBehaviour
 
     void ProjectilesOff()
     {
+        Debug.Log("Start projectilesOff");
         foreach (GameObject projectile in projectiles)
         {
             projectile.transform.parent = null;
@@ -107,7 +109,8 @@ public class Enemy : MonoBehaviour
         if (projectiles.Count > 0)
         {
             projectiles.Clear();
-        }       
+        }
+        Debug.Log("End projectilesOff");
     }
 
     public IEnumerator Stuned()

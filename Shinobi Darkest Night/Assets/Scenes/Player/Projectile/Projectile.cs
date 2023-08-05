@@ -91,9 +91,16 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            GameObject hit = Instantiate(afterProjectile, enemyTrigger.transform.InverseTransformDirection(transform.position), transform.rotation, enemyTrigger.transform);
-            hit.GetComponent<ProjectileToCollect>().onEnemy = true;
-            enemyTrigger.GetComponent<Enemy>().AddProjectile(hit);
+            if (enemyTrigger.activeInHierarchy)
+            {
+                GameObject hit = Instantiate(afterProjectile, enemyTrigger.transform.InverseTransformDirection(transform.position), transform.rotation, enemyTrigger.transform);
+                hit.GetComponent<ProjectileToCollect>().onEnemy = true;
+                enemyTrigger.GetComponent<Enemy>().AddProjectile(hit);
+            }
+            else
+            {
+                Instantiate(afterProjectile, transform.position, transform.rotation);
+            }
         }
     }
 }
