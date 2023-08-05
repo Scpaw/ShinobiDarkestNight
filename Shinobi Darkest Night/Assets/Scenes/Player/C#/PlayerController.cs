@@ -102,7 +102,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Projectile")]
     public int projectileNumber;
-    private int maxProjectileNumber;
     public Text projectileText;
 
     [Header("Stamina")]
@@ -141,7 +140,6 @@ public class PlayerController : MonoBehaviour
         canMove = true;
         startAttackCooldown = attackCooldown;
         attackCooldown = 0;
-        maxProjectileNumber = projectileNumber;
         maxStamina = stamina;
         staminaSlider.maxValue = maxStamina;
         cam = FindAnyObjectByType<CinemachineVirtualCamera>();
@@ -149,6 +147,7 @@ public class PlayerController : MonoBehaviour
         movementDirection = Vector2.zero;
         movementInput = Vector2.zero;
         canAttack = true;
+        canHeal = false;
     }
 
     private void Update()
@@ -193,7 +192,7 @@ public class PlayerController : MonoBehaviour
         }
         if (!canMove)
         {
-            movementInput = Vector2.zero;
+             movementInput = Vector2.zero;
         }
 
         //attack cooldwon
@@ -221,7 +220,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //health
-        if (isHealing && canHeal)
+        if (isHealing && canHeal && !isSpeedingUp)
         {
             timeToHeal -= Time.deltaTime;
             if (timeToHeal < 0)
@@ -318,7 +317,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector2.zero);
         }
-       
+
+        
+
+
     }
 
     //The following order of "count"(RigidBody2D's parameters of movement) will be executed when "count" = 0
@@ -436,14 +438,7 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                 }
-                if (movementInput != Vector2.zero || movementInput != saveDirection)
-                {
-                    saveDirection = movementInput;
-                }
-                else
-                {
-                    saveDirection = Vector2.zero;
-                }
+                SaveMovement();
                 facingDirection = projectileSpawnPoint.position - transform.position;
                 attackCooldown = startAttackCooldown;
                 CurrentState = AttackAnim;
@@ -453,7 +448,7 @@ public class PlayerController : MonoBehaviour
         }       
     }
 
-    //When RightMouseButton(LMB) was pressed
+    //When RightMouseButton(RMB) was pressed
     public void OnFire()
     {
         if (canAttack)
@@ -466,14 +461,7 @@ public class PlayerController : MonoBehaviour
                     {
                         return;
                     }
-                    if (movementInput != Vector2.zero || movementInput != saveDirection)
-                    {
-                        saveDirection = movementInput;
-                    }
-                    else
-                    {
-                        saveDirection = Vector2.zero;
-                    }
+                    SaveMovement();
 
                     facingDirection = projectileSpawnPoint.position - transform.position;
                     canMove = false;
@@ -493,6 +481,7 @@ public class PlayerController : MonoBehaviour
                 timeToHeal = 1;
                 if (!isHealing)
                 {
+                    SaveMovement();
                     isHealing = true;
                     StartHealing();
                     canMove = false;
@@ -546,15 +535,32 @@ public class PlayerController : MonoBehaviour
 
     public void StopHealing()
     {
-        StopAllCoroutines();
-        StartCoroutine(ChangeCamSizeDown());
-        canMove = true;
+        if (isHealing)
+        {
+            StopAllCoroutines();
+            StartCoroutine(ChangeCamSizeDown());
+            movementInput = saveDirection;
+            Debug.Log("stop heal");
+            canMove = true;
+        }
     }
 
     public void UseStamina(float staminaToUse)
     {
         stamina -= staminaToUse;
-        staminaReg = 2.5f;
+        staminaReg = 1f;
+    }
+
+    void SaveMovement()
+    {
+        if (movementInput != Vector2.zero || movementInput != saveDirection)
+        {
+            saveDirection = movementInput;
+        }
+        else
+        {
+            saveDirection = Vector2.zero;
+        }
     }
 
     private IEnumerator ChangeCamSizeUp()
@@ -566,15 +572,6 @@ public class PlayerController : MonoBehaviour
             while (cam.m_Lens.OrthographicSize >= changeLensSize)
             {
                 cam.m_Lens.OrthographicSize -= Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
-        }
-        else
-        {
-            canHeal = false;
-            while (cam.m_Lens.OrthographicSize <= startLensSize)
-            {
-                cam.m_Lens.OrthographicSize += Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
         }
