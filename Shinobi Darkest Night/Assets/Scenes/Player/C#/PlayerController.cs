@@ -123,8 +123,12 @@ public class PlayerController : MonoBehaviour
     public AnimationClip startHeal;
     public AnimationClip loopHeal;
 
+    [Header("Speeding Up")]
     private bool isSpeedingUp;
     private bool buttonUp;
+
+    [Header("Shokyaku")]
+    private bool shokyaku;
 
     private void Awake()
     {
@@ -239,6 +243,12 @@ public class PlayerController : MonoBehaviour
                 MoveSpeed = 3;
                 buttonUp = true;
             }
+        }
+
+        //Shokyaku
+        if (shokyaku)
+        {
+            ParticleManager.instance.UseParticle("Fire", projectileSpawnPoint.position, projectileSpawnPoint.rotation.eulerAngles);
         }
 
     }
@@ -414,7 +424,6 @@ public class PlayerController : MonoBehaviour
                 {
                     return;
                 }
-                int i = 0;
                 Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, projectileSpawnPoint.GetComponent<CircleCollider2D>().radius);
                 if (hit == null || hit.Length == 0)
                 {
@@ -460,7 +469,6 @@ public class PlayerController : MonoBehaviour
                         return;
                     }
                     SaveMovement();
-
                     facingDirection = projectileSpawnPoint.position - transform.position;
                     canMove = false;
                     CurrentState = ThrowAnim;
@@ -522,8 +530,31 @@ public class PlayerController : MonoBehaviour
         {
             buttonUp = false;
         }
-
     }
+
+    public void OnShokyaku(InputValue movementValue)
+    {
+        if (movementValue.Get<float>() == 1)
+        {
+            if (canAttack)
+            {
+                shokyaku = true;
+                canDash = false;
+                canMove = false;
+                canAttack = false;
+                SaveMovement();
+            }
+        }
+        else if (movementValue.Get<float>() == 0)
+        {
+            movementInput = saveDirection;
+            shokyaku = false;
+            canDash = true;
+            canMove = true;
+            canAttack = true;
+        }
+    }
+
 
     public void StartHealing()
     {
@@ -538,7 +569,6 @@ public class PlayerController : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(ChangeCamSizeDown());
             movementInput = saveDirection;
-            Debug.Log("stop heal");
             canMove = true;
         }
     }

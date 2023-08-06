@@ -28,20 +28,22 @@ public class ParticleManager : MonoBehaviour
             particles = list;
         }
     }
-    public void UseParticle(string particleName, Transform position)
+    public void UseParticle(string particleName, Vector3 position, Vector3 rotation)
     {
-        StartCoroutine(StartParticle(particleName, position));
+        StartCoroutine(StartParticle(particleName, position,rotation));
     }
 
-    public IEnumerator StartParticle(string particleName, Transform position)
+    public IEnumerator StartParticle(string particleName, Vector3 position, Vector3 rotation)
     {      
         int particleToPlay = 0;
         if (particles.Count > 0)
         {
             foreach (GameObject effect in particles)
             {
-                if (effect.name == particleName)
+
+                if (effect.name.ToString() == (particleName + "(Clone)").ToString())
                 {
+                    Debug.Log(effect.name + "found");
                     particleToPlay = particles.IndexOf(effect);
                 }
             }          
@@ -49,7 +51,8 @@ public class ParticleManager : MonoBehaviour
             {
                 yield return new WaitUntil(() => !particles[particleToPlay].GetComponent<ParticleSystem>().isEmitting);
             }
-            particles[particleToPlay].transform.position = position.position;
+            particles[particleToPlay].transform.position = position;
+            particles[particleToPlay].transform.rotation = Quaternion.Euler(rotation);
             particles[particleToPlay].GetComponent<ParticleSystem>().Play();
         }
         yield return new WaitForEndOfFrame();
