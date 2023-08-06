@@ -98390,7 +98390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: staminaRegRate
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: dashMaxCooldown

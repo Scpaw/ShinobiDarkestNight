@@ -172,6 +172,7 @@ public class PlayerController : MonoBehaviour
                 }
                 ChangeClip();
                 movementInput = saveDirection;
+
                 canMove = true;
             }
         }
@@ -390,7 +391,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         else
-        { 
+        {
             saveDirection = movementValue.Get<Vector2>();
         }
      
@@ -557,6 +558,10 @@ public class PlayerController : MonoBehaviour
         else if (movementInput == Vector2.zero)
         {
             saveDirection = Vector2.zero;
+        }
+        else
+        {
+            saveDirection = movementDirection;
         }
     }
 
