@@ -33,12 +33,10 @@ public class DollAi1 : MonoBehaviour
                     StartCoroutine(ResetPathf());
                 }
             }
-            //ai.autoRepath.interval = 0.1f;
         }
         else
         {
             ai.canMove = false;
-            //ai.autoRepath.interval = 1;
         }
 
     }

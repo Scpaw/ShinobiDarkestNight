@@ -1,4 +1,5 @@
 using Cinemachine;
+using Pathfinding.Util;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -129,6 +130,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Shokyaku")]
     private bool shokyaku;
+    private Collider2D[] hits;
+    public LayerMask enemyLayer;
+    private float shokyakuTimer;
 
     private void Awake()
     {
@@ -249,6 +253,30 @@ public class PlayerController : MonoBehaviour
         if (shokyaku)
         {
             ParticleManager.instance.UseParticle("Fire", projectileSpawnPoint.position, projectileSpawnPoint.rotation.eulerAngles);
+            hits =Physics2D.OverlapAreaAll(new Vector2(projectileSpawnPoint.GetChild(0).position.x, projectileSpawnPoint.GetChild(0).position.y), new Vector2(projectileSpawnPoint.GetChild(1).position.x, projectileSpawnPoint.GetChild(1).position.y), enemyLayer);
+            foreach(Collider2D enemy in hits)
+            {
+                if (enemy.GetComponent<Enemy>())
+                {
+                    enemy.GetComponent<Enemy>().enemyAddDamage(40 * Time.deltaTime, false, false);
+                    if (!enemy.GetComponent<Enemy>().isStuned)
+                    {
+                        StartCoroutine(enemy.GetComponent<Enemy>().Stuned());
+                    }
+                }
+            }
+            UseStamina(10 * Time.deltaTime);
+            GetComponent<PlayerHealth>().AddDamage(4 * Time.deltaTime);
+            shokyakuTimer -= Time.deltaTime;
+            if (shokyakuTimer <= 0)
+            {
+                shokyaku = false;
+                movementInput = saveDirection;
+                shokyaku = false;
+                canDash = true;
+                canMove = true;
+                canAttack = true;
+            }
         }
 
     }
@@ -416,7 +444,7 @@ public class PlayerController : MonoBehaviour
     //When LeftMouseButton(LMB) was pressed
     public void OnAttack()
     {
-        if (canAttack)
+        if (canAttack && !isHealing)
         {
             if (attackCooldown <= 0 && stamina >= 5)
             {
@@ -435,7 +463,7 @@ public class PlayerController : MonoBehaviour
                     {
                         if (enemy.gameObject.GetComponent<Enemy>())
                         {
-                            enemy.gameObject.GetComponent<Enemy>().enemyAddDamage(attackDamage, true);
+                            enemy.gameObject.GetComponent<Enemy>().enemyAddDamage(attackDamage, true,true);
                         }
                         if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
                         {
@@ -458,7 +486,7 @@ public class PlayerController : MonoBehaviour
     //When RightMouseButton(RMB) was pressed
     public void OnFire()
     {
-        if (canAttack)
+        if (canAttack && !isHealing)
         {
             if (stamina >= 5)
             {
@@ -536,8 +564,9 @@ public class PlayerController : MonoBehaviour
     {
         if (movementValue.Get<float>() == 1)
         {
-            if (canAttack)
+            if (canAttack && !isHealing)
             {
+                shokyakuTimer = 4;
                 shokyaku = true;
                 canDash = false;
                 canMove = false;
@@ -623,7 +652,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(new Vector2(projectileSpawnPoint.GetChild(0).position.x, projectileSpawnPoint.GetChild(0).position.y), new Vector2(projectileSpawnPoint.GetChild(1).position.x, projectileSpawnPoint.GetChild(1).position.y));
+    }
     public GameObject GetPlayer()
     {
         return gameObject;

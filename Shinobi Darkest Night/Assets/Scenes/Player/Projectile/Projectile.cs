@@ -79,7 +79,7 @@ public class Projectile : MonoBehaviour
 
         if (enemyHit == true)
         {
-            theEnemyHealth.enemyAddDamage(projectileDamage, false);
+            theEnemyHealth.enemyAddDamage(projectileDamage, false,true);
 
         }
     }
@@ -95,6 +95,7 @@ public class Projectile : MonoBehaviour
             {
                 GameObject hit = Instantiate(afterProjectile, enemyTrigger.transform.InverseTransformDirection(transform.position), transform.rotation, enemyTrigger.transform);
                 hit.GetComponent<ProjectileToCollect>().onEnemy = true;
+                hit.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
                 enemyTrigger.GetComponent<Enemy>().AddProjectile(hit);
             }
             else

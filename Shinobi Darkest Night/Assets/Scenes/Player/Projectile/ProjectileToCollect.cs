@@ -7,7 +7,31 @@ public class ProjectileToCollect : MonoBehaviour
 {
     public bool onEnemy;
     public float pickUpSpeed;
+    private Vector2 startpos;
 
+    private void FixedUpdate()
+    {
+        if (startpos == Vector2.zero)
+        {
+            startpos = transform.localPosition;
+        }
+        if (transform.parent && onEnemy)
+        {
+            transform.position = new Vector2(transform.parent.position.x + startpos.x, transform.parent.position.y + startpos.y);
+            if (transform.GetChild(0).gameObject.activeInHierarchy)
+            {
+                transform.GetChild(0).gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            if (!transform.GetChild(0).gameObject.activeInHierarchy)
+            {
+                transform.GetChild(0).gameObject.SetActive(true);
+            }
+        }
+
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {

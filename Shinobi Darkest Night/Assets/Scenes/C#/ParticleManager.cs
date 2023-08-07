@@ -43,7 +43,6 @@ public class ParticleManager : MonoBehaviour
 
                 if (effect.name.ToString() == (particleName + "(Clone)").ToString())
                 {
-                    Debug.Log(effect.name + "found");
                     particleToPlay = particles.IndexOf(effect);
                 }
             }          

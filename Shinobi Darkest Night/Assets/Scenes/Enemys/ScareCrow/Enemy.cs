@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     //projectiles
     public List<GameObject> projectiles;
     public float stundTime;
+    public bool isStuned;
 
     public void Awake()
     {
@@ -43,9 +44,13 @@ public class Enemy : MonoBehaviour
         transform.position = startPos;
     }
 
-    public void enemyAddDamage(float Damage, bool dropProjectiles)
+    public void enemyAddDamage(float Damage, bool dropProjectiles, bool useparticle)
     {
-        ParticleManager.instance.UseParticle("Blood", transform.position, transform.rotation.eulerAngles);
+        if (useparticle)
+        {
+            ParticleManager.instance.UseParticle("Blood", transform.position, transform.rotation.eulerAngles);
+        }
+
         enemyHealth -= Damage;
         enemyHealthSlider.value = enemyHealth;
         if (dropProjectiles)
@@ -97,6 +102,7 @@ public class Enemy : MonoBehaviour
         foreach (GameObject projectile in projectiles)
         {
             projectile.transform.parent = null;
+            projectile.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             projectile.GetComponent<Rigidbody2D>().AddForce((projectile.transform.position - transform.position) * 3, ForceMode2D.Impulse);
         }
         if (projectiles.Count > 0)
@@ -107,12 +113,14 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator Stuned()
     {
+        isStuned = true;
         stundTime = 0.75f;
         while (stundTime > 0)
         {
             stundTime -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+        isStuned= false;
 
     }
     private void OnDisable()
