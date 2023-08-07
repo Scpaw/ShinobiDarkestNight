@@ -179,6 +179,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
                 ChangeClip();
+                SaveMovement();
                 movementInput = saveDirection;
 
                 canMove = true;
@@ -286,8 +287,18 @@ public class PlayerController : MonoBehaviour
     {
         if (!isHealing)
         {
+            if (Mathf.Abs(facingDirection.x) == Mathf.Abs(facingDirection.y) && facingDirection != Vector2.zero)
+            {
+                if (facingDirection.x > 0)
+                {
+                    facingDirection = new Vector2(facingDirection.x + 0.01f, facingDirection.y);
+                }
+                else if(facingDirection.x < 0)
+                {
+                    facingDirection = new Vector2(facingDirection.x - 0.01f, facingDirection.y);
+                }
+            }
             AnimationClip expectedClip = StateAnimations.GetFacingClipFromState(currentState, facingDirection);
-
             if (currentClip == null || currentClip != expectedClip)
             {
                 myAnim.Play(expectedClip.name);
@@ -349,6 +360,10 @@ public class PlayerController : MonoBehaviour
             float moveY = Input.GetAxisRaw("Vertical");
 
             movementDirection = new Vector2(moveX, moveY).normalized;
+            if (canMove && movementInput != movementDirection)
+            {
+                movementInput = movementDirection;
+            }
         }
         else
         {
@@ -565,7 +580,7 @@ public class PlayerController : MonoBehaviour
     {
         if (movementValue.Get<float>() == 1)
         {
-            if (canAttack && !isHealing)
+            if (canAttack && !isHealing && canMove)
             {
                 shokyakuTimer = 4;
                 shokyaku = true;
