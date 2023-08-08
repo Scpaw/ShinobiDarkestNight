@@ -134,6 +134,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask enemyLayer;
     private float shokyakuTimer;
 
+    [Header("Desumiru")]
+    private bool desumiru;
+    private int desumiruState;
+    [SerializeField] AnimationClip[] desumiruAnimations;
+    public float test;
+
     private void Awake()
     {
         Instance = this;
@@ -280,6 +286,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+
+        //testing and time
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            StartCoroutine(SlowTime());
+        }
 
     }
 
@@ -502,7 +514,7 @@ public class PlayerController : MonoBehaviour
     //When RightMouseButton(RMB) was pressed
     public void OnFire()
     {
-        if (canAttack && !isHealing)
+        if (canAttack && !isHealing && !desumiru)
         {
             if (stamina >= 5)
             {
@@ -519,7 +531,11 @@ public class PlayerController : MonoBehaviour
                     UseStamina(5);
                 }
             }
-        }      
+        }
+        else if (desumiru && canAttack)
+        {
+            DesumiruState();
+        }
     }
 
     public void OnHeal()
@@ -600,6 +616,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnDesumiru()
+    {
+        if (canAttack && !desumiru)
+        {
+            desumiruState = 0;
+            desumiru = true;
+            canDash = false;
+            canMove = false;
+            canAttack = false;
+        }
+    }
+
+
+    void DesumiruState()
+    {
+        Debug.Log("desumiru");
+        StartCoroutine(DesumiruAttackUse());
+    }
+
+    public void DesumiruAttack()
+    { 
+        
+    }
 
     public void StartHealing()
     {
@@ -668,10 +707,74 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private IEnumerator SlowTime()
+    {
+        float waitTime = 1;
+        if (Time.timeScale < 1)
+        {
+            while (Time.timeScale < 1)
+            {
+                Time.timeScale += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        else if (Time.timeScale > 0.6f)
+        {
+            while (Time.timeScale > 0.6f)
+            {
+                Time.timeScale -= Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        else
+        {
+            Debug.LogError("to fast use");
+        }
+
+        while (waitTime > 0)
+        {
+            canAttack = true;
+            waitTime -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        if (Time.timeScale < 1)
+        {
+            while (Time.timeScale < 1)
+            {
+                Time.timeScale += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        else if (Time.timeScale > 0.6f)
+        {
+            while (Time.timeScale > 0.6f)
+            {
+                Time.timeScale -= Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        else
+        {
+            Debug.LogError("to fast use");
+        }
+
+    }
+
+    private IEnumerator DesumiruAttackUse()
+    {
+        test = 3;
+        while (test > 0)
+        {
+
+            test -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+    }
+
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(new Vector2(projectileSpawnPoint.GetChild(0).position.x, projectileSpawnPoint.GetChild(0).position.y), new Vector2(projectileSpawnPoint.GetChild(1).position.x, projectileSpawnPoint.GetChild(1).position.y));
+        //Gizmos.DrawLine(transform.position, new Vector2(Math.Sin(test / 3), Math.Sin(test / 3)));
     }
     public GameObject GetPlayer()
     {
