@@ -16,4 +16,13 @@ public class AnimationToCode : MonoBehaviour
     {
         transform.parent.GetComponent<PlayerController>().canHeal = true;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 6 && collision.GetComponent<EnemyHealth>())
+        {
+            collision.GetComponent<EnemyHealth>().enemyAddDamage(1, false, true);
+            StartCoroutine(collision.GetComponent<EnemyHealth>().Stuned());
+        }
+    }
 }

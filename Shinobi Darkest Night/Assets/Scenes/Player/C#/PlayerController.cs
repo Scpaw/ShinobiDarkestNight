@@ -137,9 +137,10 @@ public class PlayerController : MonoBehaviour
     [Header("Desumiru")]
     private bool desumiru;
     private int desumiruState;
+    [SerializeField] private float desumiuRadius;
     [SerializeField] AnimationClip[] desumiruAnimations;
     public float test;
-
+    private Vector2 point2;
     private void Awake()
     {
         Instance = this;
@@ -292,7 +293,6 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(SlowTime());
         }
-
     }
 
     private void ChangeClip()
@@ -762,19 +762,31 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DesumiruAttackUse()
     {
-        test = 3;
+        List<Vector2> vectors = new List<Vector2>();
+        test = 1;
+        vectors.Add(Vector2.zero);
+        vectors.Add(Vector2.zero);
+        vectors[1] = point2;
         while (test > 0)
         {
-
-            test -= Time.deltaTime;
+            if (!myAnim.GetComponent<EdgeCollider2D>().enabled)
+            {
+                myAnim.GetComponent<EdgeCollider2D>().enabled = true;
+            }
+            point2 = new Vector2( desumiuRadius * Mathf.Cos((test* 360 * Mathf.Deg2Rad)-(Mathf.Deg2Rad * 90)),  desumiuRadius * Mathf.Sin((test * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
+            test -= Time.deltaTime/3;
+            vectors[1] = point2;
+            myAnim.GetComponent<EdgeCollider2D>().SetPoints(vectors);
             yield return new WaitForEndOfFrame();
         }
-
+        myAnim.GetComponent<EdgeCollider2D>().enabled = false;
     }
 
     private void OnDrawGizmos()
     {
-        //Gizmos.DrawLine(transform.position, new Vector2(Math.Sin(test / 3), Math.Sin(test / 3)));
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, point2);
+     
     }
     public GameObject GetPlayer()
     {
