@@ -257,12 +257,12 @@ public class PlayerController : MonoBehaviour
             hits =Physics2D.OverlapAreaAll(new Vector2(projectileSpawnPoint.GetChild(0).position.x, projectileSpawnPoint.GetChild(0).position.y), new Vector2(projectileSpawnPoint.GetChild(1).position.x, projectileSpawnPoint.GetChild(1).position.y), enemyLayer);
             foreach(Collider2D enemy in hits)
             {
-                if (enemy.GetComponent<Enemy>())
+                if (enemy.GetComponent<EnemyHealth>())
                 {
-                    enemy.GetComponent<Enemy>().enemyAddDamage(40 * Time.deltaTime, false, false);
-                    if (!enemy.GetComponent<Enemy>().isStuned)
+                    enemy.GetComponent<EnemyHealth>().enemyAddDamage(40 * Time.deltaTime, false, false);
+                    if (!enemy.GetComponent<EnemyHealth>().isStuned)
                     {
-                        StartCoroutine(enemy.GetComponent<Enemy>().Stuned());
+                        StartCoroutine(enemy.GetComponent<EnemyHealth>().Stuned());
                     }
                 }
             }
@@ -477,15 +477,15 @@ public class PlayerController : MonoBehaviour
                 {
                     if (enemy.gameObject.layer == 6 && enemy.gameObject != null)
                     {
-                        if (enemy.gameObject.GetComponent<Enemy>())
+                        if (enemy.gameObject.GetComponent<EnemyHealth>())
                         {
-                            enemy.gameObject.GetComponent<Enemy>().enemyAddDamage(attackDamage, true,true);
+                            enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(attackDamage, true,true);
                         }
                         if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
                         {
                             enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                             enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
-                            StartCoroutine(enemy.gameObject.GetComponent<Enemy>().Stuned());
+                            StartCoroutine(enemy.gameObject.GetComponent<EnemyHealth>().Stuned());
                         }
                     }
                 }
