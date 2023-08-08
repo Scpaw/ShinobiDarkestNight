@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 3034708425488045954}
   - component: {fileID: 3034708425488045952}
   - component: {fileID: 3034708425488045959}
+  - component: {fileID: 4658281800912629008}
   - component: {fileID: 2352237321646954228}
   m_Layer: 0
   m_Name: ScareCrow
@@ -120,14 +121,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0062560d01ae944458838c3b92b304cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMaxHealth: 100
-  enemyHealth: 100
-  enemyHealthSlider: {fileID: 3034708425650630954}
-  enemyCanvas: {fileID: 3034708427060015172}
   enemyDamage: 5
   enemyDamageRate: 1
   enemyNextDamage: 0
   thePlayer: {fileID: 0}
+--- !u!114 &4658281800912629008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3034708425488045956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bd7a59149952e44b6cf61982e5f744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMaxHealth: 50
+  enemyHealth: 50
+  enemyHealthSlider: {fileID: 3034708425650630954}
+  enemyCanvas: {fileID: 3034708427060015172}
   projectiles: []
   stundTime: 0
 --- !u!70 &2352237321646954228

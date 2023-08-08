@@ -75,7 +75,7 @@ public class Projectile : MonoBehaviour
 
     void Attack()
     {
-        Enemy theEnemyHealth = enemyTrigger.GetComponent<Enemy>();
+        EnemyHealth theEnemyHealth = enemyTrigger.GetComponent<EnemyHealth>();
 
         if (enemyHit == true)
         {
@@ -96,7 +96,7 @@ public class Projectile : MonoBehaviour
                 GameObject hit = Instantiate(afterProjectile, enemyTrigger.transform.InverseTransformDirection(transform.position), transform.rotation, enemyTrigger.transform);
                 hit.GetComponent<ProjectileToCollect>().onEnemy = true;
                 hit.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
-                enemyTrigger.GetComponent<Enemy>().AddProjectile(hit);
+                enemyTrigger.GetComponent<EnemyHealth>().AddProjectile(hit);
             }
             else
             {
