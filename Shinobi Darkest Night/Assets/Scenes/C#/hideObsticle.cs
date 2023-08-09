@@ -6,6 +6,8 @@ public class hideObsticle : MonoBehaviour
 {
     private GameObject player;
     private SpriteRenderer sprite;
+    private Coroutine changeCorutine;
+    private int somethinIn;
     private void Start()
     {
         player = PlayerController.Instance.GetPlayer();
@@ -14,20 +16,44 @@ public class hideObsticle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == player)
-        { 
-            StopAllCoroutines();
-            StartCoroutine(Change(0.6f));
+        if (collision.gameObject == player || collision.gameObject.layer == 6)
+        {
+            if (somethinIn == 0)
+            {
+                if (changeCorutine != null)
+                {
+                    StopCoroutine(changeCorutine);
+                    changeCorutine = StartCoroutine(Change(0.6f));
+                }
+                else
+                {
+                    changeCorutine = StartCoroutine(Change(0.6f));
+                }
+            }
+            somethinIn++;
         }
     }
 
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject == player)
+        if (collision.gameObject == player || collision.gameObject.layer == 6)
         {
-            StopAllCoroutines();
-            StartCoroutine(Change(1));
+            somethinIn--;
+            if (somethinIn == 0)
+            {
+                if (changeCorutine != null)
+                {
+                    StopCoroutine(changeCorutine);
+                    changeCorutine = StartCoroutine(Change(1));
+                }
+                else
+                {
+                    changeCorutine = StartCoroutine(Change(1));
+                }
+            }
         }
+
     }
 
     IEnumerator Change(float changeTo)

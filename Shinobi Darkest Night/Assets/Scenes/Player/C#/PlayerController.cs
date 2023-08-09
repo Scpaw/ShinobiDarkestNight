@@ -139,8 +139,12 @@ public class PlayerController : MonoBehaviour
     private int desumiruState;
     [SerializeField] private float desumiuRadius;
     [SerializeField] AnimationClip[] desumiruAnimations;
-    public float test;
-    private Vector2 point2;
+    private float test;
+    private float slowWaitingTime;
+    public Vector2 point2;
+
+    [Header("Death")]
+    public AnimationClip deathAnim;
     private void Awake()
     {
         Instance = this;
@@ -460,6 +464,10 @@ public class PlayerController : MonoBehaviour
         {
             saveDirection = movementValue.Get<Vector2>();
         }
+        if (desumiru && canAttack)
+        {
+            StopDesumiru();
+        }
      
     }
 
@@ -472,7 +480,7 @@ public class PlayerController : MonoBehaviour
     //When LeftMouseButton(LMB) was pressed
     public void OnAttack()
     {
-        if (canAttack && !isHealing)
+        if (canAttack && !isHealing && !desumiru)
         {
             if (attackCooldown <= 0 && stamina >= 5)
             {
@@ -491,7 +499,7 @@ public class PlayerController : MonoBehaviour
                     {
                         if (enemy.gameObject.GetComponent<EnemyHealth>())
                         {
-                            enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(attackDamage, true,true);
+                            enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(attackDamage, true, true);
                         }
                         if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
                         {
@@ -508,7 +516,11 @@ public class PlayerController : MonoBehaviour
                 canMove = false;
                 UseStamina(5);
             }
-        }       
+        }
+        else if (canAttack && !isHealing && desumiru)
+        {
+            StopDesumiru();
+        }
     }
 
     //When RightMouseButton(RMB) was pressed
@@ -534,6 +546,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (desumiru && canAttack)
         {
+            desumiruState += 1;
             DesumiruState();
         }
     }
@@ -542,6 +555,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canAttack)
         {
+            StopDesumiru();
             if (GetComponent<PlayerHealth>().playerCourrentHealth < GetComponent<PlayerHealth>().playerMaxHealth)
             {
                 timeToHeal = 1;
@@ -625,19 +639,44 @@ public class PlayerController : MonoBehaviour
             canDash = false;
             canMove = false;
             canAttack = false;
+            myAnim.Play(desumiruAnimations[0].name);
         }
     }
 
 
     void DesumiruState()
     {
-        Debug.Log("desumiru");
-        StartCoroutine(DesumiruAttackUse());
+        canAttack = false;
+        slowWaitingTime = 0.05f;
+        if (desumiruState == 0)
+        {
+            desumiuRadius = 3;
+        }
+        else if (desumiruState == 1)
+        {
+            desumiuRadius = 5;
+        }
+        myAnim.Play(desumiruAnimations[0].name);
+        myAnim.Play(desumiruAnimations[1].name);
+        Debug.Log("play anim");
+    }
+
+    void StopDesumiru()
+    {
+        if (desumiru)
+        {
+            desumiru = false;
+            canDash = true;
+            canMove = true;
+            canAttack = true;
+            slowWaitingTime = 0.1f;
+        }
     }
 
     public void DesumiruAttack()
-    { 
-        
+    {
+        StartCoroutine(DesumiruAttackUse());
+        canAttack = false;
     }
 
     public void StartHealing()
@@ -661,6 +700,11 @@ public class PlayerController : MonoBehaviour
     {
         stamina -= staminaToUse;
         staminaReg = 1f;
+    }
+
+    public void MakeDeath()
+    {
+        myAnim.Play(deathAnim.name);
     }
 
     void SaveMovement()
@@ -707,9 +751,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator SlowTime()
+    public IEnumerator SlowTime()
     {
-        float waitTime = 1;
+        Debug.Log("slow");
+        StopCoroutine(TimeToNormal());
+        slowWaitingTime = 1;
         if (Time.timeScale < 1)
         {
             while (Time.timeScale < 1)
@@ -718,9 +764,9 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
-        else if (Time.timeScale > 0.6f)
+        else if (Time.timeScale > 0.3f)
         {
-            while (Time.timeScale > 0.6f)
+            while (Time.timeScale > 0.3f)
             {
                 Time.timeScale -= Time.deltaTime;
                 yield return new WaitForEndOfFrame();
@@ -731,12 +777,22 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("to fast use");
         }
 
-        while (waitTime > 0)
+        while (slowWaitingTime > 0)
         {
             canAttack = true;
-            waitTime -= Time.deltaTime;
+            slowWaitingTime -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
+            Debug.Log("now");
         }
+
+        StopCoroutine(TimeToNormal());
+        StartCoroutine(TimeToNormal());
+        
+    }
+
+    private IEnumerator TimeToNormal()
+    {
+        Debug.Log("start");
         if (Time.timeScale < 1)
         {
             while (Time.timeScale < 1)
@@ -745,19 +801,10 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
-        else if (Time.timeScale > 0.6f)
-        {
-            while (Time.timeScale > 0.6f)
-            {
-                Time.timeScale -= Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
-        }
         else
         {
-            Debug.LogError("to fast use");
+            Debug.LogError("time is already normal");
         }
-
     }
 
     private IEnumerator DesumiruAttackUse()
@@ -774,7 +821,7 @@ public class PlayerController : MonoBehaviour
                 myAnim.GetComponent<EdgeCollider2D>().enabled = true;
             }
             point2 = new Vector2( desumiuRadius * Mathf.Cos((test* 360 * Mathf.Deg2Rad)-(Mathf.Deg2Rad * 90)),  desumiuRadius * Mathf.Sin((test * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
-            test -= Time.deltaTime/3;
+            test -= Time.deltaTime;
             vectors[1] = point2;
             myAnim.GetComponent<EdgeCollider2D>().SetPoints(vectors);
             yield return new WaitForEndOfFrame();
@@ -785,7 +832,7 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, point2);
+        Gizmos.DrawLine(transform.position, new Vector2(point2.x +transform.position.x, point2.y + transform.position.y));
      
     }
     public GameObject GetPlayer()

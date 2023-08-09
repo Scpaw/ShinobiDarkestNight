@@ -468,9 +468,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 0
+  desumiuRadius: 0
   desumiruAnimations: []
   test: 0
-  point2: {x: 0, y: 0}
 --- !u!114 &6329331368419082897
 MonoBehaviour:
   m_ObjectHideFlags: 0
