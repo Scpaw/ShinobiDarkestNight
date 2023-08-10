@@ -98196,6 +98196,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1033506929}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: startShokyaku
+      value: 
+      objectReference: {fileID: 7400000, guid: ed356e45acb8dc74db074940e022924a, type: 2}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: attackCooldown
       value: 0.2
       objectReference: {fileID: 0}
@@ -98296,6 +98300,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: <ShokyakuAnim>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: c17d39614ee489a45a0c6e6ae049638e, type: 2}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: attackFilter.layerMask.m_Bits
       value: 64
       objectReference: {fileID: 0}
@@ -98310,18 +98318,18 @@ PrefabInstance:
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: desumiruAnimations.Array.data[0]
       value: 
-      objectReference: {fileID: 7400000, guid: 6104c4a4a4aa503498a99551f5e8296f, type: 2}
+      objectReference: {fileID: 7400000, guid: 3135d280bb9df2f43b458671ef8a5183, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: desumiruAnimations.Array.data[1]
       value: 
-      objectReference: {fileID: 7400000, guid: b218447417481bc4e8282118a16dfa82, type: 2}
+      objectReference: {fileID: 7400000, guid: b55e2688258911a40bfdc40791de4b5f, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_keys.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_values.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_keys.Array.data[0]
@@ -98344,6 +98352,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 75886f69195bd034f8bf5ce881a363fc, type: 2}
     - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_keys.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: c17d39614ee489a45a0c6e6ae049638e, type: 2}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 3fc774e6528c0c047883e6decde614f1, type: 2}
@@ -98363,6 +98375,10 @@ PrefabInstance:
       propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 003d765770655e141b1d0c59c7058867, type: 2}
+    - target: {fileID: 6269391895131461313, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f65340de3255204b8fa1c2a03748886, type: 2}
     - target: {fileID: 6329331368419082897, guid: d7cdcbdcb967bef4bb6c071b2233e96f, type: 3}
       propertyPath: playerHealthSlider
       value: 
@@ -98541,7 +98557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6187845668154137620, guid: 8c322a995cd3bb04caf92ef6bc915a74, type: 3}
       propertyPath: enemyDamage
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6868882776308178963, guid: 8c322a995cd3bb04caf92ef6bc915a74, type: 3}
       propertyPath: m_BodyType
@@ -98741,7 +98757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6187845668154137620, guid: 8c322a995cd3bb04caf92ef6bc915a74, type: 3}
       propertyPath: enemyDamage
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6868882776308178963, guid: 8c322a995cd3bb04caf92ef6bc915a74, type: 3}
       propertyPath: m_BodyType
@@ -99346,7 +99362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6187845668154137620, guid: 8c322a995cd3bb04caf92ef6bc915a74, type: 3}
       propertyPath: enemyDamage
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6868882776308178963, guid: 8c322a995cd3bb04caf92ef6bc915a74, type: 3}
       propertyPath: m_BodyType
@@ -99925,7 +99941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6187845668154137620, guid: 8c322a995cd3bb04caf92ef6bc915a74, type: 3}
       propertyPath: enemyDamage
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6868882776308178963, guid: 8c322a995cd3bb04caf92ef6bc915a74, type: 3}
       propertyPath: m_BodyType
@@ -100454,7 +100470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6187845668154137620, guid: 8c322a995cd3bb04caf92ef6bc915a74, type: 3}
       propertyPath: enemyDamage
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6868882776308178963, guid: 8c322a995cd3bb04caf92ef6bc915a74, type: 3}
       propertyPath: m_BodyType

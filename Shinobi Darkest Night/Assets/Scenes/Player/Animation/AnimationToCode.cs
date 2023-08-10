@@ -26,15 +26,24 @@ public class AnimationToCode : MonoBehaviour
 
     public void SlowTime()
     {
-        if (slowing != null)
+        if (transform.parent.GetComponent<PlayerController>().desumiruState < 4)
         {
-            StopCoroutine(slowing);
-            slowing = StartCoroutine(transform.parent.GetComponent<PlayerController>().SlowTime());
+            if (slowing != null)
+            {
+                StopCoroutine(slowing);
+                slowing = StartCoroutine(transform.parent.GetComponent<PlayerController>().SlowTime());
+            }
+            else
+            {
+                slowing = StartCoroutine(transform.parent.GetComponent<PlayerController>().SlowTime());
+            }
         }
-        else
-        {
-            slowing = StartCoroutine(transform.parent.GetComponent<PlayerController>().SlowTime());
-        }
+
+    }
+
+    public void StartShokyaku()
+    {
+        transform.parent.GetComponent<PlayerController>().shokyaku = true;
     }
 
     public void TimeToDie()
@@ -45,10 +54,19 @@ public class AnimationToCode : MonoBehaviour
     {
         if (collision.gameObject.layer == 6 && collision.GetComponent<EnemyHealth>())
         {
-            collision.GetComponent<EnemyHealth>().enemyAddDamage(1, false, true);
+            collision.GetComponent<EnemyHealth>().enemyAddDamage(20, true, true);
             StartCoroutine(collision.GetComponent<EnemyHealth>().Stuned());
-            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.parent.GetComponent<PlayerController>().point2 * 1, ForceMode2D.Impulse);
+            if (transform.parent.GetComponent<PlayerController>().desumiruState == 2)
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.parent.GetComponent<PlayerController>().point2 * 1, ForceMode2D.Impulse);
+            }
+            else if (transform.parent.GetComponent<PlayerController>().desumiruState == 3)
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.parent.GetComponent<PlayerController>().point2 * 2, ForceMode2D.Impulse);
+            }
+
         }
     }
 }

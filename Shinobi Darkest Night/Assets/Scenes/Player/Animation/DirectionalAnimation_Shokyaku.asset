@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5cf33fc7dc881b44982786d75196fe6, type: 3}
+  m_Name: DirectionalAnimation_Shokyaku
+  m_EditorClassIdentifier: 
+  <Up>k__BackingField: {fileID: 7400000, guid: 9e91c52359353034a8c5952a9e978c3f, type: 2}
+  <Down>k__BackingField: {fileID: 7400000, guid: 9d76e923548d6e843ae635a4dfd7b6cf, type: 2}
+  <Left>k__BackingField: {fileID: 7400000, guid: da971876f15a9504cbba677edc06a1d8, type: 2}
+  <Right>k__BackingField: {fileID: 7400000, guid: 0a4fc3a166c2d0a499b2ecb5c4467843, type: 2}

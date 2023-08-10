@@ -3,6 +3,7 @@ using Pathfinding.Util;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public CharacterState DashAnim { get; private set; }
     [field: SerializeField] public CharacterState ThrowAnim { get; private set; }
     [field: SerializeField] public CharacterState AttackAnim { get; private set; }
+    [field: SerializeField] public CharacterState ShokyakuAnim { get; private set; }
     [field: SerializeField] public CharacterAnimationStateDictionary StateAnimations { get; private set; }
     [field: SerializeField] public float RunVelocityTreshchold { get; private set; } = 0.1f;
 
@@ -111,7 +113,6 @@ public class PlayerController : MonoBehaviour
     float maxStamina;
     float staminaReg;
     public float staminaRegRate;
-    bool canRegenStamina;
     private bool canAttack;
 
     [Header("Heal")]
@@ -129,19 +130,22 @@ public class PlayerController : MonoBehaviour
     private bool buttonUp;
 
     [Header("Shokyaku")]
-    private bool shokyaku;
+    public bool shokyaku;
     private Collider2D[] hits;
     public LayerMask enemyLayer;
     private float shokyakuTimer;
+    public AnimationClip startShokyaku;
 
     [Header("Desumiru")]
     private bool desumiru;
-    private int desumiruState;
+    public int desumiruState;
     [SerializeField] private float desumiuRadius;
     [SerializeField] AnimationClip[] desumiruAnimations;
     private float test;
     private float slowWaitingTime;
     public Vector2 point2;
+    Coroutine desumiruAttackCorutine;
+    private bool timeToStopDesumiru;
 
     [Header("Death")]
     public AnimationClip deathAnim;
@@ -173,12 +177,12 @@ public class PlayerController : MonoBehaviour
     {
         timeToEndAnimation = timeToEndAnimation - Time.deltaTime;
 
-        if (currentState == ThrowAnim || currentState == AttackAnim)
+        if (currentState == ThrowAnim || currentState == AttackAnim )
         {
             if (timeToEndAnimation <= 0)
             {
                 
-                if (!isDashing)
+                if (!isDashing && !shokyaku)
                 {
                     if (movementInput != Vector2.zero)
                     {
@@ -192,13 +196,12 @@ public class PlayerController : MonoBehaviour
                 ChangeClip();
                 SaveMovement();
                 movementInput = saveDirection;
-
                 canMove = true;
             }
         }
         else if (currentState.CanExitWhilePlaying = true || timeToEndAnimation <= 0)
         {
-            if (!isDashing)
+            if (!isDashing && !shokyaku)
             {
                 if (movementInput != Vector2.zero)
                 {
@@ -264,6 +267,13 @@ public class PlayerController : MonoBehaviour
         //Shokyaku
         if (shokyaku)
         {
+            if (currentState != ShokyakuAnim)
+            {
+                
+                currentState = ShokyakuAnim;
+                ChangeClip();
+
+            }
             ParticleManager.instance.UseParticle("Fire", projectileSpawnPoint.position, projectileSpawnPoint.rotation.eulerAngles);
             hits =Physics2D.OverlapAreaAll(new Vector2(projectileSpawnPoint.GetChild(0).position.x, projectileSpawnPoint.GetChild(0).position.y), new Vector2(projectileSpawnPoint.GetChild(1).position.x, projectileSpawnPoint.GetChild(1).position.y), enemyLayer);
             foreach(Collider2D enemy in hits)
@@ -289,14 +299,12 @@ public class PlayerController : MonoBehaviour
                 canMove = true;
                 canAttack = true;
             }
+            facingDirection = projectileSpawnPoint.position - transform.position;
         }
 
 
         //testing and time
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            StartCoroutine(SlowTime());
-        }
+        //Debug.Log(Time.timeScale);
     }
 
     private void ChangeClip()
@@ -477,7 +485,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(Dash());
     }
 
-    //When LeftMouseButton(LMB) was pressed
+    //When RightMouseButton(RMB) was pressed
     public void OnAttack()
     {
         if (canAttack && !isHealing && !desumiru)
@@ -523,7 +531,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //When RightMouseButton(RMB) was pressed
+    //When LeftMouseButton(LMB) was pressed
     public void OnFire()
     {
         if (canAttack && !isHealing && !desumiru)
@@ -544,10 +552,11 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        else if (desumiru && canAttack)
+        else if (desumiru && canAttack && desumiruState < 3)
         {
+            canAttack = false;
             desumiruState += 1;
-            DesumiruState();
+            DesumiruUse();
         }
     }
 
@@ -613,11 +622,11 @@ public class PlayerController : MonoBehaviour
             if (canAttack && !isHealing && canMove)
             {
                 shokyakuTimer = 4;
-                shokyaku = true;
                 canDash = false;
                 canMove = false;
                 canAttack = false;
                 SaveMovement();
+                myAnim.Play(startShokyaku.name);
             }
         }
         else if (movementValue.Get<float>() == 0)
@@ -627,6 +636,7 @@ public class PlayerController : MonoBehaviour
             canDash = true;
             canMove = true;
             canAttack = true;
+            currentState = RunAnim;
         }
     }
 
@@ -644,8 +654,9 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void DesumiruState()
+    void DesumiruUse()
     {
+        timeToStopDesumiru = false;
         canAttack = false;
         slowWaitingTime = 0.05f;
         if (desumiruState == 0)
@@ -656,9 +667,7 @@ public class PlayerController : MonoBehaviour
         {
             desumiuRadius = 5;
         }
-        myAnim.Play(desumiruAnimations[0].name);
-        myAnim.Play(desumiruAnimations[1].name);
-        Debug.Log("play anim");
+        myAnim.Play(desumiruAnimations[1].name,-1,0);
     }
 
     void StopDesumiru()
@@ -670,13 +679,22 @@ public class PlayerController : MonoBehaviour
             canMove = true;
             canAttack = true;
             slowWaitingTime = 0.1f;
+            ChangeClip();
         }
     }
 
     public void DesumiruAttack()
     {
-        StartCoroutine(DesumiruAttackUse());
-        canAttack = false;
+        if (desumiruAttackCorutine == null)
+        {
+            desumiruAttackCorutine = StartCoroutine(DesumiruAttackUse());
+        }
+        else
+        {
+            StopCoroutine(desumiruAttackCorutine);
+            desumiruAttackCorutine = StartCoroutine(DesumiruAttackUse());
+        }
+        
     }
 
     public void StartHealing()
@@ -704,6 +722,10 @@ public class PlayerController : MonoBehaviour
 
     public void MakeDeath()
     {
+        canMove = false;
+        canAttack = false;
+        canDash = false;
+        canHeal = false;
         myAnim.Play(deathAnim.name);
     }
 
@@ -753,22 +775,14 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator SlowTime()
     {
-        Debug.Log("slow");
         StopCoroutine(TimeToNormal());
-        slowWaitingTime = 1;
-        if (Time.timeScale < 1)
+        slowWaitingTime = 0.2f;
+        timeToStopDesumiru = true;
+        if (Time.timeScale > 0.4f)
         {
-            while (Time.timeScale < 1)
+            while (Time.timeScale > 0.4f)
             {
-                Time.timeScale += Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
-        }
-        else if (Time.timeScale > 0.3f)
-        {
-            while (Time.timeScale > 0.3f)
-            {
-                Time.timeScale -= Time.deltaTime;
+                Time.timeScale -= Time.deltaTime *4;
                 yield return new WaitForEndOfFrame();
             }
         }
@@ -779,12 +793,18 @@ public class PlayerController : MonoBehaviour
 
         while (slowWaitingTime > 0)
         {
-            canAttack = true;
+            if (desumiruAttackCorutine == null)
+            {
+                canAttack = true;
+            }
             slowWaitingTime -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
-            Debug.Log("now");
         }
-
+        if (timeToStopDesumiru)
+        {
+            myAnim.Play(currentClip.name);
+            StopDesumiru();
+        }
         StopCoroutine(TimeToNormal());
         StartCoroutine(TimeToNormal());
         
@@ -792,12 +812,11 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator TimeToNormal()
     {
-        Debug.Log("start");
         if (Time.timeScale < 1)
         {
             while (Time.timeScale < 1)
             {
-                Time.timeScale += Time.deltaTime;
+                Time.timeScale += Time.deltaTime *4;
                 yield return new WaitForEndOfFrame();
             }
         }
@@ -809,6 +828,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DesumiruAttackUse()
     {
+        canAttack = false;
         List<Vector2> vectors = new List<Vector2>();
         test = 1;
         vectors.Add(Vector2.zero);
@@ -820,13 +840,15 @@ public class PlayerController : MonoBehaviour
             {
                 myAnim.GetComponent<EdgeCollider2D>().enabled = true;
             }
-            point2 = new Vector2( desumiuRadius * Mathf.Cos((test* 360 * Mathf.Deg2Rad)-(Mathf.Deg2Rad * 90)),  desumiuRadius * Mathf.Sin((test * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
-            test -= Time.deltaTime;
+            point2 = new Vector2(desumiuRadius * Mathf.Cos(((1 - test) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), desumiuRadius * Mathf.Sin(((1 - test) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
+            test -= Time.deltaTime*2;
             vectors[1] = point2;
             myAnim.GetComponent<EdgeCollider2D>().SetPoints(vectors);
             yield return new WaitForEndOfFrame();
         }
         myAnim.GetComponent<EdgeCollider2D>().enabled = false;
+        canAttack = true;
+        desumiruAttackCorutine = null;
     }
 
     private void OnDrawGizmos()
