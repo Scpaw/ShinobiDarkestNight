@@ -557,6 +557,7 @@ public class PlayerController : MonoBehaviour
             canAttack = false;
             desumiruState += 1;
             DesumiruUse();
+            Debug.Log("pressed on desu");
         }
     }
 
@@ -678,7 +679,7 @@ public class PlayerController : MonoBehaviour
             canDash = true;
             canMove = true;
             canAttack = true;
-            slowWaitingTime = 0.1f;
+            slowWaitingTime = 0.01f;
             ChangeClip();
         }
     }
@@ -776,13 +777,13 @@ public class PlayerController : MonoBehaviour
     public IEnumerator SlowTime()
     {
         StopCoroutine(TimeToNormal());
-        slowWaitingTime = 0.2f;
+        slowWaitingTime = 1.4f;
         timeToStopDesumiru = true;
         if (Time.timeScale > 0.4f)
         {
             while (Time.timeScale > 0.4f)
             {
-                Time.timeScale -= Time.deltaTime *4;
+                Time.timeScale -= Time.deltaTime * 4;
                 yield return new WaitForEndOfFrame();
             }
         }
@@ -807,7 +808,6 @@ public class PlayerController : MonoBehaviour
         }
         StopCoroutine(TimeToNormal());
         StartCoroutine(TimeToNormal());
-        
     }
 
     private IEnumerator TimeToNormal()
