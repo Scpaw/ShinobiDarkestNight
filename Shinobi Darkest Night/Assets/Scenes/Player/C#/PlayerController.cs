@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public CharacterState ThrowAnim { get; private set; }
     [field: SerializeField] public CharacterState AttackAnim { get; private set; }
     [field: SerializeField] public CharacterState ShokyakuAnim { get; private set; }
+    [field: SerializeField] public CharacterState MezameAnim { get; private set; }
     [field: SerializeField] public CharacterAnimationStateDictionary StateAnimations { get; private set; }
     [field: SerializeField] public float RunVelocityTreshchold { get; private set; } = 0.1f;
 
@@ -85,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Projectile Settings")]
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform projectileSpawnPoint;
+    [SerializeField] public Transform projectileSpawnPoint;
     [SerializeField] private GameObject projectileRotation;
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
@@ -201,7 +202,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (currentState.CanExitWhilePlaying = true || timeToEndAnimation <= 0)
         {
-            if (!isDashing && !shokyaku)
+            if (!isDashing && !shokyaku && !isSpeedingUp)
             {
                 if (movementInput != Vector2.zero)
                 {
@@ -211,7 +212,18 @@ public class PlayerController : MonoBehaviour
                 {
                     CurrentState = IdleAnim;
                 }
-            }  
+            }
+            else if (!isDashing && !shokyaku && isSpeedingUp)
+            {
+                if (movementInput != Vector2.zero)
+                {
+                    CurrentState = MezameAnim;
+                }
+                else
+                {
+                    CurrentState = IdleAnim;
+                }
+            }
             ChangeClip();
         }
 
@@ -252,8 +264,8 @@ public class PlayerController : MonoBehaviour
 
         if (isSpeedingUp)
         { 
-            UseStamina(4* Time.deltaTime);
-            GetComponent<PlayerHealth>().AddDamage(2* Time.deltaTime);
+            UseStamina(14* Time.deltaTime);
+            GetComponent<PlayerHealth>().AddDamage(8* Time.deltaTime);
             if (stamina <= 0)
             {
                 isSpeedingUp = false;
@@ -860,5 +872,10 @@ public class PlayerController : MonoBehaviour
     public GameObject GetPlayer()
     {
         return gameObject;
+    }
+
+    public GameObject GetHead()
+    { 
+        return myAnim.transform.GetChild(0).gameObject;
     }
 }

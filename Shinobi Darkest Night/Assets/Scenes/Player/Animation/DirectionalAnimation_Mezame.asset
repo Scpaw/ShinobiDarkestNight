@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5cf33fc7dc881b44982786d75196fe6, type: 3}
+  m_Name: DirectionalAnimation_Mezame
+  m_EditorClassIdentifier: 
+  <Up>k__BackingField: {fileID: 7400000, guid: 570a44e48b9b1ac46ad2880dc5d692ed, type: 2}
+  <Down>k__BackingField: {fileID: 7400000, guid: 64fdafa007660e546b985820edc09714, type: 2}
+  <Left>k__BackingField: {fileID: 7400000, guid: 0008c0aade4b6fb489e5d8c48843b361, type: 2}
+  <Right>k__BackingField: {fileID: 7400000, guid: a5214f4f3bdc4cf4e87e44501fd6842a, type: 2}

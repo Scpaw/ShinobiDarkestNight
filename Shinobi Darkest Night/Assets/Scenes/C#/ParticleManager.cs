@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.ParticleSystem;
 
 public class ParticleManager : MonoBehaviour
 {
@@ -50,7 +51,14 @@ public class ParticleManager : MonoBehaviour
             {
                 yield return new WaitUntil(() => !particles[particleToPlay].GetComponent<ParticleSystem>().isEmitting);
             }
-            particles[particleToPlay].transform.position = position;
+            if (particles[particleToPlay].name.ToString() == "Fire(Clone)")
+            {
+                particles[particleToPlay].transform.position = PlayerController.Instance.GetHead().transform.position;
+            }
+            else
+            {
+                particles[particleToPlay].transform.position = position;
+            }
             particles[particleToPlay].transform.rotation = Quaternion.Euler(rotation);
             particles[particleToPlay].GetComponent<ParticleSystem>().Play();
         }
