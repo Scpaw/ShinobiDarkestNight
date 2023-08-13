@@ -32,8 +32,7 @@ public class Archer : MonoBehaviour
 
     public void Awake()
     {
-        thePlayer = GameObject.Find("Shinobi");
-        gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
+
         canMove = gameObject.GetComponent<AILerp>();
 
         EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
@@ -42,10 +41,13 @@ public class Archer : MonoBehaviour
         playerInRange = false;
         canMove.speed = 1;
     }
+    private void Start()
+    {
+        thePlayer = PlayerController.Instance.GetPlayer();
+        gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
+    }
     private void OnEnable()
     {
-        thePlayer = GameObject.Find("Shinobi");
-        gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
         canMove = gameObject.GetComponent<AILerp>();
 
         EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();

@@ -3534,6 +3534,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2238838188522891497, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: dashSpeed
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4706091081588073645, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: m_RootOrder
       value: 0

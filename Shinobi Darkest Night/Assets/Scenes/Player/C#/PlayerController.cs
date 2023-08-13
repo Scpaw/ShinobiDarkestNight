@@ -504,9 +504,12 @@ public class PlayerController : MonoBehaviour
     }
 
     //When Space was pressed
-    public void OnDash()
+    public void OnDash(InputValue dashValue)
     {
-        StartCoroutine(Dash());
+        if (dashValue.Get<float>() == 1)
+        {
+            StartCoroutine(Dash());
+        }
     }
 
     //When RightMouseButton(RMB) was pressed

@@ -8,9 +8,9 @@ public class Archer_Bow : MonoBehaviour
     private float distance;
     public int sightRange;
 
-    private void Awake()
+    private void Start()
     {
-        player = GameObject.Find("Shinobi");
+        player = PlayerController.Instance.GetPlayer();
     }
     void Update()
     {
