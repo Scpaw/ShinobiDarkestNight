@@ -13,8 +13,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake()
     {
-        playerCourrentHealth = 3*playerMaxHealth/4;
-        //playerCourrentHealth = playerMaxHealth;
+        playerCourrentHealth = playerMaxHealth;
         playerHealthSlider.maxValue = playerMaxHealth;
         playerHealthSlider.value = playerCourrentHealth;
     }

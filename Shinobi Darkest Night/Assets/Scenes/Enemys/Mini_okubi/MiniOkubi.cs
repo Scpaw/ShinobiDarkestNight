@@ -27,7 +27,7 @@ public class MiniOkubi : MonoBehaviour
     {
         if (anim == null)
         { 
-            anim = transform.FindChild("Grafika").GetComponent<Animator>();
+            anim = transform.Find("Grafika").GetComponent<Animator>();
             GetComponent<EnemyDamage>().attackAnim = true;
         }
         if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < detectRadius)

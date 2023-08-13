@@ -136,6 +136,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask enemyLayer;
     private float shokyakuTimer;
     public AnimationClip startShokyaku;
+    private bool stopShokyaku;
 
     [Header("Desumiru")]
     private bool desumiru;
@@ -279,6 +280,17 @@ public class PlayerController : MonoBehaviour
         //Shokyaku
         if (shokyaku)
         {
+            if (stopShokyaku)
+            {
+                movementInput = saveDirection;
+                shokyaku = false;
+                canDash = true;
+                canMove = true;
+                canAttack = true;
+                currentState = RunAnim;
+                ChangeClip();
+                stopShokyaku = false;
+            }
             if (currentState != ShokyakuAnim)
             {
                 
@@ -640,9 +652,14 @@ public class PlayerController : MonoBehaviour
                 canAttack = false;
                 SaveMovement();
                 myAnim.Play(startShokyaku.name);
+                currentClip = startShokyaku;
             }
         }
-        else if (movementValue.Get<float>() == 0)
+        else if (movementValue.Get<float>() == 0 && !shokyaku)
+        {
+            stopShokyaku = true;
+        }
+        else if (movementValue.Get<float>() == 0 && shokyaku)
         {
             movementInput = saveDirection;
             shokyaku = false;
