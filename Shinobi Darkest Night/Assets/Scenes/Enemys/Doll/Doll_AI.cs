@@ -14,7 +14,6 @@ public class Doll_AI: MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("awake");
         startPos = transform.position;
         enemySpeed = GetComponent<AILerp>().speed;
     }

@@ -618,7 +618,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnSpeedUp()
     {
-        if (stamina > 0.1f && !buttonUp)
+        if (stamina > 0.1f && !buttonUp && canMove)
         {
             isSpeedingUp = !isSpeedingUp;
             if (isSpeedingUp)
