@@ -32,29 +32,28 @@ public class Archer : MonoBehaviour
 
     public void Awake()
     {
-
-        canMove = gameObject.GetComponent<AILerp>();
-
-        EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
         startPos = transform.position;
-
         playerInRange = false;
-        canMove.speed = 1;
-    }
-    private void Start()
-    {
-        thePlayer = PlayerController.Instance.GetPlayer();
-        gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
     }
     private void OnEnable()
     {
-        canMove = gameObject.GetComponent<AILerp>();
-
-        EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
-        startPos = transform.position;
-
+        if (canMove == null)
+        {
+            canMove = gameObject.GetComponent<AILerp>();
+        }
+        if (EnemyAnim == null)
+        {
+            EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
+        }
+        transform.position = startPos;
         playerInRange = false;
         canMove.speed = archerSpeed;
+        if (thePlayer == null)
+        {
+            thePlayer = PlayerController.Instance.GetPlayer();
+        }
+        gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
+        canMove.speed = 1;
     }
 
     void FixedUpdate()

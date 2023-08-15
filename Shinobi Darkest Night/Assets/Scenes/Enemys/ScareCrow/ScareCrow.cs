@@ -17,16 +17,22 @@ public class ScareCrow : MonoBehaviour
     Animator EnemyAnim;
     private Vector3 startPos;
 
-    private void Start()
+    private void Awake()
     {
-        thePlayer = PlayerController.Instance.GetPlayer();
-        EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
         startPos = transform.position;
     }
 
     private void OnEnable()
     {
-        startPos = transform.position;
+        transform.position = startPos;
+        if (thePlayer == null)
+        {
+            thePlayer = PlayerController.Instance.GetPlayer();
+        }
+        if (EnemyAnim == null)
+        {
+            EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
+        }
     }
 
     void Update()

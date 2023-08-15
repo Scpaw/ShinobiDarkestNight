@@ -327,8 +327,6 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        //testing and time
-        //Debug.Log(Time.timeScale);
     }
 
     private void ChangeClip()
@@ -584,7 +582,6 @@ public class PlayerController : MonoBehaviour
             canAttack = false;
             desumiruState += 1;
             DesumiruUse();
-            Debug.Log("pressed on desu");
         }
     }
 

@@ -20,18 +20,19 @@ public class EnemyDamage : MonoBehaviour
     Animator EnemyAnim;
     private Vector3 startPos;
 
-    private void Start()
-    {
-        EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
-        startPos = transform.position;
-        thePlayer = PlayerController.Instance.GetPlayer();
-    }
 
     private void OnEnable()
     {
-        attacksInt = 0;  
-        EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
+        attacksInt = 0;
+        if (EnemyAnim == null)
+        {
+            EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
+        }
         startPos = transform.position;
+        if (thePlayer == null)
+        {
+            thePlayer = PlayerController.Instance.GetPlayer();
+        }
     }
 
     void Update()

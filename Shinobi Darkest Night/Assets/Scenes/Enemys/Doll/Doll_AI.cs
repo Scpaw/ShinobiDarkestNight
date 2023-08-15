@@ -10,13 +10,30 @@ public class Doll_AI: MonoBehaviour
     private float enemySpeed;
     public float detectRadius;
     private Transform player;
+    private Vector2 startPos;
 
-    private void Start()
+    private void Awake()
     {
-        ai = GetComponent<AILerp>();
-        enemyScript = GetComponent<EnemyHealth>();
-        enemySpeed = ai.speed;
-        player = PlayerController.Instance.GetPlayer().transform;
+        Debug.Log("awake");
+        startPos = transform.position;
+        enemySpeed = GetComponent<AILerp>().speed;
+    }
+
+    private void OnEnable()
+    {
+        transform.position = startPos;
+        if (ai == null)
+        {
+            ai = GetComponent<AILerp>();
+        }
+        if (enemyScript == null)
+        {
+            enemyScript = GetComponent<EnemyHealth>();
+        }
+        if (player == null)
+        {
+            player = PlayerController.Instance.GetPlayer().transform;
+        }
     }
     void Update()
     {
@@ -41,6 +58,10 @@ public class Doll_AI: MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        transform.position = startPos;
+    }
     private IEnumerator ResetPathf()
     {
         ai.SetNewPath();

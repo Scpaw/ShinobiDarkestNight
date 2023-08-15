@@ -11,13 +11,21 @@ public class MiniOkubi : MonoBehaviour
     public float detectRadius;
     private Transform player;
     private Animator anim;
+    private Vector2 startPos;
 
     //atak wlosami
     private bool attacking;
     private int attackNum;
-    
-    private void Start()
+
+    private void Awake()
     {
+        startPos = transform.position;
+    }
+
+
+    private void OnEnable()
+    {
+        transform.position = startPos;
         ai = GetComponent<AILerp>();
         enemyScript = GetComponent<EnemyHealth>();
         enemySpeed = ai.speed;

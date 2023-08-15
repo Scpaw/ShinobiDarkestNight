@@ -3538,6 +3538,14 @@ PrefabInstance:
       propertyPath: dashSpeed
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 2238838188522891497, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: attackDamage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238838188522891497, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: staminaRegRate
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4706091081588073645, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: m_RootOrder
       value: 0
