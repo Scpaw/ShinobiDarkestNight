@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 3034708425488045959}
   - component: {fileID: 4658281800912629008}
   - component: {fileID: 2352237321646954228}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ScareCrow
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -141,8 +141,10 @@ MonoBehaviour:
   enemyHealth: 50
   enemyHealthSlider: {fileID: 3034708425650630954}
   enemyCanvas: {fileID: 3034708427060015172}
+  canBeAttacked: 0
   projectiles: []
   stundTime: 0
+  isStuned: 0
 --- !u!70 &2352237321646954228
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

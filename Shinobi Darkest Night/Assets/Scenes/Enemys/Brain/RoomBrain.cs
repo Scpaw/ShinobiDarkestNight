@@ -5,12 +5,23 @@ using UnityEngine;
 
 public class RoomBrain : MonoBehaviour
 {
+    [Tooltip("Current enemies spawned")]
     public List<GameObject> enemies;
+
+    [Tooltip("points to spawn enemies")]
     [SerializeField] List<Transform> points;
+
+    [Tooltip("Category of enemies to spawn")]
     [SerializeField] List<GameObject> enemiesToSpaw;
+
+    [Tooltip("how meny enemies to spawn")]
     public int enemyNumber;
+
+    [Tooltip("Deviation form spawn point")]
     public float maxDeviationFromPoint;
 
+
+    //Rigidbody
     void Start()
     {
         foreach (Transform child in transform)
