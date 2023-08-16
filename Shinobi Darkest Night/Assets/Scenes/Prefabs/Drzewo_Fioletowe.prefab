@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 6851960476156707086}
   - component: {fileID: 6851960476156707087}
   - component: {fileID: 6851960476156707084}
-  - component: {fileID: 6851960476156707085}
+  - component: {fileID: 5188435759083009347}
   - component: {fileID: 6851960476156707074}
   m_Layer: 9
   m_Name: Drzewo_Fioletowe
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43fadc37b057f8649bc0c5f6af16207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!68 &6851960476156707085
-EdgeCollider2D:
+--- !u!60 &5188435759083009347
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -112,15 +112,24 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.13}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   m_Points:
-  - {x: -0.1, y: 0}
-  - {x: 0.1, y: 0}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+    m_Paths:
+    - - {x: -0.70144325, y: -1.753258}
+      - {x: -0.4439526, y: -1.7532575}
+      - {x: -0.2737365, y: -1.8625624}
+      - {x: -0.44122395, y: -1.9680191}
+      - {x: -0.73588383, y: -1.968019}
+      - {x: -0.8909641, y: -1.8625627}
 --- !u!60 &6851960476156707074
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -149,10 +158,10 @@ PolygonCollider2D:
     - - {x: -2.3694453, y: 1.2545228}
       - {x: -2.562552, y: 0.114916384}
       - {x: -1.8542149, y: -0.98556465}
-      - {x: -0.692142, y: -0.7643333}
-      - {x: -0.83826333, y: -1.9372544}
-      - {x: 0.044004858, y: -1.9064534}
-      - {x: -0.13075984, y: -1.3206686}
+      - {x: -0.6587825, y: -0.8060323}
+      - {x: -0.89664096, y: -1.8079879}
+      - {x: -0.24788782, y: -1.8272253}
+      - {x: -0.20998791, y: -1.2539504}
       - {x: 1.1458213, y: -0.6202268}
       - {x: 1.5937529, y: 0.18717623}
       - {x: 0.25870842, y: 1.2902765}

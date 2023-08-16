@@ -5,13 +5,42 @@ using UnityEngine;
 public class hideObsticle : MonoBehaviour
 {
     private GameObject player;
+    private GameObject playerP;
+    private float playerT;
+    private SpriteRenderer playerSprite;
     private SpriteRenderer sprite;
     private Coroutine changeCorutine;
+    private float O;
     private int somethinIn;
     private void Start()
     {
+        playerP = GameObject.Find("Shinobi");
+        playerSprite = playerP.transform.Find("Grafika").GetComponent<SpriteRenderer>();
         player = PlayerController.Instance.GetPlayer();
         sprite = GetComponent<SpriteRenderer>();
+
+        O = gameObject.transform.position.y;
+        playerT = playerP.transform.position.y;
+    }
+
+    private void Update()
+    {
+        O = gameObject.transform.position.y;
+        playerT = playerP.transform.position.y;
+
+        if(gameObject.tag == "Obstacle")
+        {
+            if (playerT > O)
+            {
+                sprite.sortingOrder = playerSprite.sortingOrder + 1;
+                Debug.Log("+");
+            }
+            else if (O > playerT)
+            {
+                sprite.sortingOrder = playerSprite.sortingOrder - 1;
+                Debug.Log("-");
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
