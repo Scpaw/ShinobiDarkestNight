@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,6 +6,11 @@ using UnityEngine;
 public class RoomBrain : MonoBehaviour
 {
     public List<GameObject> enemies;
+    [SerializeField] List<Transform> points;
+    [SerializeField] List<GameObject> enemiesToSpaw;
+    public int enemyNumber;
+    public float maxDeviationFromPoint;
+
     void Start()
     {
         foreach (Transform child in transform)
@@ -27,16 +31,36 @@ public class RoomBrain : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            foreach (GameObject enemy in enemies)
+            if (enemies.Count == 0)
             {
-                if (!enemy.activeInHierarchy)
+                startSpawnEnemies();
+            }
+            else
+            {
+                foreach (GameObject enemy in enemies)
                 {
-                    enemy.SetActive(true);
+                    if (!enemy.activeInHierarchy)
+                    {
+                        enemy.SetActive(true);
+                    }
                 }
             }
+
         }
     }
 
+    public void startSpawnEnemies()
+    {
+        while (enemies.Count < enemyNumber)
+        {
+           enemies.Add(Instantiate(enemiesToSpaw[Random.Range(0, enemiesToSpaw.Count)], points[Random.Range(0, points.Count)].position + new Vector3(Random.Range(-maxDeviationFromPoint,maxDeviationFromPoint), Random.Range(-maxDeviationFromPoint, maxDeviationFromPoint)),Quaternion.Euler(Vector3.zero)));
+        }
+
+        foreach (GameObject enemy in enemies)
+        { 
+            enemy.transform.parent = transform;
+        }
+    }
 
     public void SpawnEnemies()
     {

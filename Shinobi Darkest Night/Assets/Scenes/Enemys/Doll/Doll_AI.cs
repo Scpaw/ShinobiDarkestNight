@@ -33,6 +33,11 @@ public class Doll_AI: MonoBehaviour
         {
             player = PlayerController.Instance.GetPlayer().transform;
         }
+
+        if (transform.GetComponent<AIDestinationSetter>().target == null)
+        {
+            transform.GetComponent<AIDestinationSetter>().target = player;
+        }
     }
     void Update()
     {

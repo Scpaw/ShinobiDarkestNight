@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] float enemyHealth;
     [SerializeField] Slider enemyHealthSlider;
     [SerializeField] GameObject enemyCanvas;
+    public bool canBeAttacked;
+    private float canBeAttackedTimer;
 
     public List<GameObject> projectiles;
     public float stundTime;
@@ -23,9 +25,11 @@ public class EnemyHealth : MonoBehaviour
     }
     private void OnEnable()
     {
+        canBeAttacked = false;
         enemyHealth = enemyMaxHealth;
         enemyHealthSlider.maxValue = enemyMaxHealth;
         enemyHealthSlider.value = enemyHealth;
+        canBeAttacked = true;
     }
 
     public void enemyAddDamage(float Damage, bool dropProjectiles, bool useparticle)
@@ -56,7 +60,6 @@ public class EnemyHealth : MonoBehaviour
         StopAllCoroutines();
         ProjectilesOff();
         gameObject.SetActive(false);
-        //Destroy(gameObject, 0.1f);
     }
 
     void ProjectilesOff()
@@ -73,22 +76,41 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public IEnumerator Stuned()
+    public IEnumerator Stuned(bool meeleAttack)
     {
-        isStuned = true;
-        stundTime = 0.75f;
-        while (stundTime > 0)
+        if (canBeAttacked || !meeleAttack)
         {
-            stundTime -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
+            isStuned = true;
+            stundTime = 0.75f;
+            while (stundTime > 0)
+            {
+                stundTime -= Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+            isStuned = false;
+            if (meeleAttack)
+            {
+                canBeAttacked = false;
+                canBeAttackedTimer = 10f;
+                while (canBeAttackedTimer >0)
+                { 
+                    canBeAttackedTimer -= Time.deltaTime;
+                    yield return new WaitForEndOfFrame();
+                }
+                canBeAttacked = true;
+            }
         }
-        isStuned = false;
     }
+
     private void OnDisable()
     {
         if (transform.parent != null && enemyHealth <= 0)
         {
             transform.parent.GetComponent<RoomBrain>().SpawnEnemies();
+        }
+        if (!canBeAttacked)
+        {
+            StopAllCoroutines();
         }
     }
 }

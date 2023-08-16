@@ -55,7 +55,7 @@ public class AnimationToCode : MonoBehaviour
         if (collision.gameObject.layer == 6 && collision.GetComponent<EnemyHealth>())
         {
             collision.GetComponent<EnemyHealth>().enemyAddDamage(20, true, true);
-            StartCoroutine(collision.GetComponent<EnemyHealth>().Stuned());
+            StartCoroutine(collision.GetComponent<EnemyHealth>().Stuned(false));
             if (transform.parent.GetComponent<PlayerController>().desumiruState == 2)
             {
                 collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;

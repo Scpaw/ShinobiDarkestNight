@@ -307,7 +307,7 @@ public class PlayerController : MonoBehaviour
                     enemy.GetComponent<EnemyHealth>().enemyAddDamage(40 * Time.deltaTime, false, false);
                     if (!enemy.GetComponent<EnemyHealth>().isStuned)
                     {
-                        StartCoroutine(enemy.GetComponent<EnemyHealth>().Stuned());
+                        StartCoroutine(enemy.GetComponent<EnemyHealth>().Stuned(false));
                     }
                 }
             }
@@ -538,7 +538,7 @@ public class PlayerController : MonoBehaviour
                         {
                             enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                             enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
-                            StartCoroutine(enemy.gameObject.GetComponent<EnemyHealth>().Stuned());
+                            StartCoroutine(enemy.gameObject.GetComponent<EnemyHealth>().Stuned(true));
                         }
                     }
                 }
