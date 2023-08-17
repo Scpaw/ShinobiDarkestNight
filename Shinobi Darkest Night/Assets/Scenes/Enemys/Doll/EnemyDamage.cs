@@ -18,7 +18,6 @@ public class EnemyDamage : MonoBehaviour
     public bool attackAnim;
 
     Animator EnemyAnim;
-    private Vector3 startPos;
 
 
     private void OnEnable()
@@ -28,7 +27,6 @@ public class EnemyDamage : MonoBehaviour
         {
             EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
         }
-        startPos = transform.position;
         if (thePlayer == null)
         {
             thePlayer = PlayerController.Instance.GetPlayer();

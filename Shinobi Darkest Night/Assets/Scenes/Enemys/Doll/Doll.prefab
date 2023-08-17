@@ -100,6 +100,7 @@ MonoBehaviour:
   enemyHealthSlider: {fileID: 691301660596158894}
   enemyCanvas: {fileID: 3092937982863972908}
   canBeAttacked: 0
+  startPos: {x: 0, y: 0, z: 0}
   projectiles: []
   stundTime: 0
   isStuned: 0

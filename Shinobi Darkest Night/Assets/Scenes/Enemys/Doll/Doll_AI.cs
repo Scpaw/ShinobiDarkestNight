@@ -10,17 +10,14 @@ public class Doll_AI: MonoBehaviour
     private float enemySpeed;
     public float detectRadius;
     private Transform player;
-    private Vector2 startPos;
 
     private void Awake()
     {
-        startPos = transform.position;
         enemySpeed = GetComponent<AILerp>().speed;
     }
 
     private void OnEnable()
     {
-        transform.position = startPos;
         if (ai == null)
         {
             ai = GetComponent<AILerp>();
@@ -62,10 +59,6 @@ public class Doll_AI: MonoBehaviour
 
     }
 
-    private void OnDisable()
-    {
-        transform.position = startPos;
-    }
     private IEnumerator ResetPathf()
     {
         ai.SetNewPath();

@@ -12,7 +12,7 @@ public class RoomBrain : MonoBehaviour
     [SerializeField] List<Transform> points;
 
     [Tooltip("Category of enemies to spawn")]
-    [SerializeField] List<GameObject> enemiesToSpaw;
+    public List<GameObject> enemiesToSpaw;
 
     [Tooltip("how meny enemies to spawn")]
     public int enemyNumber;
@@ -44,6 +44,7 @@ public class RoomBrain : MonoBehaviour
         {
             if (enemies.Count == 0)
             {
+                Debug.Log("123");
                 startSpawnEnemies();
             }
             else
@@ -60,11 +61,16 @@ public class RoomBrain : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        //Debug.Log(pointNotOnScreen());
+    }
     public void startSpawnEnemies()
     {
         while (enemies.Count < enemyNumber)
         {
-           enemies.Add(Instantiate(enemiesToSpaw[Random.Range(0, enemiesToSpaw.Count)], points[Random.Range(0, points.Count)].position + new Vector3(Random.Range(-maxDeviationFromPoint,maxDeviationFromPoint), Random.Range(-maxDeviationFromPoint, maxDeviationFromPoint)),Quaternion.Euler(Vector3.zero)));
+           enemies.Add(Instantiate(enemiesToSpaw[Random.Range(0, enemiesToSpaw.Count)], pointNotOnScreen() ,Quaternion.Euler(Vector3.zero)));
+
         }
 
         foreach (GameObject enemy in enemies)
@@ -72,6 +78,22 @@ public class RoomBrain : MonoBehaviour
             enemy.transform.parent = transform;
         }
     }
+
+    public Vector3 pointNotOnScreen()
+    {
+        Vector3 currentPoint = points[Random.Range(0, points.Count)].position + new Vector3(Random.Range(-maxDeviationFromPoint, maxDeviationFromPoint), Random.Range(-maxDeviationFromPoint, maxDeviationFromPoint));
+        Vector2 thisPoint = Camera.main.WorldToViewportPoint(currentPoint);
+        if ((thisPoint.x > 1 || thisPoint.x < 0) && (thisPoint.y > 1 || thisPoint.y < 0))
+        {
+            return currentPoint;
+        }
+        else
+        {
+            return pointNotOnScreen();
+        }
+    }
+
+
 
     public void SpawnEnemies()
     {
@@ -97,7 +119,8 @@ public class RoomBrain : MonoBehaviour
         {
             if (!enemy.activeInHierarchy)
             {
-                enemy.SetActive(true);
+                enemy.GetComponent<EnemyHealth>().startPos = pointNotOnScreen();
+                enemy.SetActive(true);              
             }
         }
 

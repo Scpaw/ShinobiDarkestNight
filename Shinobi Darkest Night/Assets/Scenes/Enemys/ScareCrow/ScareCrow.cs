@@ -15,16 +15,11 @@ public class ScareCrow : MonoBehaviour
     [SerializeField] private GameObject thePlayer;
 
     Animator EnemyAnim;
-    private Vector3 startPos;
 
-    private void Awake()
-    {
-        startPos = transform.position;
-    }
+
 
     private void OnEnable()
     {
-        transform.position = startPos;
         if (thePlayer == null)
         {
             thePlayer = PlayerController.Instance.GetPlayer();

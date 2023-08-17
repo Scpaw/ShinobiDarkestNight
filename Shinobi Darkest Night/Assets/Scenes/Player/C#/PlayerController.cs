@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        timeToEndAnimation = timeToEndAnimation - Time.deltaTime;
+        timeToEndAnimation -= Time.deltaTime;
 
         if (currentState == ThrowAnim || currentState == AttackAnim )
         {

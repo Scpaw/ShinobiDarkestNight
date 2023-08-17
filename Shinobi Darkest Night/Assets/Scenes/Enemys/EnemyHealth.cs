@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] GameObject enemyCanvas;
     public bool canBeAttacked;
     private float canBeAttackedTimer;
+    public Vector3 startPos;
 
     public List<GameObject> projectiles;
     public float stundTime;
@@ -30,6 +31,14 @@ public class EnemyHealth : MonoBehaviour
         enemyHealthSlider.maxValue = enemyMaxHealth;
         enemyHealthSlider.value = enemyHealth;
         canBeAttacked = true;
+        if (startPos == Vector3.zero)
+        {
+            startPos = transform.position;
+        }
+        else
+        {
+            transform.position = startPos;
+        }
     }
 
     public void enemyAddDamage(float Damage, bool dropProjectiles, bool useparticle)
