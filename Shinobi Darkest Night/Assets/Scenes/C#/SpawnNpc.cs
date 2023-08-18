@@ -11,6 +11,7 @@ public class SpawnNpc : MonoBehaviour
     [SerializeField] Image Doll;
     [SerializeField] Image ScareCrow;
     [SerializeField] Image Archer;
+    [SerializeField] Image Resetbutton;
     [SerializeField] RoomBrain roomToActivate;
     [SerializeField] List<GameObject> enemies;
 
@@ -29,6 +30,14 @@ public class SpawnNpc : MonoBehaviour
         if (!playerIn && canvas.activeInHierarchy)
         {
             canvas.SetActive(false);
+        }
+        if (roomToActivate.enemies.Count > 0)
+        {
+            Resetbutton.color = new Color(Resetbutton.color.r, Resetbutton.color.g, Resetbutton.color.b, 1);
+        }
+        else 
+        {
+            Resetbutton.color = new Color(Resetbutton.color.r, Resetbutton.color.g, Resetbutton.color.b, 0.5f);
         }
     }
 
@@ -74,6 +83,18 @@ public class SpawnNpc : MonoBehaviour
         }
     }
 
+
+    public void ResetSpawn()
+    {
+        int i = roomToActivate.enemies.Count;
+        while (i > 0)
+        {
+            GameObject enemy = roomToActivate.enemies[i - 1];
+            roomToActivate.enemies.Remove(roomToActivate.enemies[i-1]);
+            Destroy(enemy);
+            i--;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")

@@ -20,8 +20,6 @@ public class RoomBrain : MonoBehaviour
     [Tooltip("Deviation form spawn point")]
     public float maxDeviationFromPoint;
 
-
-    //Rigidbody
     void Start()
     {
         foreach (Transform child in transform)
