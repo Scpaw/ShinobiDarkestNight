@@ -6,12 +6,15 @@ using UnityEngine;
 public class SpawnNpc : MonoBehaviour
 {
     private bool playerIn;
+    [Header("Canvas")]
     [SerializeField] GameObject canvasWorld;
     [SerializeField] GameObject canvas;
+    [Header("Button Images")] 
     [SerializeField] Image Doll;
     [SerializeField] Image ScareCrow;
     [SerializeField] Image Archer;
     [SerializeField] Image Resetbutton;
+    [Tooltip("Room to spawn enemies")]
     [SerializeField] RoomBrain roomToActivate;
     [SerializeField] List<GameObject> enemies;
 

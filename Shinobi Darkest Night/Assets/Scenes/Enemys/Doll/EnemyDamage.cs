@@ -12,7 +12,7 @@ public class EnemyDamage : MonoBehaviour
     [SerializeField] float enemyDamage;
     [SerializeField] float enemyDamageRate;
     [SerializeField] float enemyNextDamage;
-    [SerializeField] private GameObject thePlayer;
+    private GameObject thePlayer;
     public bool isAttacking;
     public int attacksInt;
     public bool attackAnim;
