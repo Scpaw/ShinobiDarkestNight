@@ -33,12 +33,12 @@ public class hideObsticle : MonoBehaviour
             if (playerT > O)
             {
                 sprite.sortingOrder = playerSprite.sortingOrder + 1;
-                Debug.Log("+");
+                //Debug.Log("+");
             }
             else if (O > playerT)
             {
                 sprite.sortingOrder = playerSprite.sortingOrder - 1;
-                Debug.Log("-");
+                //Debug.Log("-");
             }
         }
     }

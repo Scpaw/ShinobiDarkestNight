@@ -56,7 +56,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectRadius: 5
-  attackRadius: 3
+  attackRadius: 2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 640
 --- !u!114 &5769607825050810019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDamage: 10
-  enemyDamageRate: 1
+  enemyDamageRate: 0.5
   enemyNextDamage: 2
   isAttacking: 0
   attacksInt: 0
@@ -212,7 +215,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.66157144, y: 0.66832125}
+  m_Size: {x: 0.5555069, y: 0.5295925}
   m_EdgeRadius: 0
 --- !u!1 &5769607825259101499
 GameObject:

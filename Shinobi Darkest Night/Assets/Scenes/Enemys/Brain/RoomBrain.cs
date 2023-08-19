@@ -42,7 +42,6 @@ public class RoomBrain : MonoBehaviour
         {
             if (enemies.Count == 0)
             {
-                Debug.Log("123");
                 startSpawnEnemies();
             }
             else

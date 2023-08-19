@@ -1,7 +1,8 @@
 using Pathfinding;
+using Pathfinding.Util;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 
 public class Spear : MonoBehaviour
@@ -18,6 +19,8 @@ public class Spear : MonoBehaviour
     private EnemyDamage damageRange;
     private float dmg;
     private bool hitPlayer;
+    [SerializeField] LayerMask playerLayer;
+    private GameObject hit;
 
     private void Awake()
     {
@@ -50,13 +53,22 @@ public class Spear : MonoBehaviour
         timebtwAttacks = 0;
         dmg = damageRange.enemyDamage;
         hitPlayer = false;
+        canMove = true;
     }
     void Update()
-    {
+    { 
         if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < attackRadius && timebtwAttacks < 0.3f &&GetComponent<EnemyHealth>().stundTime <0.1f)
         {
-            StartCoroutine(SpearDash());
-            timebtwAttacks = 5;
+            if (Physics2D.Raycast(transform.position, (player.position - transform.position).normalized, 30, LayerMask.GetMask("Player")))
+            {
+                hit = Physics2D.Raycast(transform.position, -transform.position + player.position, 100, playerLayer).transform.gameObject;
+                if (hit.layer == player.gameObject.layer)
+                {
+                    StartCoroutine(SpearDash());
+                    timebtwAttacks = 12;
+                }
+            }
+
         }
         if (timebtwAttacks > 0)
         { 
@@ -95,23 +107,47 @@ public class Spear : MonoBehaviour
     {
         if (collision.gameObject == player.gameObject && !damageRange.enabled && !hitPlayer)
         {
-            Debug.Log("Collision");
             player.GetComponent<PlayerHealth>().AddDamage(dmg * 1.5f);
             hitPlayer = true;
         }
     }
     private IEnumerator SpearDash()
     {
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        Vector2 startPos = transform.position;
         canMove = false;
         damageRange.enabled = false;
-        float i = 1;
+        float i = 0.4f;
         ai.canMove = false;
-        attackPoint = player.position + ((player.position - transform.position).normalized * 2);
-        GetComponent<Rigidbody2D>().AddForce((attackPoint - transform.position) * 3, ForceMode2D.Impulse);
-        while (i > 0)
+   
+        while(i > 0)
         {
+
+            if (Random.value < 0.3f )
+            {
+                transform.position = startPos + Random.insideUnitCircle / 30;
+            }
+
             i -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
+        }
+        transform.position = startPos;
+        hit = Physics2D.Raycast(transform.position, -transform.position + player.position, 100, playerLayer).transform.gameObject;
+        if (hit.layer == player.gameObject.layer)
+        {
+            attackPoint = player.position + ((player.position - transform.position).normalized * 2);
+            i = 1;
+            rb.AddForce((attackPoint - transform.position) * 3, ForceMode2D.Impulse);
+            while (i > 0)
+            {
+                i -= Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        else
+        {
+            Debug.Log("not in range");
+            timebtwAttacks = 0;
         }
         canMove = true;
         damageRange.enabled = true;
@@ -136,5 +172,10 @@ public class Spear : MonoBehaviour
             }
         }
        
+    }
+
+    private void OnDrawGizmos()
+    {
+        Debug.DrawLine(transform.position, -transform.position + player.position, Color.red);
     }
 }

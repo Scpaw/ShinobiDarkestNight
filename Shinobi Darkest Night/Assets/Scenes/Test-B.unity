@@ -2147,12 +2147,12 @@ PrefabInstance:
       objectReference: {fileID: 521461312}
     - target: {fileID: 197584942220445768, guid: 633081f9111a8b44a8e87d7727c955c6, type: 3}
       propertyPath: enemiesToSpaw.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 197584942220445768, guid: 633081f9111a8b44a8e87d7727c955c6, type: 3}
       propertyPath: enemiesToSpaw.Array.data[0]
       value: 
-      objectReference: {fileID: 3034708425488045956, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
+      objectReference: {fileID: 5769607825050810024, guid: 28f652a1d74b817429020e2b735bf278, type: 3}
     - target: {fileID: 197584942220445768, guid: 633081f9111a8b44a8e87d7727c955c6, type: 3}
       propertyPath: enemiesToSpaw.Array.data[1]
       value: 
@@ -2232,7 +2232,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 197584942220445768, guid: 633081f9111a8b44a8e87d7727c955c6, type: 3}
       propertyPath: enemyNumber
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 197584942220445768, guid: 633081f9111a8b44a8e87d7727c955c6, type: 3}
       propertyPath: points.Array.size
@@ -2296,12 +2296,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 197584942220445768, guid: 633081f9111a8b44a8e87d7727c955c6, type: 3}
       propertyPath: enemiesToSpaw.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 197584942220445768, guid: 633081f9111a8b44a8e87d7727c955c6, type: 3}
       propertyPath: enemiesToSpaw.Array.data[0]
       value: 
-      objectReference: {fileID: 3034708425488045956, guid: da1e32db87586474dbbdcb9c31ebbf10, type: 3}
+      objectReference: {fileID: 5769607825050810024, guid: 28f652a1d74b817429020e2b735bf278, type: 3}
     - target: {fileID: 197584942220445768, guid: 633081f9111a8b44a8e87d7727c955c6, type: 3}
       propertyPath: enemiesToSpaw.Array.data[1]
       value: 
