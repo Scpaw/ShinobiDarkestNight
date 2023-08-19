@@ -42,7 +42,10 @@ public class RoomBrain : MonoBehaviour
         {
             if (enemies.Count == 0)
             {
-                startSpawnEnemies();
+                if (enemiesToSpaw.Count > 0)
+                {
+                    startSpawnEnemies();
+                }
             }
             else
             {

@@ -96,13 +96,13 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3034708425488045956}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 3
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   enemyDamageRate: 1
   enemyNextDamage: 0
   thePlayer: {fileID: 0}
+  randomSimulated: 1
 --- !u!114 &4658281800912629008
 MonoBehaviour:
   m_ObjectHideFlags: 0

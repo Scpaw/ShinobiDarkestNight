@@ -173,6 +173,9 @@ public class PlayerController : MonoBehaviour
         movementInput = Vector2.zero;
         canAttack = true;
         canHeal = false;
+
+        dashDelaySlider.maxValue = dashMaxCooldown;
+        dashDelaySlider.minValue = dashMinCooldown;
     }
 
     private void Update()
@@ -372,19 +375,9 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            dashDelaySlider.maxValue = dashMaxCooldown;
-            dashDelaySlider.minValue = dashMinCooldown;
-            dashDelaySlider.value = dashCooldown;
 
-            if (canDash == false)
-            {
-                if (dashCooldown < dashMaxCooldown)
-                {
-                    t += Time.deltaTime / dushCooldownSpeed;
 
-                    dashCooldown = Mathf.Lerp(dashMinCooldown, dashMaxCooldown, t);
-                }
-            }
+
 
             //Prevent the player from blocking on collisions when moving
             if (movementInput != Vector2.zero)
@@ -416,9 +409,13 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.zero);
         }
 
-        
+        if (dashCooldown < dashMaxCooldown)
+        {
+            t += Time.deltaTime / dushCooldownSpeed;
 
-
+            dashCooldown = Mathf.Lerp(dashMinCooldown, dashMaxCooldown, t);
+        }
+        dashDelaySlider.value = dashCooldown;
     }
 
     //The following order of "count"(RigidBody2D's parameters of movement) will be executed when "count" = 0
@@ -729,7 +726,7 @@ public class PlayerController : MonoBehaviour
 
     public void StartHealing()
     {
-        StopAllCoroutines();
+        //StopAllCoroutines();
         StartCoroutine(ChangeCamSizeUp());
     }
 
@@ -737,7 +734,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isHealing)
         {
-            StopAllCoroutines();
+            //StopAllCoroutines();
             StartCoroutine(ChangeCamSizeDown());
             movementInput = saveDirection;
             canMove = true;
@@ -757,6 +754,8 @@ public class PlayerController : MonoBehaviour
         canDash = false;
         canHeal = false;
         myAnim.Play(deathAnim.name);
+        StopAllCoroutines();
+        this.enabled = false;
     }
 
     void SaveMovement()

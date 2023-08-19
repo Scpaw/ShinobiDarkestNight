@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 4
   autoRepath:
-    mode: 2
+    mode: 1
     interval: 0.5
     sensitivity: 10
     maximumInterval: 2
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebbf21f8e084e2f4fbb77209aa014497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDamage: 10
+  enemyDamage: 5
   enemyDamageRate: 0.5
   enemyNextDamage: 2
   isAttacking: 0

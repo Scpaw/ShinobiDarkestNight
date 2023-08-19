@@ -13,13 +13,25 @@ public class ScareCrow : MonoBehaviour
     [SerializeField] float enemyDamageRate;
     [SerializeField] float enemyNextDamage;
     [SerializeField] private GameObject thePlayer;
-
+    [SerializeField] private bool randomSimulated;
     Animator EnemyAnim;
 
 
 
     private void OnEnable()
     {
+        if (randomSimulated)
+        {
+            if (Random.value > 0.5f)
+            {
+                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            }
+            else
+            {
+                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            }
+        }
+
         if (thePlayer == null)
         {
             thePlayer = PlayerController.Instance.GetPlayer();

@@ -58,7 +58,17 @@ public class Doll_AI: MonoBehaviour
         }
 
     }
-
+    private void FixedUpdate()
+    {
+        if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
+        {
+            ai.enabled = false;
+        }
+        else
+        {
+            ai.enabled = true;
+        }
+    }
     private IEnumerator ResetPathf()
     {
         ai.SetNewPath();

@@ -94,7 +94,12 @@ public class Spear : MonoBehaviour
         {
             ai.canMove = false;
         }
-        if ((player.position - transform.position).magnitude < 1.1f)
+
+    }
+
+    private void FixedUpdate()
+    {
+        if ((player.position - transform.position).magnitude < 1.1f || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
         {
             ai.enabled = false;
         }
@@ -126,6 +131,11 @@ public class Spear : MonoBehaviour
             if (Random.value < 0.3f )
             {
                 transform.position = startPos + Random.insideUnitCircle / 30;
+                if (Random.value < 0.05f)
+                {
+                    ParticleManager.instance.UseParticle("Dust", transform.position, Vector3.zero);
+                }
+
             }
 
             i -= Time.deltaTime;
@@ -172,10 +182,5 @@ public class Spear : MonoBehaviour
             }
         }
        
-    }
-
-    private void OnDrawGizmos()
-    {
-        Debug.DrawLine(transform.position, -transform.position + player.position, Color.red);
     }
 }

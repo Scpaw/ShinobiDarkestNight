@@ -79,7 +79,6 @@ MonoBehaviour:
   enemyDamage: 10
   enemyDamageRate: 1
   enemyNextDamage: 2
-  thePlayer: {fileID: 0}
   isAttacking: 0
   attacksInt: 0
   attackAnim: 0
