@@ -14,6 +14,7 @@ public class SpawnNpc : MonoBehaviour
     [SerializeField] Image ScareCrow;
     [SerializeField] Image Archer;
     [SerializeField] Image Resetbutton;
+    [SerializeField] Image Spear;
     [Tooltip("Room to spawn enemies")]
     [SerializeField] RoomBrain roomToActivate;
     [SerializeField] List<GameObject> enemies;
@@ -83,6 +84,20 @@ public class SpawnNpc : MonoBehaviour
         {
             Archer.color = new Color(Archer.color.r, Archer.color.g, Archer.color.b, 0.5f);
             roomToActivate.enemiesToSpaw.Add(enemies[2]);
+        }
+    }
+
+    public void SpearButton()
+    {
+        if (Spear.color.a < 1)
+        {
+            Spear.color = new Color(Spear.color.r, Spear.color.g, Spear.color.b, 1);
+            roomToActivate.enemiesToSpaw.Remove(enemies[3]);
+        }
+        else
+        {
+            Spear.color = new Color(Spear.color.r, Spear.color.g, Spear.color.b, 0.5f);
+            roomToActivate.enemiesToSpaw.Add(enemies[3]);
         }
     }
 

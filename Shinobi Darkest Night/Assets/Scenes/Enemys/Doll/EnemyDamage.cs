@@ -9,7 +9,7 @@ using Pathfinding;
 public class EnemyDamage : MonoBehaviour
 {
     [Header("Enemy Damage")]
-    [SerializeField] float enemyDamage;
+    public float enemyDamage;
     [SerializeField] float enemyDamageRate;
     [SerializeField] float enemyNextDamage;
     private GameObject thePlayer;

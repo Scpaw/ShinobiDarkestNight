@@ -15,6 +15,9 @@ public class Spear : MonoBehaviour
     private Vector3 attackPoint;
     private float timebtwAttacks;
     private bool canMove;
+    private EnemyDamage damageRange;
+    private float dmg;
+    private bool hitPlayer;
 
     private void Awake()
     {
@@ -40,15 +43,20 @@ public class Spear : MonoBehaviour
         {
             transform.GetComponent<AIDestinationSetter>().target = player;
         }
+        if (damageRange == null)
+        {
+            damageRange = GetComponent<EnemyDamage>();
+        }
         timebtwAttacks = 0;
+        dmg = damageRange.enemyDamage;
+        hitPlayer = false;
     }
     void Update()
     {
-        if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < attackRadius && timebtwAttacks < 0.3f)
+        if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < attackRadius && timebtwAttacks < 0.3f &&GetComponent<EnemyHealth>().stundTime <0.1f)
         {
-            Debug.Log("player in");
             StartCoroutine(SpearDash());
-            timebtwAttacks = 12;
+            timebtwAttacks = 5;
         }
         if (timebtwAttacks > 0)
         { 
@@ -66,7 +74,6 @@ public class Spear : MonoBehaviour
             {
                 if (!ai.canMove)
                 {
-                    Debug.Log("move now");
                     StartCoroutine(ResetPathf());
                 }
             }
@@ -75,7 +82,7 @@ public class Spear : MonoBehaviour
         {
             ai.canMove = false;
         }
-        if ((player.position - transform.position).magnitude < 1.5f)
+        if ((player.position - transform.position).magnitude < 1.1f)
         {
             ai.enabled = false;
         }
@@ -84,24 +91,31 @@ public class Spear : MonoBehaviour
             ai.enabled = true;
         }
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject == player.gameObject && !damageRange.enabled && !hitPlayer)
+        {
+            Debug.Log("Collision");
+            player.GetComponent<PlayerHealth>().AddDamage(dmg * 1.5f);
+            hitPlayer = true;
+        }
+    }
     private IEnumerator SpearDash()
     {
         canMove = false;
-        Debug.Log("start");
-        float i = 0;
+        damageRange.enabled = false;
+        float i = 1;
         ai.canMove = false;
         attackPoint = player.position + ((player.position - transform.position).normalized * 2);
-
-
-        while (transform.position != attackPoint)
+        GetComponent<Rigidbody2D>().AddForce((attackPoint - transform.position) * 3, ForceMode2D.Impulse);
+        while (i > 0)
         {
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, attackPoint.x, i/5), Mathf.Lerp(transform.position.y, attackPoint.y, i/5), 0);
-            i += Time.deltaTime;
-            Debug.Log("moving");
+            i -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
         canMove = true;
+        damageRange.enabled = true;
+        hitPlayer = false;
         StartCoroutine(ResetPathf());
     }
     private IEnumerator ResetPathf()
