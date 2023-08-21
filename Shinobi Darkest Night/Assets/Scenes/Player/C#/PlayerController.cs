@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public CharacterState AttackAnim { get; private set; }
     [field: SerializeField] public CharacterState ShokyakuAnim { get; private set; }
     [field: SerializeField] public CharacterState MezameAnim { get; private set; }
+    [field: SerializeField] public CharacterState ItaikenAnim { get; private set; }
     [field: SerializeField] public CharacterAnimationStateDictionary StateAnimations { get; private set; }
     [field: SerializeField] public float RunVelocityTreshchold { get; private set; } = 0.1f;
 
@@ -151,6 +152,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Death")]
     public AnimationClip deathAnim;
+
+    [Header("Itaiken")]
+    [SerializeField] private GameObject itaikenToSpawn;
+    [SerializeField] private AnimationClip startItaiken;
+    private bool itaiken;
     private void Awake()
     {
         Instance = this;
@@ -206,7 +212,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (currentState.CanExitWhilePlaying = true || timeToEndAnimation <= 0)
         {
-            if (!isDashing && !shokyaku && !isSpeedingUp)
+            if (!isDashing && !shokyaku && !isSpeedingUp && !itaiken)
             {
                 if (movementInput != Vector2.zero)
                 {
@@ -217,7 +223,7 @@ public class PlayerController : MonoBehaviour
                     CurrentState = IdleAnim;
                 }
             }
-            else if (!isDashing && !shokyaku && isSpeedingUp)
+            else if (!isDashing && !shokyaku && isSpeedingUp &&!itaiken)
             {
                 if (movementInput != Vector2.zero)
                 {
@@ -495,6 +501,10 @@ public class PlayerController : MonoBehaviour
         {
             StopDesumiru();
         }
+        else if (itaiken && canAttack)
+        { 
+            StopItaken();
+        }
      
     }
 
@@ -551,12 +561,16 @@ public class PlayerController : MonoBehaviour
         {
             StopDesumiru();
         }
+        else if (canAttack && !isHealing && itaiken)
+        { 
+            StopItaken();
+        }
     }
 
     //When LeftMouseButton(LMB) was pressed
     public void OnFire()
     {
-        if (canAttack && !isHealing && !desumiru)
+        if (canAttack && !isHealing && !desumiru && !itaiken)
         {
             if (stamina >= 5)
             {
@@ -579,6 +593,10 @@ public class PlayerController : MonoBehaviour
             canAttack = false;
             desumiruState += 1;
             DesumiruUse();
+        }
+        else if (itaiken && canAttack)
+        {
+            SpawnItaiken(true);
         }
     }
 
@@ -641,7 +659,7 @@ public class PlayerController : MonoBehaviour
     {
         if (movementValue.Get<float>() == 1)
         {
-            if (canAttack && !isHealing && canMove)
+            if (canAttack && !isHealing && canMove && !itaiken)
             {
                 shokyakuTimer = 4;
                 canDash = false;
@@ -652,7 +670,7 @@ public class PlayerController : MonoBehaviour
                 currentClip = startShokyaku;
             }
         }
-        else if (movementValue.Get<float>() == 0 && !shokyaku)
+        else if (movementValue.Get<float>() == 0 && !shokyaku && !itaiken)
         {
             stopShokyaku = true;
         }
@@ -664,6 +682,44 @@ public class PlayerController : MonoBehaviour
             canMove = true;
             canAttack = true;
             currentState = RunAnim;
+        }
+    }
+
+
+    public void OnItaiken()
+    {
+        if (canAttack && !isHealing)
+        {
+            itaiken = true;
+            canAttack = false;
+            canMove = false;
+            canAttack = false;
+            //myAnim.Play(startItaiken.name);                   
+            SpawnItaiken(false);
+        }
+        
+    }
+    void StopItaken()
+    {
+        if (itaiken)
+        {
+            itaiken = false;
+            canAttack = true;
+            canMove = true;
+        }
+
+    }
+
+    public void SpawnItaiken(bool stopAfter)
+    {
+        Instantiate(itaikenToSpawn, transform.position, Quaternion.Euler(projectileRotation.transform.eulerAngles.x, projectileRotation.transform.eulerAngles.y, projectileRotation.transform.eulerAngles.z - 90));
+        canAttack = true;
+        currentState = ItaikenAnim;
+        facingDirection = projectileSpawnPoint.position - transform.position;
+        ChangeClip();
+        if (stopAfter)
+        {
+            StopItaken();
         }
     }
 
@@ -694,10 +750,22 @@ public class PlayerController : MonoBehaviour
         {
             desumiuRadius = 5;
         }
-        myAnim.Play(desumiruAnimations[1].name,-1,0);
+        if (desumiruState == 1)
+        {
+            myAnim.Play(desumiruAnimations[1].name, -1, 0);
+        }
+        else if (desumiruState == 2)
+        {
+            myAnim.Play(desumiruAnimations[3].name, -1, 0);
+        }
+        else if (desumiruState == 3)
+        {
+            myAnim.Play(desumiruAnimations[5].name, -1, 0);
+        }
+
     }
 
-    void StopDesumiru()
+    public void StopDesumiru()
     {
         if (desumiru)
         {
@@ -726,7 +794,6 @@ public class PlayerController : MonoBehaviour
 
     public void StartHealing()
     {
-        //StopAllCoroutines();
         StartCoroutine(ChangeCamSizeUp());
     }
 
@@ -734,7 +801,6 @@ public class PlayerController : MonoBehaviour
     {
         if (isHealing)
         {
-            //StopAllCoroutines();
             StartCoroutine(ChangeCamSizeDown());
             movementInput = saveDirection;
             canMove = true;
@@ -826,6 +892,15 @@ public class PlayerController : MonoBehaviour
             {
                 canAttack = true;
             }
+            if (desumiruState == 1)
+            {
+                myAnim.Play(desumiruAnimations[2].name, -1, 0);
+            }
+            else if (desumiruState == 2)
+            {
+                myAnim.Play(desumiruAnimations[4].name, -1, 0);
+            }
+
             slowWaitingTime -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }

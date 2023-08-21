@@ -8,7 +8,12 @@ public class ProjectileToCollect : MonoBehaviour
     public bool onEnemy;
     public float pickUpSpeed;
     private Vector2 startpos;
+    private Vector2 player;
 
+    private void Start()
+    {
+        player = PlayerController.Instance.GetPlayer().transform.position;
+    }
     private void FixedUpdate()
     {
         if (startpos == Vector2.zero)
@@ -30,7 +35,6 @@ public class ProjectileToCollect : MonoBehaviour
                 transform.GetChild(0).gameObject.SetActive(true);
             }
         }
-
     }
 
     private void OnTriggerStay2D(Collider2D collision)

@@ -131,11 +131,6 @@ public class Spear : MonoBehaviour
             if (Random.value < 0.3f )
             {
                 transform.position = startPos + Random.insideUnitCircle / 30;
-                if (Random.value < 0.05f)
-                {
-                    ParticleManager.instance.UseParticle("Dust", transform.position, Vector3.zero);
-                }
-
             }
 
             i -= Time.deltaTime;
@@ -145,6 +140,7 @@ public class Spear : MonoBehaviour
         hit = Physics2D.Raycast(transform.position, -transform.position + player.position, 100, playerLayer).transform.gameObject;
         if (hit.layer == player.gameObject.layer)
         {
+            ParticleManager.instance.UseParticle("Dust", transform.position, Vector3.zero);
             attackPoint = player.position + ((player.position - transform.position).normalized * 2);
             i = 1;
             rb.AddForce((attackPoint - transform.position) * 3, ForceMode2D.Impulse);

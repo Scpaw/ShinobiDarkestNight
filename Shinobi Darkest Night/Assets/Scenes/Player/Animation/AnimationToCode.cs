@@ -6,44 +6,59 @@ using UnityEngine;
 public class AnimationToCode : MonoBehaviour
 {
     [SerializeField] private Coroutine slowing;
+    private PlayerController playerController;
+    private void Awake()
+    {
+        playerController = transform.parent.GetComponent<PlayerController>();
+    }
     public void Shoot()
     {
-        if (transform.parent.GetComponent<PlayerController>() != null)
+        if (playerController != null)
         {
-            transform.parent.GetComponent<PlayerController>().SpawnPoint();
+            playerController.SpawnPoint();
         }
     }
 
     public void StartHeal()
     {
-        transform.parent.GetComponent<PlayerController>().canHeal = true;
+        playerController.canHeal = true;
     }
 
     public void DesumiruAttack()
     {
-        transform.parent.GetComponent<PlayerController>().DesumiruAttack();
+        playerController.DesumiruAttack();
     }
 
     public void SlowTime()
     {
-        if (transform.parent.GetComponent<PlayerController>().desumiruState < 4)
+        if (playerController.desumiruState < 4)
         {
             if (slowing != null)
             {
                 StopCoroutine(slowing);
-                slowing = StartCoroutine(transform.parent.GetComponent<PlayerController>().SlowTime());
+                slowing = StartCoroutine(playerController.SlowTime());
             }
             else
             {
-                slowing = StartCoroutine(transform.parent.GetComponent<PlayerController>().SlowTime());
+                slowing = StartCoroutine(playerController.SlowTime());
             }
         }
 
     }
+    public void StopDesumiru()
+    { 
+        playerController.StopDesumiru();
+    }
 
     public void StartShokyaku()
     {
-        transform.parent.GetComponent<PlayerController>().shokyaku = true;
+        playerController.shokyaku = true;
+    }
+
+
+    public void SpawnItaiken()
+    { 
+        playerController.SpawnItaiken(false);
     }
 
     public void TimeToDie()

@@ -900,6 +900,7 @@ MonoBehaviour:
   <AttackAnim>k__BackingField: {fileID: 11400000, guid: 75886f69195bd034f8bf5ce881a363fc, type: 2}
   <ShokyakuAnim>k__BackingField: {fileID: 11400000, guid: c17d39614ee489a45a0c6e6ae049638e, type: 2}
   <MezameAnim>k__BackingField: {fileID: 11400000, guid: 3b7cf861d58951845859e35e61f90a19, type: 2}
+  <ItaikenAnim>k__BackingField: {fileID: 11400000, guid: dd3b242b0c1422d448b348baca9a1166, type: 2}
   <StateAnimations>k__BackingField:
     m_keys:
     - {fileID: 11400000, guid: 4acd3e30a3a76dd4797310304fa2ab06, type: 2}
@@ -909,6 +910,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 75886f69195bd034f8bf5ce881a363fc, type: 2}
     - {fileID: 11400000, guid: c17d39614ee489a45a0c6e6ae049638e, type: 2}
     - {fileID: 11400000, guid: 3b7cf861d58951845859e35e61f90a19, type: 2}
+    - {fileID: 11400000, guid: dd3b242b0c1422d448b348baca9a1166, type: 2}
     m_values:
     - {fileID: 11400000, guid: 3fc774e6528c0c047883e6decde614f1, type: 2}
     - {fileID: 11400000, guid: b3fec87c884e6d341a153754a3f01e50, type: 2}
@@ -917,6 +919,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 003d765770655e141b1d0c59c7058867, type: 2}
     - {fileID: 11400000, guid: 7f65340de3255204b8fa1c2a03748886, type: 2}
     - {fileID: 11400000, guid: 1ef0c381c7a4fd0419a3093231bb4d04, type: 2}
+    - {fileID: 11400000, guid: e490d19917df1954599c4c0db15a74ae, type: 2}
   <RunVelocityTreshchold>k__BackingField: 0.1
   <MoveSpeed>k__BackingField: 3
   collisionOffset: 0.1
@@ -970,6 +973,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: b55e2688258911a40bfdc40791de4b5f, type: 2}
   point2: {x: 0, y: 0}
   deathAnim: {fileID: 7400000, guid: 03132896f8af4ec4b8bd1c8dad575896, type: 2}
+  itaikenToSpawn: {fileID: 0}
 --- !u!114 &2289768794855390393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,7 +1053,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4706091081775750611}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -0.2210815, y: 0.46724784, z: -10}
   m_LocalScale: {x: 10.697475, y: 10.697475, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
