@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{986487A9-2683-E47A-8688-3D0FE6FDB954}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+		</SoundBank>
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{34D1992F-310C-842C-7CDC-AB7D32E9E3C5}">
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="198791011" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ESM_Ninja_Star_Impact_v6_Bloody_Impact_Side_Scroller_Mobile_Puzzle_Cartoon_Sci_Fi_Gore.wav</ShortName>
+					<CachePath>SFX/ESM_Ninja_Star_Impact_v6_Bloody_Impact_Side_Scroller_Mobile_Puzzle_Cartoon_Sci_Fi_Gore_17045CC0.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2394582229" Name="Player_Dash" DurationType="OneShot" DurationMin="0.08760809" DurationMax="0.11037927">
+					<MediaRefs>
+						<MediaRef Id="198791011"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{0CE829D5-6B26-2AEF-9131-93B1F4E71F3F}</FileHash>
+</SoundBanksInfo>

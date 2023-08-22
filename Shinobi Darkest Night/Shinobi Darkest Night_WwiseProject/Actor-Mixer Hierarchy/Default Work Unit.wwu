@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{6C0A1A3F-6682-4A04-B1AD-D8AD487B33CB}" SchemaVersion="110">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{6C0A1A3F-6682-4A04-B1AD-D8AD487B33CB}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{6C0A1A3F-6682-4A04-B1AD-D8AD487B33CB}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="Player_Dash" ID="{4E50386F-ABA1-45FD-A352-6445E4156821}" ShortID="750581564">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>-20</Value>
+							</ValueList>
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{94ACDAA1-7EBC-4AC3-890D-80566E7E2E9B}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="200"/>
+											<Property Name="Min" Type="Real64" Value="-200"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{9BE00414-CDE6-4BA8-8B57-6B143A37DA53}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="5"/>
+											<Property Name="Min" Type="Real64" Value="-5"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="ESM_Ninja_Star_Impact_v6_Bloody_Impact_Side_Scroller_Mobile_Puzzle_Cartoon_Sci_Fi_Gore" ID="{0AC43384-0795-4C32-9777-68035ED7BC2E}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.0338401449259933"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.0972072647525364"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>ESM_Ninja_Star_Impact_v6_Bloody_Impact_Side_Scroller_Mobile_Puzzle_Cartoon_Sci_Fi_Gore.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="198791011"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="ESM_Ninja_Star_Impact_v6_Bloody_Impact_Side_Scroller_Mobile_Puzzle_Cartoon_Sci_Fi_Gore" ID="{0AC43384-0795-4C32-9777-68035ED7BC2E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>
