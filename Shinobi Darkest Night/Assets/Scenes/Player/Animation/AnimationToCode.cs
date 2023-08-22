@@ -73,15 +73,20 @@ public class AnimationToCode : MonoBehaviour
             StartCoroutine(collision.GetComponent<EnemyHealth>().Stuned(false));
             if (transform.parent.GetComponent<PlayerController>().desumiruState == 2)
             {
-                collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.parent.GetComponent<PlayerController>().point2 * 1, ForceMode2D.Impulse);
+                if (collision.gameObject.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
+                {
+                    collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.parent.GetComponent<PlayerController>().point2 * 1, ForceMode2D.Impulse);
+                }
             }
             else if (transform.parent.GetComponent<PlayerController>().desumiruState == 3)
             {
-                collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.parent.GetComponent<PlayerController>().point2 * 2, ForceMode2D.Impulse);
+                if (collision.gameObject.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
+                {
+                    collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.parent.GetComponent<PlayerController>().point2 * 2, ForceMode2D.Impulse);
+                }
             }
-
         }
     }
 }

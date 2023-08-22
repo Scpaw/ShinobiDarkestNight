@@ -12,6 +12,7 @@ public class MiniOkubi : MonoBehaviour
     private Transform player;
     private Animator anim;
     private Vector2 startPos;
+    private float scaleX;
 
     //atak wlosami
     private bool attacking;
@@ -21,8 +22,6 @@ public class MiniOkubi : MonoBehaviour
     {
         startPos = transform.position;
     }
-
-
     private void OnEnable()
     {
         transform.position = startPos;
@@ -30,6 +29,7 @@ public class MiniOkubi : MonoBehaviour
         enemyScript = GetComponent<EnemyHealth>();
         enemySpeed = ai.speed;
         player = PlayerController.Instance.GetPlayer().transform;
+        GetComponent<AIDestinationSetter>().target = player;
     }
     void Update()
     {
@@ -37,6 +37,8 @@ public class MiniOkubi : MonoBehaviour
         { 
             anim = transform.Find("Grafika").GetComponent<Animator>();
             GetComponent<EnemyDamage>().attackAnim = true;
+            scaleX = anim.transform.localScale.x;
+            Debug.Log(anim.transform.localScale.x);
         }
         if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < detectRadius)
         {
@@ -65,6 +67,14 @@ public class MiniOkubi : MonoBehaviour
             anim.SetTrigger("HairAttack");
             GetComponent<EnemyDamage>().attackAnim = false;
             GetComponent<EnemyDamage>().attacksInt = 0;
+        }
+        if (player.position.x > transform.position.x)
+        {
+            anim.transform.localScale = new Vector3(-scaleX, anim.transform.localScale.y, anim.transform.localScale.z);
+        }
+        else
+        {
+            anim.transform.localScale = new Vector3(scaleX, anim.transform.localScale.y, anim.transform.localScale.z);
         }
     }
 

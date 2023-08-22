@@ -344,9 +344,9 @@ MonoBehaviour:
   enemyDamage: 10
   enemyDamageRate: 1
   enemyNextDamage: 2
-  thePlayer: {fileID: 0}
   isAttacking: 0
   attacksInt: 0
+  attackAnim: 0
 --- !u!114 &529437379236512734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +363,8 @@ MonoBehaviour:
   enemyHealth: 100
   enemyHealthSlider: {fileID: 529437378441646028}
   enemyCanvas: {fileID: 529437379904965287}
+  canBeAttacked: 0
+  startPos: {x: 0, y: 0, z: 0}
   projectiles: []
   stundTime: 0
   isStuned: 0
@@ -775,7 +777,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -321632651, guid: 5779c67e891f6014d995cbf80283a09e, type: 3}
+  m_Sprite: {fileID: 618634106, guid: 7b99f5036da5a6f46b4547809563bbf5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -796,7 +798,7 @@ Animator:
   m_GameObject: {fileID: 529437380144124223}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0dfe79b5c5eff2946901e149c7204d7d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

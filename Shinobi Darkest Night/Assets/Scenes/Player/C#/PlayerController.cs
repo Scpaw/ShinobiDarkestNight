@@ -796,7 +796,7 @@ public class PlayerController : MonoBehaviour
             canAttack = true;
             desumiruPressed = false;
             slowWaitingTime = 0.01f;
-            movementInput = saveDirection;
+            myAnim.Play(currentClip.name);
             ChangeClip();
         }
     }
@@ -944,8 +944,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (timeToStopDesumiru)
-        {
-            myAnim.Play(currentClip.name);
+        {           
             StopDesumiru();
         }
         StopCoroutine(TimeToNormal());

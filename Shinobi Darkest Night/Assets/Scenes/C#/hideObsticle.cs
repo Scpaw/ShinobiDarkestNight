@@ -28,17 +28,15 @@ public class hideObsticle : MonoBehaviour
         O = gameObject.transform.position.y;
         playerT = playerP.transform.position.y;
 
-        if(gameObject.tag == "Obstacle")
+        if(gameObject.tag == "Obstacle"  && (playerP.transform.position - transform.position).magnitude < 2)
         {
             if (playerT > O)
             {
                 sprite.sortingOrder = playerSprite.sortingOrder + 1;
-                //Debug.Log("+");
             }
             else if (O > playerT)
             {
                 sprite.sortingOrder = playerSprite.sortingOrder - 1;
-                //Debug.Log("-");
             }
         }
     }
