@@ -149,6 +149,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 point2;
     Coroutine desumiruAttackCorutine;
     private bool timeToStopDesumiru;
+    private bool desumiruPressed;
 
     [Header("Death")]
     public AnimationClip deathAnim;
@@ -588,11 +589,26 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        else if (desumiru && canAttack && desumiruState < 3)
+        else if (desumiru && canAttack && desumiruState < 4 && !desumiruPressed)
         {
-            canAttack = false;
-            desumiruState += 1;
-            DesumiruUse();
+            if (stamina >= 12)
+            {
+                canAttack = false;
+                desumiruState += 1;
+                DesumiruUse();
+                myAnim.SetTrigger("Desumiru");
+            }
+            else
+            {
+                StopDesumiru();
+            }
+            Debug.Log("pressed in time");
+
+        }
+        else if (desumiru && !canAttack && desumiruState < 4)
+        {
+            desumiruPressed = true;
+            Debug.Log("before action");
         }
         else if (itaiken && canAttack)
         {
@@ -657,9 +673,14 @@ public class PlayerController : MonoBehaviour
 
     public void OnShokyaku(InputValue movementValue)
     {
+
         if (movementValue.Get<float>() == 1)
         {
-            if (canAttack && !isHealing && canMove && !itaiken)
+            if (desumiru && canAttack)
+            { 
+                StopDesumiru();
+            }
+            else if (canAttack && !isHealing && canMove && !itaiken)
             {
                 shokyakuTimer = 4;
                 canDash = false;
@@ -670,7 +691,7 @@ public class PlayerController : MonoBehaviour
                 currentClip = startShokyaku;
             }
         }
-        else if (movementValue.Get<float>() == 0 && !shokyaku && !itaiken)
+        else if (movementValue.Get<float>() == 0 && !shokyaku && !itaiken && shokyakuTimer ==4)
         {
             stopShokyaku = true;
         }
@@ -742,44 +763,52 @@ public class PlayerController : MonoBehaviour
         timeToStopDesumiru = false;
         canAttack = false;
         slowWaitingTime = 0.05f;
-        if (desumiruState == 0)
+        if (desumiruState < 2)
         {
             desumiuRadius = 3;
-        }
-        else if (desumiruState == 1)
-        {
-            desumiuRadius = 5;
-        }
-        if (desumiruState == 1)
-        {
-            myAnim.Play(desumiruAnimations[1].name, -1, 0);
+            UseStamina(5);
         }
         else if (desumiruState == 2)
         {
-            myAnim.Play(desumiruAnimations[3].name, -1, 0);
+            desumiuRadius = 6;
+            UseStamina(7);
         }
-        else if (desumiruState == 3)
+        else if (desumiruState >= 3)
         {
-            myAnim.Play(desumiruAnimations[5].name, -1, 0);
+            UseStamina(12);
         }
-
+        
     }
 
     public void StopDesumiru()
     {
         if (desumiru)
         {
+            if (myAnim.GetComponent<AnimationToCode>().slowing != null)
+            {
+                StopCoroutine(myAnim.GetComponent<AnimationToCode>().slowing);
+            }
+            StopCoroutine(TimeToNormal());
+            StartCoroutine(TimeToNormal());
             desumiru = false;
             canDash = true;
             canMove = true;
             canAttack = true;
+            desumiruPressed = false;
             slowWaitingTime = 0.01f;
+            movementInput = saveDirection;
             ChangeClip();
         }
     }
 
     public void DesumiruAttack()
     {
+        if (myAnim.GetComponent<AnimationToCode>().slowing != null)
+        {
+            StopCoroutine(myAnim.GetComponent<AnimationToCode>().slowing);
+            StopCoroutine(TimeToNormal());
+            StartCoroutine(TimeToNormal());
+        }
         if (desumiruAttackCorutine == null)
         {
             desumiruAttackCorutine = StartCoroutine(DesumiruAttackUse());
@@ -885,25 +914,35 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("to fast use");
         }
-
-        while (slowWaitingTime > 0)
+        if (desumiruPressed)
         {
-            if (desumiruAttackCorutine == null)
+            if (stamina >= 12)
             {
-                canAttack = true;
+                canAttack = false;
+                desumiruState += 1;
+                DesumiruUse();
+                myAnim.SetTrigger("Desumiru");
             }
-            if (desumiruState == 1)
+            else
             {
-                myAnim.Play(desumiruAnimations[2].name, -1, 0);
+                StopDesumiru();
             }
-            else if (desumiruState == 2)
-            {
-                myAnim.Play(desumiruAnimations[4].name, -1, 0);
-            }
-
-            slowWaitingTime -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
+            desumiruPressed = false;
         }
+        else
+        {
+            while (slowWaitingTime > 0)
+            {
+                if (desumiruAttackCorutine == null)
+                {
+                    canAttack = true;
+                }
+
+                slowWaitingTime -= Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+        }
+
         if (timeToStopDesumiru)
         {
             myAnim.Play(currentClip.name);
@@ -922,10 +961,6 @@ public class PlayerController : MonoBehaviour
                 Time.timeScale += Time.deltaTime *4;
                 yield return new WaitForEndOfFrame();
             }
-        }
-        else
-        {
-            Debug.LogError("time is already normal");
         }
     }
 
@@ -954,12 +989,6 @@ public class PlayerController : MonoBehaviour
         desumiruAttackCorutine = null;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, new Vector2(point2.x +transform.position.x, point2.y + transform.position.y));
-     
-    }
     public GameObject GetPlayer()
     {
         return gameObject;

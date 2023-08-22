@@ -126,4 +126,13 @@ public class RoomBrain : MonoBehaviour
 
 
     }
+
+    private void OnDrawGizmos()
+    {
+        foreach (Transform point in points)
+        {
+            UnityEditor.Handles.DrawWireDisc(point.position, Vector3.back, maxDeviationFromPoint);
+        }
+        UnityEditor.Handles.color = Color.red;
+    }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AnimationToCode : MonoBehaviour
 {
-    [SerializeField] private Coroutine slowing;
+    public Coroutine slowing;
     private PlayerController playerController;
     private void Awake()
     {

@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onEnemy: 0
-  pickUpSpeed: 3.1
+  pickUpSpeed: 6
 --- !u!50 &4766530886822486110
 Rigidbody2D:
   serializedVersion: 4
