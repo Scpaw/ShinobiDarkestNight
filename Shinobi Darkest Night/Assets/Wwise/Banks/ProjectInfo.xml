@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo>
+	<Project Name="Shinobi Darkest Night_WwiseProject" GUID="{CF23234C-30C5-4A43-90DE-CFBE48AFDCF0}" Generator="2022.1.6.8263"/>
+	<CacheRoot>../../../Shinobi Darkest Night_WwiseProject/.cache</CacheRoot>
+	<Platforms>
+		<Platform Name="Mac" GUID="{C2B128A5-CC3F-4B7F-88D8-84DDA7CBF5DB}" BasePlatform="Mac" BasePlatformGUID="{9C6217D5-DD11-4795-87C1-6CE02853C540}" Path="../../../Shinobi Darkest Night_WwiseProject/GeneratedSoundBanks/Mac"/>
+		<Platform Name="Windows" GUID="{4C6D52D9-A82F-41FF-BD8E-F905AD504878}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="../../../Shinobi Darkest Night_WwiseProject/GeneratedSoundBanks/Windows"/>
+	</Platforms>
+	<Languages>
+		<Language Name="English(US)" Id="684519430" GUID="{08C04779-FDCF-423A-8AF7-F7EF368A5FF2}" Default="true" UseAsStandIn="true"/>
+	</Languages>
+	<FileHash>{D3F9A04F-D383-4DF2-A455-85A7648E6073}</FileHash>
+</ProjectInfo>
