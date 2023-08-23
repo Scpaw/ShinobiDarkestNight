@@ -16,8 +16,9 @@ public class EnemyDamage : MonoBehaviour
     public bool isAttacking;
     public int attacksInt;
     public bool attackAnim;
-
+    private DamageRange damageR;
     Animator EnemyAnim;
+    public bool playerIn;
 
 
     private void OnEnable()
@@ -31,12 +32,15 @@ public class EnemyDamage : MonoBehaviour
         {
             thePlayer = PlayerController.Instance.GetPlayer();
         }
+        if (damageR == null)
+        {
+            damageR = GetComponentInChildren<DamageRange>();
+        }
     }
 
     void Update()
     {
-        GameObject parentGameObject = gameObject;
-        DamageRange damageR = parentGameObject.GetComponentInChildren<DamageRange>();
+        playerIn = damageR.playerInRange;
         if (damageR.playerInRange == true)
         {
             Attack();

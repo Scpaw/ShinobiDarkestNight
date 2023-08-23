@@ -99,7 +99,7 @@ public class Spear : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if ((player.position - transform.position).magnitude < 0.75f || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
+        if (damageRange.playerIn || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
         {
             ai.enabled = false;
         }

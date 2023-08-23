@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
     public List<GameObject> projectiles;
     public float stundTime;
     public bool isStuned;
+    public int canDeflect;
 
     public void Awake()
     {

@@ -306,7 +306,7 @@ public class AkWwiseInitializationSettings : AkCommonPlatformSettings
 		Instance.ActiveSettingsHaveChanged = true;
 #endif
 
-		UnityEngine.Debug.LogFormat("WwiseUnity: Wwise(R) SDK Version {0}.", AkSoundEngine.WwiseVersion);
+		//UnityEngine.Debug.LogFormat("WwiseUnity: Wwise(R) SDK Version {0}.", AkSoundEngine.WwiseVersion);
 
 		var initResult = AkSoundEngine.Init(ActivePlatformSettings.AkInitializationSettings);
 		if (initResult != AKRESULT.AK_Success)

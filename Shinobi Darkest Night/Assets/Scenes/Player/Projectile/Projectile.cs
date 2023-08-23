@@ -14,6 +14,9 @@ public class Projectile : MonoBehaviour
     bool enemyHit;
     GameObject enemyTrigger;
     public GameObject afterProjectile;
+    private bool deflected;
+    [SerializeField] private Gradient deflectedGradient;
+    private float deflectedTime;
     void Awake()
     {
         prRb = gameObject.GetComponent<Rigidbody2D>();
@@ -25,13 +28,13 @@ public class Projectile : MonoBehaviour
 
         if (gameObject.tag == "Projectile")
         {
-            Destroy(gameObject, aliveTime);
+            aliveTime = Time.time + aliveTime;
         }
+        prRb.AddForce(transform.right* moveSpeed,ForceMode2D.Impulse);
     }
 
     void Update()
     {
-        ProjectileMovement();
 
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -44,36 +47,56 @@ public class Projectile : MonoBehaviour
         {
             projectileSpriteRenderer.flipX = false;
         }
- 
-    }
 
-    void ProjectileMovement()
-    {
-        transform.Translate(Vector3.right * Time.deltaTime * moveSpeed);
-    }
-
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.tag == ("Enemy"))
+        if (aliveTime <= Time.time)
         {
-            
+            Destroy(gameObject);
+        }
+        if (deflected)
+        {
+            transform.GetChild(0).GetComponent<TrailRenderer>().colorGradient = deflectedGradient;
+        }
+    }
+
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (deflectedTime < Time.time)
+        {
             var Triggered = other.gameObject;
-            enemyHit = true;
-            enemyTrigger = Triggered;
-            Attack();
-        }
 
-        if (other.gameObject.tag == "Collider")
-        {
-            Destroy(gameObject, 0);
-        }
-        else if (other.gameObject.tag == "Obstacle")
-        {
-            Destroy(gameObject, 0);
-        }
-        else if (other.gameObject.tag == "Enemy")
-        {
-            Destroy(gameObject, 0);
+
+            if (Triggered.layer == 9)
+            {
+                Destroy(gameObject, 0);
+
+            }
+            else if (Triggered.tag == "Obstacle")
+            {
+                Destroy(gameObject, 0);
+
+            }
+            else if (Triggered.tag == "Enemy" && Triggered.GetComponent<EnemyHealth>() && !enemyHit)
+            {
+                enemyHit = true;
+                enemyTrigger = Triggered;
+                if (enemyTrigger.GetComponent<EnemyHealth>().canDeflect > 0)
+                {
+                    aliveTime = Time.time + 3;
+                }
+                else
+                {
+                    Destroy(gameObject, 0);
+                }
+                Attack();
+            }
+            else if (Triggered.tag == "Player" && Triggered.GetComponent<PlayerHealth>() && deflected)
+            {
+                Triggered.GetComponent<PlayerHealth>().AddDamage(projectileDamage);
+                ParticleManager.instance.UseParticle("Blood", PlayerController.Instance.GetPlayer().transform.position, Vector3.zero);
+                Destroy(gameObject, 0);
+            }
         }
     }
 
@@ -81,10 +104,20 @@ public class Projectile : MonoBehaviour
     {
         EnemyHealth theEnemyHealth = enemyTrigger.GetComponent<EnemyHealth>();
 
-        if (enemyHit == true)
+        if (enemyHit)
         {
-            theEnemyHealth.enemyAddDamage(projectileDamage, false,true);
-
+            if (theEnemyHealth.canDeflect > 0)
+            {
+                theEnemyHealth.canDeflect--;
+                prRb.velocity = -(transform.position- PlayerController.Instance.GetPlayer().transform.position).normalized * prRb.velocity.magnitude;
+                deflectedTime = Time.time + 0.05f;
+                enemyHit = false;
+                deflected = true;
+            }
+            else
+            {
+                theEnemyHealth.enemyAddDamage(projectileDamage, false, true);
+            }
         }
     }
     private void OnDestroy()
@@ -108,4 +141,5 @@ public class Projectile : MonoBehaviour
             }
         }
     }
+
 }

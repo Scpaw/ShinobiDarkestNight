@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Doll_AI: MonoBehaviour
+public class Ronin_AI : MonoBehaviour
 {
     private AILerp ai;
     private EnemyHealth enemyScript;
@@ -40,6 +40,7 @@ public class Doll_AI: MonoBehaviour
         {
             damageRange = GetComponent<EnemyDamage>();
         }
+        enemyScript.canDeflect = 3;
     }
     void Update()
     {
@@ -65,7 +66,7 @@ public class Doll_AI: MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (damageRange.playerIn ||transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
+        if (damageRange.playerIn || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
         {
             ai.enabled = false;
         }
