@@ -287,7 +287,7 @@ public partial class AkCommonUserSettings
 		settings.uNumSamplesPerFrame = m_SamplesPerFrame;
 		m_MainOutputSettings.CopyTo(settings.settingsMainOutput);
 		settings.szPluginDLLPath = GetPluginPath();
-		UnityEngine.Debug.Log("WwiseUnity: Setting Plugin DLL path to: " + (settings.szPluginDLLPath == null ? "NULL" : settings.szPluginDLLPath));
+		//UnityEngine.Debug.Log("WwiseUnity: Setting Plugin DLL path to: " + (settings.szPluginDLLPath == null ? "NULL" : settings.szPluginDLLPath));
 	}
 
 	[UnityEngine.Tooltip("Multiplication factor for all streaming look-ahead heuristic values.")]

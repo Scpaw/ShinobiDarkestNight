@@ -387,7 +387,7 @@ public class AkWwiseInitializationSettings : AkCommonPlatformSettings
 		AkSoundEngine.SetCurrentLanguage(ActivePlatformSettings.InitialLanguage);
 
 		AkCallbackManager.Init(ActivePlatformSettings.CallbackManagerInitializationSettings);
-		UnityEngine.Debug.Log("WwiseUnity: Sound engine initialized successfully.");
+		//UnityEngine.Debug.Log("WwiseUnity: Sound engine initialized successfully.");
 		LoadInitBank();
 		return true;
 	}

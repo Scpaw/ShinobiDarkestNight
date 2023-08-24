@@ -19,6 +19,7 @@ public class EnemyDamage : MonoBehaviour
     private DamageRange damageR;
     Animator EnemyAnim;
     public bool playerIn;
+    public bool canAttack;
 
 
     private void OnEnable()
@@ -36,12 +37,13 @@ public class EnemyDamage : MonoBehaviour
         {
             damageR = GetComponentInChildren<DamageRange>();
         }
+        canAttack = true;
     }
 
     void Update()
     {
         playerIn = damageR.playerInRange;
-        if (damageR.playerInRange == true)
+        if (damageR.playerInRange && canAttack)
         {
             Attack();
             isAttacking = true;
@@ -54,11 +56,6 @@ public class EnemyDamage : MonoBehaviour
 
     void Attack()
     {
-        if (attackAnim) 
-        {
-            EnemyAnim.SetTrigger("Attack");
-        }
-
         PlayerHealth thePlayerHealth = thePlayer.GetComponent<PlayerHealth>();
         if (enemyNextDamage <= Time.time)
         {
@@ -67,6 +64,10 @@ public class EnemyDamage : MonoBehaviour
             if (attackAnim)
             {
                 attacksInt++;
+                if (attackAnim)
+                {
+                    EnemyAnim.SetTrigger("Attack");
+                }
             }
         }
     }

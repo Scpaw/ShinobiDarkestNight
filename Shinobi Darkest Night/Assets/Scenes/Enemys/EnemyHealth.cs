@@ -6,18 +6,18 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
     [Header("Enemy Health")]
-    [SerializeField] float enemyMaxHealth;
-    [SerializeField] float enemyHealth;
+    public float enemyMaxHealth;
+    public float enemyHealth;
     [SerializeField] Slider enemyHealthSlider;
     [SerializeField] GameObject enemyCanvas;
     public bool canBeAttacked;
     private float canBeAttackedTimer;
     public Vector3 startPos;
-
     public List<GameObject> projectiles;
     public float stundTime;
     public bool isStuned;
     public int canDeflect;
+    public float deflectAgain;
 
     public void Awake()
     {
@@ -27,7 +27,7 @@ public class EnemyHealth : MonoBehaviour
     }
     private void OnEnable()
     {
-        canBeAttacked = false;
+        deflectAgain = 5;
         enemyHealth = enemyMaxHealth;
         enemyHealthSlider.maxValue = enemyMaxHealth;
         enemyHealthSlider.value = enemyHealth;
@@ -58,6 +58,8 @@ public class EnemyHealth : MonoBehaviour
         {
             MakeDead();
         }
+        deflectAgain = 5;
+
     }
 
     public void AddProjectile(GameObject projectile)
@@ -72,7 +74,7 @@ public class EnemyHealth : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void ProjectilesOff()
+    public void ProjectilesOff()
     {
         foreach (GameObject projectile in projectiles)
         {

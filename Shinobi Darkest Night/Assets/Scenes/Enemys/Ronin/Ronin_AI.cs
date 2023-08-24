@@ -63,6 +63,17 @@ public class Ronin_AI : MonoBehaviour
             ai.canMove = false;
         }
 
+        if (enemyScript.deflectAgain > 0)
+        {
+            enemyScript.deflectAgain -= Time.deltaTime;
+        }
+        else
+        {
+            if (enemyScript.canDeflect <= 0)
+            {
+                enemyScript.canDeflect = 3;
+            }
+        }
     }
     private void FixedUpdate()
     {

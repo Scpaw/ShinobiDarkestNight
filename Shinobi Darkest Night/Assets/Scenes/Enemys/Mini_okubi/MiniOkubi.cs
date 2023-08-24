@@ -7,15 +7,16 @@ public class MiniOkubi : MonoBehaviour
 {
     private AILerp ai;
     private EnemyHealth enemyScript;
+    private EnemyDamage damage;
     private float enemySpeed;
     public float detectRadius;
     private Transform player;
     private Animator anim;
     private Vector2 startPos;
     private float scaleX;
+    private float enemyAddSpeed;
 
     //atak wlosami
-    private bool attacking;
     private int attackNum;
 
     private void Awake()
@@ -27,18 +28,19 @@ public class MiniOkubi : MonoBehaviour
         transform.position = startPos;
         ai = GetComponent<AILerp>();
         enemyScript = GetComponent<EnemyHealth>();
-        enemySpeed = ai.speed;
         player = PlayerController.Instance.GetPlayer().transform;
         GetComponent<AIDestinationSetter>().target = player;
+        damage = GetComponent<EnemyDamage>();
+        enemySpeed = ai.speed;
+        enemyAddSpeed = 0;
     }
     void Update()
     {
         if (anim == null)
         { 
             anim = transform.Find("Grafika").GetComponent<Animator>();
-            GetComponent<EnemyDamage>().attackAnim = true;
+            damage.attackAnim = true;
             scaleX = anim.transform.localScale.x;
-            Debug.Log(anim.transform.localScale.x);
         }
         if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < detectRadius)
         {
@@ -58,15 +60,24 @@ public class MiniOkubi : MonoBehaviour
         {
             ai.canMove = false;
         }
-        attacking = GetComponent<EnemyDamage>().isAttacking;
-        attackNum = GetComponent<EnemyDamage>().attacksInt;
+        attackNum = damage.attacksInt;
 
-        if (attackNum > Random.Range(3, 6))
+        int x = (int)((enemyScript.enemyHealth / enemyScript.enemyMaxHealth) *10-4);
+        if (x <= 0)
         {
-            Debug.Log("attack now");
+            if (enemyAddSpeed == 0)
+            {
+                enemyAddSpeed = 2;
+                ai.speed = enemySpeed + enemyAddSpeed;
+            }
+        }
+        if (attackNum > Random.Range(3, 2 * x))
+        {
             anim.SetTrigger("HairAttack");
-            GetComponent<EnemyDamage>().attackAnim = false;
-            GetComponent<EnemyDamage>().attacksInt = 0;
+            damage.attackAnim = false;
+            damage.attacksInt = 0;
+            damage.canAttack = false;
+
         }
         if (player.position.x > transform.position.x)
         {
@@ -83,7 +94,7 @@ public class MiniOkubi : MonoBehaviour
         ai.SetNewPath();
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         ai.speed = 0;
-        while (enemySpeed > ai.speed)
+        while (enemySpeed + enemyAddSpeed > ai.speed)
         {
             if (ai.speed > 0.1f)
             {

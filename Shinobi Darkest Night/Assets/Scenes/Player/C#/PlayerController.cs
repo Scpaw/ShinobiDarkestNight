@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
     public Text projectileText;
 
     [Header("Stamina")]
-    public Slider staminaSlider;
+    public Image staminaSlider;
     float stamina = 100;
     float maxStamina;
     float staminaReg;
@@ -173,7 +173,6 @@ public class PlayerController : MonoBehaviour
         startAttackCooldown = attackCooldown;
         attackCooldown = 0;
         maxStamina = stamina;
-        staminaSlider.maxValue = maxStamina;
         cam = FindAnyObjectByType<CinemachineVirtualCamera>();
         startLensSize = cam.m_Lens.OrthographicSize;
         movementDirection = Vector2.zero;
@@ -247,7 +246,7 @@ public class PlayerController : MonoBehaviour
         projectileText.text = projectileNumber.ToString();
 
         //stamina
-        staminaSlider.value = stamina;
+        staminaSlider.fillAmount = stamina/maxStamina;
         if (canMove && !isDashing && canAttack)
         {
             if (stamina < maxStamina)

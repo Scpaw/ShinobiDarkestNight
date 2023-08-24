@@ -109,6 +109,7 @@ public class Projectile : MonoBehaviour
             if (theEnemyHealth.canDeflect > 0)
             {
                 theEnemyHealth.canDeflect--;
+                theEnemyHealth.deflectAgain = 5;
                 prRb.velocity = -(transform.position- PlayerController.Instance.GetPlayer().transform.position).normalized * prRb.velocity.magnitude;
                 deflectedTime = Time.time + 0.05f;
                 enemyHit = false;
