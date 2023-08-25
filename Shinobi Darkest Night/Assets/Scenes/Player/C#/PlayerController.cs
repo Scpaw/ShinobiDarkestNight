@@ -271,7 +271,16 @@ public class PlayerController : MonoBehaviour
                 StopHealing();
             }
         }
+ 
+        if (!isHealing && cam.m_Lens.OrthographicSize <= startLensSize)
+        {
+            cam.m_Lens.OrthographicSize += 2*Time.deltaTime;
+        }
+        
 
+
+
+        //speed
         if (isSpeedingUp)
         { 
             UseStamina(14* Time.deltaTime);
@@ -829,7 +838,8 @@ public class PlayerController : MonoBehaviour
     {
         if (isHealing)
         {
-            StartCoroutine(ChangeCamSizeDown());
+            isHealing = false;
+            canHeal = false;
             movementInput = saveDirection;
             canMove = true;
         }
@@ -882,19 +892,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator ChangeCamSizeDown()
-    {
-        if (isHealing)
-        {
-            isHealing = false;
-            canHeal = false;
-            while (cam.m_Lens.OrthographicSize <= startLensSize)
-            {
-                cam.m_Lens.OrthographicSize += Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
-        }
-    }
 
     public IEnumerator SlowTime()
     {

@@ -18,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
     public bool isStuned;
     public int canDeflect;
     public float deflectAgain;
+    public bool deflectAtRandom;
 
     public void Awake()
     {
@@ -52,7 +53,7 @@ public class EnemyHealth : MonoBehaviour
         enemyHealthSlider.value = enemyHealth;
         if (dropProjectiles)
         {
-            ProjectilesOff();
+            ProjectilesOff(0);
         }
         if (enemyHealth <= 0)
         {
@@ -70,17 +71,17 @@ public class EnemyHealth : MonoBehaviour
     private void MakeDead()
     {
         StopAllCoroutines();
-        ProjectilesOff();
+        ProjectilesOff(0);
         gameObject.SetActive(false);
     }
 
-    public void ProjectilesOff()
+    public void ProjectilesOff(float projectileAddForce)
     {
         foreach (GameObject projectile in projectiles)
         {
             projectile.transform.parent = null;
             projectile.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            projectile.GetComponent<Rigidbody2D>().AddForce((projectile.transform.position - transform.position) * 3, ForceMode2D.Impulse);
+            projectile.GetComponent<Rigidbody2D>().AddForce((projectile.transform.position - transform.position) * (3 + projectileAddForce), ForceMode2D.Impulse);
         }
         if (projectiles.Count > 0)
         {

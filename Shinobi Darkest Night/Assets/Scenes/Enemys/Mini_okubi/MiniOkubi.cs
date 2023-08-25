@@ -28,10 +28,16 @@ public class MiniOkubi : MonoBehaviour
         transform.position = startPos;
         ai = GetComponent<AILerp>();
         enemyScript = GetComponent<EnemyHealth>();
+        enemyScript.deflectAtRandom = true;
         player = PlayerController.Instance.GetPlayer().transform;
         GetComponent<AIDestinationSetter>().target = player;
         damage = GetComponent<EnemyDamage>();
         enemySpeed = ai.speed;
+        enemyAddSpeed = 0;
+    }
+    private void OnDisable()
+    {
+        ai.speed -= enemyAddSpeed;
         enemyAddSpeed = 0;
     }
     void Update()

@@ -19,11 +19,10 @@ public class Okubi_AnimToCode : MonoBehaviour
     }
     public void HairAttack()
     {
-        Debug.Log("Do hair attack");
         attackTime = 2;
         GetComponent<BoxCollider2D>().enabled = true;
         attacking = true;
-        enemyHealth.ProjectilesOff();
+        enemyHealth.ProjectilesOff(10);
     }
     private void Update()
     {
@@ -70,12 +69,14 @@ public class Okubi_AnimToCode : MonoBehaviour
         {
             enemyHealth.canDeflect = 0;
         }
+        Debug.Log(attackTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            playerInAttackTime = 2;
             playerIn = true;
             playerHealth = collision.GetComponent<PlayerHealth>();
         }
@@ -84,7 +85,7 @@ public class Okubi_AnimToCode : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            StopAttack();
+            playerIn = false;
         }
     }
 

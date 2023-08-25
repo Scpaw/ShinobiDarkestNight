@@ -16,7 +16,7 @@ public class Itaiken : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 6)
+        if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(damage, true, true);
             if (collision.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
