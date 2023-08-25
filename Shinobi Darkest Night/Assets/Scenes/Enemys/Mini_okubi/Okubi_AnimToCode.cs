@@ -69,7 +69,6 @@ public class Okubi_AnimToCode : MonoBehaviour
         {
             enemyHealth.canDeflect = 0;
         }
-        Debug.Log(attackTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -15,6 +15,7 @@ public class SpawnNpc : MonoBehaviour
     [SerializeField] Image Archer;
     [SerializeField] Image Resetbutton;
     [SerializeField] Image Spear;
+    [SerializeField] Image Mokubi;
     [Tooltip("Room to spawn enemies")]
     [SerializeField] RoomBrain roomToActivate;
     [SerializeField] List<GameObject> enemies;
@@ -101,6 +102,19 @@ public class SpawnNpc : MonoBehaviour
         }
     }
 
+    public void MOkubiButton()
+    {
+        if (Mokubi.color.a < 1)
+        {
+            Mokubi.color = new Color(Mokubi.color.r, Mokubi.color.g, Mokubi.color.b, 1);
+            roomToActivate.enemiesToSpaw.Remove(enemies[4]);
+        }
+        else
+        {
+            Mokubi.color = new Color(Mokubi.color.r, Mokubi.color.g, Mokubi.color.b, 0.5f);
+            roomToActivate.enemiesToSpaw.Add(enemies[4]);
+        }
+    }
 
     public void ResetSpawn()
     {

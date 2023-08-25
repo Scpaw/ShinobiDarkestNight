@@ -191,7 +191,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 6.3779593
+  m_Radius: 0.52
 --- !u!212 &4769426227854508178
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -258,6 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onEnemy: 0
   pickUpSpeed: 6
+  pickUpRange: 2
 --- !u!50 &4766530886822486110
 Rigidbody2D:
   serializedVersion: 4

@@ -152,12 +152,18 @@ public class PlayerController : MonoBehaviour
     private bool desumiruPressed;
 
     [Header("Death")]
-    public AnimationClip deathAnim;
+    [SerializeField] private AnimationClip deathAnim;
 
     [Header("Itaiken")]
     [SerializeField] private GameObject itaikenToSpawn;
     [SerializeField] private AnimationClip startItaiken;
     private bool itaiken;
+
+    [Header("Inventory")]
+    [SerializeField] private Image shade;
+    private bool inventoryOpen;
+    public List<GameObject> candy;
+    private int currentCandyIndex;
     private void Awake()
     {
         Instance = this;
@@ -344,6 +350,29 @@ public class PlayerController : MonoBehaviour
             facingDirection = projectileSpawnPoint.position - transform.position;
         }
 
+        //inventory
+        if (inventoryOpen)
+        {
+            if (!shade.gameObject.activeInHierarchy)
+            {
+                float r = shade.transform.GetChild(0).position.y/2;
+                Debug.Log(r +" promien");
+                float i = candy.Count;
+                foreach (GameObject x in candy)
+                {
+                    GameObject sqr = Instantiate(x, new Vector3(r * Mathf.Cos((((float)candy.IndexOf(x) / i) * 360 * Mathf.Deg2Rad)) + shade.transform.position.x, r * Mathf.Sin((((float)candy.IndexOf(x) / i) * 360 * Mathf.Deg2Rad)) + shade.transform.position.y, 0), Quaternion.Euler(0, 0, 0));
+                    sqr.transform.SetParent(shade.transform); 
+                    Debug.Log(((float)candy.IndexOf(x)/ i));
+                }
+                shade.gameObject.SetActive(true);
+            }
+
+            
+        }
+        else
+        {
+            shade.gameObject.SetActive(false);
+        }
 
     }
 
@@ -711,6 +740,18 @@ public class PlayerController : MonoBehaviour
             canMove = true;
             canAttack = true;
             currentState = RunAnim;
+        }
+    }
+
+    void OnInventory(InputValue inputValue)
+    {
+        if (inputValue.Get<float>() == 1)
+        {
+            //inventoryOpen = true;
+        }
+        else
+        {
+            //inventoryOpen = false;
         }
     }
 

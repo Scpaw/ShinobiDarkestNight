@@ -73,7 +73,7 @@ public class MiniOkubi : MonoBehaviour
         {
             if (enemyAddSpeed == 0)
             {
-                enemyAddSpeed = 2;
+                enemyAddSpeed = 1.3f;
                 ai.speed = enemySpeed + enemyAddSpeed;
             }
         }

@@ -8,11 +8,12 @@ public class ProjectileToCollect : MonoBehaviour
     public bool onEnemy;
     public float pickUpSpeed;
     private Vector2 startpos;
-    private Vector2 player;
+    private Transform player;
+    public float pickUpRange;
 
     private void Start()
     {
-        player = PlayerController.Instance.GetPlayer().transform.position;
+        player = PlayerController.Instance.GetPlayer().transform;
     }
     private void FixedUpdate()
     {
@@ -35,22 +36,28 @@ public class ProjectileToCollect : MonoBehaviour
                 transform.GetChild(0).gameObject.SetActive(true);
             }
         }
-    }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (onEnemy && GetComponent<Rigidbody2D>().velocity.magnitude < 0.5f && transform.parent == null)
-        { 
-            onEnemy = false;
-        }
-        if (collision.gameObject.tag == "Player" && !onEnemy)
+        if ((player.position - transform.position).magnitude <= pickUpRange && !onEnemy)
         {
-            transform.position = Vector2.MoveTowards(transform.position, collision.transform.position,Time.deltaTime * pickUpSpeed);
-            if ((transform.position - collision.transform.position).magnitude < 0.1f)
+            transform.position = Vector2.MoveTowards(transform.position, player.position, Time.deltaTime * pickUpSpeed);
+            if ((player.position - transform.position).magnitude < 0.1f)
             {
-                collision.GetComponent<PlayerController>().projectileNumber += 1;
+                player.GetComponent<PlayerController>().projectileNumber += 1;
                 Destroy(gameObject);
             }
+        }
+        if (onEnemy && GetComponent<Rigidbody2D>().velocity.magnitude < 0.5f && transform.parent == null)
+        {
+            onEnemy = false;
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 9)
+        {
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
 
