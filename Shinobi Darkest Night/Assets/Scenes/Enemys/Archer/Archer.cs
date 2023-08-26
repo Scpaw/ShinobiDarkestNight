@@ -19,7 +19,7 @@ public class Archer : MonoBehaviour
     private bool playerInRange;
     private int shots;
     private Transform player;
-
+    public bool shooting;
 
     [Header("Archer Movement Parameters")]
     [SerializeField] float archerSpeed;
@@ -29,6 +29,7 @@ public class Archer : MonoBehaviour
     private Vector3 startPos;
     private GameObject thePlayer;
     public List<GameObject> projectiles;
+
     [Header("Archer melee")]
     [SerializeField] float meleeDamage;
     [SerializeField] float meleeAttackTime;
@@ -61,6 +62,7 @@ public class Archer : MonoBehaviour
         }
         gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
         canMove.speed = 1;
+        nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
     }
 
     void FixedUpdate()
@@ -94,11 +96,13 @@ public class Archer : MonoBehaviour
 
                     if (shots > Random.Range(4, 6))
                     {
+                        shooting = true;
                         EnemyAnim.SetTrigger("3shot");
                         shots = 0;
                     }
                     else
                     {
+                        shooting = true;
                         EnemyAnim.SetTrigger("shot");
                         shots++;
                     }
@@ -108,7 +112,10 @@ public class Archer : MonoBehaviour
         }
         else
         {
-            canMove.speed = archerSpeed;
+            if (!shooting)
+            {
+                canMove.speed = archerSpeed;
+            }
         }
 
         if(fireRange())
@@ -150,7 +157,7 @@ public class Archer : MonoBehaviour
         {
             Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileRotation.transform.rotation);
         }
-     
+        shooting = false;
     }
 
     private void Flip(Transform changeThis)

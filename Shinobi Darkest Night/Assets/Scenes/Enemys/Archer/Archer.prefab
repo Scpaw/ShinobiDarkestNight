@@ -391,11 +391,11 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2387455423589708352, guid: 936adce30506ee64f8f7f8f9a8c5d4d8, type: 3}
   projectileSpawnPoint: {fileID: 5815419271627670791}
   projectileRotation: {fileID: 7445210311173915046}
-  fireRange: 4
   sightRange: 6
-  shootingRate_Min: 4
-  shootingRate_Max: 6
+  shootingRate_Min: 1
+  shootingRate_Max: 2
   nextShoot: 4
+  shooting: 0
   archerSpeed: 2
   stundTime: 0
   projectiles: []

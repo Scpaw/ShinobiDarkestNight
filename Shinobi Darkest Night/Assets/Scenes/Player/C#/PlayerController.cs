@@ -353,17 +353,23 @@ public class PlayerController : MonoBehaviour
         //inventory
         if (inventoryOpen)
         {
-            if (!shade.gameObject.activeInHierarchy)
+            if (!shade.gameObject.activeInHierarchy )
             {
-                float r = shade.transform.GetChild(0).position.y/2;
-                Debug.Log(r +" promien");
-                float i = candy.Count;
-                foreach (GameObject x in candy)
+                if (shade.transform.childCount - 1 != candy.Count)
                 {
-                    GameObject sqr = Instantiate(x, new Vector3(r * Mathf.Cos((((float)candy.IndexOf(x) / i) * 360 * Mathf.Deg2Rad)) + shade.transform.position.x, r * Mathf.Sin((((float)candy.IndexOf(x) / i) * 360 * Mathf.Deg2Rad)) + shade.transform.position.y, 0), Quaternion.Euler(0, 0, 0));
-                    sqr.transform.SetParent(shade.transform); 
-                    Debug.Log(((float)candy.IndexOf(x)/ i));
+                   // foreach (Transform child in shade.transform)
+                   // { 
+                    //    if(child.name)
+                    //}
+                    float r = shade.transform.GetChild(0).position.y / 2;
+                    float i = candy.Count;
+                    foreach (GameObject x in candy)
+                    {
+                        GameObject sqr = Instantiate(x, new Vector3(r * Mathf.Cos((((float)candy.IndexOf(x) / i) * 360 * Mathf.Deg2Rad)) + shade.transform.position.x, r * Mathf.Sin((((float)candy.IndexOf(x) / i) * 360 * Mathf.Deg2Rad)) + shade.transform.position.y, 0), Quaternion.Euler(0, 0, 0));
+                        sqr.transform.SetParent(shade.transform);
+                    }
                 }
+
                 shade.gameObject.SetActive(true);
             }
 
@@ -747,7 +753,7 @@ public class PlayerController : MonoBehaviour
     {
         if (inputValue.Get<float>() == 1)
         {
-            //inventoryOpen = true;
+           // inventoryOpen = true;
         }
         else
         {
