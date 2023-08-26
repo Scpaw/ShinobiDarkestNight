@@ -12,28 +12,35 @@ public class Archer : MonoBehaviour
     [SerializeField] private GameObject projectileRotation;
 
     [Header("Archer Projectile Parameters")]
-    [SerializeField] int fireRange;
     [SerializeField] public int sightRange;
     [SerializeField] float shootingRate_Min = 4f;
     [SerializeField] float shootingRate_Max = 6f;
     [SerializeField] float nextShoot = 0.5f;
     private bool playerInRange;
+    private int shots;
+    private Transform player;
+
 
     [Header("Archer Movement Parameters")]
-    [SerializeField] int archerSpeed;
+    [SerializeField] float archerSpeed;
     public float stundTime;
     Animator EnemyAnim;
     private AILerp canMove;
     private Vector3 startPos;
-
     private GameObject thePlayer;
     public List<GameObject> projectiles;
-    private float distance;
+    [Header("Archer melee")]
+    [SerializeField] float meleeDamage;
+    [SerializeField] float meleeAttackTime;
+    private float meleeTime;
+    private DamageRange damageRange;
 
     public void Awake()
     {
         startPos = transform.position;
         playerInRange = false;
+        player = PlayerController.Instance.GetPlayer().transform;
+        damageRange = GetComponentInChildren<DamageRange>();
     }
     private void OnEnable()
     {
@@ -58,16 +65,45 @@ public class Archer : MonoBehaviour
 
     void FixedUpdate()
     {
-        distance = Vector2.Distance(transform.position, thePlayer.transform.position);
+        if (canMove.speed > 0 && canMove.enabled)
+        {
+            EnemyAnim.SetFloat("Moving", 1);
+        }
+        else
+        {
+            EnemyAnim.SetFloat("Moving", 0);
+        }
+            
 
-        if (playerInRange == true && distance < fireRange)
+        if (playerInRange)
         {
             canMove.speed = 0;
-
-            if (Time.time > nextShoot)
+            if (damageRange.playerInRange)
             {
-                nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
-                SpawnPoint();
+                if (Time.time > meleeTime)
+                {
+                    EnemyAnim.SetTrigger("Melee");
+                    meleeTime = Time.time + meleeAttackTime;
+                }
+            }
+            else
+            {
+                if (Time.time > nextShoot)
+                {
+                    nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
+
+                    if (shots > Random.Range(4, 6))
+                    {
+                        EnemyAnim.SetTrigger("3shot");
+                        shots = 0;
+                    }
+                    else
+                    {
+                        EnemyAnim.SetTrigger("shot");
+                        shots++;
+                    }
+
+                }
             }
         }
         else
@@ -75,7 +111,7 @@ public class Archer : MonoBehaviour
             canMove.speed = archerSpeed;
         }
 
-        if(distance < sightRange)
+        if(fireRange())
         {
             playerInRange = true;
         }
@@ -83,12 +119,43 @@ public class Archer : MonoBehaviour
         {
             playerInRange = false;
         }
-        
+        if (player.position.x -transform.position.x > 0 && transform.localScale.x < 0 || player.position.x - transform.position.x < 0 && transform.localScale.x > 0)
+        {
+            Flip(transform);
+            Flip(projectileSpawnPoint.parent.transform);
+            Flip(transform.GetComponentInChildren<Canvas>().transform);
+        }
     }
 
-    public void SpawnPoint()
+    bool fireRange()
     {
-       GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileRotation.transform.rotation);
+        return (Camera.main.WorldToScreenPoint(transform.position).x < Screen.width * 0.93 && Camera.main.WorldToScreenPoint(transform.position).x > Screen.width*0.07f && Camera.main.WorldToScreenPoint(transform.position).y < Screen.height *0.93 && Camera.main.WorldToScreenPoint(transform.position).y > Screen.height * 0.07);
+    }
+    public void Attack()
+    {
+        if (damageRange.playerInRange)
+        {
+            player.GetComponent<PlayerHealth>().AddDamage(meleeDamage);
+        }
+    }
+    public void SpawnPoint(bool triple)
+    {
+        if (triple)
+        {
+            Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileRotation.transform.rotation);
+            Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.Euler(projectileRotation.transform.rotation.eulerAngles.x, projectileRotation.transform.rotation.eulerAngles.y, projectileRotation.transform.rotation.eulerAngles.z -15 ));
+            Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.Euler(projectileRotation.transform.rotation.eulerAngles.x, projectileRotation.transform.rotation.eulerAngles.y, projectileRotation.transform.rotation.eulerAngles.z +15 ));
+        }
+        else
+        {
+            Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileRotation.transform.rotation);
+        }
+     
+    }
+
+    private void Flip(Transform changeThis)
+    {
+        changeThis.localScale = new Vector3(-changeThis.localScale.x, changeThis.localScale.y, changeThis.localScale.z);
     }
 
 }

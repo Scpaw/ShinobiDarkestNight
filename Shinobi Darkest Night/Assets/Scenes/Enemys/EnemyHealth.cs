@@ -81,7 +81,7 @@ public class EnemyHealth : MonoBehaviour
         {
             projectile.transform.parent = null;
             projectile.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            projectile.GetComponent<Rigidbody2D>().AddForce((projectile.transform.position - transform.position) * (3 + projectileAddForce), ForceMode2D.Impulse);
+            projectile.GetComponent<Rigidbody2D>().AddForce((projectile.transform.position - transform.position) * (4 + projectileAddForce), ForceMode2D.Impulse);
         }
         if (projectiles.Count > 0)
         {
