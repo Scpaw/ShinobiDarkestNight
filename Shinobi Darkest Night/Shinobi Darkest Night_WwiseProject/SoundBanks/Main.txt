@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2394582229	Player_Dash			\Default Work Unit\Player_Dash	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	198791011	Player_Dash	C:\Unity Projects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\ESM_Ninja_Star_Impact_v6_Bloody_Impact_Side_Scroller_Mobile_Puzzle_Cartoon_Sci_Fi_Gore_F6CA3DDD.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player_Dash		17244
+
