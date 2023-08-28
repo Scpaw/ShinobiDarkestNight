@@ -356,10 +356,6 @@ public class PlayerController : MonoBehaviour
             }
             facingDirection = projectileSpawnPoint.position - transform.position;
         }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            inventoryOpen = !inventoryOpen;
-        }
 
         //inventory
         if (inventoryOpen)
@@ -412,7 +408,7 @@ public class PlayerController : MonoBehaviour
                 shade.GetComponent<Rigidbody2D>().AddTorque(Input.GetAxis("Mouse ScrollWheel") * 800 * Time.deltaTime, ForceMode2D.Impulse);
             }
 
-            if (Mathf.Abs(shade.GetComponent<Rigidbody2D>().angularVelocity) < 0.3f && !snap && itemsOnScreen.Count >0)
+            if (Mathf.Abs(shade.GetComponent<Rigidbody2D>().angularVelocity) < 5f && !snap && itemsOnScreen.Count >0)
             {
                 shade.GetComponent<Rigidbody2D>().angularVelocity = 0;
                 Transform itemOnTop = null;
