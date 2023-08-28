@@ -6,16 +6,13 @@
 				<Sound Name="Player_Dash" ID="{4E50386F-ABA1-45FD-A352-6445E4156821}" ShortID="750581564">
 					<PropertyList>
 						<Property Name="Pitch" Type="int32">
-							<ValueList>
-								<Value>-20</Value>
-							</ValueList>
 							<ModifierList>
 								<ModifierInfo>
 									<Modifier Name="" ID="{94ACDAA1-7EBC-4AC3-890D-80566E7E2E9B}">
 										<PropertyList>
 											<Property Name="Enabled" Type="bool" Value="True"/>
-											<Property Name="Max" Type="Real64" Value="200"/>
-											<Property Name="Min" Type="Real64" Value="-200"/>
+											<Property Name="Max" Type="Real64" Value="48"/>
+											<Property Name="Min" Type="Real64" Value="-124"/>
 										</PropertyList>
 									</Modifier>
 								</ModifierInfo>
@@ -30,8 +27,8 @@
 									<Modifier Name="" ID="{9BE00414-CDE6-4BA8-8B57-6B143A37DA53}">
 										<PropertyList>
 											<Property Name="Enabled" Type="bool" Value="True"/>
-											<Property Name="Max" Type="Real64" Value="5"/>
-											<Property Name="Min" Type="Real64" Value="-5"/>
+											<Property Name="Max" Type="Real64" Value="2"/>
+											<Property Name="Min" Type="Real64" Value="-2"/>
 										</PropertyList>
 									</Modifier>
 								</ModifierInfo>
