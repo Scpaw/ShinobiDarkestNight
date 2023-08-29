@@ -3,6 +3,8 @@ using Pathfinding.Util;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -164,11 +166,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Image shade;
     public bool inventoryOpen; // change to private
     public List<GameObject> candy;
-    private List<GameObject> candySpawned = new List<GameObject>();
+    public List<GameObject> candySpawned = new List<GameObject>(); // this too
     private int currentCandyIndex;
     private float maxItemYPos;
     private List<GameObject> itemsOnScreen =  new List<GameObject>();
     private bool snap;
+    private Text inventoryText;
 
     private void Awake()
     {
@@ -195,6 +198,7 @@ public class PlayerController : MonoBehaviour
         dashDelaySlider.maxValue = dashMaxCooldown;
         dashDelaySlider.minValue = dashMinCooldown;
         snap = true;
+        inventoryText = shade.GetComponentInChildren<Text>();
     }
 
     private void Update()
@@ -362,38 +366,37 @@ public class PlayerController : MonoBehaviour
         {
             if (!shade.gameObject.activeInHierarchy )
             {
-                if (shade.transform.childCount - 1 != candy.Count)
-                {
-                    foreach (Transform child in shade.transform)
-                    {
-                        if (child.name != "position")
-                        { 
-                            Destroy(child.gameObject);
-                        }
-                    }
-                    if (candySpawned.Count > 0)
-                    {
-                        candySpawned.Clear();
-                    }
-                    float r = shade.transform.GetChild(0).position.y / 2;
-                    float maxcount = candy.Count;
-                    float index = 0;
-                    foreach (GameObject x in candy)
-                    {
-                        GameObject sqr = Instantiate(x, new Vector3(r * Mathf.Cos(((index / maxcount) * 360 * Mathf.Deg2Rad  + (90*Mathf.Deg2Rad))) + shade.transform.position.x, r * Mathf.Sin(((index / maxcount) * 360 * Mathf.Deg2Rad + (90 * Mathf.Deg2Rad))) + shade.transform.position.y, 0), Quaternion.Euler(0, 0, 0));
-                        sqr.transform.localScale = shade.transform.localScale;
-                        sqr.transform.SetParent(shade.transform);
-                        sqr.GetComponent<candyScript>().id = (int)index;
-                        sqr.GetComponent<candyScript>().angle = ((index / maxcount) * 360);
-                        candySpawned.Add(sqr);
-                        if (index == 0)
-                        {
-                            maxItemYPos = sqr.transform.position.y;
-                        }
-                        index++;
-                    }
-                }
-
+                 if (shade.transform.childCount - 2 != candy.Count)
+                 {
+                     foreach (Transform child in shade.transform)
+                     {
+                         if (child.name != "position" && !child.GetComponent<Text>())
+                         { 
+                             Destroy(child.gameObject);
+                         }
+                     }
+                     if (candySpawned.Count > 0)
+                     {
+                         candySpawned.Clear();
+                     }
+                     float r = (shade.transform.GetChild(0).localPosition.y + shade.transform.position.y) / 2;
+                     float maxcount = candy.Count;
+                     float index = 0;
+                     foreach (GameObject x in candy)
+                     {
+                         GameObject sqr = Instantiate(x, new Vector3(r * Mathf.Cos(((index / maxcount) * 360 * Mathf.Deg2Rad  + (90*Mathf.Deg2Rad))) + shade.transform.position.x, r * Mathf.Sin(((index / maxcount) * 360 * Mathf.Deg2Rad + (90 * Mathf.Deg2Rad))) + shade.transform.position.y, 0), Quaternion.Euler(0, 0, 0));
+                         sqr.transform.localScale = shade.transform.localScale;
+                         sqr.transform.SetParent(shade.transform);
+                         sqr.GetComponent<candyScript>().id = (int)index;
+                         sqr.GetComponent<candyScript>().angle = ((index / maxcount) * 360);
+                         candySpawned.Add(sqr);
+                         if (index == 0)
+                         {
+                             maxItemYPos = sqr.transform.position.y;
+                         }
+                         index++;
+                     }
+                 }
                 shade.gameObject.SetActive(true);
             }
             if ((shade.GetComponent<Rigidbody2D>().angularVelocity > 0 && Input.GetAxis("Mouse ScrollWheel") < 0 || shade.GetComponent<Rigidbody2D>().angularVelocity < 0 && Input.GetAxis("Mouse ScrollWheel") > 0))
@@ -407,31 +410,44 @@ public class PlayerController : MonoBehaviour
                 snap = false;
                 shade.GetComponent<Rigidbody2D>().AddTorque(Input.GetAxis("Mouse ScrollWheel") * 800 * Time.deltaTime, ForceMode2D.Impulse);
             }
-
             if (Mathf.Abs(shade.GetComponent<Rigidbody2D>().angularVelocity) < 5f && !snap && itemsOnScreen.Count >0)
             {
                 shade.GetComponent<Rigidbody2D>().angularVelocity = 0;
                 Transform itemOnTop = null;
+                GameObject[] itemsToRemove = itemsOnScreen.FindAll(x => x == null).ToArray();
+                foreach (GameObject itemToRemove in itemsToRemove)
+                {
+                    itemsOnScreen.Remove(itemToRemove);
+                }
                 foreach (GameObject item in itemsOnScreen)
                 {
-                    if (itemOnTop == null)
+                    if (item.GetComponent<Image>())
                     {
-                        itemOnTop = item.transform;
-                    }
-                    else if (itemOnTop.position.y < item.transform.position.y)
-                    {
-                        itemOnTop = item.transform;
-                    }
+                        if (itemOnTop == null)
+                        {
+                            itemOnTop = item.transform;
+                        }
+                        else if (itemOnTop.position.y < item.transform.position.y)
+                        {
+                            itemOnTop = item.transform;
+                        }
+
+                    }                 
                 }
                 int id = itemOnTop.GetComponent<candyScript>().id;
                 float angle = candySpawned[id].GetComponent<candyScript>().angle;
                 shade.transform.rotation = Quaternion.Euler(0, 0, -angle);
-            }
-            
+                snap = true;
+            }            
         }
         else
         {
             shade.gameObject.SetActive(false);
+            foreach (GameObject item in candySpawned)
+            {
+                item.GetComponent<candyScript>().onScreen = false;
+                itemsOnScreen.Clear();
+            }
         }
 
     }
@@ -520,6 +536,7 @@ public class PlayerController : MonoBehaviour
             dashCooldown = Mathf.Lerp(dashMinCooldown, dashMaxCooldown, t);
         }
         dashDelaySlider.value = dashCooldown;
+        inventoryText.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     //The following order of "count"(RigidBody2D's parameters of movement) will be executed when "count" = 0
@@ -978,13 +995,10 @@ public class PlayerController : MonoBehaviour
             saveDirection = movementDirection;
         }
     }
-
-
     public void AddObjectOnScreen(GameObject objectToAdd)
     {
         itemsOnScreen.Add(objectToAdd);
     }
-
     public void RemoveObjectOnScreen(GameObject objectToRemove)
     {
         if (itemsOnScreen.Find(x => x.gameObject == objectToRemove))
@@ -992,7 +1006,10 @@ public class PlayerController : MonoBehaviour
             itemsOnScreen.Remove(objectToRemove);
         }
     }
-
+    public void CandyText(string text)
+    { 
+        inventoryText.text = text;
+    }
     private IEnumerator ChangeCamSizeUp()
     {
         if (isHealing)
@@ -1098,7 +1115,6 @@ public class PlayerController : MonoBehaviour
         canAttack = true;
         desumiruAttackCorutine = null;
     }
-
 
 
     public float GetShadePos()

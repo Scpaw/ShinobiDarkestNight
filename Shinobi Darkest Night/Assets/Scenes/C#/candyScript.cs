@@ -7,9 +7,10 @@ public class candyScript : MonoBehaviour
 {
     float r;
     private Vector2 screenPos;
-    private bool onScreen;
+    public bool onScreen;
     public int id;
     public float angle;
+    [SerializeField] string description;
     void Update()
     {
         r = PlayerController.Instance.GetShadePos();
@@ -28,7 +29,6 @@ public class candyScript : MonoBehaviour
 
         }
         transform.rotation = Quaternion.Euler(0, 0, 0);
-
         if (GetComponent<Image>().enabled)
         {
             if (!onScreen)
@@ -45,7 +45,10 @@ public class candyScript : MonoBehaviour
                 onScreen = false;
             }
         }
-
+        if (transform.localScale.x >= 0.9f && onScreen)
+        {
+            PlayerController.Instance.CandyText(description);
+        }
     }
 
 }

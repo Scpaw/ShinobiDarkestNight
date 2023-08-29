@@ -30,6 +30,10 @@ public class hideObsticle : MonoBehaviour
 
         if(gameObject.tag == "Obstacle"  && (playerP.transform.position - transform.position).magnitude < 2)
         {
+            if (GetComponent<DropCandy>())
+            {
+                GetComponent<DropCandy>().Drop();
+            }
             if (playerT > O)
             {
                 sprite.sortingOrder = playerSprite.sortingOrder + 1;
