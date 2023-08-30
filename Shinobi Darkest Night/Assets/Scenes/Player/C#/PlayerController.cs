@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -172,6 +173,14 @@ public class PlayerController : MonoBehaviour
     private List<GameObject> itemsOnScreen =  new List<GameObject>();
     private bool snap;
     private Text inventoryText;
+    private GameObject topItem;
+
+    [Header("Power ups")]
+    public float sakuramochi;
+    public float yokan;
+    public float dango;
+    public float mizuame;
+    public float powerCoolDown;
 
     private void Awake()
     {
@@ -301,7 +310,11 @@ public class PlayerController : MonoBehaviour
         if (isSpeedingUp)
         { 
             UseStamina(14* Time.deltaTime);
-            GetComponent<PlayerHealth>().AddDamage(8* Time.deltaTime);
+            if (mizuame <= 0)
+            {
+                GetComponent<PlayerHealth>().AddDamage(8 * Time.deltaTime);
+            }
+
             if (stamina <= 0)
             {
                 isSpeedingUp = false;
@@ -347,7 +360,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
             UseStamina(10 * Time.deltaTime);
-            GetComponent<PlayerHealth>().AddDamage(4 * Time.deltaTime);
+            if (mizuame <= 0)
+            {
+                GetComponent<PlayerHealth>().AddDamage(4 * Time.deltaTime);
+            }
             shokyakuTimer -= Time.deltaTime;
             if (shokyakuTimer <= 0)
             {
@@ -379,6 +395,7 @@ public class PlayerController : MonoBehaviour
                      {
                          candySpawned.Clear();
                      }
+                    shade.transform.rotation = quaternion.Euler(0, 0, 0);
                      float r = (shade.transform.GetChild(0).localPosition.y + shade.transform.position.y) / 2;
                      float maxcount = candy.Count;
                      float index = 0;
@@ -434,23 +451,67 @@ public class PlayerController : MonoBehaviour
 
                     }                 
                 }
-                int id = itemOnTop.GetComponent<candyScript>().id;
-                float angle = candySpawned[id].GetComponent<candyScript>().angle;
-                shade.transform.rotation = Quaternion.Euler(0, 0, -angle);
+                if (itemOnTop != null)
+                {
+                    int id = itemOnTop.GetComponent<candyScript>().id;
+                    float angle = candySpawned[id].GetComponent<candyScript>().angle;
+                    shade.transform.rotation = Quaternion.Euler(0, 0, -angle);
+                }
                 snap = true;
-            }            
+            }
+            if (inventoryText.text != "Inventory Empty :(" && candySpawned.Count < 1)
+            {
+                inventoryText.text = "Inventory Empty :(";
+            }
         }
         else
         {
-            shade.gameObject.SetActive(false);
-            foreach (GameObject item in candySpawned)
+            if (shade.gameObject.activeInHierarchy)
             {
-                item.GetComponent<candyScript>().onScreen = false;
-                itemsOnScreen.Clear();
+                if (itemsOnScreen.Count > 2)
+                {
+                    foreach (GameObject item in candySpawned)
+                    {
+                        item.GetComponent<candyScript>().onScreen = false;
+                        itemsOnScreen.Clear();
+                    }
+                }
+                else
+                {
+                    if (itemsOnScreen.Count == 0 && candySpawned.Count >0)
+                    {
+                        shade.transform.rotation = Quaternion.Euler(0, 0, -candySpawned[UnityEngine.Random.Range(0, itemsOnScreen.Count)].GetComponent<candyScript>().angle);
+                    }
+                }
             }
+            shade.gameObject.SetActive(false);
         }
 
+
+
+        //power ups
+        if (sakuramochi > 0)
+        {
+            sakuramochi -= Time.deltaTime;
+        }
+        else if (yokan > 0)
+        {
+            yokan -= Time.deltaTime;
+        }
+        else if (dango > 0)
+        {
+            dango -= Time.deltaTime;
+        }
+        else if (mizuame > 0)
+        { 
+            mizuame -= Time.deltaTime;
+        }
+        if (powerCoolDown > 0)
+        { 
+            powerCoolDown -= Time.deltaTime;
+        }
     }
+
 
     private void ChangeClip()
     {
@@ -669,7 +730,10 @@ public class PlayerController : MonoBehaviour
                 attackCooldown = startAttackCooldown;
                 CurrentState = AttackAnim;
                 canMove = false;
-                UseStamina(5);
+                if (yokan <=0)
+                {
+                    UseStamina(5);
+                }
             }
         }
         else if (canAttack && !isHealing && desumiru)
@@ -685,7 +749,7 @@ public class PlayerController : MonoBehaviour
     //When LeftMouseButton(LMB) was pressed
     public void OnFire()
     {
-        if (canAttack && !isHealing && !desumiru && !itaiken)
+        if (canAttack && !isHealing && !desumiru && !itaiken && !inventoryOpen)
         {
             if (stamina >= 5)
             {
@@ -699,11 +763,14 @@ public class PlayerController : MonoBehaviour
                     facingDirection = projectileSpawnPoint.position - transform.position;
                     canMove = false;
                     CurrentState = ThrowAnim;
-                    UseStamina(5);
+                    if (yokan <= 0)
+                    {
+                        UseStamina(5);
+                    }
                 }
             }
         }
-        else if (desumiru && canAttack && desumiruState < 4 && !desumiruPressed)
+        else if (desumiru && canAttack && desumiruState < 4 && !desumiruPressed && !inventoryOpen)
         {
             if (stamina >= 12)
             {
@@ -716,18 +783,32 @@ public class PlayerController : MonoBehaviour
             {
                 StopDesumiru();
             }
-            Debug.Log("pressed in time");
 
         }
-        else if (desumiru && !canAttack && desumiruState < 4)
+        else if (desumiru && !canAttack && desumiruState < 4 && !inventoryOpen)
         {
             desumiruPressed = true;
-            Debug.Log("before action");
         }
-        else if (itaiken && canAttack)
+        else if (itaiken && canAttack && !inventoryOpen)
         {
             SpawnItaiken(true);
         }
+        else if (inventoryOpen && candySpawned.Count > 0 && powerCoolDown <= 0)
+        {
+            topItem.GetComponent<candyScript>().DoStuff();
+            candy.Remove(candy.Find(x=> x.name.ToString() + "(Clone)" == topItem.name.ToString()));
+            itemsOnScreen.Remove(itemsOnScreen.Find(x => x.name.ToString() + "(Clone)" == topItem.name.ToString()));
+            Destroy(topItem);
+            foreach (Transform child in shade.transform)
+            {
+                if (child.name != "position" && !child.GetComponent<Text>())
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+            inventoryOpen = false;
+        }
+        
     }
 
     public void OnHeal()
@@ -754,7 +835,15 @@ public class PlayerController : MonoBehaviour
                             myAnim.Play(loopHeal.name);
                             currentClip = loopHeal;
                         }
-                        GetComponent<PlayerHealth>().AddHealth(3);
+                        if (sakuramochi > 0)
+                        {
+                            GetComponent<PlayerHealth>().AddHealth(21);
+                        }
+                        else
+                        {
+                            GetComponent<PlayerHealth>().AddHealth(3);
+                        }
+
                     }
                 }
             }
@@ -965,8 +1054,19 @@ public class PlayerController : MonoBehaviour
 
     public void UseStamina(float staminaToUse)
     {
-        stamina -= staminaToUse;
-        staminaReg = 1f;
+        if (mizuame <=0)
+        {
+            if (yokan > 0)
+            {
+                stamina -= staminaToUse / 2;
+            }
+            else
+            {
+                stamina -= staminaToUse;
+            }
+
+            staminaReg = 1f;
+        }
     }
 
     public void MakeDeath()
@@ -1006,9 +1106,10 @@ public class PlayerController : MonoBehaviour
             itemsOnScreen.Remove(objectToRemove);
         }
     }
-    public void CandyText(string text)
+    public void CandyText(string text, GameObject itemOnTop)
     { 
         inventoryText.text = text;
+        topItem = itemOnTop;
     }
     private IEnumerator ChangeCamSizeUp()
     {

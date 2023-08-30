@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8190412815605609287}
   - component: {fileID: 8190412815605609281}
   - component: {fileID: 8190412815605609280}
-  - component: {fileID: 6715891872641139561}
+  - component: {fileID: 7218468288108721837}
   m_Layer: 6
-  m_Name: Image
+  m_Name: Micuame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4cca8fef5e7dcfb4790be9f39fc8352a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6715891872641139561
+--- !u!114 &7218468288108721837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,7 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dcbf55ea1e9ff644b225bdea5615b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onScreen: 0
   id: 0
   angle: 0
-  description: 'yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow
-    yellow '
+  description: red color
+  candyState: 3

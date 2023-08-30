@@ -10,11 +10,13 @@ public class PlayerHealth : MonoBehaviour
     public float playerCourrentHealth;
     public float playerMaxHealth;
     [SerializeField] Image playerHealthSlider;
+    private PlayerController playerController;
 
     void Awake()
     {
         playerCourrentHealth = playerMaxHealth;
         playerHealthSlider.fillAmount = playerCourrentHealth/playerMaxHealth;
+        playerController = GetComponent<PlayerController>();
     }
 
     public void AddHealth(float Health)
@@ -36,9 +38,16 @@ public class PlayerHealth : MonoBehaviour
     public void AddDamage(float Damage)
     {
         GetComponent<PlayerController>().StopHealing();
-        playerCourrentHealth -= Damage;
-        playerHealthSlider.fillAmount = playerCourrentHealth / playerMaxHealth;
+        if (playerController.sakuramochi > 0)
+        {
+            playerCourrentHealth -= Damage/2;
+        }
+        else
+        {
+            playerCourrentHealth -= Damage;
 
+        }
+        playerHealthSlider.fillAmount = playerCourrentHealth / playerMaxHealth;
         if (playerCourrentHealth <= 0)
         {
             MakeDead();

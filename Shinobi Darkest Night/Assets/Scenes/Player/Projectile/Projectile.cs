@@ -130,7 +130,7 @@ public class Projectile : MonoBehaviour
     }
     private void OnDestroy()
     {
-        if (!enemyHit)
+        if (!enemyHit || PlayerController.Instance.dango >0)
         {
             Instantiate(afterProjectile, transform.position, transform.rotation);
         }

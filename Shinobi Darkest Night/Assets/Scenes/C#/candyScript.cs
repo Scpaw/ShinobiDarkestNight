@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +13,8 @@ public class candyScript : MonoBehaviour
     public int id;
     public float angle;
     [SerializeField] string description;
+    [SerializeField] CandyUse candyState;
+
     void Update()
     {
         r = PlayerController.Instance.GetShadePos();
@@ -45,10 +49,50 @@ public class candyScript : MonoBehaviour
                 onScreen = false;
             }
         }
-        if (transform.localScale.x >= 0.9f && onScreen)
+        if (transform.localScale.x >= 0.7f && onScreen)
         {
-            PlayerController.Instance.CandyText(description);
+            PlayerController.Instance.CandyText(description,gameObject);
         }
     }
 
+    public void DoStuff()
+    {
+        if (candyState == CandyUse.sakuramochi)
+        {
+            PlayerController.Instance.sakuramochi = 60;
+            PlayerController.Instance.GetComponent<PlayerHealth>().AddHealth(100);
+            PlayerController.Instance.powerCoolDown = 60 + PlayerController.Instance.sakuramochi;
+        }
+        else if (candyState == CandyUse.yokan)
+        {
+            PlayerController.Instance.yokan = 60;
+            PlayerController.Instance.powerCoolDown = 60 + PlayerController.Instance.yokan;
+        }
+        else if (candyState == CandyUse.dango)
+        {
+            PlayerController.Instance.dango = 60;
+            Object[] enemies = Resources.FindObjectsOfTypeAll(typeof(EnemyHealth));
+            foreach (Object enemy in enemies)
+            {
+                if (enemy.GameObject().activeInHierarchy)
+                {
+                    enemy.GameObject().GetComponent<EnemyHealth>().ProjectilesOff(15);
+                }
+            }
+            PlayerController.Instance.powerCoolDown = 60 + PlayerController.Instance.dango;
+        }
+        else if (candyState == CandyUse.mizuame)
+        {
+            PlayerController.Instance.mizuame = 40;
+            PlayerController.Instance.powerCoolDown = 60 + PlayerController.Instance.mizuame;
+        }
+    }
+
+}
+public enum CandyUse
+{
+    sakuramochi,
+    yokan,
+    dango,
+    mizuame
 }

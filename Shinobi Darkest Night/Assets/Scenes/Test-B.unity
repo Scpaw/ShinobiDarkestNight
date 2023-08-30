@@ -5137,7 +5137,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: candy.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: candy.Array.data[0]
+      value: 
+      objectReference: {fileID: 8190412815605609286, guid: 41facba3c0a623f47baa591e26598097, type: 3}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: candy.Array.data[1]
+      value: 
+      objectReference: {fileID: 8190412815605609286, guid: 0f39d1baa84bdcd429a965da7adf4407, type: 3}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: candy.Array.data[2]
+      value: 
+      objectReference: {fileID: 8190412815605609286, guid: 13e13cd7bc98c5f4e92cabdfa5572fab, type: 3}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: candy.Array.data[3]
+      value: 
+      objectReference: {fileID: 8190412815605609286, guid: 04e1a485dada22d42a034eb10a8b1ca0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}

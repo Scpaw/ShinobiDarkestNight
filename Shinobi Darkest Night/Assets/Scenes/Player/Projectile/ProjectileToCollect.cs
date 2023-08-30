@@ -37,7 +37,7 @@ public class ProjectileToCollect : MonoBehaviour
             }
         }
 
-        if ((player.position - transform.position).magnitude <= pickUpRange && !onEnemy)
+        if ((player.position - transform.position).magnitude <= pickUpRange && !onEnemy || player.GetComponent<PlayerController>().dango >0)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, Time.deltaTime * pickUpSpeed);
             if ((player.position - transform.position).magnitude < 0.1f)
