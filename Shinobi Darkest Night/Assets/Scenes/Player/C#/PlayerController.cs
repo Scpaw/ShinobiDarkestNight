@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
     private float startAttackCooldown;
     public float pushForce;
     public List<GameObject> enemiesToHit;
+    private PlayerHealth hp;
 
     [Header("Projectile")]
     public int projectileNumber;
@@ -162,6 +163,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject itaikenToSpawn;
     [SerializeField] private AnimationClip startItaiken;
     private bool itaiken;
+    private float itaikenTimer;
 
     [Header("Inventory")]
     [SerializeField] private Image shade;
@@ -208,6 +210,7 @@ public class PlayerController : MonoBehaviour
         dashDelaySlider.minValue = dashMinCooldown;
         snap = true;
         inventoryText = shade.GetComponentInChildren<Text>();
+        hp = GetComponent<PlayerHealth>();
     }
 
     private void Update()
@@ -312,7 +315,7 @@ public class PlayerController : MonoBehaviour
             UseStamina(14* Time.deltaTime);
             if (mizuame <= 0)
             {
-                GetComponent<PlayerHealth>().AddDamage(8 * Time.deltaTime);
+                hp.AddDamage(8 * Time.deltaTime);
             }
 
             if (stamina <= 0)
@@ -362,7 +365,7 @@ public class PlayerController : MonoBehaviour
             UseStamina(10 * Time.deltaTime);
             if (mizuame <= 0)
             {
-                GetComponent<PlayerHealth>().AddDamage(4 * Time.deltaTime);
+                hp.AddDamage(4 * Time.deltaTime);
             }
             shokyakuTimer -= Time.deltaTime;
             if (shokyakuTimer <= 0)
@@ -510,6 +513,16 @@ public class PlayerController : MonoBehaviour
         { 
             powerCoolDown -= Time.deltaTime;
         }
+
+        //itaiken
+        if (itaiken)
+        { 
+            itaikenTimer -=Time.deltaTime;
+            if (itaikenTimer < 0)
+            {
+                StopItaken();
+            }
+        }
     }
 
 
@@ -634,6 +647,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canDash && canMove)
         {
+            //AkSoundEngine.PostEvent("Player_Dash", gameObject);
             UseStamina(10);
             canDash = false;            
             Canvas.SetActive(true);
@@ -691,6 +705,7 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Dash());
         }
+
     }
 
     //When RightMouseButton(RMB) was pressed
@@ -816,7 +831,7 @@ public class PlayerController : MonoBehaviour
         if (canAttack)
         {
             StopDesumiru();
-            if (GetComponent<PlayerHealth>().playerCourrentHealth < GetComponent<PlayerHealth>().playerMaxHealth)
+            if (hp.playerCourrentHealth < hp.playerMaxHealth)
             {
                 timeToHeal = 1;
                 if (!isHealing)
@@ -837,11 +852,11 @@ public class PlayerController : MonoBehaviour
                         }
                         if (sakuramochi > 0)
                         {
-                            GetComponent<PlayerHealth>().AddHealth(21);
+                            hp.AddHealth(20);
                         }
                         else
                         {
-                            GetComponent<PlayerHealth>().AddHealth(3);
+                            hp.AddHealth(10);
                         }
 
                     }
@@ -924,13 +939,14 @@ public class PlayerController : MonoBehaviour
 
     public void OnItaiken()
     {
-        if (canAttack && !isHealing)
+        if (canAttack && !isHealing && stamina > 30 && hp.playerCourrentHealth > 30)
         {
             itaiken = true;
             canAttack = false;
             canMove = false;
             canAttack = false;
-            //myAnim.Play(startItaiken.name);                   
+            //myAnim.Play(startItaiken.name);
+            itaikenTimer = 1;
             SpawnItaiken(false);
         }
         
@@ -955,7 +971,14 @@ public class PlayerController : MonoBehaviour
         ChangeClip();
         if (stopAfter)
         {
+            UseStamina(15);
+            hp.AddDamage(10);
             StopItaken();
+        }
+        else
+        {
+            UseStamina(20);
+            hp.AddDamage(15);
         }
     }
 
@@ -982,15 +1005,18 @@ public class PlayerController : MonoBehaviour
         {
             desumiuRadius = 3;
             UseStamina(5);
+            hp.AddDamage(10);
         }
         else if (desumiruState == 2)
         {
             desumiuRadius = 6;
             UseStamina(7);
+            hp.AddDamage(10);
         }
         else if (desumiruState >= 3)
         {
-            UseStamina(12);
+            UseStamina(12); 
+            hp.AddDamage(15);
         }
         
     }

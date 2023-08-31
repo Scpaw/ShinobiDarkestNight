@@ -21,10 +21,12 @@ public class Spear : MonoBehaviour
     private bool hitPlayer;
     [SerializeField] LayerMask playerLayer;
     private GameObject hit;
+    private float offScreenSpeed;
 
     private void Awake()
     {
         enemySpeed = GetComponent<AILerp>().speed;
+        offScreenSpeed = enemySpeed * 2;
     }
 
     private void OnEnable()
@@ -106,6 +108,14 @@ public class Spear : MonoBehaviour
         else
         {
             ai.enabled = true;
+        }
+        if (Camera.main.WorldToScreenPoint(transform.position).x > 0 && Camera.main.WorldToScreenPoint(transform.position).x < Screen.width && Camera.main.WorldToScreenPoint(transform.position).y > 0 && Camera.main.WorldToScreenPoint(transform.position).y < Screen.height)
+        {
+            ai.speed = enemySpeed;
+        }
+        else
+        {
+            ai.speed = offScreenSpeed;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
