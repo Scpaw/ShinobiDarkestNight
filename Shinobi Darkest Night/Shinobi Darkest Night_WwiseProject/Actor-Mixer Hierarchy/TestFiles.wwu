@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{F8922158-C796-4E98-B26A-B6EC7F2C462F}" SchemaVersion="110">
+	<AudioObjects>
+		<WorkUnit Name="TestFiles" ID="{F8922158-C796-4E98-B26A-B6EC7F2C462F}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="sfx_test_beep_100ms" ID="{CD5A0184-F9D1-48FA-80B1-A0CEB482CAD2}" ShortID="502923454">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="sfx_test_beep_100ms" ID="{23AF6E2B-57D4-44C7-8BCB-D0D1469A0D15}">
+							<Language>SFX</Language>
+							<AudioFile>TestFiles\sfx_test_beep_100ms.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="956220953"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="sfx_test_beep_100ms" ID="{23AF6E2B-57D4-44C7-8BCB-D0D1469A0D15}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="sfx_test_beep_3000ms" ID="{B0D1D445-977C-468C-A05D-4E1E0D3351CA}" ShortID="621484079">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="sfx_test_beep_3000ms" ID="{93EC212B-BC54-44BB-B382-5736D82BBE4D}">
+							<Language>SFX</Language>
+							<AudioFile>TestFiles\sfx_test_beep_3000ms.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1036430562"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="sfx_test_beep_3000ms" ID="{93EC212B-BC54-44BB-B382-5736D82BBE4D}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<ActorMixer Name="3DTestFiles" ID="{300C5BB9-950E-4C82-974F-51124E4E2A08}" ShortID="636929363">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="att_generic_50m" ID="{AE903C8D-C4BE-49F0-B5F3-9B65CFE65E17}" WorkUnitID="{70CDFC0A-518F-4D2E-87E4-2A579B8CBD99}"/>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="sfx_test_beep_100ms_3D" ID="{2B4C427D-F5D9-4C3E-B575-6EB97A23ABCB}" ShortID="23787481">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="sfx_test_beep_100ms" ID="{D458AB70-3569-4291-81C0-14C2461E075C}">
+									<Language>SFX</Language>
+									<AudioFile>TestFiles\sfx_test_beep_100ms.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="956220953"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="sfx_test_beep_100ms" ID="{D458AB70-3569-4291-81C0-14C2461E075C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="sfx_test_beep_3000ms_3D" ID="{4AC51AE5-7C44-4B41-99FB-ECAF80A36003}" ShortID="377479235">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="sfx_test_beep_3000ms" ID="{545AE2D4-8D2F-4B2A-A8AE-A8650DF04B2F}">
+									<Language>SFX</Language>
+									<AudioFile>TestFiles\sfx_test_beep_3000ms.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1036430562"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="sfx_test_beep_3000ms" ID="{545AE2D4-8D2F-4B2A-A8AE-A8650DF04B2F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

@@ -5,7 +5,7 @@
 			<ChildrenList>
 				<SoundBank Name="Main" ID="{27AEA69E-BDFA-408E-8CF8-2F205143FF7E}">
 					<ObjectInclusionList>
-						<ObjectRef Name="Player_Dash" ID="{7B3A268E-62E5-4A5A-A7BF-FC338B880ACF}" WorkUnitID="{2912A165-A263-453F-87BC-63F0005C9E35}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Dash" ID="{7B3A268E-62E5-4A5A-A7BF-FC338B880ACF}" WorkUnitID="{19978AE2-37A9-40BA-8C49-8831619280AE}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

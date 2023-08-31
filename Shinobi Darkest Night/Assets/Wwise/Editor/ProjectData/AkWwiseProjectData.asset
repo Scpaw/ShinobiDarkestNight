@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AkWwiseProjectData
   m_EditorClassIdentifier: 
   AcousticTextureWwu:
-  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
+  - PhysicalPath: Virtual Acoustics/Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Virtual Acoustics
       ObjectType: 5
@@ -21,13 +21,13 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: 80de50b12d395b47890403d93887404d
-    ParentPath: Virtual Acoustics\Default Work Unit
+    ParentPath: Virtual Acoustics/Default Work Unit
     guid: 80de50b12d395b47890403d93887404d
     GuidInternal: 
-    m_lastTime: -8585089980516376024
+    m_lastTime: -8585090478979676007
     List: []
   AuxBusWwu:
-  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
+  - PhysicalPath: Master-Mixer Hierarchy/Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Master-Mixer Hierarchy
       ObjectType: 5
@@ -35,11 +35,131 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
-    ParentPath: Master-Mixer Hierarchy\Default Work Unit
+    ParentPath: Master-Mixer Hierarchy/Default Work Unit
     guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
     GuidInternal: 
-    m_lastTime: -8585089980516455814
+    m_lastTime: -8585081047472115853
     List:
+    - name: 2DAmbience
+      guid: 7d4f7d85f7b8234680764f9b71471123
+      id: 309309195
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AmbientMaster
+        ObjectType: 2
+        guid: 621f16c1743dc24a84524a6daa52b080
+      - ElementName: 2DAmbience
+        ObjectType: 2
+        guid: 7d4f7d85f7b8234680764f9b71471123
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster/2DAmbience
+    - name: 2DAmbientBeds
+      guid: 86bf90c9b1e8b643ba06f15e5286e2ae
+      id: 4152869693
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AmbientMaster
+        ObjectType: 2
+        guid: 621f16c1743dc24a84524a6daa52b080
+      - ElementName: AmbientBeds
+        ObjectType: 2
+        guid: df9c74a761f693428bdae3d16dc16aca
+      - ElementName: 2DAmbientBeds
+        ObjectType: 2
+        guid: 86bf90c9b1e8b643ba06f15e5286e2ae
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster/AmbientBeds/2DAmbientBeds
+    - name: 3DAmbience
+      guid: e3f62788d2911c41b3720357d98b42e8
+      id: 1301074112
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AmbientMaster
+        ObjectType: 2
+        guid: 621f16c1743dc24a84524a6daa52b080
+      - ElementName: 3DAmbience
+        ObjectType: 2
+        guid: e3f62788d2911c41b3720357d98b42e8
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster/3DAmbience
+    - name: AmbientBeds
+      guid: df9c74a761f693428bdae3d16dc16aca
+      id: 1182634443
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AmbientMaster
+        ObjectType: 2
+        guid: 621f16c1743dc24a84524a6daa52b080
+      - ElementName: AmbientBeds
+        ObjectType: 2
+        guid: df9c74a761f693428bdae3d16dc16aca
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster/AmbientBeds
+    - name: AmbientMaster
+      guid: 621f16c1743dc24a84524a6daa52b080
+      id: 1459460693
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: AmbientMaster
+        ObjectType: 2
+        guid: 621f16c1743dc24a84524a6daa52b080
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster
+    - name: Cave
+      guid: c3a74df94626534b9cca646c70c7b4d9
+      id: 4122393694
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Reverbs
+        ObjectType: 1
+        guid: 13876454971cac40a3b44f725d9fe6da
+      - ElementName: Cave
+        ObjectType: 1
+        guid: c3a74df94626534b9cca646c70c7b4d9
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Reverbs/Cave
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
       id: 3803692087
@@ -53,9 +173,123 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus
+    - name: NPCMaster
+      guid: b064dc9c454f3640bac110cd5ff10dfa
+      id: 2033911932
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: NPCMaster
+        ObjectType: 2
+        guid: b064dc9c454f3640bac110cd5ff10dfa
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/NPCMaster
+    - name: Outdoor
+      guid: e6a9789124f3204f87fdf80acf148bd4
+      id: 144697359
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Reverbs
+        ObjectType: 1
+        guid: 13876454971cac40a3b44f725d9fe6da
+      - ElementName: Outdoor
+        ObjectType: 1
+        guid: e6a9789124f3204f87fdf80acf148bd4
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Reverbs/Outdoor
+    - name: PlayerCloth
+      guid: 5ef394dd65c670458f82abbc166f0e96
+      id: 765206498
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: PlayerMaster
+        ObjectType: 2
+        guid: 83b700a08721b843858d249355c90024
+      - ElementName: PlayerLocomotion
+        ObjectType: 2
+        guid: 1ffc74e72fadd048931be6ca1affb8f6
+      - ElementName: PlayerCloth
+        ObjectType: 2
+        guid: 5ef394dd65c670458f82abbc166f0e96
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/PlayerMaster/PlayerLocomotion/PlayerCloth
+    - name: PlayerLocomotion
+      guid: 1ffc74e72fadd048931be6ca1affb8f6
+      id: 2343802269
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: PlayerMaster
+        ObjectType: 2
+        guid: 83b700a08721b843858d249355c90024
+      - ElementName: PlayerLocomotion
+        ObjectType: 2
+        guid: 1ffc74e72fadd048931be6ca1affb8f6
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/PlayerMaster/PlayerLocomotion
+    - name: PlayerMaster
+      guid: 83b700a08721b843858d249355c90024
+      id: 3538689948
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: PlayerMaster
+        ObjectType: 2
+        guid: 83b700a08721b843858d249355c90024
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/PlayerMaster
+    - name: Reverbs
+      guid: 13876454971cac40a3b44f725d9fe6da
+      id: 3545700988
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Reverbs
+        ObjectType: 1
+        guid: 13876454971cac40a3b44f725d9fe6da
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Reverbs
   BankWwu:
-  - PhysicalPath: SoundBanks\Default Work Unit.wwu
+  - PhysicalPath: SoundBanks/Default Work Unit.wwu
     PathAndIcons:
     - ElementName: SoundBanks
       ObjectType: 5
@@ -63,10 +297,10 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: 254d02f565124f4eaa0d213b541f7ff8
-    ParentPath: SoundBanks\Default Work Unit
+    ParentPath: SoundBanks/Default Work Unit
     guid: 254d02f565124f4eaa0d213b541f7ff8
     GuidInternal: 
-    m_lastTime: -8585088844871224418
+    m_lastTime: -8585082668060493884
     List:
     - name: Main
       guid: 9ea6ae27fabd8e408cf82f205143ff7e
@@ -81,9 +315,9 @@ MonoBehaviour:
       - ElementName: Main
         ObjectType: 7
         guid: 9ea6ae27fabd8e408cf82f205143ff7e
-      Path: SoundBanks\Default Work Unit\Main
+      Path: SoundBanks/Default Work Unit/Main
   EventWwu:
-  - PhysicalPath: Events\Default Work Unit.wwu
+  - PhysicalPath: Events/Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Events
       ObjectType: 5
@@ -91,10 +325,10 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: 65a1122963a23f4587bc63f0005c9e35
-    ParentPath: Events\Default Work Unit
+    ParentPath: Events/Default Work Unit
     guid: 65a1122963a23f4587bc63f0005c9e35
     GuidInternal: 
-    m_lastTime: -8585088844872863007
+    m_lastTime: -8585081047472063030
     List:
     - name: Player_Dash
       guid: 8e263a7be5625a4aa7bffc338b880acf
@@ -109,12 +343,76 @@ MonoBehaviour:
       - ElementName: Player_Dash
         ObjectType: 3
         guid: 8e263a7be5625a4aa7bffc338b880acf
-      Path: Events\Default Work Unit\Player_Dash
+      Path: Events/Default Work Unit/Player_Dash
       maxAttenuation: 0
-      maxDuration: 0.11037927
-      minDuration: 0.08760809
+      maxDuration: 0.104425155
+      minDuration: 0.09454913
+  - PhysicalPath: Events/TestEvents.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: TestEvents
+      ObjectType: 12
+      guid: d20d5bbffbd8594c9a62d66e65d6cbd6
+    ParentPath: Events/TestEvents
+    guid: d20d5bbffbd8594c9a62d66e65d6cbd6
+    GuidInternal: 
+    m_lastTime: -8585081047472032252
+    List:
+    - name: Play_TestBeep
+      guid: b4d9995ffd262c4b888c708a05ced386
+      id: 1955951874
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: TestEvents
+        ObjectType: 12
+        guid: d20d5bbffbd8594c9a62d66e65d6cbd6
+      - ElementName: Play_TestBeep
+        ObjectType: 3
+        guid: b4d9995ffd262c4b888c708a05ced386
+      Path: Events/TestEvents/Play_TestBeep
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_TestBeep_3D
+      guid: 53ff5adb13e5ea4d86ad65f4fb3fabea
+      id: 1681067324
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: TestEvents
+        ObjectType: 12
+        guid: d20d5bbffbd8594c9a62d66e65d6cbd6
+      - ElementName: Play_TestBeep_3D
+        ObjectType: 3
+        guid: 53ff5adb13e5ea4d86ad65f4fb3fabea
+      Path: Events/TestEvents/Play_TestBeep_3D
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_TestBeep_lp
+      guid: 5804c0b94d80db428fe17ff7be966841
+      id: 858964037
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: TestEvents
+        ObjectType: 12
+        guid: d20d5bbffbd8594c9a62d66e65d6cbd6
+      - ElementName: Play_TestBeep_lp
+        ObjectType: 3
+        guid: 5804c0b94d80db428fe17ff7be966841
+      Path: Events/TestEvents/Play_TestBeep_lp
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
-  - PhysicalPath: Game Parameters\Default Work Unit.wwu
+  - PhysicalPath: Game Parameters/Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Game Parameters
       ObjectType: 5
@@ -122,13 +420,13 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: 7a7abf8123fb7e48a74c296c566ad40c
-    ParentPath: Game Parameters\Default Work Unit
+    ParentPath: Game Parameters/Default Work Unit
     guid: 7a7abf8123fb7e48a74c296c566ad40c
     GuidInternal: 
-    m_lastTime: -8585089980516455814
+    m_lastTime: -8585090478979702116
     List: []
   StateWwu:
-  - PhysicalPath: States\Default Work Unit.wwu
+  - PhysicalPath: States/Default Work Unit.wwu
     PathAndIcons:
     - ElementName: States
       ObjectType: 5
@@ -136,13 +434,13 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: dfa4eabd59b4eb46a79e81e60efe4498
-    ParentPath: States\Default Work Unit
+    ParentPath: States/Default Work Unit
     guid: dfa4eabd59b4eb46a79e81e60efe4498
     GuidInternal: 
-    m_lastTime: -8585089980516386001
+    m_lastTime: -8585090478979679849
     List: []
   SwitchWwu:
-  - PhysicalPath: Switches\Default Work Unit.wwu
+  - PhysicalPath: Switches/Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Switches
       ObjectType: 5
@@ -150,13 +448,13 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: 3f75d3923174824d8407edbd89801c1d
-    ParentPath: Switches\Default Work Unit
+    ParentPath: Switches/Default Work Unit
     guid: 3f75d3923174824d8407edbd89801c1d
     GuidInternal: 
-    m_lastTime: -8585089980516386001
+    m_lastTime: -8585090478979678799
     List: []
   TriggerWwu:
-  - PhysicalPath: Triggers\Default Work Unit.wwu
+  - PhysicalPath: Triggers/Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Triggers
       ObjectType: 5
@@ -164,14 +462,14 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: b5ec24c972034b4581a42ad5b719e5e7
-    ParentPath: Triggers\Default Work Unit
+    ParentPath: Triggers/Default Work Unit
     guid: b5ec24c972034b4581a42ad5b719e5e7
     GuidInternal: 
-    m_lastTime: -8585089980516376024
+    m_lastTime: -8585090478979677233
     List: []
-  ExpandedFileSystemItemIds: 0200000003000000040000000500000006000000090000000a000000
-  ExpandedWaapiItemIds: 0200000003000000090000000a000000
-  AutoSyncSelection: 1
+  ExpandedFileSystemItemIds: 
+  ExpandedWaapiItemIds: 
+  AutoSyncSelection: 0
   autoPopulateEnabled: 1
-  currentDataSource: 1
+  currentDataSource: 0
   CurrentPluginConfig: 
