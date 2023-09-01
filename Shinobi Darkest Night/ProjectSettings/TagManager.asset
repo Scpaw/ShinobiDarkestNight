@@ -7,6 +7,7 @@ TagManager:
   - Projectile
   - Collider
   - Enemy
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Player
   - Collider
   - Level
-  - 
+  - obsticle
   - 
   - 
   - 

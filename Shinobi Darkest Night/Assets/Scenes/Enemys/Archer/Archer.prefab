@@ -399,6 +399,9 @@ MonoBehaviour:
   archerSpeed: 2
   stundTime: 0
   projectiles: []
+  layerToHit:
+    serializedVersion: 2
+    m_Bits: 640
   meleeDamage: 5
   meleeAttackTime: 1
 --- !u!114 &8302308078188379949
@@ -487,7 +490,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3325517022537903608}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 847a14d4dc9cc43679ab34fc78e0182f, type: 3}
   m_Name: 

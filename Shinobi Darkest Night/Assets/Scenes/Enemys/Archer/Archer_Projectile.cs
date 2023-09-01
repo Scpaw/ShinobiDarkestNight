@@ -54,10 +54,6 @@ public class Archer_Projectile : MonoBehaviour
         {
             Destroy(gameObject, 0);
         }
-        else if(other.gameObject.tag == "Obstacle")
-        {
-            Destroy(gameObject, 0);
-        }
         else if (other.gameObject.tag == "Player")
         {
             Destroy(gameObject, 0);

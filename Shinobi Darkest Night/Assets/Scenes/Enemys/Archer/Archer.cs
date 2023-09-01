@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Pathfinding;
+using Pathfinding.Util;
+using Unity.VisualScripting;
 
 public class Archer : MonoBehaviour
 {
@@ -29,6 +31,10 @@ public class Archer : MonoBehaviour
     private Vector3 startPos;
     private GameObject thePlayer;
     public List<GameObject> projectiles;
+    [SerializeField] LayerMask layerToHit;
+    private bool canShootPlayer;
+    private GameObject pointTarget;
+    private float walkingTime;
 
     [Header("Archer melee")]
     [SerializeField] float meleeDamage;
@@ -36,12 +42,14 @@ public class Archer : MonoBehaviour
     private float meleeTime;
     private DamageRange damageRange;
 
+
     public void Awake()
     {
         startPos = transform.position;
         playerInRange = false;
         player = PlayerController.Instance.GetPlayer().transform;
         damageRange = GetComponentInChildren<DamageRange>();
+        pointTarget = Instantiate(new GameObject(), transform.position, transform.rotation);
     }
     private void OnEnable()
     {
@@ -63,6 +71,7 @@ public class Archer : MonoBehaviour
         gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
         canMove.speed = 1;
         nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
+        canShootPlayer = true;
     }
 
     void FixedUpdate()
@@ -79,36 +88,51 @@ public class Archer : MonoBehaviour
 
         if (playerInRange)
         {
-            canMove.speed = 0;
-            if (damageRange.playerInRange)
+            if (hit(transform.position).transform.gameObject.layer != 7)
             {
-                if (Time.time > meleeTime)
+                if (canShootPlayer)
                 {
-                    EnemyAnim.SetTrigger("Melee");
-                    meleeTime = Time.time + meleeAttackTime;
+                    canMove.speed = archerSpeed;
+                    canShootPlayer = false;
+                    pointTarget.transform.position = canShootPoint();
+                    gameObject.GetComponent<AIDestinationSetter>().target = pointTarget.transform;
+                    walkingTime = 2;
                 }
             }
-            else
+            else if(canShootPlayer)
             {
-                if (Time.time > nextShoot)
+                canMove.speed = 0;
+                if (damageRange.playerInRange)
                 {
-                    nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
-
-                    if (shots > Random.Range(4, 6))
+                    if (Time.time > meleeTime)
                     {
-                        shooting = true;
-                        EnemyAnim.SetTrigger("3shot");
-                        shots = 0;
+                        EnemyAnim.SetTrigger("Melee");
+                        meleeTime = Time.time + meleeAttackTime;
                     }
-                    else
+                }
+                else
+                {
+                    if (Time.time > nextShoot)
                     {
-                        shooting = true;
-                        EnemyAnim.SetTrigger("shot");
-                        shots++;
-                    }
+                        nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
 
+                        if (shots > Random.Range(4, 6))
+                        {
+                            shooting = true;
+                            EnemyAnim.SetTrigger("3shot");
+                            shots = 0;
+                        }
+                        else
+                        {
+                            shooting = true;
+                            EnemyAnim.SetTrigger("shot");
+                            shots++;
+                        }
+
+                    }
                 }
             }
+           
         }
         else
         {
@@ -132,6 +156,17 @@ public class Archer : MonoBehaviour
             Flip(projectileSpawnPoint.parent.transform);
             Flip(transform.GetComponentInChildren<Canvas>().transform);
         }
+
+        if (walkingTime > 0)
+        {
+            walkingTime -= Time.fixedDeltaTime;
+        }
+        if ((transform.position == pointTarget.transform.position || walkingTime<0 )&& !canShootPlayer)
+        { 
+            canShootPlayer = true;
+            gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
+        }
+
     }
 
     bool fireRange()
@@ -164,5 +199,34 @@ public class Archer : MonoBehaviour
     {
         changeThis.localScale = new Vector3(-changeThis.localScale.x, changeThis.localScale.y, changeThis.localScale.z);
     }
+
+    private RaycastHit2D hit(Vector3 pos)
+    { 
+        return Physics2D.CircleCast(pos, 0.2f, (player.position - pos).normalized, 30, layerToHit);
+    }
+    private Vector2 dir(Vector3 pos)
+    { 
+        return (player.position - pos).normalized;
+    }
+    private Vector3 canShootPoint()
+    {
+        Vector2 posToReturn = transform.position;
+        int i = 0;
+         while (hit(posToReturn).transform.gameObject.layer != 7 && i <15)
+         {
+            posToReturn = transform.position;
+            if (i % 2 == 1)
+            {
+                posToReturn = posToReturn + new Vector2( dir(posToReturn).x * i/2,0);
+            }
+            else
+            {
+                posToReturn = posToReturn + new Vector2 (0,dir(posToReturn).y * i);
+            }
+            i++;
+         }
+        return posToReturn;
+    }
+
 
 }

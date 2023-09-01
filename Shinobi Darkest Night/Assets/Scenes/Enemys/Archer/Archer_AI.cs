@@ -10,19 +10,13 @@ public class Archer_AI : MonoBehaviour
     private float archerSpeed;
     public float detectRadius;
     private Transform player;
-    private float enemySpeed;
     private float offScreenSpeed;
-    private void Awake()
-    {
-        enemySpeed = GetComponent<AILerp>().speed;
-        offScreenSpeed = enemySpeed * 2;
-    }
     private void Start()
     {
         ai = GetComponent<AILerp>();
         archerScript = GetComponent<Archer>();
-        archerSpeed = ai.speed;
         player = PlayerController.Instance.GetPlayer().transform;
+        archerSpeed= ai.speed;
     }
     void Update()
     {
@@ -55,14 +49,6 @@ public class Archer_AI : MonoBehaviour
         else
         {
             ai.enabled = true;
-        }
-        if (Camera.main.WorldToScreenPoint(transform.position).x > 0 && Camera.main.WorldToScreenPoint(transform.position).x < Screen.width && Camera.main.WorldToScreenPoint(transform.position).y > 0 && Camera.main.WorldToScreenPoint(transform.position).y < Screen.height)
-        {
-            ai.speed = enemySpeed;
-        }
-        else
-        {
-            ai.speed = offScreenSpeed;
         }
     }
     private IEnumerator ResetPathf()
