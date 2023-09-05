@@ -1,6 +1,7 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ronin_AI : MonoBehaviour
@@ -10,13 +11,19 @@ public class Ronin_AI : MonoBehaviour
     private float enemySpeed;
     public float detectRadius;
     private Transform player;
-    private EnemyDamage damageRange;
+    private DamageRange damageRange;
     private float offScreenSpeed;
+    [Header("Animations")]
+    private Animator anim;
+    [SerializeField] float enemyAttackTime;
+    private Dash dash;
+    private int dashState;
 
     private void Awake()
     {
         enemySpeed = GetComponent<AILerp>().speed;
         offScreenSpeed = enemySpeed * 2;
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void OnEnable()
@@ -40,7 +47,12 @@ public class Ronin_AI : MonoBehaviour
         }
         if (damageRange == null)
         {
-            damageRange = GetComponent<EnemyDamage>();
+            damageRange = GetComponentInChildren<DamageRange>();
+        }
+        if (dash == null)
+        {
+            dash = GetComponent<Dash>();
+           // dash.stopAtPlayer = true;
         }
         enemyScript.canDeflect = 3;
     }
@@ -48,7 +60,7 @@ public class Ronin_AI : MonoBehaviour
     {
         if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < detectRadius)
         {
-            if (enemyScript.stundTime > 0)
+            if (enemyScript.stundTime > 0 || !dash.canMove)
             {
                 ai.canMove = false;
             }
@@ -76,10 +88,20 @@ public class Ronin_AI : MonoBehaviour
                 enemyScript.canDeflect = 3;
             }
         }
+
+        if (player.position.x - transform.position.x > 0 && transform.localScale.x < 0 || player.position.x - transform.position.x < 0 && transform.localScale.x > 0)
+        {
+            Flip(transform);
+            Flip(transform.GetComponentInChildren<Canvas>().transform);
+        }
+
+        //attack
+        Attack();
+
     }
     private void FixedUpdate()
     {
-        if (damageRange.playerIn || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
+        if (damageRange.playerInRange || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
         {
             ai.enabled = false;
         }
@@ -95,20 +117,68 @@ public class Ronin_AI : MonoBehaviour
         {
             ai.speed = offScreenSpeed;
         }
-    }
-    private IEnumerator ResetPathf()
-    {
-        ai.SetNewPath();
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        ai.speed = 0;
-        while (enemySpeed > ai.speed)
+
+        if (ai.speed > 0 && ai.enabled)
         {
-            if (ai.speed > 0.1f)
+            anim.SetFloat("Blend", 1);
+        }
+        else
+        {
+            anim.SetFloat("Blend", 0);
+        }
+    }
+
+    private void Attack()
+    {
+        if (enemyAttackTime < Time.time)
+        {
+            if (damageRange.playerInRange)
             {
-                ai.canMove = true;
+                anim.SetTrigger("Slash");
             }
-            ai.speed += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
+            else
+            {
+                dash.StartDash();
+            }
+
+            enemyAttackTime = Time.time + Random.Range(4f,6f);
+        }
+
+        if ( dash.dashState != dashState)
+        {
+            if (dash.dashState == 0)
+            {
+                Debug.Log("zero");
+                dashState = dash.dashState;
+                return;
+            }
+            dashState = dash.dashState;
+            Debug.Log(dashState);
+        }
+        anim.SetInteger("Dash", dashState);
+    }
+
+    private void Flip(Transform changeThis)
+    {
+        changeThis.localScale = new Vector3(-changeThis.localScale.x, changeThis.localScale.y, changeThis.localScale.z);
+    }
+
+    public IEnumerator ResetPathf()
+    {
+        if (dash.canMove)
+        {
+            ai.SetNewPath();
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            ai.speed = 0;
+            while (enemySpeed > ai.speed)
+            {
+                if (ai.speed > 0.1f)
+                {
+                    ai.canMove = true;
+                }
+                ai.speed += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
         }
     }
 }

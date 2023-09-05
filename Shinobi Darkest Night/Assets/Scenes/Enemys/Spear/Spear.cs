@@ -22,6 +22,7 @@ public class Spear : MonoBehaviour
     [SerializeField] LayerMask playerLayer;
     private GameObject hit;
     private float offScreenSpeed;
+    private Dash dash;
 
     private void Awake()
     {
@@ -52,6 +53,10 @@ public class Spear : MonoBehaviour
         {
             damageRange = GetComponent<EnemyDamage>();
         }
+        if (dash == null)
+        { 
+            dash = GetComponent<Dash>();
+        }
         timebtwAttacks = 0;
         dmg = damageRange.enemyDamage;
         hitPlayer = false;
@@ -66,7 +71,7 @@ public class Spear : MonoBehaviour
                 hit = Physics2D.Raycast(transform.position, -transform.position + player.position, 100, playerLayer).transform.gameObject;
                 if (hit.layer == player.gameObject.layer)
                 {
-                    StartCoroutine(SpearDash());
+                    dash.StartDash();
                     timebtwAttacks = 12;
                 }
             }
@@ -75,12 +80,16 @@ public class Spear : MonoBehaviour
         if (timebtwAttacks > 0)
         { 
             timebtwAttacks -= Time.deltaTime;
+            if (dash.timebtwAttacks == 0)
+            {
+                timebtwAttacks = 0;
+            }
         }
         if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < detectRadius)
         {
            
 
-            if (enemyScript.stundTime > 0 || !canMove)
+            if (enemyScript.stundTime > 0 || !dash.canMove)
             {
                 ai.canMove = false;
             }
@@ -162,7 +171,6 @@ public class Spear : MonoBehaviour
         }
         else
         {
-            Debug.Log("not in range");
             timebtwAttacks = 0;
         }
         canMove = true;
@@ -172,7 +180,7 @@ public class Spear : MonoBehaviour
     }
     private IEnumerator ResetPathf()
     {
-        if (canMove)
+        if (dash.canMove)
         {
             ai.SetNewPath();
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;

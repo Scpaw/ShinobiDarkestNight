@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5769607825050810030}
   - component: {fileID: 5769607825050810017}
   - component: {fileID: 5769607825050810016}
+  - component: {fileID: 663618563096870069}
   m_Layer: 6
   m_Name: SpearGuy
   m_TagString: Enemy
@@ -81,6 +82,9 @@ MonoBehaviour:
   projectiles: []
   stundTime: 0
   isStuned: 0
+  canDeflect: 0
+  deflectAgain: 0
+  deflectAtRandom: 0
 --- !u!50 &5769607825050810029
 Rigidbody2D:
   serializedVersion: 4
@@ -191,6 +195,8 @@ MonoBehaviour:
   isAttacking: 0
   attacksInt: 0
   attackAnim: 0
+  playerIn: 0
+  canAttack: 0
 --- !u!61 &5769607825050810016
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -217,6 +223,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5555069, y: 0.5295925}
   m_EdgeRadius: 0
+--- !u!114 &663618563096870069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5769607825050810024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0845c7553aa2bb444ac282b236ec0d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 640
+  dmg: 10
 --- !u!1 &5769607825259101499
 GameObject:
   m_ObjectHideFlags: 0

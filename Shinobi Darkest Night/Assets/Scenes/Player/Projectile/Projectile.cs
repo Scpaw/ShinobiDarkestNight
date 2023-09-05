@@ -121,6 +121,10 @@ public class Projectile : MonoBehaviour
                 deflectedTime = Time.time + 0.05f;
                 enemyHit = false;
                 deflected = true;
+                if (theEnemyHealth.GetComponent<Ronin_AI>())
+                {
+                    theEnemyHealth.GetComponentInChildren<Animator>().SetTrigger("Deflect");
+                }
             }
             else
             {
