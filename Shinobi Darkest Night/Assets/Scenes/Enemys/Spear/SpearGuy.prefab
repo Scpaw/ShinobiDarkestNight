@@ -235,11 +235,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0845c7553aa2bb444ac282b236ec0d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timebtwAttacks: 0
   canMove: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 640
   dmg: 10
+  dashState: 0
+  stopAtPlayer: 0
+  dontAttackWhileDashing: 0
+  dashPower: 3
 --- !u!1 &5769607825259101499
 GameObject:
   m_ObjectHideFlags: 0

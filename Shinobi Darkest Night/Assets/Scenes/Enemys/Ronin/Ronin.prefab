@@ -47,7 +47,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.1450461, y: 1.1450461}
+  m_Size: {x: 1.5553937, y: 1.5553937}
   m_Direction: 0
 --- !u!114 &7168832505069873163
 MonoBehaviour:
@@ -557,6 +557,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectRadius: 5
   enemyAttackTime: 0
+  canMove: 0
+  attacking: 0
 --- !u!114 &8417237743739114887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,6 +579,8 @@ MonoBehaviour:
   dmg: 10
   dashState: 0
   stopAtPlayer: 0
+  dontAttackWhileDashing: 0
+  dashPower: 4
 --- !u!1 &4672747640878786975
 GameObject:
   m_ObjectHideFlags: 0

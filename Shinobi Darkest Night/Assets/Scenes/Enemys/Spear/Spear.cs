@@ -15,7 +15,6 @@ public class Spear : MonoBehaviour
     private Transform player;
     private Vector3 attackPoint;
     private float timebtwAttacks;
-    private bool canMove;
     private EnemyDamage damageRange;
     private float dmg;
     private bool hitPlayer;
@@ -60,7 +59,6 @@ public class Spear : MonoBehaviour
         timebtwAttacks = 0;
         dmg = damageRange.enemyDamage;
         hitPlayer = false;
-        canMove = true;
     }
     void Update()
     { 
@@ -139,7 +137,7 @@ public class Spear : MonoBehaviour
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         Vector2 startPos = transform.position;
-        canMove = false;
+        //canMove = false;
         damageRange.enabled = false;
         float i = 0.4f;
         ai.canMove = false;
@@ -173,7 +171,7 @@ public class Spear : MonoBehaviour
         {
             timebtwAttacks = 0;
         }
-        canMove = true;
+        //canMove = true;
         damageRange.enabled = true;
         hitPlayer = false;
         StartCoroutine(ResetPathf());

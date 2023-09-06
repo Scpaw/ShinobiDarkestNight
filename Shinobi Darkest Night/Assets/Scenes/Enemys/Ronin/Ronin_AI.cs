@@ -18,6 +18,8 @@ public class Ronin_AI : MonoBehaviour
     [SerializeField] float enemyAttackTime;
     private Dash dash;
     private int dashState;
+    public bool canMove;
+    public bool attacking;
 
     private void Awake()
     {
@@ -52,7 +54,8 @@ public class Ronin_AI : MonoBehaviour
         if (dash == null)
         {
             dash = GetComponent<Dash>();
-           // dash.stopAtPlayer = true;
+            dash.stopAtPlayer = true;
+            dash.dontAttackWhileDashing = true;
         }
         enemyScript.canDeflect = 3;
     }
@@ -60,7 +63,7 @@ public class Ronin_AI : MonoBehaviour
     {
         if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < detectRadius)
         {
-            if (enemyScript.stundTime > 0 || !dash.canMove)
+            if (enemyScript.stundTime > 0 || !dash.canMove || !canMove)
             {
                 ai.canMove = false;
             }
@@ -89,7 +92,7 @@ public class Ronin_AI : MonoBehaviour
             }
         }
 
-        if (player.position.x - transform.position.x > 0 && transform.localScale.x < 0 || player.position.x - transform.position.x < 0 && transform.localScale.x > 0)
+        if ((player.position.x - transform.position.x > 0 && transform.localScale.x < 0 || player.position.x - transform.position.x < 0 && transform.localScale.x > 0) && dashState!=2)
         {
             Flip(transform);
             Flip(transform.GetComponentInChildren<Canvas>().transform);
@@ -97,8 +100,8 @@ public class Ronin_AI : MonoBehaviour
 
         //attack
         Attack();
-
     }
+
     private void FixedUpdate()
     {
         if (damageRange.playerInRange || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
@@ -107,7 +110,12 @@ public class Ronin_AI : MonoBehaviour
         }
         else
         {
-            ai.enabled = true;
+            if (!ai.enabled)
+            {
+                StartCoroutine(ResetPathf());
+                ai.enabled = true;
+            }
+
         }
         if (Camera.main.WorldToScreenPoint(transform.position).x > 0 && Camera.main.WorldToScreenPoint(transform.position).x < Screen.width && Camera.main.WorldToScreenPoint(transform.position).y > 0 && Camera.main.WorldToScreenPoint(transform.position).y < Screen.height)
         {
@@ -148,14 +156,20 @@ public class Ronin_AI : MonoBehaviour
         {
             if (dash.dashState == 0)
             {
-                Debug.Log("zero");
                 dashState = dash.dashState;
                 return;
             }
             dashState = dash.dashState;
-            Debug.Log(dashState);
         }
         anim.SetInteger("Dash", dashState);
+    }
+
+    public void DoDmg(int dmg)
+    {
+        if (damageRange.playerInRange)
+        {
+            player.GetComponent<PlayerHealth>().AddDamage(dmg);
+        }
     }
 
     private void Flip(Transform changeThis)

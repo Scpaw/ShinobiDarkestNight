@@ -19,6 +19,8 @@ public class Dash : MonoBehaviour
     [SerializeField] private int dmg;
     public int dashState;
     public bool stopAtPlayer;
+    public bool dontAttackWhileDashing;
+    [SerializeField] float dashPower;
 
     private void Awake()
     {
@@ -76,7 +78,7 @@ public class Dash : MonoBehaviour
             ParticleManager.instance.UseParticle("Dust", transform.position, Vector3.zero);
             attackPoint = player.position + ((player.position - transform.position).normalized * 2);
             i = 1;
-            rb.AddForce((attackPoint - transform.position) * 3, ForceMode2D.Impulse);
+            rb.AddForce((attackPoint - transform.position) * dashPower, ForceMode2D.Impulse);
             if (!stopAtPlayer)
             {
                 while (i >0)
@@ -87,13 +89,21 @@ public class Dash : MonoBehaviour
             }
             else
             {
-                yield return new WaitUntil(() => stopAtPlayer && (transform.position - player.position).magnitude < 0.1f || i < Time.time);
-                Debug.Log("After");
+                while (i > 0 && (transform.position - player.position).magnitude > 0.6f)
+                {
+                    i -= Time.deltaTime;
+                    yield return new WaitForEndOfFrame();
+                }
+                if ((transform.position - player.position).magnitude < 0.62f)
+                {
+                    rb.velocity = Vector3.zero;
+                }
             }
         }
         else
         {
             timebtwAttacks = 0;
+            dashState = 0;
             dashState = 0;
         }
         dashState = 3;
@@ -105,13 +115,15 @@ public class Dash : MonoBehaviour
             damageRange.enabled = true;
         }
         hitPlayer = false;
-        ai.SetNewPath();
+        //ai.SetNewPath();
         dashing = null;
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == player.gameObject && !hitPlayer)
+        if (collision.gameObject == player.gameObject && !hitPlayer && !dontAttackWhileDashing)
         {
             player.GetComponent<PlayerHealth>().AddDamage(dmg * 1.5f);
             hitPlayer = true;

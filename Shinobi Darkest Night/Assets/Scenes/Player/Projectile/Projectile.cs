@@ -123,7 +123,8 @@ public class Projectile : MonoBehaviour
                 deflected = true;
                 if (theEnemyHealth.GetComponent<Ronin_AI>())
                 {
-                    theEnemyHealth.GetComponentInChildren<Animator>().SetTrigger("Deflect");
+                    int i = Random.Range(1, 4);
+                    theEnemyHealth.GetComponentInChildren<Animator>().SetInteger("Deflect", i);
                 }
             }
             else
