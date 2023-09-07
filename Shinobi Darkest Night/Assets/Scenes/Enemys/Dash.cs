@@ -30,9 +30,12 @@ public class Dash : MonoBehaviour
         {
             damageRange = GetComponent<EnemyDamage>();
         }
-
     }
 
+    private void OnEnable()
+    {
+        canMove = true;
+    }
 
     public void StartDash()
     {

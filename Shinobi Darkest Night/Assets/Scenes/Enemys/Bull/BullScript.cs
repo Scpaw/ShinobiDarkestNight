@@ -15,13 +15,17 @@ public class BullScript : MonoBehaviour
     [SerializeField] LayerMask playerLayer;
     private GameObject hit;
     private float offScreenSpeed;
+    private DamageRange damageRange;
     
     //dash
     private Coroutine dashCorutine;
     private bool canMove;
-    private float dashMaxSpeed;
+    [SerializeField] private float dashMaxSpeed;
     private float currentSpeed;
     private Rigidbody2D rb;
+    private bool dashing;
+    private bool attack;
+    [SerializeField] float dmg;
 
     private void Awake()
     {
@@ -53,8 +57,14 @@ public class BullScript : MonoBehaviour
         { 
             rb = GetComponent<Rigidbody2D>();
         }
+        if (damageRange == null)
+        { 
+            damageRange = GetComponentInChildren<DamageRange>();
+        }
         timebtwAttacks = 0;
         canMove = true;
+        enemyScript.canDoDmg = false;
+
     }
     void Update()
     {
@@ -66,12 +76,12 @@ public class BullScript : MonoBehaviour
                 if (hit.layer == player.gameObject.layer && dashCorutine == null)
                 {
                     dashCorutine =  StartCoroutine(Dash());
-                    timebtwAttacks = 6;
+                    timebtwAttacks = Random.Range(3, 4);
                 }
             }
 
         }
-        if (timebtwAttacks > 0)
+        if (timebtwAttacks > 0 && canMove)
         {
             timebtwAttacks -= Time.deltaTime;
         }
@@ -97,7 +107,7 @@ public class BullScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if ( transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
+        if ( dashing|| transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
         {
             ai.enabled = false;
         }
@@ -113,23 +123,75 @@ public class BullScript : MonoBehaviour
         {
             ai.speed = offScreenSpeed;
         }
+
+        if (dashing && damageRange.playerInRange && !attack)
+        {
+            player.GetComponent<PlayerHealth>().AddDamage(currentSpeed * dmg);
+            attack = true;
+        }
+
+        if (transform.parent.GetComponent<RoomBrain>().enemiesActive == 1 && !enemyScript.canDoDmg)
+        { 
+            enemyScript.canDoDmg = true;
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collision");
+        if (dashing && dashCorutine != null)
+        {
+            StopCoroutine(dashCorutine);
+            rb.velocity = Vector3.zero;
+            dashing = false;
+            StartCoroutine(Wait(currentSpeed / dashMaxSpeed));
+            dashCorutine = null;
+        }
     }
 
     private IEnumerator Dash()
     {
+        //start
+        dashing = true;
+        attack = false;
+        currentSpeed = 0;
         Vector3 dir = (player.position - transform.position).normalized;
         Debug.DrawLine(transform.position,(transform.position + dir *3) , Color.red, 5);
         canMove = false;
-        float i = 1;
-        while (i > 0)
+        float i = 0.35f;
+        while (dashMaxSpeed > currentSpeed)
         {
-            i -= Time.deltaTime;
+            rb.AddForce(dir,ForceMode2D.Force);
+            yield return new WaitForEndOfFrame();
+            currentSpeed = rb.velocity.magnitude;
+        }
+        //runnning
+        while (i > 0)
+        { 
+            i-=Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+        //stoping
+
+        while (currentSpeed > 0.1f)
+        {
+            rb.AddForce(-rb.velocity.normalized *4 * Time.deltaTime, ForceMode2D.Impulse);
+            yield return new WaitForEndOfFrame();
+            currentSpeed = rb.velocity.magnitude;
+        }
+        dashing = false;
         canMove = true;
         dashCorutine = null;
     }
 
+    private IEnumerator Wait(float timeToWait)
+    {
+        while (timeToWait > 0)
+        { 
+            timeToWait -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        canMove = true;
+    }
 
     private IEnumerator ResetPathf()
     {

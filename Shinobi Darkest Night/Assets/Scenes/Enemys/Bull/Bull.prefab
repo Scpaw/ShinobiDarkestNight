@@ -183,10 +183,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectRadius: 8
-  attackRadius: 2
+  attackRadius: 4
   playerLayer:
     serializedVersion: 2
     m_Bits: 640
+  dashMaxSpeed: 3
+  dmg: 5
 --- !u!114 &5931898599962226204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +226,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 3
+  m_LinearDrag: 0
   m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}

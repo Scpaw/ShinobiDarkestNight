@@ -732,7 +732,7 @@ public class PlayerController : MonoBehaviour
                         {
                             enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(attackDamage, true, true);
                         }
-                        if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static && enemy.gameObject.GetComponent<EnemyHealth>().canBeAttacked)
+                        if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static && enemy.gameObject.GetComponent<EnemyHealth>().canBeAttacked && enemy.gameObject.GetComponent<EnemyHealth>().canDoDmg)
                         {
                             enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                             enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);

@@ -557,7 +557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectRadius: 5
   enemyAttackTime: 0
-  canMove: 0
+  canMove: 1
   attacking: 0
 --- !u!114 &8417237743739114887
 MonoBehaviour:

@@ -58,6 +58,7 @@ public class Ronin_AI : MonoBehaviour
             dash.dontAttackWhileDashing = true;
         }
         enemyScript.canDeflect = 3;
+        enemyAttackTime = Time.time + Random.Range(4f, 6f);
     }
     void Update()
     {

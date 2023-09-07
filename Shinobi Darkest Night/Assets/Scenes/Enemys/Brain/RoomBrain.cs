@@ -20,6 +20,7 @@ public class RoomBrain : MonoBehaviour
     [Tooltip("Deviation form spawn point")]
     public float maxDeviationFromPoint;
 
+    public int enemiesActive;
     void Start()
     {
         foreach (Transform child in transform)
@@ -120,7 +121,7 @@ public class RoomBrain : MonoBehaviour
             if (!enemy.activeInHierarchy)
             {
                 enemy.GetComponent<EnemyHealth>().startPos = pointNotOnScreen();
-                enemy.SetActive(true);              
+                enemy.SetActive(true);
             }
         }
 
