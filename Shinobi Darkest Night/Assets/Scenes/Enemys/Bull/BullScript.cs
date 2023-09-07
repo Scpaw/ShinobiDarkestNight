@@ -85,7 +85,7 @@ public class BullScript : MonoBehaviour
         {
             timebtwAttacks -= Time.deltaTime;
         }
-        if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < detectRadius)
+        if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < detectRadius && (player.position - transform.position).magnitude > attackRadius/2)
         {
             if (enemyScript.stundTime > 0 || !canMove)
             {
@@ -107,7 +107,7 @@ public class BullScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if ( dashing|| transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
+        if ( dashing|| transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius && transform.parent.GetComponent<AiBrain>().playerIn)
         {
             ai.enabled = false;
         }
@@ -160,7 +160,7 @@ public class BullScript : MonoBehaviour
         float i = 0.35f;
         while (dashMaxSpeed > currentSpeed)
         {
-            rb.AddForce(dir,ForceMode2D.Force);
+            rb.AddForce(dir *dashMaxSpeed * Time.deltaTime,ForceMode2D.Impulse);
             yield return new WaitForEndOfFrame();
             currentSpeed = rb.velocity.magnitude;
         }
@@ -174,7 +174,7 @@ public class BullScript : MonoBehaviour
 
         while (currentSpeed > 0.1f)
         {
-            rb.AddForce(-rb.velocity.normalized *4 * Time.deltaTime, ForceMode2D.Impulse);
+            rb.AddForce(-rb.velocity.normalized *dashMaxSpeed * Time.deltaTime, ForceMode2D.Impulse);
             yield return new WaitForEndOfFrame();
             currentSpeed = rb.velocity.magnitude;
         }

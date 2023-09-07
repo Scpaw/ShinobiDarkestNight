@@ -183,11 +183,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectRadius: 8
-  attackRadius: 4
+  attackRadius: 6
   playerLayer:
     serializedVersion: 2
     m_Bits: 640
-  dashMaxSpeed: 3
+  dashMaxSpeed: 8
   dmg: 5
 --- !u!114 &5931898599962226204
 MonoBehaviour:
@@ -206,6 +206,7 @@ MonoBehaviour:
   enemyHealthSlider: {fileID: 5931898599589274106}
   enemyCanvas: {fileID: 5931898600262639640}
   canBeAttacked: 0
+  canDoDmg: 0
   startPos: {x: 0, y: 0, z: 0}
   projectiles: []
   stundTime: 0
