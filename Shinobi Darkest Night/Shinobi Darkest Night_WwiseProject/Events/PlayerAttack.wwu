@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{0F5AB892-79EC-4060-9379-86712EC13CB1}" SchemaVersion="110" RootDocumentID="{41DFFF12-3E8A-418B-97BF-9445C85538B8}" ParentDocumentID="{41DFFF12-3E8A-418B-97BF-9445C85538B8}">
+	<Events>
+		<WorkUnit Name="PlayerAttack" ID="{0F5AB892-79EC-4060-9379-86712EC13CB1}" OwnerID="{41DFFF12-3E8A-418B-97BF-9445C85538B8}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="Shuriken_Throwing" ID="{8D824D97-5300-482B-A700-EE5A90DA6F99}">
+					<ChildrenList>
+						<Action Name="" ID="{1583B076-906C-49D4-9E09-3AD5FBB77983}" ShortID="561958221"/>
+					</ChildrenList>
+				</Event>
+				<Event Name="Shuriken_Grabbing" ID="{444CF490-95A3-4086-87C8-1EC9163C011E}"/>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

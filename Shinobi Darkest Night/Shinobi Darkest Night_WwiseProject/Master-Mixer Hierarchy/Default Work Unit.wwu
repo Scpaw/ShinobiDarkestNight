@@ -17,6 +17,7 @@
 										<Bus Name="PlayerCloth" ID="{DD94F35E-C665-4570-8F82-ABBC166F0E96}"/>
 									</ChildrenList>
 								</Bus>
+								<Bus Name="PlayerAttack" ID="{DD9DB83A-8EEB-4B4A-982F-D73FADA74C71}"/>
 							</ChildrenList>
 						</Bus>
 						<Bus Name="NPCMaster" ID="{9CDC64B0-4F45-4036-BAC1-10CD5FF10DFA}"/>
