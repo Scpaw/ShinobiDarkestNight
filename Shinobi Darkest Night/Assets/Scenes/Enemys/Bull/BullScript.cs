@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BullScript : MonoBehaviour
 {
-    private AILerp ai;
+    private AIPath ai;
     private EnemyHealth enemyScript;
     private float enemySpeed;
     [SerializeField] float detectRadius;
@@ -29,7 +29,7 @@ public class BullScript : MonoBehaviour
 
     private void Awake()
     {
-        enemySpeed = GetComponent<AILerp>().speed;
+        enemySpeed = GetComponent<AIPath>().maxSpeed;
         offScreenSpeed = enemySpeed * 2;
     }
 
@@ -37,7 +37,7 @@ public class BullScript : MonoBehaviour
     {
         if (ai == null)
         {
-            ai = GetComponent<AILerp>();
+            ai = GetComponent<AIPath>();
         }
         if (enemyScript == null)
         {
@@ -117,16 +117,16 @@ public class BullScript : MonoBehaviour
         }
         if (Camera.main.WorldToScreenPoint(transform.position).x > 0 && Camera.main.WorldToScreenPoint(transform.position).x < Screen.width && Camera.main.WorldToScreenPoint(transform.position).y > 0 && Camera.main.WorldToScreenPoint(transform.position).y < Screen.height)
         {
-            ai.speed = enemySpeed;
+            ai.maxSpeed = enemySpeed;
         }
         else
         {
-            ai.speed = offScreenSpeed;
+            ai.maxSpeed = offScreenSpeed;
         }
 
         if (dashing && damageRange.playerInRange && !attack)
         {
-            player.GetComponent<PlayerHealth>().AddDamage(currentSpeed * dmg);
+            player.GetComponent<PlayerHealth>().AddDamage((currentSpeed/dashMaxSpeed) * dmg);
             attack = true;
         }
 
@@ -137,7 +137,6 @@ public class BullScript : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision");
         if (dashing && dashCorutine != null)
         {
             StopCoroutine(dashCorutine);
@@ -195,16 +194,15 @@ public class BullScript : MonoBehaviour
 
     private IEnumerator ResetPathf()
     {
-        ai.SetNewPath();
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        ai.speed = 0;
-        while (enemySpeed > ai.speed)
+        ai.maxSpeed = 0;
+        while (enemySpeed > ai.maxSpeed)
         {
-            if (ai.speed > 0.1f)
+            if (ai.maxSpeed > 0.1f)
             {
                 ai.canMove = true;
             }
-            ai.speed += Time.deltaTime;
+            ai.maxSpeed += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
     }

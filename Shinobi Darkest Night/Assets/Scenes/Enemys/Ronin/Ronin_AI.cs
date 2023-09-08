@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Ronin_AI : MonoBehaviour
 {
-    private AILerp ai;
+    private AIPath ai;
     private EnemyHealth enemyScript;
     private float enemySpeed;
     public float detectRadius;
@@ -23,7 +23,7 @@ public class Ronin_AI : MonoBehaviour
 
     private void Awake()
     {
-        enemySpeed = GetComponent<AILerp>().speed;
+        enemySpeed = GetComponent<AIPath>().speed;
         offScreenSpeed = enemySpeed * 2;
         anim = GetComponentInChildren<Animator>();
     }
@@ -32,7 +32,7 @@ public class Ronin_AI : MonoBehaviour
     {
         if (ai == null)
         {
-            ai = GetComponent<AILerp>();
+            ai = GetComponent<AIPath>();
         }
         if (enemyScript == null)
         {
@@ -59,6 +59,10 @@ public class Ronin_AI : MonoBehaviour
         }
         enemyScript.canDeflect = 3;
         enemyAttackTime = Time.time + Random.Range(4f, 6f);
+        if (anim == null)
+        {
+            anim = GetComponentInChildren<Animator>();
+        }
     }
     void Update()
     {
@@ -147,10 +151,18 @@ public class Ronin_AI : MonoBehaviour
             }
             else
             {
-                dash.StartDash();
+                if (Random.value > 0.65f)
+                {
+                    dash.StartDash();
+                }
+                else
+                {
+                    enemyAttackTime = Time.time + Random.Range(1f, 2.5f);
+                }
+          
             }
 
-            enemyAttackTime = Time.time + Random.Range(4f,6f);
+            enemyAttackTime = Time.time + Random.Range(1f,2f);
         }
 
         if ( dash.dashState != dashState)
@@ -182,7 +194,7 @@ public class Ronin_AI : MonoBehaviour
     {
         if (dash.canMove)
         {
-            ai.SetNewPath();
+            //ai.SetNewPath();
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             ai.speed = 0;
             while (enemySpeed > ai.speed)

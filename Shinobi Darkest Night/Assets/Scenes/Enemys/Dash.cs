@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Dash : MonoBehaviour
 {
-    private AILerp ai;
+    private AIPath ai;
     private Transform player;
     private Vector3 attackPoint;
     public float timebtwAttacks;
@@ -24,7 +24,7 @@ public class Dash : MonoBehaviour
 
     private void Awake()
     {
-        ai = GetComponent<AILerp>();
+        ai = GetComponent<AIPath>();
         player = PlayerController.Instance.GetPlayer().transform;
         if (GetComponent<EnemyDamage>())
         {

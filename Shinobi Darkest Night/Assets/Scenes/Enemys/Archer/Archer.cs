@@ -27,7 +27,7 @@ public class Archer : MonoBehaviour
     [SerializeField] float archerSpeed;
     public float stundTime;
     Animator EnemyAnim;
-    private AILerp canMove;
+    private AIPath canMove;
     private Vector3 startPos;
     private GameObject thePlayer;
     public List<GameObject> projectiles;
@@ -55,7 +55,7 @@ public class Archer : MonoBehaviour
     {
         if (canMove == null)
         {
-            canMove = gameObject.GetComponent<AILerp>();
+            canMove = gameObject.GetComponent<AIPath>();
         }
         if (EnemyAnim == null)
         {
@@ -63,20 +63,20 @@ public class Archer : MonoBehaviour
         }
         transform.position = startPos;
         playerInRange = false;
-        canMove.speed = archerSpeed;
+        canMove.maxSpeed = archerSpeed;
         if (thePlayer == null)
         {
             thePlayer = PlayerController.Instance.GetPlayer();
         }
         gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
-        canMove.speed = 1;
+        canMove.maxSpeed = 1;
         nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
         canShootPlayer = true;
     }
 
     void FixedUpdate()
     {
-        if (canMove.speed > 0 && canMove.enabled)
+        if (canMove.maxSpeed > 0 && canMove.enabled)
         {
             EnemyAnim.SetFloat("Moving", 1);
         }
@@ -92,7 +92,7 @@ public class Archer : MonoBehaviour
             {
                 if (canShootPlayer)
                 {
-                    canMove.speed = archerSpeed;
+                    canMove.maxSpeed = archerSpeed;
                     canShootPlayer = false;
                     pointTarget.transform.position = canShootPoint();
                     gameObject.GetComponent<AIDestinationSetter>().target = pointTarget.transform;
@@ -101,7 +101,7 @@ public class Archer : MonoBehaviour
             }
             else if(canShootPlayer)
             {
-                canMove.speed = 0;
+                canMove.maxSpeed = 0;
                 if (damageRange.playerInRange)
                 {
                     if (Time.time > meleeTime)
@@ -138,7 +138,7 @@ public class Archer : MonoBehaviour
         {
             if (!shooting)
             {
-                canMove.speed = archerSpeed;
+                canMove.maxSpeed = archerSpeed;
             }
         }
 

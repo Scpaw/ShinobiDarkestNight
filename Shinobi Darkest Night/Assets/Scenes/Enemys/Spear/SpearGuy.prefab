@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 5769607825050810019}
   - component: {fileID: 5769607825050810029}
   - component: {fileID: 5769607825050810028}
-  - component: {fileID: 5769607825050810031}
   - component: {fileID: 5769607825050810030}
   - component: {fileID: 5769607825050810017}
   - component: {fileID: 5769607825050810016}
   - component: {fileID: 663618563096870069}
+  - component: {fileID: 9022790623756543276}
   m_Layer: 6
   m_Name: SpearGuy
   m_TagString: Enemy
@@ -78,6 +78,7 @@ MonoBehaviour:
   enemyHealthSlider: {fileID: 5769607825415403845}
   enemyCanvas: {fileID: 5769607825552554151}
   canBeAttacked: 0
+  canDoDmg: 0
   startPos: {x: 0, y: 0, z: 0}
   projectiles: []
   stundTime: 0
@@ -134,35 +135,6 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &5769607825050810031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5769607825050810024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 847a14d4dc9cc43679ab34fc78e0182f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 4
-  autoRepath:
-    mode: 1
-    interval: 0.5
-    sensitivity: 10
-    maximumInterval: 2
-    visualizeSensitivity: 0
-  canMove: 1
-  speed: 1
-  orientation: 1
-  enableRotation: 0
-  rotationSpeed: 10
-  interpolatePathSwitches: 1
-  switchPathInterpolationSpeed: 5
-  targetCompatibility: {fileID: 0}
-  repathRateCompatibility: NaN
-  canSearchCompability: 0
 --- !u!114 &5769607825050810030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +217,48 @@ MonoBehaviour:
   stopAtPlayer: 0
   dontAttackWhileDashing: 0
   dashPower: 3
+--- !u!114 &9022790623756543276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5769607825050810024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
+  radius: 0.5
+  height: 2
+  canMove: 1
+  maxSpeed: 1
+  gravity: {x: NaN, y: NaN, z: NaN}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  centerOffsetCompatibility: NaN
+  repathRateCompatibility: NaN
+  canSearchCompability: 0
+  orientation: 1
+  enableRotation: 1
+  autoRepath:
+    mode: 2
+    interval: 0.5
+    sensitivity: 10
+    maximumInterval: 2
+    visualizeSensitivity: 0
+  targetCompatibility: {fileID: 0}
+  maxAcceleration: -2.5
+  rotationSpeed: 360
+  slowdownDistance: 0.6
+  pickNextWaypointDist: 2
+  endReachedDistance: 0.2
+  alwaysDrawGizmos: 0
+  slowWhenNotFacingTarget: 0
+  whenCloseToDestination: 0
+  constrainInsideGraph: 0
 --- !u!1 &5769607825259101499
 GameObject:
   m_ObjectHideFlags: 0

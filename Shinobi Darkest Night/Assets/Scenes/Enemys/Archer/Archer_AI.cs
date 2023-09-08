@@ -5,7 +5,7 @@ using Pathfinding;
 
 public class Archer_AI : MonoBehaviour
 {
-    private AILerp ai;
+    private AIPath ai;
     private Archer archerScript;
     private float archerSpeed;
     public float detectRadius;
@@ -13,10 +13,10 @@ public class Archer_AI : MonoBehaviour
     private float offScreenSpeed;
     private void Start()
     {
-        ai = GetComponent<AILerp>();
+        ai = GetComponent<AIPath>();
         archerScript = GetComponent<Archer>();
         player = PlayerController.Instance.GetPlayer().transform;
-        archerSpeed= ai.speed;
+        archerSpeed= ai.maxSpeed;
     }
     void Update()
     {
@@ -53,16 +53,15 @@ public class Archer_AI : MonoBehaviour
     }
     private IEnumerator ResetPathf()
     {
-        ai.SetNewPath();
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        ai.speed = 0;
-        while (archerSpeed > ai.speed)
+        ai.maxSpeed = 0;
+        while (archerSpeed > ai.maxSpeed)
         {
-            if (ai.speed > 0.1f)
+            if (ai.maxSpeed > 0.1f)
             {
                 ai.canMove = true;
             }
-            ai.speed += Time.deltaTime;
+            ai.maxSpeed += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
     }

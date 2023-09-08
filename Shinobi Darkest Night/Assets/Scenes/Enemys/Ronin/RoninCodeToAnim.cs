@@ -22,11 +22,15 @@ public class RoninCodeToAnim : MonoBehaviour
 
     public void DashStart()
     {
-        ronin.DoDmg(20);
         transform.parent.GetComponent<Ronin_AI>().canMove = false;
     }
 
     public void DashAttack()
+    {
+        ronin.DoDmg(20);
+    }
+
+    public void DashEnd() 
     {
         transform.parent.GetComponent<Ronin_AI>().canMove = true;
     }

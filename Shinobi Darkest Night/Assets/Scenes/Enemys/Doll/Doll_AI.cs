@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Doll_AI: MonoBehaviour
 {
-    private AILerp ai;
+    private AIPath ai;
     private EnemyHealth enemyScript;
     private float enemySpeed;
     public float detectRadius;
@@ -15,7 +15,7 @@ public class Doll_AI: MonoBehaviour
 
     private void Awake()
     {
-        enemySpeed = GetComponent<AILerp>().speed;
+        enemySpeed = GetComponent<AIPath>().maxSpeed;
         offScreenSpeed = enemySpeed * 2;
     }
 
@@ -23,7 +23,7 @@ public class Doll_AI: MonoBehaviour
     {
         if (ai == null)
         {
-            ai = GetComponent<AILerp>();
+            ai = GetComponent<AIPath>();
         }
         if (enemyScript == null)
         {
@@ -42,7 +42,7 @@ public class Doll_AI: MonoBehaviour
         {
             damageRange = GetComponent<EnemyDamage>();
         }
-        ai.speed = enemySpeed;
+        ai.maxSpeed = enemySpeed;
     }
     void Update()
     {
@@ -78,25 +78,24 @@ public class Doll_AI: MonoBehaviour
         }
         if (Camera.main.WorldToScreenPoint(transform.position).x > 0 && Camera.main.WorldToScreenPoint(transform.position).x < Screen.width && Camera.main.WorldToScreenPoint(transform.position).y > 0 && Camera.main.WorldToScreenPoint(transform.position).y < Screen.height)
         {
-            ai.speed = enemySpeed;
+            ai.maxSpeed = enemySpeed;
         }
         else
         {
-            ai.speed = offScreenSpeed;
+            ai.maxSpeed = offScreenSpeed;
         }
     }
     private IEnumerator ResetPathf()
     {
-        ai.SetNewPath();
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        ai.speed = 0;
-        while (enemySpeed > ai.speed)
+        ai.maxSpeed = 0;
+        while (enemySpeed > ai.maxSpeed)
         {
-            if (ai.speed > 0.1f)
+            if (ai.maxSpeed > 0.1f)
             {
                 ai.canMove = true;
             }
-            ai.speed += Time.deltaTime;
+            ai.maxSpeed += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
     }

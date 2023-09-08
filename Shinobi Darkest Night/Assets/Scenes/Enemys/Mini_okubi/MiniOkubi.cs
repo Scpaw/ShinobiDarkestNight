@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MiniOkubi : MonoBehaviour
 {
-    private AILerp ai;
+    private AIPath ai;
     private EnemyHealth enemyScript;
     private EnemyDamage damage;
     private float enemySpeed;
@@ -26,18 +26,18 @@ public class MiniOkubi : MonoBehaviour
     private void OnEnable()
     {
         transform.position = startPos;
-        ai = GetComponent<AILerp>();
+        ai = GetComponent<AIPath>();
         enemyScript = GetComponent<EnemyHealth>();
         enemyScript.deflectAtRandom = true;
         player = PlayerController.Instance.GetPlayer().transform;
         GetComponent<AIDestinationSetter>().target = player;
         damage = GetComponent<EnemyDamage>();
-        enemySpeed = ai.speed;
+        enemySpeed = ai.maxSpeed;
         enemyAddSpeed = 0;
     }
     private void OnDisable()
     {
-        ai.speed -= enemyAddSpeed;
+        ai.maxSpeed -= enemyAddSpeed;
         enemyAddSpeed = 0;
     }
     void Update()
@@ -74,7 +74,7 @@ public class MiniOkubi : MonoBehaviour
             if (enemyAddSpeed == 0)
             {
                 enemyAddSpeed = 1.3f;
-                ai.speed = enemySpeed + enemyAddSpeed;
+                ai.maxSpeed = enemySpeed + enemyAddSpeed;
             }
         }
         if (attackNum > Random.Range(3, 2 * x))
@@ -97,16 +97,15 @@ public class MiniOkubi : MonoBehaviour
 
     private IEnumerator ResetPathf()
     {
-        ai.SetNewPath();
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        ai.speed = 0;
-        while (enemySpeed + enemyAddSpeed > ai.speed)
+        ai.maxSpeed = 0;
+        while (enemySpeed + enemyAddSpeed > ai.maxSpeed)
         {
-            if (ai.speed > 0.1f)
+            if (ai.maxSpeed > 0.1f)
             {
                 ai.canMove = true;
             }
-            ai.speed += Time.deltaTime;
+            ai.maxSpeed += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
     }
