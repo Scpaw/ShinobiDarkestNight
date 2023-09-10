@@ -3,7 +3,7 @@
 	<UserProjectSettingsInfo>
 		<UserProjectSettings Name="" ID="{BA5901B1-726A-40BE-91E0-82F2AEBD15BD}">
 			<PropertyList>
-				<Property Name="AudioFilesImporter\Path" Type="string" Value="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Originals\SFX\Player\Player_Attack\"/>
+				<Property Name="AudioFilesImporter\Path" Type="string" Value="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Originals\SFX\NPC\"/>
 				<Property Name="Event Action List\{0F7AB0A3-CD64-48F9-B0ED-C46846721F0C}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{15B7CD94-6FF5-41D4-A6CC-69D21F1392BA}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{23C18965-DA00-493F-B355-305CCDC8957C}\x64_Expand States" Type="string" Value=""/>
@@ -17,6 +17,7 @@
 				<Property Name="Event Action List\{AC7E7F2D-2DC4-4D1C-A232-70BE5F883C1A}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{B9C00458-804D-42DB-8FE1-7FF7BE966841}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{C18541E5-5395-4220-9616-CDDC28A0D94A}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{CC9243ED-4873-4ED9-9154-5B1BF2C8143D}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{DB5AFF53-E513-4DEA-86AD-65F4FB3FABEA}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{EF107D93-5CE7-4EDF-AFE3-B151F91A5F8C}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{F802AB68-AF5B-4AAE-8511-E5C32B99C2A8}\x64_Expand States" Type="string" Value=""/>

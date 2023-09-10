@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}" SchemaVersion="110">
 	<AudioObjects>
-		<WorkUnit Name="NPC_Locomotion" ID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}" PersistMode="Standalone"/>
+		<WorkUnit Name="NPC_Locomotion" ID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}" PersistMode="Standalone">
+			<ChildrenList>
+				<RandomSequenceContainer Name="Enemy_MiniOkubi_MovingLP" ID="{B1CA2E0E-BE37-4142-9191-CDC5C2BC0F4F}" ShortID="724456862">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Enemy_MiniOkubi_MovingLP" ID="{65E24563-4B41-4880-A65D-CC7DE920B2AB}" ShortID="361899334">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Enemy_MiniOkubi_MovingLP" ID="{39572458-4AB1-42FD-8EBB-560CBC68C37A}">
+									<Language>SFX</Language>
+									<AudioFile>NPC\Enemy_MiniOkubi_MovingLP.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="26567910"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Enemy_MiniOkubi_MovingLP" ID="{39572458-4AB1-42FD-8EBB-560CBC68C37A}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

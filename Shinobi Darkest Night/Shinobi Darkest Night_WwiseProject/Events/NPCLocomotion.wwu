@@ -3,12 +3,26 @@
 	<Events>
 		<WorkUnit Name="NPCLocomotion" ID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" OwnerID="{F975E339-6CDC-4D40-95C2-4FCDB9488C40}" PersistMode="Nested">
 			<ChildrenList>
-				<Event Name="Enemy_Wlocznik_Dashing" ID="{AC7E7F2D-2DC4-4D1C-A232-70BE5F883C1A}">
+				<Event Name="Enemy_MiniOkubi_MovingLP" ID="{CC9243ED-4873-4ED9-9154-5B1BF2C8143D}">
 					<ChildrenList>
-						<Action Name="" ID="{9EBC75D1-5ABD-42A2-8FA3-7D84874FF35C}" ShortID="754844616">
+						<Action Name="" ID="{08F0C151-EBA8-4A66-8B69-9B03F4D96953}" ShortID="512659679">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Enemy_Wlocznik_Dashing" ID="{7D487490-ACB0-4857-82D9-0E6645FFA922}" WorkUnitID="{7824BECA-1D67-4EF3-BCB7-2280CB8FDFF6}"/>
+									<ObjectRef Name="Enemy_MiniOkubi_MovingLP" ID="{65E24563-4B41-4880-A65D-CC7DE920B2AB}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Enemy_MiniOkubi_Moving" ID="{C01E9D35-4AED-436D-9F3B-0C39C2050018}">
+					<ChildrenList>
+						<Action Name="" ID="{3A0E413C-1449-4B44-B1B5-7A8579E7C1B3}" ShortID="67206042">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_MiniOkubi_MovingLP" ID="{65E24563-4B41-4880-A65D-CC7DE920B2AB}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

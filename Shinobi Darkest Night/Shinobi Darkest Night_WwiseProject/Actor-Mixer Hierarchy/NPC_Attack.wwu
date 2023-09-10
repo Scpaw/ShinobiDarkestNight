@@ -24,6 +24,9 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="Enemy_Wlocznik_Dashing_01" ID="{D4704EC2-11CA-485A-8732-F9FCFC92FCD3}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>NPC\Enemy_Wlocznik_Dashing_01.wav</AudioFile>
 									<MediaIDList>
