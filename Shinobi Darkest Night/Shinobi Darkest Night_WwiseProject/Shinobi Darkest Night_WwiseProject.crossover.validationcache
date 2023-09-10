@@ -7,7 +7,7 @@
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1692558987" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\SoundBanks\Default Work Unit.wwu" DateLow="1693509684" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Shinobi Darkest Night_WwiseProject.wproj" DateLow="1692558987" DateHigh="0"/>
-	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Shinobi Darkest Night_WwiseProject.crossover.wsettings" DateLow="1694305092" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Shinobi Darkest Night_WwiseProject.crossover.wsettings" DateLow="1694310766" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Queries\Factory Queries.wwu" DateLow="1692558987" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Queries\Default Work Unit.wwu" DateLow="1692558987" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Presets\Factory Spatial Audio.wwu" DateLow="1692558987" DateHigh="0"/>
@@ -18,11 +18,14 @@
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1694191275" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1692558987" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Game Parameters\Default Work Unit.wwu" DateLow="1693509684" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Events\UI.wwu" DateLow="1694310597" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Events\TestEvents.wwu" DateLow="1693505730" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Events\PlayerLocomotion.wwu" DateLow="1693507106" DateHigh="0"/>
-	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Events\PlayerAttack.wwu" DateLow="1694191275" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Events\PlayerAttack.wwu" DateLow="1694309680" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Events\Player.wwu" DateLow="1694191275" DateHigh="0"/>
-	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Events\NPC.wwu" DateLow="1693506336" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Events\NPCLocomotion.wwu" DateLow="1694310178" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Events\NPCAttack.wwu" DateLow="1694309993" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Events\NPC.wwu" DateLow="1694310006" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Events\Locomotion.wwu" DateLow="1693506328" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Events\Default Work Unit.wwu" DateLow="1693509684" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Effects\Factory Effects.wwu" DateLow="1692558987" DateHigh="0"/>
@@ -35,9 +38,11 @@
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Attenuations\Player_Locomotion.wwu" DateLow="1693506301" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Attenuations\Default Work Unit.wwu" DateLow="1693509684" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Attenuations\att_Generic.wwu" DateLow="1693507106" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Actor-Mixer Hierarchy\UI.wwu" DateLow="1694310597" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Actor-Mixer Hierarchy\TestFiles.wwu" DateLow="1693506231" DateHigh="0"/>
-	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Actor-Mixer Hierarchy\Player_Locomotion.wwu" DateLow="1693507106" DateHigh="0"/>
-	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Actor-Mixer Hierarchy\Player_Attack.wwu" DateLow="1694191275" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Actor-Mixer Hierarchy\Player_Locomotion.wwu" DateLow="1694309680" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Actor-Mixer Hierarchy\Player_Attack.wwu" DateLow="1694309742" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Actor-Mixer Hierarchy\NPC_Locomotion.wwu" DateLow="1693502128" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Actor-Mixer Hierarchy\NPC_Attack.wwu" DateLow="1694309954" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1693509684" DateHigh="0"/>
 </ValidationCache>

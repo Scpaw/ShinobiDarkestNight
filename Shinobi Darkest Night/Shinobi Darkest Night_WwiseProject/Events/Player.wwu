@@ -5,6 +5,7 @@
 			<ChildrenList>
 				<WorkUnit Name="PlayerLocomotion" ID="{19978AE2-37A9-40BA-8C49-8831619280AE}" PersistMode="Reference"/>
 				<WorkUnit Name="PlayerAttack" ID="{0F5AB892-79EC-4060-9379-86712EC13CB1}" PersistMode="Reference"/>
+				<WorkUnit Name="Player_Health" ID="{F136ACA4-5C66-4A8B-8EFB-DBD500973D6F}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

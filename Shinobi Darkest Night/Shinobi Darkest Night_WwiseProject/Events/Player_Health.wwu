@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{F136ACA4-5C66-4A8B-8EFB-DBD500973D6F}" SchemaVersion="110" RootDocumentID="{41DFFF12-3E8A-418B-97BF-9445C85538B8}" ParentDocumentID="{41DFFF12-3E8A-418B-97BF-9445C85538B8}">
+	<Events>
+		<WorkUnit Name="Player_Health" ID="{F136ACA4-5C66-4A8B-8EFB-DBD500973D6F}" OwnerID="{41DFFF12-3E8A-418B-97BF-9445C85538B8}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="Player_Death" ID="{EF107D93-5CE7-4EDF-AFE3-B151F91A5F8C}">
+					<ChildrenList>
+						<Action Name="" ID="{465D9FC2-602A-4688-A989-62F05A520E21}" ShortID="442779253">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Death" ID="{1085E502-7361-4DAE-BEA2-5B22EA796D9E}" WorkUnitID="{88C339D3-7393-4542-9BED-94E57382ADA1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

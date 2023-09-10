@@ -3,8 +3,9 @@
 	<UserProjectSettingsInfo>
 		<UserProjectSettings Name="" ID="{BA5901B1-726A-40BE-91E0-82F2AEBD15BD}">
 			<PropertyList>
-				<Property Name="AudioFilesImporter\Path" Type="string" Value="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Originals\SFX\UI\"/>
+				<Property Name="AudioFilesImporter\Path" Type="string" Value="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Originals\SFX\Player\Player_Health\"/>
 				<Property Name="Event Action List\{0F7AB0A3-CD64-48F9-B0ED-C46846721F0C}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{15B7CD94-6FF5-41D4-A6CC-69D21F1392BA}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{444CF490-95A3-4086-87C8-1EC9163C011E}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{5F99D9B4-26FD-4B2C-888C-708A05CED386}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{5FE9BAD0-6599-4E62-85DF-7868A9547CBB}\x64_Expand States" Type="string" Value=""/>
@@ -49,13 +50,13 @@
 				<Property Name="MonitoringManager\GameObjectFilter\GameObjectFiltersEnable" Type="bool" Value="True"/>
 				<Property Name="MonitoringManager\GameObjectFilter\x64_GameObjectFilters" Type="string" Value=""/>
 				<Property Name="ObjectTabPanel\x64_CurrentObjects_{031E1E2C-DC25-4332-80C3-FFCC371AC803}" Type="string" Value=""/>
-				<Property Name="ObjectTabPanel\x64_CurrentObjects_{55C748C5-48C2-4731-827B-1208E5D658E3}" Type="string" Value="ewA3AEQANAA4ADcANAA5ADAALQBBAEMAQgAwAC0ANAA4ADUANwAtADgAMgBEADkALQAwAEUANgA2ADQANQBGAEYAQQA5ADIAMgB9AAAAAAE="/>
-				<Property Name="ProjectExplorer\AudioSelectionChannel1\ProjectExplorer2LastScrollState" Type="int32" Value="0"/>
-				<Property Name="ProjectExplorer\AudioSelectionChannel1\x64_ProjectExplorer2LastExpandedState" Type="string" Value="iC8JJ1oiVBFnJcijTz1EguraiCN1l8ZGou3FIio5d1b4u6dewGRQSoghoH6L4h1oyr4keGcd8068tyKAy4/f9mbT/kkwtahCmTuSSHOqtwc="/>
+				<Property Name="ObjectTabPanel\x64_CurrentObjects_{55C748C5-48C2-4731-827B-1208E5D658E3}" Type="string" Value="ewBBADUAQwBCADgANQA0ADQALQAwAEUAQQA0AC0ANAA5AEEAMgAtAEIARAA4ADIALQAzADcANgBBADkAOAA0ADIAMAAzAEYAOQB9AAAAAAE="/>
+				<Property Name="ProjectExplorer\AudioSelectionChannel1\ProjectExplorer2LastScrollState" Type="int32" Value="3"/>
+				<Property Name="ProjectExplorer\AudioSelectionChannel1\x64_ProjectExplorer2LastExpandedState" Type="string" Value="iC8JJ1oiVBFnJcijTz1EguraiCN1l8ZGou3FIio5d1b4u6dewGRQSoghoH6L4h1oyr4keGcd8068tyKAy4/f9hC9/V2w/URFm97dEMHVCJlZ7sFj9jlPSbPVDrHkBsY8ZtP+STC1qEKZO5JIc6q3Bw=="/>
 				<Property Name="ProjectExplorer\AudioSelectionChannel2\ProjectExplorer2LastScrollState" Type="int32" Value="0"/>
 				<Property Name="ProjectExplorer\AudioSelectionChannel2\x64_ProjectExplorer2LastExpandedState" Type="string" Value="iC8JJ1oiVBFnJcijTz1EguraiCN1l8ZGou3FIio5d1b4u6dewGRQSoghoH6L4h1oZtP+STC1qEKZO5JIc6q3Bw=="/>
 				<Property Name="ProjectExplorer\EventsSelectionChannel1\ProjectExplorer2LastScrollState" Type="int32" Value="0"/>
-				<Property Name="ProjectExplorer\EventsSelectionChannel1\x64_ProjectExplorer2LastExpandedState" Type="string" Value="/PCbpkrYfEir3Vb3HLKhJj8WXxh3oDNMo+c8nOM/e8KSuFoP7HlgQJN5hnEuwTyx4oqXGak3ukCMSYgxYZKArvWzmUpkFPlBj83wvI+X2f/e9ZowHwPgTJubwKU2J1ND"/>
+				<Property Name="ProjectExplorer\EventsSelectionChannel1\x64_ProjectExplorer2LastExpandedState" Type="string" Value="/PCbpkrYfEir3Vb3HLKhJvWzmUpkFPlBj83wvI+X2f/e9ZowHwPgTJubwKU2J1ND"/>
 				<Property Name="ProjectExplorer\EventsSelectionChannel2\ProjectExplorer2LastScrollState" Type="int32" Value="0"/>
 				<Property Name="ProjectExplorer\EventsSelectionChannel2\x64_ProjectExplorer2LastExpandedState" Type="string" Value="/PCbpkrYfEir3Vb3HLKhJt71mjAfA+BMm5vApTYnU0M="/>
 				<Property Name="ProjectExplorer\Game SyncsSelectionChannel1\ProjectExplorer2LastScrollState" Type="int32" Value="0"/>
