@@ -5,10 +5,51 @@
 			<ChildrenList>
 				<Event Name="Shuriken_Throwing" ID="{8D824D97-5300-482B-A700-EE5A90DA6F99}">
 					<ChildrenList>
-						<Action Name="" ID="{1583B076-906C-49D4-9E09-3AD5FBB77983}" ShortID="561958221"/>
+						<Action Name="" ID="{461D79CB-B76E-4A27-88EA-8246C969FF33}" ShortID="123727521">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Shuriken_Throwing" ID="{DC0EA57B-2F99-458D-B1A9-9C24FC9BBE62}" WorkUnitID="{F520D281-F527-4F03-A836-7B070AB31757}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Shuriken_Grabbing" ID="{444CF490-95A3-4086-87C8-1EC9163C011E}"/>
+				<Event Name="Shuriken_Grabbing" ID="{444CF490-95A3-4086-87C8-1EC9163C011E}">
+					<ChildrenList>
+						<Action Name="" ID="{D743D34C-99D4-4973-935D-9FBA7B1D216D}" ShortID="825857679">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Shuriken_Grabbing" ID="{3F8E5491-A6CA-40D8-BC52-7A329A788B82}" WorkUnitID="{F520D281-F527-4F03-A836-7B070AB31757}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Shokyaku_Fire_Attack_Lp" ID="{0F7AB0A3-CD64-48F9-B0ED-C46846721F0C}">
+					<ChildrenList>
+						<Action Name="" ID="{F06A3DFC-26F9-4B3C-9FE6-55CAAF83CD15}" ShortID="210738304">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Shokyaku_Fire_Attack" ID="{56DA2A86-F38A-47A9-9AD0-B4F29BA75A3E}" WorkUnitID="{F520D281-F527-4F03-A836-7B070AB31757}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Shokyaku_Fire_Attack_Stop" ID="{5FE9BAD0-6599-4E62-85DF-7868A9547CBB}">
+					<ChildrenList>
+						<Action Name="" ID="{7CCEC49A-5E13-4EE2-BE94-F8A615BE2730}" ShortID="559773737">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Shokyaku_Fire_Attack" ID="{56DA2A86-F38A-47A9-9AD0-B4F29BA75A3E}" WorkUnitID="{F520D281-F527-4F03-A836-7B070AB31757}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
