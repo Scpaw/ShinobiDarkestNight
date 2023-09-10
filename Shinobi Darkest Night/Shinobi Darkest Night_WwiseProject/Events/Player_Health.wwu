@@ -14,7 +14,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Player_Eating_Slodycz" ID="{79174A8B-7674-44B5-A2E5-C05AFB1567FC}"/>
+				<Event Name="Player_Eating_Slodycz" ID="{79174A8B-7674-44B5-A2E5-C05AFB1567FC}">
+					<ChildrenList>
+						<Action Name="" ID="{6A1D5A11-083C-40DB-8BC1-71532D5D7BD9}" ShortID="141294295">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Eating_Slodycz" ID="{62AF430F-039A-4F0D-83AC-01ACA7AA956F}" WorkUnitID="{88C339D3-7393-4542-9BED-94E57382ADA1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

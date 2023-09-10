@@ -6,6 +6,7 @@
 				<Property Name="AudioFilesImporter\Path" Type="string" Value="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Originals\SFX\NPC\NPC_Locomotion\"/>
 				<Property Name="Event Action List\{0F7AB0A3-CD64-48F9-B0ED-C46846721F0C}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{15B7CD94-6FF5-41D4-A6CC-69D21F1392BA}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{1A55FF58-34DE-4285-8546-005D78CD368F}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{23C18965-DA00-493F-B355-305CCDC8957C}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{444CF490-95A3-4086-87C8-1EC9163C011E}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{5F99D9B4-26FD-4B2C-888C-708A05CED386}\x64_Expand States" Type="string" Value=""/>
@@ -21,6 +22,7 @@
 				<Property Name="Event Action List\{C18541E5-5395-4220-9616-CDDC28A0D94A}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{CC9243ED-4873-4ED9-9154-5B1BF2C8143D}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{DB5AFF53-E513-4DEA-86AD-65F4FB3FABEA}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{DC174257-5357-4B3A-965C-3B1889526DD1}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{EF107D93-5CE7-4EDF-AFE3-B151F91A5F8C}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{F802AB68-AF5B-4AAE-8511-E5C32B99C2A8}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>

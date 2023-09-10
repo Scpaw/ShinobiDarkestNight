@@ -28,6 +28,31 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Enemy_Wlocznik_MovingLP" ID="{DC174257-5357-4B3A-965C-3B1889526DD1}">
+					<ChildrenList>
+						<Action Name="" ID="{86EE357A-2B18-45FD-AF97-E8592B158C2F}" ShortID="763176897">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Wlocznik_MovingLP" ID="{D6BDAB62-EAAD-431A-9ADA-7348B432989D}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Enemy_Wlocznik_MovingLP" ID="{1A55FF58-34DE-4285-8546-005D78CD368F}">
+					<ChildrenList>
+						<Action Name="" ID="{E1B5A4AB-FAD9-4B4E-8147-27B28932E0C9}" ShortID="257745882">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Wlocznik_MovingLP" ID="{D6BDAB62-EAAD-431A-9ADA-7348B432989D}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

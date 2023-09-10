@@ -67,6 +67,9 @@
 				</RandomSequenceContainer>
 				<RandomSequenceContainer Name="Player_Eating_Slodycz" ID="{D83B45C2-66BE-442A-8809-1ED0C9F310F9}" ShortID="399347716">
 					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="att_generic_10m" ID="{8126CA67-3CC3-42DC-9BB9-3E664AE882C9}" WorkUnitID="{70CDFC0A-518F-4D2E-87E4-2A579B8CBD99}"/>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
 						</Reference>
@@ -85,16 +88,16 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Player_Eating_Slodycz" ID="{7B0F3E10-0738-4F8D-B828-0D46BA7BC5BC}">
+								<AudioFileSource Name="Player_Eating_Slodycz_01" ID="{72D93D3F-EF0B-418C-9A46-854ECCA145B1}">
 									<Language>SFX</Language>
-									<AudioFile>Player\Player_Health\Player_Eating_Slodycz.wav</AudioFile>
+									<AudioFile>Player\Player_Health\Player_Eating_Slodycz_01.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="171075283"/>
+										<MediaID ID="934375959"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Player_Eating_Slodycz" ID="{7B0F3E10-0738-4F8D-B828-0D46BA7BC5BC}" Platform="Linked"/>
+								<ActiveSource Name="Player_Eating_Slodycz_01" ID="{72D93D3F-EF0B-418C-9A46-854ECCA145B1}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
