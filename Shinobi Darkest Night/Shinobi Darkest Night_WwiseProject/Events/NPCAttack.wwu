@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{2CB64DA0-D5A2-43F9-9D56-CAA7964CC451}" SchemaVersion="110" RootDocumentID="{F975E339-6CDC-4D40-95C2-4FCDB9488C40}" ParentDocumentID="{F975E339-6CDC-4D40-95C2-4FCDB9488C40}">
+	<Events>
+		<WorkUnit Name="NPCAttack" ID="{2CB64DA0-D5A2-43F9-9D56-CAA7964CC451}" OwnerID="{F975E339-6CDC-4D40-95C2-4FCDB9488C40}" PersistMode="Nested"/>
+	</Events>
+</WwiseDocument>

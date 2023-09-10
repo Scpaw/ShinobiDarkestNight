@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{F975E339-6CDC-4D40-95C2-4FCDB9488C40}" SchemaVersion="110">
 	<Events>
-		<WorkUnit Name="NPC" ID="{F975E339-6CDC-4D40-95C2-4FCDB9488C40}" PersistMode="Standalone"/>
+		<WorkUnit Name="NPC" ID="{F975E339-6CDC-4D40-95C2-4FCDB9488C40}" PersistMode="Standalone">
+			<ChildrenList>
+				<WorkUnit Name="NPCAttack" ID="{2CB64DA0-D5A2-43F9-9D56-CAA7964CC451}" PersistMode="Reference"/>
+				<WorkUnit Name="NPCLocomotion" ID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" PersistMode="Reference"/>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

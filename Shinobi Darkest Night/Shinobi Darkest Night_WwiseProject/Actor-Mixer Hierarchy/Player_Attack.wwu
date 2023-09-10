@@ -3,84 +3,16 @@
 	<AudioObjects>
 		<WorkUnit Name="Player_Attack" ID="{F520D281-F527-4F03-A836-7B070AB31757}" PersistMode="Standalone">
 			<ChildrenList>
-				<RandomSequenceContainer Name="Shuriken_Throwing" ID="{DC0EA57B-2F99-458D-B1A9-9C24FC9BBE62}" ShortID="326654894">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<Sound Name="Shuriken_Throwing_01" ID="{B3944981-4757-4887-A459-A6D29935F779}" ShortID="531315775">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Shuriken_Throwing_01" ID="{8B483006-7252-4F13-B807-D5075F834421}">
-									<Language>SFX</Language>
-									<AudioFile>Player\Player_Attack\Shuriken_Throwing_01.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="672902290"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Shuriken_Throwing_01" ID="{8B483006-7252-4F13-B807-D5075F834421}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-					</ChildrenList>
-				</RandomSequenceContainer>
-				<RandomSequenceContainer Name="Shuriken_Grabbing" ID="{3F8E5491-A6CA-40D8-BC52-7A329A788B82}" ShortID="43576092">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<Sound Name="Shuriken_Grabbing_01" ID="{E74DFA67-B1B8-4B1C-81DF-D122344DC6AA}" ShortID="667681135">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Shuriken_Grabbing_01" ID="{C1815537-4C8E-4678-8473-6536FE2223EA}">
-									<Language>SFX</Language>
-									<AudioFile>Player\Player_Attack\Shuriken_Grabbing_01.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="398348492"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Shuriken_Grabbing_01" ID="{C1815537-4C8E-4678-8473-6536FE2223EA}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-					</ChildrenList>
-				</RandomSequenceContainer>
-				<ActorMixer Name="Shokyaku_Fire_Attack" ID="{B8ED718E-12F2-46C9-9C01-FAD43852CD23}" ShortID="907716482">
+				<ActorMixer Name="Player_Attack" ID="{8BC8ECEB-3179-4C79-B3D8-FC85B00F16C4}" ShortID="978179288">
 					<PropertyList>
 						<Property Name="Pitch" Type="int32">
 							<ModifierList>
 								<ModifierInfo>
-									<Modifier Name="" ID="{F18B0D57-9EAF-442D-A4B7-61A09F6BF556}">
+									<Modifier Name="" ID="{797662CE-C9A9-4AA5-ACBA-29136D3C4D5A}">
 										<PropertyList>
 											<Property Name="Enabled" Type="bool" Value="True"/>
-											<Property Name="Max" Type="Real64" Value="76"/>
-											<Property Name="Min" Type="Real64" Value="-50"/>
+											<Property Name="Max" Type="Real64" Value="51"/>
+											<Property Name="Min" Type="Real64" Value="-101"/>
 										</PropertyList>
 									</Modifier>
 								</ModifierInfo>
@@ -89,11 +21,11 @@
 						<Property Name="Volume" Type="Real64">
 							<ModifierList>
 								<ModifierInfo>
-									<Modifier Name="" ID="{A301967B-1D38-4CEA-BCC9-2B7D46A06949}">
+									<Modifier Name="" ID="{9F42826E-63ED-4CBA-BB94-218DAD6B4066}">
 										<PropertyList>
 											<Property Name="Enabled" Type="bool" Value="True"/>
-											<Property Name="Max" Type="Real64" Value="4"/>
-											<Property Name="Min" Type="Real64" Value="-2"/>
+											<Property Name="Max" Type="Real64" Value="1"/>
+											<Property Name="Min" Type="Real64" Value="-3"/>
 										</PropertyList>
 									</Modifier>
 								</ModifierInfo>
@@ -109,7 +41,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<RandomSequenceContainer Name="Shokyaku_Fire_Attack" ID="{56DA2A86-F38A-47A9-9AD0-B4F29BA75A3E}" ShortID="109924789">
+						<RandomSequenceContainer Name="Shuriken_Throwing" ID="{DC0EA57B-2F99-458D-B1A9-9C24FC9BBE62}" ShortID="326654894">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
@@ -119,10 +51,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="Shokyaku_Fire_Attack_01" ID="{8FB5ECE5-A838-4023-B938-35AFA577741C}" ShortID="208798723">
-									<PropertyList>
-										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-									</PropertyList>
+								<Sound Name="Shuriken_Throwing_01" ID="{B3944981-4757-4887-A459-A6D29935F779}" ShortID="531315775">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
@@ -132,26 +61,25 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="Shokyaku_Fire_Attack_01" ID="{255F6CB9-A427-46A5-A48E-3B7636838273}">
-											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="0.532433962264151"/>
-												<Property Name="LoopEnd" Type="Real64" Value="2.96320754716981"/>
-												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-											</PropertyList>
+										<AudioFileSource Name="Shuriken_Throwing_01" ID="{8B483006-7252-4F13-B807-D5075F834421}">
 											<Language>SFX</Language>
-											<AudioFile>Player\Player_Attack\Shokyaku_Fire_Attack_01.wav</AudioFile>
+											<AudioFile>Player\Player_Attack\Shuriken_Throwing_01.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="958698459"/>
+												<MediaID ID="672902290"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="Shokyaku_Fire_Attack_01" ID="{255F6CB9-A427-46A5-A48E-3B7636838273}" Platform="Linked"/>
+										<ActiveSource Name="Shuriken_Throwing_01" ID="{8B483006-7252-4F13-B807-D5075F834421}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Shokyaku_Fire_Attack_02" ID="{5DA32CA7-4F5A-4E18-BC4B-2E1C0FDAF5AA}" ShortID="274237287">
+								<Sound Name="Shuriken_Throwing_02" ID="{D9705C5F-36D4-4D1F-8830-1B9DDB04072F}" ShortID="853819894">
 									<PropertyList>
-										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>8</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -162,55 +90,232 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="Shokyaku_Fire_Attack_02" ID="{2527AF05-DDA5-4B25-BEB6-F7238985A456}">
-											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="0.195589701257862"/>
-												<Property Name="LoopEnd" Type="Real64" Value="2.7683465408805"/>
-												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-											</PropertyList>
+										<AudioFileSource Name="Shuriken_Throwing_02" ID="{AD706F25-31A9-4486-AB78-CDCDF59A1784}">
 											<Language>SFX</Language>
-											<AudioFile>Player\Player_Attack\Shokyaku_Fire_Attack_02.wav</AudioFile>
+											<AudioFile>Player\Player_Attack\Shuriken_Throwing_02.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="263130091"/>
+												<MediaID ID="556680965"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="Shokyaku_Fire_Attack_02" ID="{2527AF05-DDA5-4B25-BEB6-F7238985A456}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Shokyaku_Fire_Attack_03" ID="{FCD4C43F-E641-44BD-892B-946E34A3E25B}" ShortID="385382110">
-									<PropertyList>
-										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Shokyaku_Fire_Attack_03" ID="{8139DBF2-22BE-4155-8A86-BAFC7965792B}">
-											<PropertyList>
-												<Property Name="LoopBegin" Type="Real64" Value="0.568582704402516"/>
-												<Property Name="LoopEnd" Type="Real64" Value="1.84789378930818"/>
-												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Player\Player_Attack\Shokyaku_Fire_Attack_03.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="184700173"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Shokyaku_Fire_Attack_03" ID="{8139DBF2-22BE-4155-8A86-BAFC7965792B}" Platform="Linked"/>
+										<ActiveSource Name="Shuriken_Throwing_02" ID="{AD706F25-31A9-4486-AB78-CDCDF59A1784}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Shuriken_Grabbing" ID="{3F8E5491-A6CA-40D8-BC52-7A329A788B82}" ShortID="43576092">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Shuriken_Grabbing_01" ID="{E74DFA67-B1B8-4B1C-81DF-D122344DC6AA}" ShortID="667681135">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Shuriken_Grabbing_01" ID="{C1815537-4C8E-4678-8473-6536FE2223EA}">
+											<Language>SFX</Language>
+											<AudioFile>Player\Player_Attack\Shuriken_Grabbing_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="398348492"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Shuriken_Grabbing_01" ID="{C1815537-4C8E-4678-8473-6536FE2223EA}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Shuriken_Grabbing_02" ID="{5A0A960A-E6E2-4230-8593-95FF93CEA4B5}" ShortID="62706673">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>5</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Shuriken_Grabbing_02" ID="{B33923FF-E25D-42EF-838E-AC568BD6A698}">
+											<Language>SFX</Language>
+											<AudioFile>Player\Player_Attack\Shuriken_Grabbing_02.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1030336793"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Shuriken_Grabbing_02" ID="{B33923FF-E25D-42EF-838E-AC568BD6A698}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<ActorMixer Name="Shokyaku_Fire_Attack" ID="{B8ED718E-12F2-46C9-9C01-FAD43852CD23}" ShortID="907716482">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{F18B0D57-9EAF-442D-A4B7-61A09F6BF556}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="76"/>
+													<Property Name="Min" Type="Real64" Value="-50"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{A301967B-1D38-4CEA-BCC9-2B7D46A06949}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="4"/>
+													<Property Name="Min" Type="Real64" Value="-2"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="Shokyaku_Fire_Attack" ID="{56DA2A86-F38A-47A9-9AD0-B4F29BA75A3E}" ShortID="109924789">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Shokyaku_Fire_Attack_01" ID="{8FB5ECE5-A838-4023-B938-35AFA577741C}" ShortID="208798723">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Shokyaku_Fire_Attack_01" ID="{255F6CB9-A427-46A5-A48E-3B7636838273}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.532433962264151"/>
+														<Property Name="LoopEnd" Type="Real64" Value="2.96320754716981"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Player\Player_Attack\Shokyaku_Fire_Attack_01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="958698459"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Shokyaku_Fire_Attack_01" ID="{255F6CB9-A427-46A5-A48E-3B7636838273}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Shokyaku_Fire_Attack_02" ID="{5DA32CA7-4F5A-4E18-BC4B-2E1C0FDAF5AA}" ShortID="274237287">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Shokyaku_Fire_Attack_02" ID="{2527AF05-DDA5-4B25-BEB6-F7238985A456}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.195589701257862"/>
+														<Property Name="LoopEnd" Type="Real64" Value="2.7683465408805"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Player\Player_Attack\Shokyaku_Fire_Attack_02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="263130091"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Shokyaku_Fire_Attack_02" ID="{2527AF05-DDA5-4B25-BEB6-F7238985A456}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Shokyaku_Fire_Attack_03" ID="{FCD4C43F-E641-44BD-892B-946E34A3E25B}" ShortID="385382110">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Shokyaku_Fire_Attack_03" ID="{8139DBF2-22BE-4155-8A86-BAFC7965792B}">
+													<PropertyList>
+														<Property Name="LoopBegin" Type="Real64" Value="0.568582704402516"/>
+														<Property Name="LoopEnd" Type="Real64" Value="1.84789378930818"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Player\Player_Attack\Shokyaku_Fire_Attack_03.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="184700173"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Shokyaku_Fire_Attack_03" ID="{8139DBF2-22BE-4155-8A86-BAFC7965792B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+						</ActorMixer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
