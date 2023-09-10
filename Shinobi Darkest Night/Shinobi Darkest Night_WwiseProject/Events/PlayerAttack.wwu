@@ -50,6 +50,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Player_Slashing" ID="{23C18965-DA00-493F-B355-305CCDC8957C}">
+					<ChildrenList>
+						<Action Name="" ID="{F7988C8B-DFBD-4323-B5DE-19C027B54EC6}" ShortID="513410936">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Slashing" ID="{15060A04-0180-44AC-A0C2-917D9B8C5438}" WorkUnitID="{F520D281-F527-4F03-A836-7B070AB31757}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
