@@ -14,6 +14,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Player_Eating_Slodycz" ID="{79174A8B-7674-44B5-A2E5-C05AFB1567FC}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

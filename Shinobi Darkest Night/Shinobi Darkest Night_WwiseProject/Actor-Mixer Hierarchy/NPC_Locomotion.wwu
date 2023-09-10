@@ -26,16 +26,16 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Enemy_MiniOkubi_MovingLP" ID="{39572458-4AB1-42FD-8EBB-560CBC68C37A}">
+								<AudioFileSource Name="Enemy_MiniOkubi_MovingLP" ID="{3BA6213E-BD1C-4F6D-A324-41ED0161FB4E}">
 									<Language>SFX</Language>
-									<AudioFile>NPC\Enemy_MiniOkubi_MovingLP.wav</AudioFile>
+									<AudioFile>NPC\NPC_Locomotion\Enemy_MiniOkubi_MovingLP.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="26567910"/>
+										<MediaID ID="97568548"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Enemy_MiniOkubi_MovingLP" ID="{39572458-4AB1-42FD-8EBB-560CBC68C37A}" Platform="Linked"/>
+								<ActiveSource Name="Enemy_MiniOkubi_MovingLP" ID="{3BA6213E-BD1C-4F6D-A324-41ED0161FB4E}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
