@@ -25,6 +25,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Player_Damage" ID="{93711B3E-5061-413A-882B-061B7C7FB7B9}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

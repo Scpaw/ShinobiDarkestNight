@@ -53,6 +53,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Enemy_Wlocznik_Damage" ID="{E58DA749-7491-4619-A903-067E36A704B2}">
+					<ChildrenList>
+						<Action Name="" ID="{2555C798-61BD-449E-9C41-36F8F8D811BB}" ShortID="758239183">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Wlocznik_Damage" ID="{57CFCE9A-637B-40A7-917F-E5CC8950D5D0}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
