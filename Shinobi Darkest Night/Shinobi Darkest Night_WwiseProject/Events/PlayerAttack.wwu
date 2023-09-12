@@ -61,7 +61,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Itaiken_Blood_Attack" ID="{9A54C6C7-D587-40A5-8213-96C49E331B8A}"/>
+				<Event Name="Itaiken_Blood_Attack" ID="{9A54C6C7-D587-40A5-8213-96C49E331B8A}">
+					<ChildrenList>
+						<Action Name="" ID="{BA38BE40-9DA7-45B2-865A-49AD34EF959A}" ShortID="628290330">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Itaiken_Blood_Attack" ID="{6A4D6490-BAAA-4F54-964A-27393E6FC0DF}" WorkUnitID="{F520D281-F527-4F03-A836-7B070AB31757}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Itaiken_BloodSword_Attack" ID="{6B676E3A-CDB7-4EE3-A7B3-42F2172AE659}">
+					<ChildrenList>
+						<Action Name="" ID="{68949266-E233-4635-9BA0-011B4A325447}" ShortID="928474838">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Itaiken_BloodSword_Attack" ID="{F094E012-74A1-42B9-9906-019E99DBCC17}" WorkUnitID="{F520D281-F527-4F03-A836-7B070AB31757}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
