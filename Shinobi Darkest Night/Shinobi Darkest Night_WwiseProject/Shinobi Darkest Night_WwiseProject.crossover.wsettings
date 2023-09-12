@@ -3,7 +3,7 @@
 	<UserProjectSettingsInfo>
 		<UserProjectSettings Name="" ID="{BA5901B1-726A-40BE-91E0-82F2AEBD15BD}">
 			<PropertyList>
-				<Property Name="AudioFilesImporter\Path" Type="string" Value="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Originals\SFX\Player\Player_Health\"/>
+				<Property Name="AudioFilesImporter\Path" Type="string" Value="Y:\UnityProjects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\Originals\SFX\NPC\NPC_Attack\"/>
 				<Property Name="Event Action List\{0F7AB0A3-CD64-48F9-B0ED-C46846721F0C}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{15B7CD94-6FF5-41D4-A6CC-69D21F1392BA}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{1A55FF58-34DE-4285-8546-005D78CD368F}\x64_Expand States" Type="string" Value=""/>
@@ -14,10 +14,13 @@
 				<Property Name="Event Action List\{6BEB322E-26B4-44B7-9123-D333DCA2D2C7}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{79174A8B-7674-44B5-A2E5-C05AFB1567FC}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{7B3A268E-62E5-4A5A-A7BF-FC338B880ACF}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{7BEF53CD-42A5-4936-8B01-6C638E83D2AE}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{83F52686-D5B2-4343-8F45-A1D8776794DF}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{85010125-8737-44FA-A370-ED7D4100C1BC}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{85B63FD2-72C7-4EA1-9F07-0AAA7E073B00}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{8D824D97-5300-482B-A700-EE5A90DA6F99}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{93711B3E-5061-413A-882B-061B7C7FB7B9}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{A38AF598-5A74-4F68-BB6B-EAD55B83D2E1}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{A9BD8BB4-BEAB-47D1-B3E1-E792E487A128}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{AC7E7F2D-2DC4-4D1C-A232-70BE5F883C1A}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{B9C00458-804D-42DB-8FE1-7FF7BE966841}\x64_Expand States" Type="string" Value=""/>

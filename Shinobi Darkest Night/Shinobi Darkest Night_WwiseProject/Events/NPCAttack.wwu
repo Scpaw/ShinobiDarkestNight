@@ -28,6 +28,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Enemy_MiniOkubi_Attack" ID="{7BEF53CD-42A5-4936-8B01-6C638E83D2AE}">
+					<ChildrenList>
+						<Action Name="" ID="{CC5264F4-EE76-43DA-8897-A9FDA62CEB3F}" ShortID="52720498">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_MiniOkubi_Attack" ID="{DFB9BA8F-D9B5-422D-9DED-3D1A20A0708E}" WorkUnitID="{7824BECA-1D67-4EF3-BCB7-2280CB8FDFF6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

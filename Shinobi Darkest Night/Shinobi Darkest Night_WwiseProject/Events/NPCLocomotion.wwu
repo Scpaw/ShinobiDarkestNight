@@ -64,6 +64,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Enemy_MiniOkubi_Damage" ID="{A38AF598-5A74-4F68-BB6B-EAD55B83D2E1}">
+					<ChildrenList>
+						<Action Name="" ID="{FEBFF7F3-D504-496B-867C-19FBC22E60C5}" ShortID="825074798">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_MiniOkubi_Damage" ID="{C86DB1D7-CE0D-4ECC-8997-80A642707411}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_MiniOkubi_Death" ID="{85B63FD2-72C7-4EA1-9F07-0AAA7E073B00}">
+					<ChildrenList>
+						<Action Name="" ID="{93A873D6-C0C3-4BF1-98FE-8F83FD4FB805}" ShortID="408312817">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_MiniOkubi_Death" ID="{BCBF74F4-E23A-42FC-86D8-D9C1B55C0ACF}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
