@@ -25,7 +25,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Player_Damage" ID="{93711B3E-5061-413A-882B-061B7C7FB7B9}"/>
+				<Event Name="Player_Damage" ID="{93711B3E-5061-413A-882B-061B7C7FB7B9}">
+					<ChildrenList>
+						<Action Name="" ID="{AE07DE53-57F3-4A56-9081-F0E55CE47B03}" ShortID="610325653">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Damage" ID="{457E785C-467E-4B3C-AB85-429172FDEC61}" WorkUnitID="{88C339D3-7393-4542-9BED-94E57382ADA1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Player_Healing_Zoom" ID="{6BEB322E-26B4-44B7-9123-D333DCA2D2C7}">
+					<ChildrenList>
+						<Action Name="" ID="{08C651F9-BB3A-418A-AA2F-9D7B7C390C06}" ShortID="701305835">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Healing_Zoom" ID="{CBD67500-DE91-4776-B6C9-F6BFBFD694B1}" WorkUnitID="{88C339D3-7393-4542-9BED-94E57382ADA1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Player_Healing_Drinking" ID="{C8A50CC1-0B8E-4D6F-9721-ED1E22F49A35}">
+					<ChildrenList>
+						<Action Name="" ID="{0C9EDDE6-9B4B-4B88-922F-5E00514F68F4}" ShortID="610064304">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Healing_Drinking" ID="{0B20457D-34B0-4F8A-8A53-82048447F19C}" WorkUnitID="{88C339D3-7393-4542-9BED-94E57382ADA1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

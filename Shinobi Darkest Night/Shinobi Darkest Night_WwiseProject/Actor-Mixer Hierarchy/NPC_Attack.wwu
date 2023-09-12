@@ -13,7 +13,10 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="Enemy_Wlocznik_Dashing_01" ID="{07E5FEAE-ED03-4FAB-8858-8534C076CE92}" ShortID="404981172">
+						<Sound Name="Enemy_Wlocznik_Dashing" ID="{07E5FEAE-ED03-4FAB-8858-8534C076CE92}" ShortID="404981172">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
@@ -23,19 +26,21 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Enemy_Wlocznik_Dashing_01" ID="{D4704EC2-11CA-485A-8732-F9FCFC92FCD3}">
+								<AudioFileSource Name="Enemy_Wlocznik_Dashing" ID="{A2EEDD6E-0F2D-4014-8519-1A9A81362226}">
 									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="2.13228"/>
+										<Property Name="LoopEnd" Type="Real64" Value="3.92475473137973"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>NPC\Enemy_Wlocznik_Dashing_01.wav</AudioFile>
+									<AudioFile>NPC\NPC_Attack\Enemy_Wlocznik_Dashing.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="838868968"/>
+										<MediaID ID="765953945"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Enemy_Wlocznik_Dashing_01" ID="{D4704EC2-11CA-485A-8732-F9FCFC92FCD3}" Platform="Linked"/>
+								<ActiveSource Name="Enemy_Wlocznik_Dashing" ID="{A2EEDD6E-0F2D-4014-8519-1A9A81362226}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
