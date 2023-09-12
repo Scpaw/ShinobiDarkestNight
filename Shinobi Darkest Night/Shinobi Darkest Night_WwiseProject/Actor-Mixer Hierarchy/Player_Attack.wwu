@@ -350,6 +350,40 @@
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Itaiken_Blood_Attack" ID="{6A4D6490-BAAA-4F54-964A-27393E6FC0DF}" ShortID="372748943">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Itaiken_Blood_Attack_01" ID="{9AA5930F-59BF-4775-81EE-884E3F38DD57}" ShortID="228672730">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Itaiken_Blood_Attack_01" ID="{A110B24F-C858-43F3-BCC4-CC96BEF2D76C}">
+											<Language>SFX</Language>
+											<AudioFile>Player\Player_Attack\Itaiken_Blood_Attack_01.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="811572902"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Itaiken_Blood_Attack_01" ID="{A110B24F-C858-43F3-BCC4-CC96BEF2D76C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>

@@ -61,6 +61,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Itaiken_Blood_Attack" ID="{9A54C6C7-D587-40A5-8213-96C49E331B8A}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
