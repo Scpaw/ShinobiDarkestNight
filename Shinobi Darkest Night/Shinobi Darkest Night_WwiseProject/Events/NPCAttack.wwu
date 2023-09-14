@@ -50,6 +50,61 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Enemy_SpearGuy_Attack" ID="{5DD3A9A3-19CD-4784-8E55-7078EF3497FF}">
+					<ChildrenList>
+						<Action Name="" ID="{E40AA492-AC83-4D70-9B67-9F39F2E30CBA}" ShortID="958975597">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_SpearGuy_Attack" ID="{861C82A7-C91E-44E7-988D-93A7ECFDC588}" WorkUnitID="{7824BECA-1D67-4EF3-BCB7-2280CB8FDFF6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Ronin_Attack" ID="{E6FDE889-9C64-4042-938D-72C74CFC61F9}">
+					<ChildrenList>
+						<Action Name="" ID="{9E32B2F0-2BD7-4792-86DE-AE72D66BBDF9}" ShortID="352537937">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Ronin_Attack" ID="{C2786CC7-D80B-4848-B280-611C598696C4}" WorkUnitID="{7824BECA-1D67-4EF3-BCB7-2280CB8FDFF6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_ScareCrow_Attack" ID="{7FC1A02E-BC34-409D-A152-02E03184E729}">
+					<ChildrenList>
+						<Action Name="" ID="{7E5CAFFC-6FEB-4375-B10C-ABBA0A2CBE0D}" ShortID="561315220">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_ScareCrow_Attack" ID="{464C614F-CBD4-4584-8362-BF171B57F4C0}" WorkUnitID="{7824BECA-1D67-4EF3-BCB7-2280CB8FDFF6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Archer_Pull" ID="{219ACCE4-40EA-444F-B66F-2B385B18BF25}">
+					<ChildrenList>
+						<Action Name="" ID="{58F1AAEA-E8D4-4B5A-B553-9C99D1E89636}" ShortID="19682671">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Archer_Pull" ID="{C9C5ECD1-5128-43F1-AD59-293A7C763C51}" WorkUnitID="{7824BECA-1D67-4EF3-BCB7-2280CB8FDFF6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Archer_Release" ID="{F0E26908-454F-4F6E-B462-3C84AA0C1ABC}">
+					<ChildrenList>
+						<Action Name="" ID="{2A62CA40-5374-47D3-8685-A65AF429A8AA}" ShortID="697468370">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Archer_Release" ID="{82224065-5F0B-4685-8AAC-59D953B4E660}" WorkUnitID="{7824BECA-1D67-4EF3-BCB7-2280CB8FDFF6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -39,7 +39,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Stop_Enemy_Wlocznik_MovingLP" ID="{1A55FF58-34DE-4285-8546-005D78CD368F}">
+				<Event Name="Stop_Enemy_Wlocznik_Moving" ID="{1A55FF58-34DE-4285-8546-005D78CD368F}">
 					<ChildrenList>
 						<Action Name="" ID="{F85F835B-C3FC-46BE-8430-4BBEC769D8ED}" ShortID="916933260">
 							<PropertyList>
@@ -139,6 +139,180 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Enemy_Wlocznik_Death" ID="{978D2BF6-FD24-400B-ACC6-6F94B2386D4F}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Ronin_MovingLP" ID="{669EF75E-D7B1-4BF5-A88A-37AE312B0C2A}">
+					<ChildrenList>
+						<Action Name="" ID="{C8FAE7EE-F3D6-4D35-B9CC-9CD202154693}" ShortID="277429931">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Ronin_MovingLP" ID="{566A5D44-96AB-471E-B35D-3ADDAA6839CC}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Ronin_Damage" ID="{EA40DDE0-16C6-4C7E-B66E-EDCB3B519538}">
+					<ChildrenList>
+						<Action Name="" ID="{789EA22C-B5FA-43CF-9727-AF61FC6ECB71}" ShortID="594248715">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Ronin_Damage" ID="{1F6A3327-5C32-45AC-BF7B-073A3BE640AF}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Ronin_Death" ID="{6A0CD907-AE78-4B8F-800C-810608A98FC5}">
+					<ChildrenList>
+						<Action Name="" ID="{6C9CA5BB-3114-409C-9866-62F67848147B}" ShortID="215202202">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Ronin_Death" ID="{D9030743-DED0-4E19-A9ED-2F21D8034DD4}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_ScareCrow_Damage" ID="{131CCB58-B3F8-4F2B-8147-72839C357512}">
+					<ChildrenList>
+						<Action Name="" ID="{99EE897D-ED03-4593-A770-C5A7A1CB010F}" ShortID="801808959">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_ScareCrow_Damage" ID="{00DAF84E-174C-47C6-A02C-2A5AFA1213EC}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_ScareCrow_Death" ID="{77827938-5714-4FC2-A8DA-C8929CB077E2}">
+					<ChildrenList>
+						<Action Name="" ID="{DF852A7B-191C-495A-9446-DBD592EB3854}" ShortID="59055732">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_ScareCrow_Death" ID="{A7E99D27-36FC-4DDD-A088-BCFA0C724694}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_SpearGuy_Damage" ID="{005328F4-E7CC-4270-8B5E-BD0E0D7DDA67}">
+					<ChildrenList>
+						<Action Name="" ID="{8138B7A4-15FE-4BD8-84C9-A2C6AC8A69D8}" ShortID="520372732">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_SpearGuy_Damage" ID="{B8FA0CFB-FA1C-4022-82CD-083FA50B4AB2}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_SpearGuy_Death" ID="{FD02BD4A-3CFD-446B-A549-816CAEEDFAE1}">
+					<ChildrenList>
+						<Action Name="" ID="{EC87CC2F-FDC6-412B-A60C-3662DBA6F0A0}" ShortID="334597824">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_SpearGuy_Death" ID="{8A9FF53A-C4C9-43A0-B739-4ADF26CC1398}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Archer_Death" ID="{E4AC31BD-6B51-4AC9-A76B-E81E72F825D6}">
+					<ChildrenList>
+						<Action Name="" ID="{35FEB8C5-5AD2-45CE-AE78-228242386F44}" ShortID="148644789">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Archer_Death" ID="{0AAC4484-05BD-46AE-8680-2AB0B4FE6FC7}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Archer_Damage" ID="{4433CD59-6E68-4D0C-93D6-05DE71D93366}">
+					<ChildrenList>
+						<Action Name="" ID="{92D549F3-4C87-4C7F-9AAB-0C464ECD0F65}" ShortID="907807378">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Archer_Damage" ID="{20B3EB5E-E5D8-4C3D-96EC-6B66C9F008CD}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_ScareCrow_StandingLP" ID="{B4B9464E-8FC1-4E29-A174-DFEFE9A6E1DF}">
+					<ChildrenList>
+						<Action Name="" ID="{D6CB4649-A42A-4765-BDCE-AFEC41F4B9D7}" ShortID="820061709">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_ScareCrow_StandingLP" ID="{A73B6695-CDC9-4B92-8C81-94B366790C27}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_SpearGuy_MovingLP" ID="{03562B88-C7A0-40B1-82FC-AF8DF0C0CD9A}">
+					<ChildrenList>
+						<Action Name="" ID="{68880084-9495-45DF-A17B-2F56549CBA8F}" ShortID="71993567">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_SpearGuy_Moving" ID="{370B059D-0B81-42BE-96D1-E082977F8819}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Archer_MovingLP" ID="{DC9FDF7D-0376-4E32-B573-EDF10B63D80C}">
+					<ChildrenList>
+						<Action Name="" ID="{7AC159B8-02A4-489F-B9CF-FCCE34A00A00}" ShortID="680775953">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Archer_MovingLP" ID="{CC3703A5-C441-4E6D-97B7-90BB553192C5}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Enemy_ScareCrow_Standing" ID="{4465A2D3-B2F0-4BFA-8751-0086A7781E61}">
+					<ChildrenList>
+						<Action Name="" ID="{2102B5EC-92F1-4FD7-BAC6-4D079F6F44CC}" ShortID="803071069">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_ScareCrow_StandingLP" ID="{A73B6695-CDC9-4B92-8C81-94B366790C27}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Enemy_SpearGuy_Moving" ID="{613638BF-FD17-42C2-A191-11491584B717}">
+					<ChildrenList>
+						<Action Name="" ID="{0B33D321-6DFC-40E4-B5D3-D2D6A1E2FB2E}" ShortID="1039967584">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_SpearGuy_Moving" ID="{370B059D-0B81-42BE-96D1-E082977F8819}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Enemy_Archer_Moving" ID="{2E4D0407-3E3A-46EF-8A14-127827E42442}">
+					<ChildrenList>
+						<Action Name="" ID="{8259EE80-8B70-4938-9EB6-29B9ABCEC361}" ShortID="1053960428">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Archer_MovingLP" ID="{CC3703A5-C441-4E6D-97B7-90BB553192C5}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
