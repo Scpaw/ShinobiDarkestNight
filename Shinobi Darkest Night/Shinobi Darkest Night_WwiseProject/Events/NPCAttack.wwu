@@ -3,37 +3,48 @@
 	<Events>
 		<WorkUnit Name="NPCAttack" ID="{2CB64DA0-D5A2-43F9-9D56-CAA7964CC451}" OwnerID="{F975E339-6CDC-4D40-95C2-4FCDB9488C40}" PersistMode="Nested">
 			<ChildrenList>
-				<Event Name="Enemy_Wlocznik_DashingLP" ID="{AC7E7F2D-2DC4-4D1C-A232-70BE5F883C1A}">
+				<Event Name="Enemy_Wlocznik_Attack" ID="{AC7E7F2D-2DC4-4D1C-A232-70BE5F883C1A}">
 					<ChildrenList>
 						<Action Name="" ID="{9EBC75D1-5ABD-42A2-8FA3-7D84874FF35C}" ShortID="754844616">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Enemy_Wlocznik_Dashing" ID="{7D487490-ACB0-4857-82D9-0E6645FFA922}" WorkUnitID="{7824BECA-1D67-4EF3-BCB7-2280CB8FDFF6}"/>
+									<ObjectRef Name="Enemy_Wlocznik_Attack" ID="{7D487490-ACB0-4857-82D9-0E6645FFA922}" WorkUnitID="{7824BECA-1D67-4EF3-BCB7-2280CB8FDFF6}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Stop_Enemy_Wlocznik_Dashing" ID="{83F52686-D5B2-4343-8F45-A1D8776794DF}">
+				<Event Name="Enemy_MiniOkubi_DashingLP" ID="{7BEF53CD-42A5-4936-8B01-6C638E83D2AE}">
 					<ChildrenList>
-						<Action Name="" ID="{1322D51F-2F21-4F7C-B151-B20F2B77FADD}" ShortID="748257401">
+						<Action Name="" ID="{CC5264F4-EE76-43DA-8897-A9FDA62CEB3F}" ShortID="52720498">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_MiniOkubi_DashingLP" ID="{DFB9BA8F-D9B5-422D-9DED-3D1A20A0708E}" WorkUnitID="{7824BECA-1D67-4EF3-BCB7-2280CB8FDFF6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Enemy_MiniOkubi_Dashing" ID="{E957A3F6-205E-445D-B41D-9C4FC583DEC5}">
+					<ChildrenList>
+						<Action Name="" ID="{3F15A3D9-E019-44FD-9B4E-3E7888C70636}" ShortID="930693996">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="2"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Enemy_Wlocznik_Dashing" ID="{7D487490-ACB0-4857-82D9-0E6645FFA922}" WorkUnitID="{7824BECA-1D67-4EF3-BCB7-2280CB8FDFF6}"/>
+									<ObjectRef Name="Enemy_MiniOkubi_DashingLP" ID="{DFB9BA8F-D9B5-422D-9DED-3D1A20A0708E}" WorkUnitID="{7824BECA-1D67-4EF3-BCB7-2280CB8FDFF6}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Enemy_MiniOkubi_Attack" ID="{7BEF53CD-42A5-4936-8B01-6C638E83D2AE}">
+				<Event Name="Enemy_Bull_Attack" ID="{D58D82BC-8509-4F2A-A9AD-6F8018C2EB97}">
 					<ChildrenList>
-						<Action Name="" ID="{CC5264F4-EE76-43DA-8897-A9FDA62CEB3F}" ShortID="52720498">
+						<Action Name="" ID="{048FB5C0-DCC1-4294-8A57-1E13050E159E}" ShortID="21958902">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Enemy_MiniOkubi_Attack" ID="{DFB9BA8F-D9B5-422D-9DED-3D1A20A0708E}" WorkUnitID="{7824BECA-1D67-4EF3-BCB7-2280CB8FDFF6}"/>
+									<ObjectRef Name="Enemy_Bull_Attack" ID="{D1F81EBB-A76C-4772-A52F-EE6AEC76D0DA}" WorkUnitID="{7824BECA-1D67-4EF3-BCB7-2280CB8FDFF6}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

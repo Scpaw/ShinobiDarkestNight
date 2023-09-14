@@ -27,6 +27,10 @@
 							</ReferenceList>
 							<ChildrenList>
 								<AudioFileSource Name="Enemy_MiniOkubi_MovingLP" ID="{3BA6213E-BD1C-4F6D-A324-41ED0161FB4E}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>NPC\NPC_Locomotion\Enemy_MiniOkubi_MovingLP.wav</AudioFile>
 									<MediaIDList>
@@ -50,7 +54,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="Enemy_Wlocznik_MovingLP" ID="{D6BDAB62-EAAD-431A-9ADA-7348B432989D}" ShortID="48663776">
+						<Sound Name="sfx_test_beep_3000ms" ID="{DB024648-357C-41AA-942E-45B6FD37B8EC}" ShortID="779544385">
 							<PropertyList>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 							</PropertyList>
@@ -63,16 +67,16 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Enemy_Wlocznik_MovingLP" ID="{63E238FE-B7E0-4FC4-B115-608E54084132}">
+								<AudioFileSource Name="sfx_test_beep_3000ms" ID="{73A741E1-65C0-4357-AAF5-06362328A093}">
 									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Locomotion\Enemy_Wlocznik_MovingLP.wav</AudioFile>
+									<AudioFile>TestFiles\sfx_test_beep_3000ms.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="370134000"/>
+										<MediaID ID="1036430562"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Enemy_Wlocznik_MovingLP" ID="{63E238FE-B7E0-4FC4-B115-608E54084132}" Platform="Linked"/>
+								<ActiveSource Name="sfx_test_beep_3000ms" ID="{73A741E1-65C0-4357-AAF5-06362328A093}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
@@ -87,7 +91,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="Enemy_Wlocznik_Damage_01" ID="{3D4A7894-7C8B-4CF5-AB69-F40A04D18532}" ShortID="951672618">
+						<Sound Name="sfx_test_beep_100ms" ID="{D2E9D487-DF8C-4F9D-9DF8-D6948D0BC48B}" ShortID="259286552">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
@@ -97,148 +101,20 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Enemy_Wlocznik_Damage_01" ID="{B128A472-8747-4AD0-9F23-A0185CF32884}">
+								<AudioFileSource Name="sfx_test_beep_100ms" ID="{53F0F05F-E490-4A85-931B-CCC16A5F8370}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.243108921729612"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Locomotion\Enemy_Wlocznik_Damage_01.wav</AudioFile>
+									<AudioFile>TestFiles\sfx_test_beep_100ms.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="628977366"/>
+										<MediaID ID="431618901"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Enemy_Wlocznik_Damage_01" ID="{B128A472-8747-4AD0-9F23-A0185CF32884}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Enemy_Wlocznik_Damage_02" ID="{A6A9089D-437C-4372-9A5E-C365E4DCD17F}" ShortID="802038591">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Enemy_Wlocznik_Damage_02" ID="{0C898905-5316-4A86-B96E-8B9666EF3C79}">
-									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Locomotion\Enemy_Wlocznik_Damage_02.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="247517956"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Enemy_Wlocznik_Damage_02" ID="{0C898905-5316-4A86-B96E-8B9666EF3C79}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Enemy_Wlocznik_Damage_03" ID="{183C6FF7-0E0C-454C-A3FB-20EFA9ED0782}" ShortID="677795420">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Enemy_Wlocznik_Damage_03" ID="{F15C943B-672F-49F9-A2ED-1BB31DFAC88C}">
-									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Locomotion\Enemy_Wlocznik_Damage_03.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="1048436941"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Enemy_Wlocznik_Damage_03" ID="{F15C943B-672F-49F9-A2ED-1BB31DFAC88C}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Enemy_Wlocznik_Damage_04" ID="{87E22467-E210-4BB2-9215-365773903B21}" ShortID="453206334">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Enemy_Wlocznik_Damage_04" ID="{76DA24BD-8209-42D8-971F-8C83357165F8}">
-									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Locomotion\Enemy_Wlocznik_Damage_04.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="1060636549"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Enemy_Wlocznik_Damage_04" ID="{76DA24BD-8209-42D8-971F-8C83357165F8}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Enemy_Wlocznik_Damage_05" ID="{0927548F-3300-47DE-88F7-9EA7E57E5B3A}" ShortID="210559287">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Enemy_Wlocznik_Damage_05" ID="{0D957537-D596-4654-9D30-AA03DF743C32}">
-									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Locomotion\Enemy_Wlocznik_Damage_05.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="946957957"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Enemy_Wlocznik_Damage_05" ID="{0D957537-D596-4654-9D30-AA03DF743C32}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Enemy_Wlocznik_Damage_06" ID="{94AA9D58-1D01-47A2-A8B6-BC970A100948}" ShortID="943642903">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Enemy_Wlocznik_Damage_06" ID="{C3711BA8-F928-44FF-BB8E-732D96196ABE}">
-									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Locomotion\Enemy_Wlocznik_Damage_06.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="76365420"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Enemy_Wlocznik_Damage_06" ID="{C3711BA8-F928-44FF-BB8E-732D96196ABE}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Enemy_Wlocznik_Damage_07" ID="{543F8280-4CEB-4C5A-8E21-F0D3CEEF1590}" ShortID="367360348">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Enemy_Wlocznik_Damage_07" ID="{B451716C-8F36-4312-AE00-FFE46CF2DB82}">
-									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Locomotion\Enemy_Wlocznik_Damage_07.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="28810845"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Enemy_Wlocznik_Damage_07" ID="{B451716C-8F36-4312-AE00-FFE46CF2DB82}" Platform="Linked"/>
+								<ActiveSource Name="sfx_test_beep_100ms" ID="{53F0F05F-E490-4A85-931B-CCC16A5F8370}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
@@ -253,7 +129,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="Enemy_MiniOkubi_Damage_01" ID="{9DA63C40-0295-42E3-A652-9BB42333873F}" ShortID="1050013596">
+						<Sound Name="sfx_test_beep_100ms" ID="{0410E39A-2338-474D-A5D9-513E1A45CB22}" ShortID="371736585">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
@@ -263,60 +139,20 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Enemy_MiniOkubi_Damage_01" ID="{6B5F4B47-BA14-43F5-994D-8AFFE8DA8171}">
+								<AudioFileSource Name="sfx_test_beep_100ms" ID="{9EE7F798-4B1A-4B87-8FC3-86F06DF9DEDE}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.243108921729612"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Attack\Enemy_MiniOkubi_Damage_01.wav</AudioFile>
+									<AudioFile>TestFiles\sfx_test_beep_100ms.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="74759484"/>
+										<MediaID ID="431618901"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Enemy_MiniOkubi_Damage_01" ID="{6B5F4B47-BA14-43F5-994D-8AFFE8DA8171}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Enemy_MiniOkubi_Damage_02" ID="{D0E34B54-78A7-4F82-8298-8DB159B0A883}" ShortID="350548438">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Enemy_MiniOkubi_Damage_02" ID="{689225D7-A4B7-4C24-9F20-00E4ECCD8FBF}">
-									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Attack\Enemy_MiniOkubi_Damage_02.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="925321778"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Enemy_MiniOkubi_Damage_02" ID="{689225D7-A4B7-4C24-9F20-00E4ECCD8FBF}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Enemy_MiniOkubi_Damage_03" ID="{8D7563EF-0F8C-4AAF-A23F-311BEAC78222}" ShortID="586274269">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Enemy_MiniOkubi_Damage_03" ID="{83A68D5F-ED01-4C81-BC4C-A4F22F3F7DFE}">
-									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Attack\Enemy_MiniOkubi_Damage_03.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="574022682"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Enemy_MiniOkubi_Damage_03" ID="{83A68D5F-ED01-4C81-BC4C-A4F22F3F7DFE}" Platform="Linked"/>
+								<ActiveSource Name="sfx_test_beep_100ms" ID="{9EE7F798-4B1A-4B87-8FC3-86F06DF9DEDE}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
@@ -331,7 +167,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="Enemy_MiniOkubi_Death_01" ID="{191A1705-3350-4295-B60F-81E00D46062E}" ShortID="101139389">
+						<Sound Name="sfx_test_beep_100ms" ID="{05279495-B45C-4EE8-9B0C-51457C9DDDF3}" ShortID="891111645">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
@@ -341,19 +177,38 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Enemy_MiniOkubi_Death_01" ID="{10E86282-CA63-4A41-B687-944CAB7B56BA}">
+								<AudioFileSource Name="sfx_test_beep_100ms" ID="{1FA4743E-EBFE-4B73-9B71-428158B3C47E}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.243108921729612"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Attack\Enemy_MiniOkubi_Death_01.wav</AudioFile>
+									<AudioFile>TestFiles\sfx_test_beep_100ms.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="450908597"/>
+										<MediaID ID="431618901"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Enemy_MiniOkubi_Death_01" ID="{10E86282-CA63-4A41-B687-944CAB7B56BA}" Platform="Linked"/>
+								<ActiveSource Name="sfx_test_beep_100ms" ID="{1FA4743E-EBFE-4B73-9B71-428158B3C47E}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Enemy_MiniOkubi_Death_02" ID="{4EB6B5A2-7F8C-4564-9B6A-082E578B97A1}" ShortID="476904733">
+					</ChildrenList>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="Enemy_Bull_MovingLP" ID="{A456416E-B3DA-40CA-8A50-E0B4BA628379}" ShortID="694396526">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Enemy_Bull_MovingLP" ID="{BA77B3D2-9843-4619-885E-611EE8A066C2}" ShortID="941628033">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
@@ -363,19 +218,31 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Enemy_MiniOkubi_Death_02" ID="{FAD81EA9-FFED-454C-9581-A7B2EF0EC23C}">
+								<AudioFileSource Name="Enemy_Bull_MovingLP" ID="{631B61E0-4B66-49CF-A935-999F4EAE3D49}">
 									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Attack\Enemy_MiniOkubi_Death_02.wav</AudioFile>
+									<AudioFile>NPC\NPC_Locomotion\Enemy_Bull_MovingLP.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="22760720"/>
+										<MediaID ID="207301667"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Enemy_MiniOkubi_Death_02" ID="{FAD81EA9-FFED-454C-9581-A7B2EF0EC23C}" Platform="Linked"/>
+								<ActiveSource Name="Enemy_Bull_MovingLP" ID="{631B61E0-4B66-49CF-A935-999F4EAE3D49}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Enemy_MiniOkubi_Death_03" ID="{F2CB2B19-5D03-4D7F-BD45-FFE1F8B21D4C}" ShortID="248490808">
+					</ChildrenList>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="Enemy_Bull_Damage" ID="{8AD78C81-86F2-4418-A25C-C4EA35AC3201}" ShortID="824915517">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Enemy_Bull_Damage_01" ID="{4CD0AA08-4FC1-47AD-9180-036039281F79}" ShortID="91997480">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
@@ -385,19 +252,19 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Enemy_MiniOkubi_Death_03" ID="{639FE44A-ADDF-4F4F-9CFA-7EB251099DDA}">
+								<AudioFileSource Name="Enemy_Bull_Damage_01" ID="{BD129D97-C81C-45E3-9A1C-5ED215BC9D45}">
 									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Attack\Enemy_MiniOkubi_Death_03.wav</AudioFile>
+									<AudioFile>NPC\NPC_Attack\Enemy_Bull_Damage_01.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="415641025"/>
+										<MediaID ID="502141701"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Enemy_MiniOkubi_Death_03" ID="{639FE44A-ADDF-4F4F-9CFA-7EB251099DDA}" Platform="Linked"/>
+								<ActiveSource Name="Enemy_Bull_Damage_01" ID="{BD129D97-C81C-45E3-9A1C-5ED215BC9D45}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Enemy_MiniOkubi_Death_04" ID="{22838292-E467-4E56-965B-D8AE262277EA}" ShortID="495156164">
+						<Sound Name="Enemy_Bull_Damage_02" ID="{649AE375-D2B9-4FE4-AA71-B635D8D3B151}" ShortID="580277035">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
@@ -407,16 +274,176 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Enemy_MiniOkubi_Death_04" ID="{3E8F0715-D7D7-4B08-964C-F8C96C3E9761}">
+								<AudioFileSource Name="Enemy_Bull_Damage_02" ID="{03206E29-4611-4FF9-B05D-48BC41B9EB6C}">
 									<Language>SFX</Language>
-									<AudioFile>NPC\NPC_Attack\Enemy_MiniOkubi_Death_04.wav</AudioFile>
+									<AudioFile>NPC\NPC_Attack\Enemy_Bull_Damage_02.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="474389453"/>
+										<MediaID ID="785079252"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Enemy_MiniOkubi_Death_04" ID="{3E8F0715-D7D7-4B08-964C-F8C96C3E9761}" Platform="Linked"/>
+								<ActiveSource Name="Enemy_Bull_Damage_02" ID="{03206E29-4611-4FF9-B05D-48BC41B9EB6C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Enemy_Bull_Damage_03" ID="{E775169F-CF97-4A6F-B1DE-79D8BC309989}" ShortID="56675074">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Enemy_Bull_Damage_03" ID="{504C716C-C65C-4EA2-B299-C8D3C64118C4}">
+									<Language>SFX</Language>
+									<AudioFile>NPC\NPC_Attack\Enemy_Bull_Damage_03.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="459889052"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Enemy_Bull_Damage_03" ID="{504C716C-C65C-4EA2-B299-C8D3C64118C4}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="Enemy_Bull_Death" ID="{EF0CBBA8-8BC1-4FF0-895A-BF5E5471BFF5}" ShortID="1066155970">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Enemy_Bull_Death_01" ID="{5A26D289-FBA1-4621-A420-00A33491CB77}" ShortID="926506711">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Enemy_Bull_Death_01" ID="{4B7D8839-67AF-4C27-9BA1-1D9347F411FC}">
+									<Language>SFX</Language>
+									<AudioFile>NPC\NPC_Attack\Enemy_Bull_Death_01.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="809385130"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Enemy_Bull_Death_01" ID="{4B7D8839-67AF-4C27-9BA1-1D9347F411FC}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Enemy_Bull_Death_02" ID="{C05AF5A9-9D9A-4A27-9496-3908209E9274}" ShortID="584069431">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Enemy_Bull_Death_02" ID="{00F5184A-AF44-492D-9257-C4B98388DDD3}">
+									<Language>SFX</Language>
+									<AudioFile>NPC\NPC_Attack\Enemy_Bull_Death_02.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="516732090"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Enemy_Bull_Death_02" ID="{00F5184A-AF44-492D-9257-C4B98388DDD3}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Enemy_Bull_Death_03" ID="{4E37A833-4DA3-46CE-A046-AE2DE12B4E63}" ShortID="760390982">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Enemy_Bull_Death_03" ID="{66545BE9-1BB8-4925-BA85-4A40FE72905F}">
+									<Language>SFX</Language>
+									<AudioFile>NPC\NPC_Attack\Enemy_Bull_Death_03.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="437083078"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Enemy_Bull_Death_03" ID="{66545BE9-1BB8-4925-BA85-4A40FE72905F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Enemy_Bull_Death_04" ID="{9D9ADF8D-C3B2-4912-9E51-E033842825F6}" ShortID="248091695">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Enemy_Bull_Death_04" ID="{C1D554B5-7872-4162-A48C-4AEAC9B0AA84}">
+									<Language>SFX</Language>
+									<AudioFile>NPC\NPC_Attack\Enemy_Bull_Death_04.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="938342743"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Enemy_Bull_Death_04" ID="{C1D554B5-7872-4162-A48C-4AEAC9B0AA84}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="Enemy_Wlocznik_Death" ID="{978D2BF6-FD24-400B-ACC6-6F94B2386D4F}" ShortID="310928435">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="sfx_test_beep_100ms" ID="{4F892C80-9099-4AD8-B033-C4AA89E18C49}" ShortID="156564073">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="sfx_test_beep_100ms" ID="{9E33C338-A85C-4426-BCC9-6D73A0260049}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.243108921729612"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>TestFiles\sfx_test_beep_100ms.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="431618901"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="sfx_test_beep_100ms" ID="{9E33C338-A85C-4426-BCC9-6D73A0260049}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>

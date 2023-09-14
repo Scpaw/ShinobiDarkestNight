@@ -30,10 +30,10 @@
 				</Event>
 				<Event Name="Enemy_Wlocznik_MovingLP" ID="{DC174257-5357-4B3A-965C-3B1889526DD1}">
 					<ChildrenList>
-						<Action Name="" ID="{86EE357A-2B18-45FD-AF97-E8592B158C2F}" ShortID="763176897">
+						<Action Name="" ID="{DAE2B571-32CB-419A-8348-DB4DDAE04CB0}" ShortID="173763344">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Enemy_Wlocznik_MovingLP" ID="{D6BDAB62-EAAD-431A-9ADA-7348B432989D}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+									<ObjectRef Name="Enemy_Wlocznik_MovingLP" ID="{7887FE8B-A446-413B-871E-3C4E1B1A4FF2}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -41,13 +41,13 @@
 				</Event>
 				<Event Name="Stop_Enemy_Wlocznik_MovingLP" ID="{1A55FF58-34DE-4285-8546-005D78CD368F}">
 					<ChildrenList>
-						<Action Name="" ID="{E1B5A4AB-FAD9-4B4E-8147-27B28932E0C9}" ShortID="257745882">
+						<Action Name="" ID="{F85F835B-C3FC-46BE-8430-4BBEC769D8ED}" ShortID="916933260">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="2"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Enemy_Wlocznik_MovingLP" ID="{D6BDAB62-EAAD-431A-9ADA-7348B432989D}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+									<ObjectRef Name="Enemy_Wlocznik_MovingLP" ID="{7887FE8B-A446-413B-871E-3C4E1B1A4FF2}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -81,6 +81,64 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Enemy_MiniOkubi_Death" ID="{BCBF74F4-E23A-42FC-86D8-D9C1B55C0ACF}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Bull_MovingLP" ID="{1690F3BE-A5F7-4390-9DAF-B6EAE48361E2}">
+					<ChildrenList>
+						<Action Name="" ID="{1D95C77A-511A-43AA-948D-71A6AA8CB173}" ShortID="869793195">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Bull_MovingLP" ID="{A456416E-B3DA-40CA-8A50-E0B4BA628379}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Enemy_Bull_Moving" ID="{913DAA1D-D988-48FC-B41E-22EC7D3DF027}">
+					<ChildrenList>
+						<Action Name="" ID="{33448A63-528A-4C5C-9FC5-80F2D4521237}" ShortID="795467561">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Bull_MovingLP" ID="{A456416E-B3DA-40CA-8A50-E0B4BA628379}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Bull_Damage" ID="{1F15C3F5-689A-4533-9053-35D3FB3910D2}">
+					<ChildrenList>
+						<Action Name="" ID="{ACC40082-6C76-4F5D-AF28-03F956D12E2F}" ShortID="733955055">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Bull_Damage" ID="{8AD78C81-86F2-4418-A25C-C4EA35AC3201}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Bull_Death" ID="{1A48BE9E-CEDC-4237-9352-0BC18BD37CFA}">
+					<ChildrenList>
+						<Action Name="" ID="{45ACAD2D-9482-46DE-AAD6-236AF1A9BB3D}" ShortID="858751745">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Bull_Death" ID="{EF0CBBA8-8BC1-4FF0-895A-BF5E5471BFF5}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Wlocznik_Death" ID="{B33E5A91-E03D-4B03-A967-C723B2F36705}">
+					<ChildrenList>
+						<Action Name="" ID="{EDB70835-8A6E-4446-BEFD-568535FFE053}" ShortID="17222064">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Wlocznik_Death" ID="{978D2BF6-FD24-400B-ACC6-6F94B2386D4F}" WorkUnitID="{B05B44D7-F3E5-406D-9BF5-4073370ED433}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
