@@ -83,6 +83,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Desumiru_Attack_KrecenieKusariGamy" ID="{10D1D782-F2FD-49AE-960D-74FFD78AA4E3}">
+					<ChildrenList>
+						<Action Name="" ID="{F5552DB7-BAFB-448B-A64B-90FEE5BDE58A}" ShortID="918749273">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Desumiru_Attack_KrecenieKusariGamy" ID="{06BA7824-6785-42BB-B736-D92B2578DAD0}" WorkUnitID="{F520D281-F527-4F03-A836-7B070AB31757}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Desumiru_Attack_ObrotKusariGamy" ID="{BD6524ED-76C8-45F7-BFE8-8DB2AEDD4BBD}">
+					<ChildrenList>
+						<Action Name="" ID="{3E367D14-6C4F-4EE8-A198-C110D5C8A99A}" ShortID="60248315">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Desumiru_Attack_ObrotKusariGamy" ID="{6E576734-2E3B-41F5-9261-650E35BC4E7D}" WorkUnitID="{F520D281-F527-4F03-A836-7B070AB31757}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Desumiru_Attack_ElektrycznyKusariGamy" ID="{D2366FF0-A22F-4093-8C62-51A7DA3414C9}">
+					<ChildrenList>
+						<Action Name="" ID="{56B70C86-13B2-4019-BA34-45FF2609E12F}" ShortID="312947309">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Desumiru_Attack_ElektrycznyKusariGamy" ID="{D4205D2A-1394-4F1D-9C61-27E70CD35C17}" WorkUnitID="{F520D281-F527-4F03-A836-7B070AB31757}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

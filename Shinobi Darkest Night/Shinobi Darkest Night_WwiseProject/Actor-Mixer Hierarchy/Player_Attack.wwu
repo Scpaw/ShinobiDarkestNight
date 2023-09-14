@@ -418,6 +418,108 @@
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Desumiru_Attack_KrecenieKusariGamy" ID="{06BA7824-6785-42BB-B736-D92B2578DAD0}" ShortID="98715830">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Desumiru_Attack_KrecenieKusariGamy" ID="{10ED7EEA-62AE-4A5A-B50C-2F1F67D0CC80}" ShortID="350396925">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Desumiru_Attack_KrecenieKusariGamy" ID="{66FE7C8F-1AE1-4311-BC27-E7BEEE79EA14}">
+											<Language>SFX</Language>
+											<AudioFile>Player\Player_Attack\Desumiru_Attack_KrecenieKusariGamy.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="796868013"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Desumiru_Attack_KrecenieKusariGamy" ID="{66FE7C8F-1AE1-4311-BC27-E7BEEE79EA14}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Desumiru_Attack_ObrotKusariGamy" ID="{6E576734-2E3B-41F5-9261-650E35BC4E7D}" ShortID="683549692">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Desumiru_Attack_ObrotKusariGamy" ID="{ECBE571D-ABBF-49B3-B13F-0793360BF308}" ShortID="574769663">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Desumiru_Attack_ObrotKusariGamy" ID="{6B38E585-3C81-4BA3-9CE3-DB200BDB8144}">
+											<Language>SFX</Language>
+											<AudioFile>Player\Player_Attack\Desumiru_Attack_ObrotKusariGamy.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="523950822"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Desumiru_Attack_ObrotKusariGamy" ID="{6B38E585-3C81-4BA3-9CE3-DB200BDB8144}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Desumiru_Attack_ElektrycznyKusariGamy" ID="{D4205D2A-1394-4F1D-9C61-27E70CD35C17}" ShortID="138950477">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Desumiru_Attack_ElektrycznyKusariGamy" ID="{DDCA9C43-FCE9-4564-A0A3-725FC4039FD4}" ShortID="352510147">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{73CD9D00-044E-4051-9333-E7D7FCAE774A}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{34F2FD3F-C5A4-49C6-B5EE-4B4E4A948D6B}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Desumiru_Attack_ElektrycznyKusariGamy" ID="{0174C8FD-72BD-4460-B72A-1494CC1EBDE4}">
+											<Language>SFX</Language>
+											<AudioFile>Player\Player_Attack\Desumiru_Attack_ElektrycznyKusariGamy.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="583695923"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Desumiru_Attack_ElektrycznyKusariGamy" ID="{0174C8FD-72BD-4460-B72A-1494CC1EBDE4}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
