@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6307070689503035846}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.14, y: 4.23, z: -0.19108233}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e38df142ab7e9ed499620ee46ad0f681, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &6307070689503035850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.13053504}
     oldSize: {x: 5.23, y: 5.17}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
@@ -124,12 +124,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.82079035, y: -1.5224823}
-      - {x: -0.6792195, y: -1.638044}
-      - {x: -0.44849956, y: -1.6447282}
-      - {x: -0.29132426, y: -1.5251313}
-      - {x: -0.4484574, y: -1.4175525}
-      - {x: -0.6987729, y: -1.4215001}
+    - - {x: -0.89768034, y: 0.1691078}
+      - {x: -0.66640365, y: 0.040730715}
+      - {x: -0.269088, y: 0.072491884}
+      - {x: -0.022208512, y: 0.25616455}
+      - {x: -0.24341583, y: 0.4150033}
+      - {x: -0.68595874, y: 0.37261045}
 --- !u!60 &6307070689503035851
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.13053504}
     oldSize: {x: 5.23, y: 5.17}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
@@ -155,16 +155,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -2.571638, y: 1.0698595}
-      - {x: -1.7372236, y: 0.27639395}
-      - {x: -1.8187456, y: -0.2782387}
-      - {x: -1.1343417, y: -0.8625999}
-      - {x: -0.70373195, y: -1.1696975}
-      - {x: -0.4554894, y: -1.18548}
-      - {x: -0.18708864, y: -1.2799865}
-      - {x: 0.73315716, y: -0.22550434}
-      - {x: 2.2032084, y: -0.35143596}
-      - {x: 2.5627546, y: 0.29400015}
-      - {x: 0.77766323, y: 2.5120363}
-      - {x: -0.4945564, y: 1.5598987}
-      - {x: -1.764991, y: 1.4807941}
+    - - {x: -2.5588222, y: 3.0305662}
+      - {x: -1.9166353, y: 2.0448742}
+      - {x: -1.8571913, y: 1.682468}
+      - {x: -0.7883359, y: 0.77772945}
+      - {x: -0.67810196, y: 0.39374173}
+      - {x: -0.27607945, y: 0.44203508}
+      - {x: -0.19990444, y: 0.6038302}
+      - {x: 0.45122722, y: 0.9406677}
+      - {x: 2.1391335, y: 1.4426749}
+      - {x: 2.4730496, y: 2.2803369}
+      - {x: 0.81610745, y: 4.421483}
+      - {x: -0.6355222, y: 3.4052696}
+      - {x: -1.5727654, y: 3.505576}

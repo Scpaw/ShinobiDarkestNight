@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AkWwiseProjectData
   m_EditorClassIdentifier: 
   AcousticTextureWwu:
-  - PhysicalPath: Virtual Acoustics/Default Work Unit.wwu
+  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Virtual Acoustics
       ObjectType: 5
@@ -21,13 +21,13 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: 80de50b12d395b47890403d93887404d
-    ParentPath: Virtual Acoustics/Default Work Unit
+    ParentPath: Virtual Acoustics\Default Work Unit
     guid: 80de50b12d395b47890403d93887404d
     GuidInternal: 
-    m_lastTime: -8585090478979676007
+    m_lastTime: -8585089638022825552
     List: []
   AuxBusWwu:
-  - PhysicalPath: Master-Mixer Hierarchy/Default Work Unit.wwu
+  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Master-Mixer Hierarchy
       ObjectType: 5
@@ -35,10 +35,10 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
-    ParentPath: Master-Mixer Hierarchy/Default Work Unit
+    ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
     GuidInternal: 
-    m_lastTime: -8585074156096720214
+    m_lastTime: -8585073474852139724
     List:
     - name: 2DAmbience
       guid: 7d4f7d85f7b8234680764f9b71471123
@@ -59,7 +59,7 @@ MonoBehaviour:
       - ElementName: 2DAmbience
         ObjectType: 2
         guid: 7d4f7d85f7b8234680764f9b71471123
-      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster/2DAmbience
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\AmbientMaster\2DAmbience
     - name: 2DAmbientBeds
       guid: 86bf90c9b1e8b643ba06f15e5286e2ae
       id: 4152869693
@@ -82,7 +82,7 @@ MonoBehaviour:
       - ElementName: 2DAmbientBeds
         ObjectType: 2
         guid: 86bf90c9b1e8b643ba06f15e5286e2ae
-      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster/AmbientBeds/2DAmbientBeds
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\AmbientMaster\AmbientBeds\2DAmbientBeds
     - name: 3DAmbience
       guid: e3f62788d2911c41b3720357d98b42e8
       id: 1301074112
@@ -102,7 +102,7 @@ MonoBehaviour:
       - ElementName: 3DAmbience
         ObjectType: 2
         guid: e3f62788d2911c41b3720357d98b42e8
-      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster/3DAmbience
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\AmbientMaster\3DAmbience
     - name: AmbientBeds
       guid: df9c74a761f693428bdae3d16dc16aca
       id: 1182634443
@@ -122,7 +122,7 @@ MonoBehaviour:
       - ElementName: AmbientBeds
         ObjectType: 2
         guid: df9c74a761f693428bdae3d16dc16aca
-      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster/AmbientBeds
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\AmbientMaster\AmbientBeds
     - name: AmbientMaster
       guid: 621f16c1743dc24a84524a6daa52b080
       id: 1459460693
@@ -139,7 +139,7 @@ MonoBehaviour:
       - ElementName: AmbientMaster
         ObjectType: 2
         guid: 621f16c1743dc24a84524a6daa52b080
-      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/AmbientMaster
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\AmbientMaster
     - name: Cave
       guid: c3a74df94626534b9cca646c70c7b4d9
       id: 4122393694
@@ -159,7 +159,7 @@ MonoBehaviour:
       - ElementName: Cave
         ObjectType: 1
         guid: c3a74df94626534b9cca646c70c7b4d9
-      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Reverbs/Cave
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Cave
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
       id: 3803692087
@@ -173,7 +173,7 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
-      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus
     - name: NPCMaster
       guid: b064dc9c454f3640bac110cd5ff10dfa
       id: 2033911932
@@ -190,7 +190,7 @@ MonoBehaviour:
       - ElementName: NPCMaster
         ObjectType: 2
         guid: b064dc9c454f3640bac110cd5ff10dfa
-      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/NPCMaster
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\NPCMaster
     - name: Outdoor
       guid: e6a9789124f3204f87fdf80acf148bd4
       id: 144697359
@@ -210,7 +210,7 @@ MonoBehaviour:
       - ElementName: Outdoor
         ObjectType: 1
         guid: e6a9789124f3204f87fdf80acf148bd4
-      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Reverbs/Outdoor
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs\Outdoor
     - name: PlayerAttack
       guid: 3ab89dddeb8e4a4b982fd73fada74c71
       id: 2169369406
@@ -230,7 +230,7 @@ MonoBehaviour:
       - ElementName: PlayerAttack
         ObjectType: 2
         guid: 3ab89dddeb8e4a4b982fd73fada74c71
-      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/PlayerMaster/PlayerAttack
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\PlayerMaster\PlayerAttack
     - name: PlayerCloth
       guid: 5ef394dd65c670458f82abbc166f0e96
       id: 765206498
@@ -253,7 +253,7 @@ MonoBehaviour:
       - ElementName: PlayerCloth
         ObjectType: 2
         guid: 5ef394dd65c670458f82abbc166f0e96
-      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/PlayerMaster/PlayerLocomotion/PlayerCloth
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\PlayerMaster\PlayerLocomotion\PlayerCloth
     - name: PlayerLocomotion
       guid: 1ffc74e72fadd048931be6ca1affb8f6
       id: 2343802269
@@ -273,7 +273,7 @@ MonoBehaviour:
       - ElementName: PlayerLocomotion
         ObjectType: 2
         guid: 1ffc74e72fadd048931be6ca1affb8f6
-      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/PlayerMaster/PlayerLocomotion
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\PlayerMaster\PlayerLocomotion
     - name: PlayerMaster
       guid: 83b700a08721b843858d249355c90024
       id: 3538689948
@@ -290,7 +290,7 @@ MonoBehaviour:
       - ElementName: PlayerMaster
         ObjectType: 2
         guid: 83b700a08721b843858d249355c90024
-      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/PlayerMaster
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\PlayerMaster
     - name: Reverbs
       guid: 13876454971cac40a3b44f725d9fe6da
       id: 3545700988
@@ -307,9 +307,9 @@ MonoBehaviour:
       - ElementName: Reverbs
         ObjectType: 1
         guid: 13876454971cac40a3b44f725d9fe6da
-      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Reverbs
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverbs
   BankWwu:
-  - PhysicalPath: SoundBanks/Default Work Unit.wwu
+  - PhysicalPath: SoundBanks\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: SoundBanks
       ObjectType: 5
@@ -317,10 +317,10 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: 254d02f565124f4eaa0d213b541f7ff8
-    ParentPath: SoundBanks/Default Work Unit
+    ParentPath: SoundBanks\Default Work Unit
     guid: 254d02f565124f4eaa0d213b541f7ff8
     GuidInternal: 
-    m_lastTime: -8585080972006014919
+    m_lastTime: -8585073474851840518
     List:
     - name: Main
       guid: 9ea6ae27fabd8e408cf82f205143ff7e
@@ -335,9 +335,9 @@ MonoBehaviour:
       - ElementName: Main
         ObjectType: 7
         guid: 9ea6ae27fabd8e408cf82f205143ff7e
-      Path: SoundBanks/Default Work Unit/Main
+      Path: SoundBanks\Default Work Unit\Main
   EventWwu:
-  - PhysicalPath: Events/Default Work Unit.wwu
+  - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Events
       ObjectType: 5
@@ -345,12 +345,12 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: 65a1122963a23f4587bc63f0005c9e35
-    ParentPath: Events/Default Work Unit
+    ParentPath: Events\Default Work Unit
     guid: 65a1122963a23f4587bc63f0005c9e35
     GuidInternal: 
-    m_lastTime: -8585080972006031046
+    m_lastTime: -8585073474852284630
     List: []
-  - PhysicalPath: Events/Locomotion.wwu
+  - PhysicalPath: Events\Locomotion.wwu
     PathAndIcons:
     - ElementName: Events
       ObjectType: 5
@@ -358,12 +358,12 @@ MonoBehaviour:
     - ElementName: Locomotion
       ObjectType: 12
       guid: d4385467faecf646a9639109a404c320
-    ParentPath: Events/Locomotion
+    ParentPath: Events\Locomotion
     guid: d4385467faecf646a9639109a404c320
     GuidInternal: 
-    m_lastTime: -8585081005569182544
+    m_lastTime: -8585073474852284630
     List: []
-  - PhysicalPath: Events/NPC.wwu
+  - PhysicalPath: Events\NPC.wwu
     PathAndIcons:
     - ElementName: Events
       ObjectType: 5
@@ -371,12 +371,764 @@ MonoBehaviour:
     - ElementName: NPC
       ObjectType: 12
       guid: 39e375f9dc6c404d95c24fcdb9488c40
-    ParentPath: Events/NPC
+    ParentPath: Events\NPC
     guid: 39e375f9dc6c404d95c24fcdb9488c40
     GuidInternal: 
-    m_lastTime: -8585081005484881437
+    m_lastTime: -8585071780928471427
     List: []
-  - PhysicalPath: Events/Player.wwu
+  - PhysicalPath: Events\NPCAttack.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: NPC
+      ObjectType: 12
+      guid: 39e375f9dc6c404d95c24fcdb9488c40
+    - ElementName: NPCAttack
+      ObjectType: 12
+      guid: a04db62ca2d5f9439d56caa7964cc451
+    ParentPath: Events\NPC\NPCAttack
+    guid: a04db62ca2d5f9439d56caa7964cc451
+    GuidInternal: 
+    m_lastTime: -8585068333600715793
+    List:
+    - name: Enemy_Archer_Pull
+      guid: e4cc9a21ea404f44b66f2b385b18bf25
+      id: 686651427
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCAttack
+        ObjectType: 12
+        guid: a04db62ca2d5f9439d56caa7964cc451
+      - ElementName: Enemy_Archer_Pull
+        ObjectType: 3
+        guid: e4cc9a21ea404f44b66f2b385b18bf25
+      Path: Events\NPC\NPCAttack\Enemy_Archer_Pull
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Archer_Release
+      guid: 0869e2f04f456e4fb4623c84aa0c1abc
+      id: 2805720177
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCAttack
+        ObjectType: 12
+        guid: a04db62ca2d5f9439d56caa7964cc451
+      - ElementName: Enemy_Archer_Release
+        ObjectType: 3
+        guid: 0869e2f04f456e4fb4623c84aa0c1abc
+      Path: Events\NPC\NPCAttack\Enemy_Archer_Release
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Bull_Attack
+      guid: bc828dd509852a4fa9ad6f8018c2eb97
+      id: 3212818328
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCAttack
+        ObjectType: 12
+        guid: a04db62ca2d5f9439d56caa7964cc451
+      - ElementName: Enemy_Bull_Attack
+        ObjectType: 3
+        guid: bc828dd509852a4fa9ad6f8018c2eb97
+      Path: Events\NPC\NPCAttack\Enemy_Bull_Attack
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_MiniOkubi_DashingLP
+      guid: cd53ef7ba54236498b016c638e83d2ae
+      id: 1761771660
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCAttack
+        ObjectType: 12
+        guid: a04db62ca2d5f9439d56caa7964cc451
+      - ElementName: Enemy_MiniOkubi_DashingLP
+        ObjectType: 3
+        guid: cd53ef7ba54236498b016c638e83d2ae
+      Path: Events\NPC\NPCAttack\Enemy_MiniOkubi_DashingLP
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Ronin_Attack
+      guid: 89e8fde6649c4240938d72c74cfc61f9
+      id: 4057789033
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCAttack
+        ObjectType: 12
+        guid: a04db62ca2d5f9439d56caa7964cc451
+      - ElementName: Enemy_Ronin_Attack
+        ObjectType: 3
+        guid: 89e8fde6649c4240938d72c74cfc61f9
+      Path: Events\NPC\NPCAttack\Enemy_Ronin_Attack
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_ScareCrow_Attack
+      guid: 2ea0c17f34bc9d40a15202e03184e729
+      id: 2599359430
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCAttack
+        ObjectType: 12
+        guid: a04db62ca2d5f9439d56caa7964cc451
+      - ElementName: Enemy_ScareCrow_Attack
+        ObjectType: 3
+        guid: 2ea0c17f34bc9d40a15202e03184e729
+      Path: Events\NPC\NPCAttack\Enemy_ScareCrow_Attack
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_SpearGuy_Attack
+      guid: a3a9d35dcd1984478e557078ef3497ff
+      id: 783605241
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCAttack
+        ObjectType: 12
+        guid: a04db62ca2d5f9439d56caa7964cc451
+      - ElementName: Enemy_SpearGuy_Attack
+        ObjectType: 3
+        guid: a3a9d35dcd1984478e557078ef3497ff
+      Path: Events\NPC\NPCAttack\Enemy_SpearGuy_Attack
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Wlocznik_Attack
+      guid: 2d7f7eacc42d1c4da23270be5f883c1a
+      id: 1443145844
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCAttack
+        ObjectType: 12
+        guid: a04db62ca2d5f9439d56caa7964cc451
+      - ElementName: Enemy_Wlocznik_Attack
+        ObjectType: 3
+        guid: 2d7f7eacc42d1c4da23270be5f883c1a
+      Path: Events\NPC\NPCAttack\Enemy_Wlocznik_Attack
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_Enemy_MiniOkubi_Dashing
+      guid: f6a357e95e205d44b41d9c4fc583dec5
+      id: 965640407
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCAttack
+        ObjectType: 12
+        guid: a04db62ca2d5f9439d56caa7964cc451
+      - ElementName: Stop_Enemy_MiniOkubi_Dashing
+        ObjectType: 3
+        guid: f6a357e95e205d44b41d9c4fc583dec5
+      Path: Events\NPC\NPCAttack\Stop_Enemy_MiniOkubi_Dashing
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+  - PhysicalPath: Events\NPCLocomotion.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: NPC
+      ObjectType: 12
+      guid: 39e375f9dc6c404d95c24fcdb9488c40
+    - ElementName: NPCLocomotion
+      ObjectType: 12
+      guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+    ParentPath: Events\NPC\NPCLocomotion
+    guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+    GuidInternal: 
+    m_lastTime: -8585068333600449513
+    List:
+    - name: Enemy_Archer_Damage
+      guid: 59cd3344686e0c4d93d605de71d93366
+      id: 2902518741
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_Archer_Damage
+        ObjectType: 3
+        guid: 59cd3344686e0c4d93d605de71d93366
+      Path: Events\NPC\NPCLocomotion\Enemy_Archer_Damage
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Archer_Death
+      guid: bd31ace4516bc94aa76be81e72f825d6
+      id: 3402709392
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_Archer_Death
+        ObjectType: 3
+        guid: bd31ace4516bc94aa76be81e72f825d6
+      Path: Events\NPC\NPCLocomotion\Enemy_Archer_Death
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Archer_MovingLP
+      guid: 7ddf9fdc7603324eb573edf10b63d80c
+      id: 3245943036
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_Archer_MovingLP
+        ObjectType: 3
+        guid: 7ddf9fdc7603324eb573edf10b63d80c
+      Path: Events\NPC\NPCLocomotion\Enemy_Archer_MovingLP
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Bull_Damage
+      guid: f5c3151f9a683345905335d3fb3910d2
+      id: 2110191999
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_Bull_Damage
+        ObjectType: 3
+        guid: f5c3151f9a683345905335d3fb3910d2
+      Path: Events\NPC\NPCLocomotion\Enemy_Bull_Damage
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Bull_Death
+      guid: 9ebe481adcce374293520bc18bd37cfa
+      id: 4139684570
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_Bull_Death
+        ObjectType: 3
+        guid: 9ebe481adcce374293520bc18bd37cfa
+      Path: Events\NPC\NPCLocomotion\Enemy_Bull_Death
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Bull_MovingLP
+      guid: bef39016f7a590439dafb6eae48361e2
+      id: 1144400610
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_Bull_MovingLP
+        ObjectType: 3
+        guid: bef39016f7a590439dafb6eae48361e2
+      Path: Events\NPC\NPCLocomotion\Enemy_Bull_MovingLP
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_MiniOkubi_Damage
+      guid: 98f58aa3745a684fbb6bead55b83d2e1
+      id: 330398815
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_MiniOkubi_Damage
+        ObjectType: 3
+        guid: 98f58aa3745a684fbb6bead55b83d2e1
+      Path: Events\NPC\NPCLocomotion\Enemy_MiniOkubi_Damage
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_MiniOkubi_Death
+      guid: d23fb685c772a14e9f070aaa7e073b00
+      id: 2383443770
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_MiniOkubi_Death
+        ObjectType: 3
+        guid: d23fb685c772a14e9f070aaa7e073b00
+      Path: Events\NPC\NPCLocomotion\Enemy_MiniOkubi_Death
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_MiniOkubi_MovingLP
+      guid: ed4392cc7348d94e91545b1bf2c8143d
+      id: 1924261826
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_MiniOkubi_MovingLP
+        ObjectType: 3
+        guid: ed4392cc7348d94e91545b1bf2c8143d
+      Path: Events\NPC\NPCLocomotion\Enemy_MiniOkubi_MovingLP
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Ronin_Damage
+      guid: e0dd40eac6167e4cb66eedcb3b519538
+      id: 3731808246
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_Ronin_Damage
+        ObjectType: 3
+        guid: e0dd40eac6167e4cb66eedcb3b519538
+      Path: Events\NPC\NPCLocomotion\Enemy_Ronin_Damage
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Ronin_Death
+      guid: 07d90c6a78ae8f4b800c810608a98fc5
+      id: 802678365
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_Ronin_Death
+        ObjectType: 3
+        guid: 07d90c6a78ae8f4b800c810608a98fc5
+      Path: Events\NPC\NPCLocomotion\Enemy_Ronin_Death
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Ronin_MovingLP
+      guid: 5ef79e66b1d7f54ba88a37ae312b0c2a
+      id: 1078365811
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_Ronin_MovingLP
+        ObjectType: 3
+        guid: 5ef79e66b1d7f54ba88a37ae312b0c2a
+      Path: Events\NPC\NPCLocomotion\Enemy_Ronin_MovingLP
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_ScareCrow_Damage
+      guid: 58cb1c13f8b32b4f814772839c357512
+      id: 1839043697
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_ScareCrow_Damage
+        ObjectType: 3
+        guid: 58cb1c13f8b32b4f814772839c357512
+      Path: Events\NPC\NPCLocomotion\Enemy_ScareCrow_Damage
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_ScareCrow_Death
+      guid: 387982771457c24fa8dac8929cb077e2
+      id: 3676569724
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_ScareCrow_Death
+        ObjectType: 3
+        guid: 387982771457c24fa8dac8929cb077e2
+      Path: Events\NPC\NPCLocomotion\Enemy_ScareCrow_Death
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_ScareCrow_StandingLP
+      guid: 4e46b9b4c18f294ea174dfefe9a6e1df
+      id: 2917139710
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_ScareCrow_StandingLP
+        ObjectType: 3
+        guid: 4e46b9b4c18f294ea174dfefe9a6e1df
+      Path: Events\NPC\NPCLocomotion\Enemy_ScareCrow_StandingLP
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_SpearGuy_Damage
+      guid: f4285300cce770428b5ebd0e0d7dda67
+      id: 667626246
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_SpearGuy_Damage
+        ObjectType: 3
+        guid: f4285300cce770428b5ebd0e0d7dda67
+      Path: Events\NPC\NPCLocomotion\Enemy_SpearGuy_Damage
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_SpearGuy_Death
+      guid: 4abd02fdfd3c6b44a549816caeedfae1
+      id: 1059221869
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_SpearGuy_Death
+        ObjectType: 3
+        guid: 4abd02fdfd3c6b44a549816caeedfae1
+      Path: Events\NPC\NPCLocomotion\Enemy_SpearGuy_Death
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_SpearGuy_MovingLP
+      guid: 882b5603a0c7b14082fcaf8df0c0cd9a
+      id: 3956532163
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_SpearGuy_MovingLP
+        ObjectType: 3
+        guid: 882b5603a0c7b14082fcaf8df0c0cd9a
+      Path: Events\NPC\NPCLocomotion\Enemy_SpearGuy_MovingLP
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Wlocznik_Damage
+      guid: 49a78de591741946a903067e36a704b2
+      id: 1842470059
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_Wlocznik_Damage
+        ObjectType: 3
+        guid: 49a78de591741946a903067e36a704b2
+      Path: Events\NPC\NPCLocomotion\Enemy_Wlocznik_Damage
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Wlocznik_Death
+      guid: 915a3eb33de0034ba967c723b2f36705
+      id: 3328007190
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_Wlocznik_Death
+        ObjectType: 3
+        guid: 915a3eb33de0034ba967c723b2f36705
+      Path: Events\NPC\NPCLocomotion\Enemy_Wlocznik_Death
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Enemy_Wlocznik_MovingLP
+      guid: 574217dc57533a4b965c3b1889526dd1
+      id: 4235526766
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Enemy_Wlocznik_MovingLP
+        ObjectType: 3
+        guid: 574217dc57533a4b965c3b1889526dd1
+      Path: Events\NPC\NPCLocomotion\Enemy_Wlocznik_MovingLP
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_Enemy_Archer_Moving
+      guid: 07044d2e3a3eef468a14127827e42442
+      id: 1810806391
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Stop_Enemy_Archer_Moving
+        ObjectType: 3
+        guid: 07044d2e3a3eef468a14127827e42442
+      Path: Events\NPC\NPCLocomotion\Stop_Enemy_Archer_Moving
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_Enemy_Bull_Moving
+      guid: 1daa3d9188d9fc48b41e22ec7d3df027
+      id: 1267737121
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Stop_Enemy_Bull_Moving
+        ObjectType: 3
+        guid: 1daa3d9188d9fc48b41e22ec7d3df027
+      Path: Events\NPC\NPCLocomotion\Stop_Enemy_Bull_Moving
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_Enemy_MiniOkubi_Moving
+      guid: 359d1ec0ed4a6d439f3b0c39c2050018
+      id: 1027764427
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Stop_Enemy_MiniOkubi_Moving
+        ObjectType: 3
+        guid: 359d1ec0ed4a6d439f3b0c39c2050018
+      Path: Events\NPC\NPCLocomotion\Stop_Enemy_MiniOkubi_Moving
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_Enemy_ScareCrow_Standing
+      guid: d3a26544f0b2fa4b87510086a7781e61
+      id: 959072311
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Stop_Enemy_ScareCrow_Standing
+        ObjectType: 3
+        guid: d3a26544f0b2fa4b87510086a7781e61
+      Path: Events\NPC\NPCLocomotion\Stop_Enemy_ScareCrow_Standing
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_Enemy_SpearGuy_Moving
+      guid: bf38366117fdc242a19111491584b717
+      id: 3349970732
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Stop_Enemy_SpearGuy_Moving
+        ObjectType: 3
+        guid: bf38366117fdc242a19111491584b717
+      Path: Events\NPC\NPCLocomotion\Stop_Enemy_SpearGuy_Moving
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_Enemy_Wlocznik_Moving
+      guid: 58ff551ade3485428546005d78cd368f
+      id: 3909859073
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: NPC
+        ObjectType: 12
+        guid: 39e375f9dc6c404d95c24fcdb9488c40
+      - ElementName: NPCLocomotion
+        ObjectType: 12
+        guid: 3f165f1877a0334ca3e73c9ce33f7bc2
+      - ElementName: Stop_Enemy_Wlocznik_Moving
+        ObjectType: 3
+        guid: 58ff551ade3485428546005d78cd368f
+      Path: Events\NPC\NPCLocomotion\Stop_Enemy_Wlocznik_Moving
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+  - PhysicalPath: Events\Player.wwu
     PathAndIcons:
     - ElementName: Events
       ObjectType: 5
@@ -384,12 +1136,128 @@ MonoBehaviour:
     - ElementName: Player
       ObjectType: 12
       guid: 12ffdf418a3e8b4197bf9445c85538b8
-    ParentPath: Events/Player
+    ParentPath: Events\Player
     guid: 12ffdf418a3e8b4197bf9445c85538b8
     GuidInternal: 
-    m_lastTime: -8585074156096727309
+    m_lastTime: -8585071780928451500
     List: []
-  - PhysicalPath: Events/PlayerAttack.wwu
+  - PhysicalPath: Events\Player_Health.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Player
+      ObjectType: 12
+      guid: 12ffdf418a3e8b4197bf9445c85538b8
+    - ElementName: Player_Health
+      ObjectType: 12
+      guid: a4ac36f1665c8b4a8efbdbd500973d6f
+    ParentPath: Events\Player\Player_Health
+    guid: a4ac36f1665c8b4a8efbdbd500973d6f
+    GuidInternal: 
+    m_lastTime: -8585069827435455305
+    List:
+    - name: Player_Damage
+      guid: 3e1b719361503a41882b061b7c7fb7b9
+      id: 2074073782
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: 12ffdf418a3e8b4197bf9445c85538b8
+      - ElementName: Player_Health
+        ObjectType: 12
+        guid: a4ac36f1665c8b4a8efbdbd500973d6f
+      - ElementName: Player_Damage
+        ObjectType: 3
+        guid: 3e1b719361503a41882b061b7c7fb7b9
+      Path: Events\Player\Player_Health\Player_Damage
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Player_Death
+      guid: 937d10efe75cdf4eafe3b151f91a5f8c
+      id: 3083087645
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: 12ffdf418a3e8b4197bf9445c85538b8
+      - ElementName: Player_Health
+        ObjectType: 12
+        guid: a4ac36f1665c8b4a8efbdbd500973d6f
+      - ElementName: Player_Death
+        ObjectType: 3
+        guid: 937d10efe75cdf4eafe3b151f91a5f8c
+      Path: Events\Player\Player_Health\Player_Death
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Player_Eating_Slodycz
+      guid: 8b4a17797476b544a2e5c05afb1567fc
+      id: 384837272
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: 12ffdf418a3e8b4197bf9445c85538b8
+      - ElementName: Player_Health
+        ObjectType: 12
+        guid: a4ac36f1665c8b4a8efbdbd500973d6f
+      - ElementName: Player_Eating_Slodycz
+        ObjectType: 3
+        guid: 8b4a17797476b544a2e5c05afb1567fc
+      Path: Events\Player\Player_Health\Player_Eating_Slodycz
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Player_Healing_Drinking
+      guid: c10ca5c88e0b6f4d9721ed1e22f49a35
+      id: 1926537714
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: 12ffdf418a3e8b4197bf9445c85538b8
+      - ElementName: Player_Health
+        ObjectType: 12
+        guid: a4ac36f1665c8b4a8efbdbd500973d6f
+      - ElementName: Player_Healing_Drinking
+        ObjectType: 3
+        guid: c10ca5c88e0b6f4d9721ed1e22f49a35
+      Path: Events\Player\Player_Health\Player_Healing_Drinking
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Player_Healing_Zoom
+      guid: 2e32eb6bb426b7449123d333dca2d2c7
+      id: 3307141145
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: 12ffdf418a3e8b4197bf9445c85538b8
+      - ElementName: Player_Health
+        ObjectType: 12
+        guid: a4ac36f1665c8b4a8efbdbd500973d6f
+      - ElementName: Player_Healing_Zoom
+        ObjectType: 3
+        guid: 2e32eb6bb426b7449123d333dca2d2c7
+      Path: Events\Player\Player_Health\Player_Healing_Zoom
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+  - PhysicalPath: Events\PlayerAttack.wwu
     PathAndIcons:
     - ElementName: Events
       ObjectType: 5
@@ -400,11 +1268,131 @@ MonoBehaviour:
     - ElementName: PlayerAttack
       ObjectType: 12
       guid: 92b85a0fec796040937986712ec13cb1
-    ParentPath: Events/Player/PlayerAttack
+    ParentPath: Events\Player\PlayerAttack
     guid: 92b85a0fec796040937986712ec13cb1
     GuidInternal: 
-    m_lastTime: -8585073009578433634
+    m_lastTime: -8585068333600162947
     List:
+    - name: Desumiru_Attack_ElektrycznyKusariGamy
+      guid: f06f36d22fa293408c6251a7da3414c9
+      id: 458242830
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: 12ffdf418a3e8b4197bf9445c85538b8
+      - ElementName: PlayerAttack
+        ObjectType: 12
+        guid: 92b85a0fec796040937986712ec13cb1
+      - ElementName: Desumiru_Attack_ElektrycznyKusariGamy
+        ObjectType: 3
+        guid: f06f36d22fa293408c6251a7da3414c9
+      Path: Events\Player\PlayerAttack\Desumiru_Attack_ElektrycznyKusariGamy
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Desumiru_Attack_KrecenieKusariGamy
+      guid: 82d7d110fdf2ae49960d74ffd78aa4e3
+      id: 2717276446
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: 12ffdf418a3e8b4197bf9445c85538b8
+      - ElementName: PlayerAttack
+        ObjectType: 12
+        guid: 92b85a0fec796040937986712ec13cb1
+      - ElementName: Desumiru_Attack_KrecenieKusariGamy
+        ObjectType: 3
+        guid: 82d7d110fdf2ae49960d74ffd78aa4e3
+      Path: Events\Player\PlayerAttack\Desumiru_Attack_KrecenieKusariGamy
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Desumiru_Attack_ObrotKusariGamy
+      guid: ed2465bdc876f745bfe88db2aedd4bbd
+      id: 1250704626
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: 12ffdf418a3e8b4197bf9445c85538b8
+      - ElementName: PlayerAttack
+        ObjectType: 12
+        guid: 92b85a0fec796040937986712ec13cb1
+      - ElementName: Desumiru_Attack_ObrotKusariGamy
+        ObjectType: 3
+        guid: ed2465bdc876f745bfe88db2aedd4bbd
+      Path: Events\Player\PlayerAttack\Desumiru_Attack_ObrotKusariGamy
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Itaiken_Blood_Attack
+      guid: c7c6549a87d5a540821396c49e331b8a
+      id: 162003230
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: 12ffdf418a3e8b4197bf9445c85538b8
+      - ElementName: PlayerAttack
+        ObjectType: 12
+        guid: 92b85a0fec796040937986712ec13cb1
+      - ElementName: Itaiken_Blood_Attack
+        ObjectType: 3
+        guid: c7c6549a87d5a540821396c49e331b8a
+      Path: Events\Player\PlayerAttack\Itaiken_Blood_Attack
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Itaiken_BloodSword_Attack
+      guid: 3a6e676bb7cde34ea7b342f2172ae659
+      id: 3161759601
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: 12ffdf418a3e8b4197bf9445c85538b8
+      - ElementName: PlayerAttack
+        ObjectType: 12
+        guid: 92b85a0fec796040937986712ec13cb1
+      - ElementName: Itaiken_BloodSword_Attack
+        ObjectType: 3
+        guid: 3a6e676bb7cde34ea7b342f2172ae659
+      Path: Events\Player\PlayerAttack\Itaiken_BloodSword_Attack
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Player_Slashing
+      guid: 6589c12300da3f49b355305ccdc8957c
+      id: 1893567068
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Player
+        ObjectType: 12
+        guid: 12ffdf418a3e8b4197bf9445c85538b8
+      - ElementName: PlayerAttack
+        ObjectType: 12
+        guid: 92b85a0fec796040937986712ec13cb1
+      - ElementName: Player_Slashing
+        ObjectType: 3
+        guid: 6589c12300da3f49b355305ccdc8957c
+      Path: Events\Player\PlayerAttack\Player_Slashing
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Shokyaku_Fire_Attack_Lp
       guid: a3b07a0f64cdf948b0edc46846721f0c
       id: 2444959333
@@ -421,7 +1409,7 @@ MonoBehaviour:
       - ElementName: Shokyaku_Fire_Attack_Lp
         ObjectType: 3
         guid: a3b07a0f64cdf948b0edc46846721f0c
-      Path: Events/Player/PlayerAttack/Shokyaku_Fire_Attack_Lp
+      Path: Events\Player\PlayerAttack\Shokyaku_Fire_Attack_Lp
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -441,7 +1429,7 @@ MonoBehaviour:
       - ElementName: Shokyaku_Fire_Attack_Stop
         ObjectType: 3
         guid: d0bae95f9965624e85df7868a9547cbb
-      Path: Events/Player/PlayerAttack/Shokyaku_Fire_Attack_Stop
+      Path: Events\Player\PlayerAttack\Shokyaku_Fire_Attack_Stop
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -461,7 +1449,7 @@ MonoBehaviour:
       - ElementName: Shuriken_Grabbing
         ObjectType: 3
         guid: 90f44c44a395864087c81ec9163c011e
-      Path: Events/Player/PlayerAttack/Shuriken_Grabbing
+      Path: Events\Player\PlayerAttack\Shuriken_Grabbing
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -481,11 +1469,11 @@ MonoBehaviour:
       - ElementName: Shuriken_Throwing
         ObjectType: 3
         guid: 974d828d00532b48a700ee5a90da6f99
-      Path: Events/Player/PlayerAttack/Shuriken_Throwing
+      Path: Events\Player\PlayerAttack\Shuriken_Throwing
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-  - PhysicalPath: Events/PlayerLocomotion.wwu
+  - PhysicalPath: Events\PlayerLocomotion.wwu
     PathAndIcons:
     - ElementName: Events
       ObjectType: 5
@@ -496,10 +1484,10 @@ MonoBehaviour:
     - ElementName: PlayerLocomotion
       ObjectType: 12
       guid: e28a9719a937ba408c498831619280ae
-    ParentPath: Events/Player/PlayerLocomotion
+    ParentPath: Events\Player\PlayerLocomotion
     guid: e28a9719a937ba408c498831619280ae
     GuidInternal: 
-    m_lastTime: -8585080997793369624
+    m_lastTime: -8585073474852274655
     List:
     - name: Player_Dash
       guid: 8e263a7be5625a4aa7bffc338b880acf
@@ -517,11 +1505,11 @@ MonoBehaviour:
       - ElementName: Player_Dash
         ObjectType: 3
         guid: 8e263a7be5625a4aa7bffc338b880acf
-      Path: Events/Player/PlayerLocomotion/Player_Dash
+      Path: Events\Player\PlayerLocomotion\Player_Dash
       maxAttenuation: 0
-      maxDuration: 0.104425155
-      minDuration: 0.09454913
-  - PhysicalPath: Events/TestEvents.wwu
+      maxDuration: 0.2919953
+      minDuration: 0.24582161
+  - PhysicalPath: Events\TestEvents.wwu
     PathAndIcons:
     - ElementName: Events
       ObjectType: 5
@@ -529,10 +1517,10 @@ MonoBehaviour:
     - ElementName: TestEvents
       ObjectType: 12
       guid: d20d5bbffbd8594c9a62d66e65d6cbd6
-    ParentPath: Events/TestEvents
+    ParentPath: Events\TestEvents
     guid: d20d5bbffbd8594c9a62d66e65d6cbd6
     GuidInternal: 
-    m_lastTime: -8585081011550875775
+    m_lastTime: -8585073474852174911
     List:
     - name: Play_Stop_TestBeep_lp
       guid: b48bbda9abbed147b3e1e792e487a128
@@ -547,7 +1535,7 @@ MonoBehaviour:
       - ElementName: Play_Stop_TestBeep_lp
         ObjectType: 3
         guid: b48bbda9abbed147b3e1e792e487a128
-      Path: Events/TestEvents/Play_Stop_TestBeep_lp
+      Path: Events\TestEvents\Play_Stop_TestBeep_lp
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -564,7 +1552,7 @@ MonoBehaviour:
       - ElementName: Play_Stop_TestBeep_lp_3D
         ObjectType: 3
         guid: 68ab02f85bafae4a8511e5c32b99c2a8
-      Path: Events/TestEvents/Play_Stop_TestBeep_lp_3D
+      Path: Events\TestEvents\Play_Stop_TestBeep_lp_3D
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -581,7 +1569,7 @@ MonoBehaviour:
       - ElementName: Play_TestBeep
         ObjectType: 3
         guid: b4d9995ffd262c4b888c708a05ced386
-      Path: Events/TestEvents/Play_TestBeep
+      Path: Events\TestEvents\Play_TestBeep
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -598,7 +1586,7 @@ MonoBehaviour:
       - ElementName: Play_TestBeep_3D
         ObjectType: 3
         guid: 53ff5adb13e5ea4d86ad65f4fb3fabea
-      Path: Events/TestEvents/Play_TestBeep_3D
+      Path: Events\TestEvents\Play_TestBeep_3D
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -615,7 +1603,7 @@ MonoBehaviour:
       - ElementName: Play_TestBeep_lp
         ObjectType: 3
         guid: 5804c0b94d80db428fe17ff7be966841
-      Path: Events/TestEvents/Play_TestBeep_lp
+      Path: Events\TestEvents\Play_TestBeep_lp
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -632,12 +1620,59 @@ MonoBehaviour:
       - ElementName: Play_TestBeep_lp_3D
         ObjectType: 3
         guid: e54185c1955320429616cddc28a0d94a
-      Path: Events/TestEvents/Play_TestBeep_lp_3D
+      Path: Events\TestEvents\Play_TestBeep_lp_3D
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+  - PhysicalPath: Events\UI.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: UI
+      ObjectType: 12
+      guid: f5b3994a6414f9418fcdf0bc8f97d9ff
+    ParentPath: Events\UI
+    guid: f5b3994a6414f9418fcdf0bc8f97d9ff
+    GuidInternal: 
+    m_lastTime: -8585071780928441528
+    List:
+    - name: UI_Click
+      guid: 94cdb715f56fd441a6cc69d21f1392ba
+      id: 2249769530
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: f5b3994a6414f9418fcdf0bc8f97d9ff
+      - ElementName: UI_Click
+        ObjectType: 3
+        guid: 94cdb715f56fd441a6cc69d21f1392ba
+      Path: Events\UI\UI_Click
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: UI_Point
+      guid: 250101853787fa44a370ed7d4100c1bc
+      id: 4228838608
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: UI
+        ObjectType: 12
+        guid: f5b3994a6414f9418fcdf0bc8f97d9ff
+      - ElementName: UI_Point
+        ObjectType: 3
+        guid: 250101853787fa44a370ed7d4100c1bc
+      Path: Events\UI\UI_Point
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
   RtpcWwu:
-  - PhysicalPath: Game Parameters/Default Work Unit.wwu
+  - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Game Parameters
       ObjectType: 5
@@ -645,10 +1680,10 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: 7a7abf8123fb7e48a74c296c566ad40c
-    ParentPath: Game Parameters/Default Work Unit
+    ParentPath: Game Parameters\Default Work Unit
     guid: 7a7abf8123fb7e48a74c296c566ad40c
     GuidInternal: 
-    m_lastTime: -8585080972006029849
+    m_lastTime: -8585073474852174911
     List:
     - name: RTPC_Distance
       guid: ab2cbf2793434f44bc12e7b089f45920
@@ -663,7 +1698,7 @@ MonoBehaviour:
       - ElementName: RTPC_Distance
         ObjectType: 13
         guid: ab2cbf2793434f44bc12e7b089f45920
-      Path: Game Parameters/Default Work Unit/RTPC_Distance
+      Path: Game Parameters\Default Work Unit\RTPC_Distance
     - name: RTPC_PlayerSpeed
       guid: 5cc1c2616ee7fb46add81d5d8beea9d4
       id: 2653406601
@@ -677,9 +1712,9 @@ MonoBehaviour:
       - ElementName: RTPC_PlayerSpeed
         ObjectType: 13
         guid: 5cc1c2616ee7fb46add81d5d8beea9d4
-      Path: Game Parameters/Default Work Unit/RTPC_PlayerSpeed
+      Path: Game Parameters\Default Work Unit\RTPC_PlayerSpeed
   StateWwu:
-  - PhysicalPath: States/Default Work Unit.wwu
+  - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: States
       ObjectType: 5
@@ -687,10 +1722,10 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: dfa4eabd59b4eb46a79e81e60efe4498
-    ParentPath: States/Default Work Unit
+    ParentPath: States\Default Work Unit
     guid: dfa4eabd59b4eb46a79e81e60efe4498
     GuidInternal: 
-    m_lastTime: -8585080972006013656
+    m_lastTime: -8585073474851820568
     List:
     - name: Area_State
       guid: d788098583cadf48a5dcf84168bcfa2e
@@ -705,7 +1740,7 @@ MonoBehaviour:
       - ElementName: Area_State
         ObjectType: 9
         guid: d788098583cadf48a5dcf84168bcfa2e
-      Path: States/Default Work Unit/Area_State
+      Path: States\Default Work Unit\Area_State
       values:
       - name: None
         guid: 29d19c1a0563974d835e09627bd55959
@@ -755,7 +1790,7 @@ MonoBehaviour:
       - ElementName: GameStatus
         ObjectType: 9
         guid: 6c459e4d7d5a6a4c8fd4545d11078b5c
-      Path: States/Default Work Unit/GameStatus
+      Path: States\Default Work Unit\GameStatus
       values:
       - name: InGame
         guid: f1d316ada7eff041aff94b8c7db82f02
@@ -821,7 +1856,7 @@ MonoBehaviour:
       - ElementName: Player_State
         ObjectType: 9
         guid: e26a57ab1e1cdc4ea9b8074ec170c922
-      Path: States/Default Work Unit/Player_State
+      Path: States\Default Work Unit\Player_State
       values:
       - name: Alive
         guid: b8aad196b241ac48b6bb82efdbade1f2
@@ -875,7 +1910,7 @@ MonoBehaviour:
       ValueIcons: []
       valuesInternal: []
   SwitchWwu:
-  - PhysicalPath: Switches/Default Work Unit.wwu
+  - PhysicalPath: Switches\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Switches
       ObjectType: 5
@@ -883,10 +1918,10 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: 3f75d3923174824d8407edbd89801c1d
-    ParentPath: Switches/Default Work Unit
+    ParentPath: Switches\Default Work Unit
     guid: 3f75d3923174824d8407edbd89801c1d
     GuidInternal: 
-    m_lastTime: -8585080972006012430
+    m_lastTime: -8585073474851810594
     List:
     - name: PlayerHealth
       guid: b4a7ceeca061664bb032a88687f0284a
@@ -901,7 +1936,7 @@ MonoBehaviour:
       - ElementName: PlayerHealth
         ObjectType: 11
         guid: b4a7ceeca061664bb032a88687f0284a
-      Path: Switches/Default Work Unit/PlayerHealth
+      Path: Switches\Default Work Unit\PlayerHealth
       values:
       - name: FullHealth
         guid: b6e0cf8a82574f4e89b332d3376dd91f
@@ -967,7 +2002,7 @@ MonoBehaviour:
       - ElementName: PlayerSpeedSwitch
         ObjectType: 11
         guid: c05f33ae44e9f84ba51e71673130c26e
-      Path: Switches/Default Work Unit/PlayerSpeedSwitch
+      Path: Switches\Default Work Unit\PlayerSpeedSwitch
       values:
       - name: Run
         guid: 9320b885686e064daf82cc1d5948ca81
@@ -1005,7 +2040,7 @@ MonoBehaviour:
       ValueIcons: []
       valuesInternal: []
   TriggerWwu:
-  - PhysicalPath: Triggers/Default Work Unit.wwu
+  - PhysicalPath: Triggers\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Triggers
       ObjectType: 5
@@ -1013,10 +2048,10 @@ MonoBehaviour:
     - ElementName: Default Work Unit
       ObjectType: 12
       guid: b5ec24c972034b4581a42ad5b719e5e7
-    ParentPath: Triggers/Default Work Unit
+    ParentPath: Triggers\Default Work Unit
     guid: b5ec24c972034b4581a42ad5b719e5e7
     GuidInternal: 
-    m_lastTime: -8585090478979677233
+    m_lastTime: -8585089638022835529
     List: []
   ExpandedFileSystemItemIds: 
   ExpandedWaapiItemIds: 
