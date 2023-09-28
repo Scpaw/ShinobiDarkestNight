@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 6345483356526085124}
   - component: {fileID: 6894150330848928970}
   - component: {fileID: 2541221471502589716}
-  - component: {fileID: 2852518598760621816}
   - component: {fileID: 5473771518476842791}
   - component: {fileID: -1250879768417437115}
+  - component: {fileID: 7343390692797545728}
   m_Layer: 6
   m_Name: Doll
   m_TagString: Enemy
@@ -151,19 +151,6 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &2852518598760621816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299556032694334685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f92d888047d28a41a9e4a8f2f67c925, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectRadius: 5
 --- !u!61 &5473771518476842791
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -226,12 +213,28 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0.6
-  pickNextWaypointDist: 0.4
+  pickNextWaypointDist: 0.2
   endReachedDistance: 0.2
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
+--- !u!114 &7343390692797545728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299556032694334685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0d2e7aef913b34e942ddce53c220e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpeed: 0
+  detectRadius: 5
+  moving: 0
+  canMove: 0
 --- !u!1 &2989135808808095607
 GameObject:
   m_ObjectHideFlags: 0

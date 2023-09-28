@@ -23,7 +23,7 @@ public class Ronin_AI : MonoBehaviour
 
     private void Awake()
     {
-        enemySpeed = GetComponent<AIPath>().speed;
+        enemySpeed = GetComponent<AIPath>().maxSpeed;
         offScreenSpeed = enemySpeed * 2;
         anim = GetComponentInChildren<Animator>();
     }
@@ -66,25 +66,6 @@ public class Ronin_AI : MonoBehaviour
     }
     void Update()
     {
-        if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < detectRadius)
-        {
-            if (enemyScript.stundTime > 0 || !dash.canMove || !canMove)
-            {
-                ai.canMove = false;
-            }
-            else
-            {
-                if (!ai.canMove)
-                {
-                    StartCoroutine(ResetPathf());
-                }
-            }
-        }
-        else
-        {
-            ai.canMove = false;
-        }
-
         if (enemyScript.deflectAgain > 0)
         {
             enemyScript.deflectAgain -= Time.deltaTime;
@@ -109,28 +90,6 @@ public class Ronin_AI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (damageRange.playerInRange || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
-        {
-            ai.enabled = false;
-        }
-        else
-        {
-            if (!ai.enabled)
-            {
-                StartCoroutine(ResetPathf());
-                ai.enabled = true;
-            }
-
-        }
-        if (Camera.main.WorldToScreenPoint(transform.position).x > 0 && Camera.main.WorldToScreenPoint(transform.position).x < Screen.width && Camera.main.WorldToScreenPoint(transform.position).y > 0 && Camera.main.WorldToScreenPoint(transform.position).y < Screen.height)
-        {
-            ai.speed = enemySpeed;
-        }
-        else
-        {
-            ai.speed = offScreenSpeed;
-        }
-
         if (ai.speed > 0 && ai.enabled)
         {
             anim.SetFloat("Blend", 1);
@@ -188,24 +147,5 @@ public class Ronin_AI : MonoBehaviour
     private void Flip(Transform changeThis)
     {
         changeThis.localScale = new Vector3(-changeThis.localScale.x, changeThis.localScale.y, changeThis.localScale.z);
-    }
-
-    public IEnumerator ResetPathf()
-    {
-        if (dash.canMove)
-        {
-            //ai.SetNewPath();
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            ai.speed = 0;
-            while (enemySpeed > ai.speed)
-            {
-                if (ai.speed > 0.1f)
-                {
-                    ai.canMove = true;
-                }
-                ai.speed += Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
-        }
     }
 }

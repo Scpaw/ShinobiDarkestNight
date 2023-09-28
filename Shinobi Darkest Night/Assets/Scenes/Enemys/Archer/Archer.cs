@@ -28,6 +28,7 @@ public class Archer : MonoBehaviour
     public float stundTime;
     Animator EnemyAnim;
     private AIPath canMove;
+    private AI_Move AI;
     private Vector3 startPos;
     private GameObject thePlayer;
     public List<GameObject> projectiles;
@@ -63,20 +64,22 @@ public class Archer : MonoBehaviour
         }
         transform.position = startPos;
         playerInRange = false;
-        canMove.maxSpeed = archerSpeed;
         if (thePlayer == null)
         {
             thePlayer = PlayerController.Instance.GetPlayer();
         }
+        if (AI == null)
+        {
+            AI = GetComponent<AI_Move>();
+        }
         gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
-        canMove.maxSpeed = 1;
         nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
         canShootPlayer = true;
     }
 
     void FixedUpdate()
     {
-        if (canMove.maxSpeed > 0 && canMove.enabled)
+        if (AI.moving)
         {
             EnemyAnim.SetFloat("Moving", 1);
         }
@@ -90,9 +93,9 @@ public class Archer : MonoBehaviour
         {
             if (hit(transform.position).transform.gameObject.layer != 7)
             {
-                if (canShootPlayer)
+                if (canShootPlayer && !shooting)
                 {
-                    canMove.maxSpeed = archerSpeed;
+                    AI.canMove = true;
                     canShootPlayer = false;
                     pointTarget.transform.position = canShootPoint();
                     gameObject.GetComponent<AIDestinationSetter>().target = pointTarget.transform;
@@ -101,7 +104,7 @@ public class Archer : MonoBehaviour
             }
             else if(canShootPlayer)
             {
-                canMove.maxSpeed = 0;
+                AI.canMove= false;
                 if (damageRange.playerInRange)
                 {
                     if (Time.time > meleeTime)
@@ -138,8 +141,9 @@ public class Archer : MonoBehaviour
         {
             if (!shooting)
             {
-                canMove.maxSpeed = archerSpeed;
+                AI.canMove = true;
             }
+
         }
 
         if(fireRange())
@@ -161,7 +165,7 @@ public class Archer : MonoBehaviour
         {
             walkingTime -= Time.fixedDeltaTime;
         }
-        if ((transform.position == pointTarget.transform.position || walkingTime<0 )&& !canShootPlayer)
+        if (((transform.position - pointTarget.transform.position).magnitude < 0.1f || walkingTime<0 )&& !canShootPlayer)
         { 
             canShootPlayer = true;
             gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;

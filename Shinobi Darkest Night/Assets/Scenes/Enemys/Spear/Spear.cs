@@ -22,6 +22,7 @@ public class Spear : MonoBehaviour
     private GameObject hit;
     private float offScreenSpeed;
     private Dash dash;
+    private AI_Move ai_Move;
 
     private void Awake()
     {
@@ -73,7 +74,6 @@ public class Spear : MonoBehaviour
                     timebtwAttacks = 12;
                 }
             }
-
         }
         if (timebtwAttacks > 0)
         { 
@@ -83,27 +83,6 @@ public class Spear : MonoBehaviour
                 timebtwAttacks = 0;
             }
         }
-        if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < detectRadius)
-        {
-           
-
-            if (enemyScript.stundTime > 0 || !dash.canMove)
-            {
-                ai.canMove = false;
-            }
-            else
-            {
-                if (!ai.canMove)
-                {
-                    StartCoroutine(ResetPathf());
-                }
-            }
-        }
-        else
-        {
-            ai.canMove = false;
-        }
-
     }
 
     private void FixedUpdate()
@@ -174,24 +153,6 @@ public class Spear : MonoBehaviour
         //canMove = true;
         damageRange.enabled = true;
         hitPlayer = false;
-        StartCoroutine(ResetPathf());
-    }
-    private IEnumerator ResetPathf()
-    {
-        if (dash.canMove)
-        {
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            ai.maxSpeed = 0;
-            while (enemySpeed > ai.maxSpeed)
-            {
-                if (ai.maxSpeed > 0.1f)
-                {
-                    ai.canMove = true;
-                }
-                ai.maxSpeed += Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
-        }
-       
+        StartCoroutine(ai_Move.ResetPathf());
     }
 }

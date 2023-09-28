@@ -9,12 +9,12 @@ public class MiniOkubi : MonoBehaviour
     private EnemyHealth enemyScript;
     private EnemyDamage damage;
     private float enemySpeed;
-    public float detectRadius;
     private Transform player;
     private Animator anim;
     private Vector2 startPos;
     private float scaleX;
     private float enemyAddSpeed;
+    private AI_Move ai_Move;
 
     //atak wlosami
     private int attackNum;
@@ -32,6 +32,7 @@ public class MiniOkubi : MonoBehaviour
         player = PlayerController.Instance.GetPlayer().transform;
         GetComponent<AIDestinationSetter>().target = player;
         damage = GetComponent<EnemyDamage>();
+        ai_Move = GetComponent<AI_Move>();
         enemySpeed = ai.maxSpeed;
         enemyAddSpeed = 0;
     }
@@ -48,24 +49,6 @@ public class MiniOkubi : MonoBehaviour
             damage.attackAnim = true;
             scaleX = anim.transform.localScale.x;
         }
-        if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < detectRadius)
-        {
-            if (enemyScript.stundTime > 0)
-            {
-                ai.canMove = false;
-            }
-            else
-            {
-                if (!ai.canMove)
-                {
-                    StartCoroutine(ResetPathf());
-                }
-            }
-        }
-        else
-        {
-            ai.canMove = false;
-        }
         attackNum = damage.attacksInt;
 
         int x = (int)((enemyScript.enemyHealth / enemyScript.enemyMaxHealth) *10-4);
@@ -74,6 +57,7 @@ public class MiniOkubi : MonoBehaviour
             if (enemyAddSpeed == 0)
             {
                 enemyAddSpeed = 1.3f;
+                ai_Move.enemySpeed = enemySpeed + enemyAddSpeed;
                 ai.maxSpeed = enemySpeed + enemyAddSpeed;
             }
         }
@@ -92,21 +76,6 @@ public class MiniOkubi : MonoBehaviour
         else
         {
             anim.transform.localScale = new Vector3(scaleX, anim.transform.localScale.y, anim.transform.localScale.z);
-        }
-    }
-
-    private IEnumerator ResetPathf()
-    {
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        ai.maxSpeed = 0;
-        while (enemySpeed + enemyAddSpeed > ai.maxSpeed)
-        {
-            if (ai.maxSpeed > 0.1f)
-            {
-                ai.canMove = true;
-            }
-            ai.maxSpeed += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
         }
     }
 }

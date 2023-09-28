@@ -22,7 +22,7 @@ public class RoninCodeToAnim : MonoBehaviour
 
     public void DashStart()
     {
-        transform.parent.GetComponent<Ronin_AI>().canMove = false;
+        transform.parent.GetComponent<AI_Move>().canMove = false;
     }
 
     public void DashAttack()
@@ -32,17 +32,17 @@ public class RoninCodeToAnim : MonoBehaviour
 
     public void DashEnd() 
     {
-        transform.parent.GetComponent<Ronin_AI>().canMove = true;
+        transform.parent.GetComponent<AI_Move>().canMove = true;
     }
 
     public void StopMoving()
     {
-        transform.parent.GetComponent<Ronin_AI>().canMove = false;
+        transform.parent.GetComponent<AI_Move>().canMove = false;
     }
 
     public void StartMoving()
     {
-        transform.parent.GetComponent<Ronin_AI>().canMove = true;
+        transform.parent.GetComponent<AI_Move>().canMove = true;
     }
 
     public void SaveDeflect()
