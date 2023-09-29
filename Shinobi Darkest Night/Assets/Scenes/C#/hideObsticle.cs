@@ -28,7 +28,7 @@ public class hideObsticle : MonoBehaviour
         O = gameObject.transform.position.y;
         playerT = playerP.transform.position.y;
 
-        if(gameObject.tag == "Obstacle"  && (playerP.transform.position - transform.position).magnitude < 2)
+        if(gameObject.tag == "Obstacle"  && (playerP.transform.position - transform.position).magnitude < 3)
         {
             if (GetComponent<DropCandy>())
             {
