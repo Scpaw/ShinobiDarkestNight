@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -65,7 +66,38 @@ public class PlayerController : MonoBehaviour
     protected Rigidbody2D rb;
     protected ContactFilter2D contactFilter;
 
-    bool canMove;
+    [SerializeField] bool canMove;
+    [SerializeField] bool dialogue;
+    
+    public bool Dialogue
+    {
+        get
+        {
+            return dialogue;
+        }
+        set
+        {
+            if (dialogue != value)
+            {
+                dialogue = value;
+                if (value)
+                {
+                    canMove = false;
+                    canAttack = false;
+                    desumiru = false;
+                    isHealing = false;
+                    CurrentState = RunAnim;
+                    ChangeClip();
+                }
+                else
+                { 
+                    canAttack = true;
+                    canMove = true;
+                }
+            }
+        }
+    }
+
     Vector2 saveDirection;
 
     //Dash parameters
@@ -219,7 +251,7 @@ public class PlayerController : MonoBehaviour
 
         if (currentState == ThrowAnim || currentState == AttackAnim )
         {
-            if (timeToEndAnimation <= 0)
+            if (timeToEndAnimation <= 0 && !dialogue)
             {
                 
                 if (!isDashing && !shokyaku)
@@ -241,7 +273,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (currentState.CanExitWhilePlaying = true || timeToEndAnimation <= 0)
         {
-            if (!isDashing && !shokyaku && !isSpeedingUp && !itaiken)
+            if (!isDashing && !shokyaku && !isSpeedingUp && !itaiken && !dialogue)
             {
                 if (movementInput != Vector2.zero)
                 {
@@ -1136,6 +1168,27 @@ public class PlayerController : MonoBehaviour
     { 
         inventoryText.text = text;
         topItem = itemOnTop;
+    }
+
+
+    public void MoveToPlace(Vector3 point)
+    {
+        if (!dialogue && (transform.position - point).magnitude < 10f)
+        {
+            StartCoroutine(MoveNow(point));
+        }
+    }
+
+    private IEnumerator MoveNow(Vector3 point)
+    {
+        Dialogue = true;
+        while ((transform.position - point).magnitude >0.1f)
+        {
+            facingDirection = -(transform.position - point).normalized;
+            TryMove(-(transform.position - point).normalized);
+            yield return new WaitForEndOfFrame();
+        }
+        CurrentState = IdleAnim;
     }
     private IEnumerator ChangeCamSizeUp()
     {
