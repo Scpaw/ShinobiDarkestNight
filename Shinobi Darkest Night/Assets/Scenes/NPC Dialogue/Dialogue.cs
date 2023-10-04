@@ -77,6 +77,7 @@ public class Dialogue : MonoBehaviour
         if ((button || cutScene) && (PlayerController.Instance.transform.position - point).magnitude <=0.1f && !playerIn)
         { 
             playerIn = true;
+            PlayerController.Instance.StartHealing();
         }
     }
 

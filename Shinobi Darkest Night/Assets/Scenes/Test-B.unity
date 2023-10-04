@@ -12309,7 +12309,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textToDisplay:
-  - text text text
+  - text text text 1
+  - text text text 2
+  - text text text 3
+  - text text text 4
+  - text text text 5
+  - text text text 6
+  - text text text 7
   reDialogue: 1
   trigger: 0
   button: 1
