@@ -103,6 +103,7 @@ namespace AK
         static const AkUniqueID AMBIENTMASTER = 1459460693U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
         static const AkUniqueID NPCMASTER = 2033911932U;
+        static const AkUniqueID PLAYERATTACK = 2169369406U;
         static const AkUniqueID PLAYERCLOTH = 765206498U;
         static const AkUniqueID PLAYERLOCOMOTION = 2343802269U;
         static const AkUniqueID PLAYERMASTER = 3538689948U;

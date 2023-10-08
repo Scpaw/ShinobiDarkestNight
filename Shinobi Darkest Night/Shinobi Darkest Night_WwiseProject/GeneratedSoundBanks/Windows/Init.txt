@@ -20,6 +20,7 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 	1301074112	3DAmbience			\Default Work Unit\Master Audio Bus\AmbientMaster\3DAmbience	
 	1459460693	AmbientMaster			\Default Work Unit\Master Audio Bus\AmbientMaster	
 	2033911932	NPCMaster			\Default Work Unit\Master Audio Bus\NPCMaster	
+	2169369406	PlayerAttack			\Default Work Unit\Master Audio Bus\PlayerMaster\PlayerAttack	
 	2343802269	PlayerLocomotion			\Default Work Unit\Master Audio Bus\PlayerMaster\PlayerLocomotion	
 	3538689948	PlayerMaster			\Default Work Unit\Master Audio Bus\PlayerMaster	
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
