@@ -8,13 +8,21 @@ public class Dialogue : MonoBehaviour
     //dialogue
     private Text text;
     private Button buttonToPress;
-    [SerializeField] private List<string> textToDisplay;
+    private GameObject worldCanvas;
+    [SerializeField] private Image image_player;
+    [SerializeField] private Image image_npc;
+    [SerializeField] private List<OneDialogue> textToDisplay;
+    [SerializeField] private List<OneDialogue> textByPlayer;
     private int textIndex;
+    private int playerIndex;
+    private int npcIndex;
+    private bool npcTalking;
     [SerializeField] private bool reDialogue;
     [Header("CHOOSE ONLY ONE!")]
     [SerializeField] private bool trigger;
     [SerializeField] private bool button;
     [SerializeField] private bool cutScene;
+
 
     private bool isWriting;
     private float startTimer;
@@ -27,12 +35,13 @@ public class Dialogue : MonoBehaviour
     private Vector3 point;
     void Start()
     {
-        text = GetComponentInChildren<Text>();
+        Transform canvasGame = transform.Find("Canvas Game");
+        text = canvasGame.GetComponentInChildren<Text>();
         startTimer = timer;
         startTextTimer = timerToNextText;
         timerToNextText = 0;
         point = transform.Find("PlaceForPlayer").transform.position;
-        buttonToPress = GetComponentInChildren<Button>();
+        buttonToPress = canvasGame.GetComponentInChildren<Button>();
         if (button && !buttonToPress.gameObject.activeInHierarchy)
         {
             buttonToPress.transform.parent.gameObject.SetActive(true);
@@ -41,16 +50,16 @@ public class Dialogue : MonoBehaviour
         {
             buttonToPress.transform.parent.gameObject.SetActive(false);
         }
+        worldCanvas = transform.Find("World Canvas").gameObject;
+        if ( worldCanvas.activeInHierarchy)
+        { 
+            worldCanvas.SetActive(false);
+        }
     }
 
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            StartDialogue();
-        }
-
         if (timer > 0)
         {
             timer -= Time.deltaTime;
@@ -73,20 +82,27 @@ public class Dialogue : MonoBehaviour
             }
         }
 
-
         if ((button || cutScene) && (PlayerController.Instance.transform.position - point).magnitude <=0.1f && !playerIn)
         { 
             playerIn = true;
             PlayerController.Instance.StartHealing();
+            if (cutScene && !worldCanvas.activeInHierarchy)
+            {
+                worldCanvas.SetActive(true);
+            }
         }
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (trigger&& collision.tag == "Player")
+        if ((trigger || cutScene )&& collision.tag == "Player")
         {
-            if (!playerIn)
+            if (cutScene && ((npcIndex == 0 && playerIndex ==0) || reDialogue))
+            {
+                StartDialogue();
+            }
+            if (!playerIn && !cutScene)
             {
                 playerIn = true;
             }
@@ -95,7 +111,7 @@ public class Dialogue : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (trigger && collision.tag == "Player")
+        if ((trigger || cutScene )&& collision.tag == "Player")
         {
             if (playerIn)
             {
@@ -113,27 +129,50 @@ public class Dialogue : MonoBehaviour
             textIndex = 0;
         }
         buttonToPress.transform.parent.gameObject.SetActive(false);
+        if (cutScene)
+        { 
+            npcTalking=true;
+            if (reDialogue && (playerIndex > 0 || npcIndex > 0))
+            { 
+                playerIndex = 0;
+                npcIndex = 0;
+                image_player.GetComponentInChildren<Text>().text = string.Empty;
+                image_npc.GetComponentInChildren<Text>().text = string.Empty;
+            }
+        }
     }
 
     private void NextDialogue()
     {
         if (!isWriting)
         {
-            if (textIndex < textToDisplay.Count)
+            if (cutScene)
             {
-                StartCoroutine(WriteText(textToDisplay[textIndex]));
+                if (npcTalking && npcIndex < textToDisplay.Count)
+                {
+                    StartCoroutine(WriteText(textToDisplay[npcIndex].text, image_npc.GetComponentInChildren<Text>()));
+                    npcIndex++;
+                }
+                else if(!npcTalking && playerIndex < textByPlayer.Count)
+                {
+                    StartCoroutine(WriteText(textByPlayer[playerIndex].text, image_player.GetComponentInChildren<Text>()));
+                    playerIndex++;
+                }
+            }
+            else if (textIndex < textToDisplay.Count)
+            {
+                StartCoroutine(WriteText(textToDisplay[textIndex].text, text));
                 textIndex++;
             }
             else if (reDialogue && trigger)
             {
-                StartCoroutine(WriteText(textToDisplay[0]));
+                StartCoroutine(WriteText(textToDisplay[0].text,text));
                 textIndex = 1;
             }
-
         }
     }
 
-    private IEnumerator WriteText(string textToWrite)
+    private IEnumerator WriteText(string textToWrite,Text text)
     {
         if (textToWrite != text.text)
         {
@@ -150,10 +189,10 @@ public class Dialogue : MonoBehaviour
             }
             timer = startTimer;
             isWriting = false;
-            if (button && textIndex >= textToDisplay.Count)
+            if ((button || cutScene) && textIndex >= textToDisplay.Count)
             {
                 PlayerController.Instance.Dialogue = false;
-                if (button && reDialogue)
+                if ((button) && reDialogue)
                 {
                     buttonToPress.transform.parent.gameObject.SetActive(true);
                 }
@@ -163,5 +202,46 @@ public class Dialogue : MonoBehaviour
         {
             timer = startTimer;
         }
+
+        if (cutScene)
+        {
+            if (npcTalking)
+            {
+                if (textToDisplay[npcIndex - 1].anotherDialogue)
+                {
+                    npcTalking = false;
+                }
+                else if (textToDisplay[npcIndex - 1].endDialogue)
+                {
+                    yield return new WaitForSeconds(2f);
+                    PlayerController.Instance.Dialogue = false;
+                    worldCanvas.SetActive(false);
+                }
+            }
+            else
+            {
+                if (textByPlayer[playerIndex - 1].anotherDialogue)
+                {
+                    npcTalking = true;
+                }
+                else if (textByPlayer[playerIndex - 1].endDialogue)
+                {
+                    yield return new WaitForSeconds(2f);
+                    PlayerController.Instance.Dialogue = false;
+                    worldCanvas.SetActive(false);
+                }
+            }
+        }
     }
 }
+
+
+
+[System.Serializable]
+public class OneDialogue
+{
+    public string text;
+    public bool anotherDialogue;
+    public bool endDialogue;
+}
+
