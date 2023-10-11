@@ -65,6 +65,14 @@ public class AnimationToCode : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void startItaiken()
+    { 
+        playerController.itaiken = true;
+        playerController.canAttack = true;
+        playerController.canMove = true;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 6 && collision.GetComponent<EnemyHealth>())

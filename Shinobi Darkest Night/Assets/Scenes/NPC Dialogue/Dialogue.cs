@@ -114,11 +114,9 @@ public class Dialogue : MonoBehaviour
             if (animationIndex+1 < currentAnimation.sprites.Count )
             {
                 animationIndex++;
-                Debug.Log("add");
             }
             else
             {
-                Debug.Log("too much");
                 animationIndex = 0;
             }
             timebtwAnimations = 0.1f;

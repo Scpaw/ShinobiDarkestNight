@@ -12587,10 +12587,10 @@ MonoBehaviour:
   - text: text player 3
     anotherDialogue: 0
     endDialogue: 1
-  reDialogue: 0
+  reDialogue: 1
   trigger: 0
-  button: 0
-  cutScene: 1
+  button: 1
+  cutScene: 0
   timer: 3
   timerToNextText: 2
 --- !u!1001 &1241750916
@@ -16229,6 +16229,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: startItaiken
+      value: 
+      objectReference: {fileID: 7400000, guid: 83e41434f0dbbf44f841a19c1ffb6a53, type: 2}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: candy.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -16248,5 +16252,37 @@ PrefabInstance:
       propertyPath: candy.Array.data[3]
       value: 
       objectReference: {fileID: 8190412815605609286, guid: 04e1a485dada22d42a034eb10a8b1ca0, type: 3}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <ItaikenRunAnim>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: dd3b242b0c1422d448b348baca9a1166, type: 2}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <ItaikenIdleAnim>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 15dd4abac55e0c14c9b2b3d8d19b30b5, type: 2}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_keys.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_values.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_keys.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 15dd4abac55e0c14c9b2b3d8d19b30b5, type: 2}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_keys.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: dd3b242b0c1422d448b348baca9a1166, type: 2}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 22cc9eeeb2890f44185c5459b4cca6aa, type: 2}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: e490d19917df1954599c4c0db15a74ae, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}

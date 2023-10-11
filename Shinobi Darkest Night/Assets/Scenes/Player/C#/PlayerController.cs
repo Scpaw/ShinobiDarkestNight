@@ -33,7 +33,8 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public CharacterState AttackAnim { get; private set; }
     [field: SerializeField] public CharacterState ShokyakuAnim { get; private set; }
     [field: SerializeField] public CharacterState MezameAnim { get; private set; }
-    [field: SerializeField] public CharacterState ItaikenAnim { get; private set; }
+    [field: SerializeField] public CharacterState ItaikenRunAnim { get; private set; }
+    [field: SerializeField] public CharacterState ItaikenIdleAnim { get; private set; }
     [field: SerializeField] public CharacterAnimationStateDictionary StateAnimations { get; private set; }
     [field: SerializeField] public float RunVelocityTreshchold { get; private set; } = 0.1f;
 
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour
     protected Rigidbody2D rb;
     protected ContactFilter2D contactFilter;
 
-    [SerializeField] bool canMove;
+    public bool canMove;
     [SerializeField] bool dialogue;
     
     public bool Dialogue
@@ -152,7 +153,7 @@ public class PlayerController : MonoBehaviour
     float maxStamina;
     float staminaReg;
     public float staminaRegRate;
-    private bool canAttack;
+    public bool canAttack;
 
     [Header("Heal")]
     public bool isHealing;
@@ -194,8 +195,7 @@ public class PlayerController : MonoBehaviour
     [Header("Itaiken")]
     [SerializeField] private GameObject itaikenToSpawn;
     [SerializeField] private AnimationClip startItaiken;
-    private bool itaiken;
-    private float itaikenTimer;
+    public bool itaiken;
 
     [Header("Inventory")]
     [SerializeField] private Image shade;
@@ -251,9 +251,9 @@ public class PlayerController : MonoBehaviour
 
         if (currentState == ThrowAnim || currentState == AttackAnim )
         {
-            if (timeToEndAnimation <= 0 && !dialogue)
+            if (timeToEndAnimation <= 0 && !dialogue && !itaiken)
             {
-                
+
                 if (!isDashing && !shokyaku)
                 {
                     if (movementInput != Vector2.zero)
@@ -270,6 +270,17 @@ public class PlayerController : MonoBehaviour
                 movementInput = saveDirection;
                 canMove = true;
             }
+            else if (timeToEndAnimation <= 0 && !dialogue && itaiken)
+            {
+                if (movementInput != Vector2.zero)
+                {
+                    CurrentState = ItaikenRunAnim;
+                }
+                else
+                {
+                    CurrentState = ItaikenIdleAnim;
+                }
+            }
         }
         else if (currentState.CanExitWhilePlaying = true || timeToEndAnimation <= 0)
         {
@@ -284,7 +295,7 @@ public class PlayerController : MonoBehaviour
                     CurrentState = IdleAnim;
                 }
             }
-            else if (!isDashing && !shokyaku && isSpeedingUp &&!itaiken)
+            else if (!isDashing && !shokyaku && isSpeedingUp && !itaiken)
             {
                 if (movementInput != Vector2.zero)
                 {
@@ -295,10 +306,21 @@ public class PlayerController : MonoBehaviour
                     CurrentState = IdleAnim;
                 }
             }
+            else if (!isDashing && !shokyaku && !isSpeedingUp && !dialogue && itaiken)
+            {
+                if (movementInput != Vector2.zero)
+                {
+                    CurrentState = ItaikenRunAnim;
+                }
+                else
+                {
+                    CurrentState = ItaikenIdleAnim;
+                }
+            }
             ChangeClip();
         }
 
-
+        Debug.Log(CurrentState.name);
         //attack cooldwon
         if (attackCooldown > 0)
         { 
@@ -545,16 +567,6 @@ public class PlayerController : MonoBehaviour
         { 
             powerCoolDown -= Time.deltaTime;
         }
-
-        //itaiken
-        if (itaiken)
-        { 
-            itaikenTimer -=Time.deltaTime;
-            if (itaikenTimer < 0)
-            {
-                StopItaken();
-            }
-        }
     }
 
 
@@ -722,12 +734,7 @@ public class PlayerController : MonoBehaviour
         if (desumiru && canAttack)
         {
             StopDesumiru();
-        }
-        else if (itaiken && canAttack)
-        { 
-            StopItaken();
-        }
-     
+        }    
     }
 
     //When Space was pressed
@@ -923,9 +930,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnShokyaku(InputValue movementValue)
     {
-
         if (movementValue.Get<float>() == 1)
         {
+            StopItaken();
             if (desumiru && canAttack)
             { 
                 StopDesumiru();
@@ -973,13 +980,10 @@ public class PlayerController : MonoBehaviour
     {
         if (canAttack && !isHealing && stamina > 30 && hp.playerCourrentHealth > 30)
         {
-            itaiken = true;
             canAttack = false;
             canMove = false;
-            canAttack = false;
-            //myAnim.Play(startItaiken.name);
-            itaikenTimer = 1;
-            SpawnItaiken(false);
+            myAnim.Play(startItaiken.name);
+            //SpawnItaiken(false);
         }
         
     }
@@ -987,9 +991,9 @@ public class PlayerController : MonoBehaviour
     {
         if (itaiken)
         {
+            //canAttack = true;
+            //canMove = true;
             itaiken = false;
-            canAttack = true;
-            canMove = true;
         }
 
     }
@@ -998,7 +1002,6 @@ public class PlayerController : MonoBehaviour
     {
         Instantiate(itaikenToSpawn, transform.position, Quaternion.Euler(projectileRotation.transform.eulerAngles.x, projectileRotation.transform.eulerAngles.y, projectileRotation.transform.eulerAngles.z - 90));
         canAttack = true;
-        currentState = ItaikenAnim;
         facingDirection = projectileSpawnPoint.position - transform.position;
         ChangeClip();
         if (stopAfter)
@@ -1016,6 +1019,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDesumiru()
     {
+        StopItaken();
         if (canAttack && !desumiru)
         {
             desumiruState = 0;
@@ -1188,7 +1192,15 @@ public class PlayerController : MonoBehaviour
             TryMove(-(transform.position - point).normalized);
             yield return new WaitForEndOfFrame();
         }
-        CurrentState = IdleAnim;
+        if (itaiken)
+        {
+            CurrentState = ItaikenIdleAnim;
+        }
+        else
+        {
+            CurrentState = IdleAnim;
+        }
+
     }
     private IEnumerator ChangeCamSizeUp()
     {
