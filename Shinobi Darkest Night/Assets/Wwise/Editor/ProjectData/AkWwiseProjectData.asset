@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 80de50b12d395b47890403d93887404d
     GuidInternal: 
-    m_lastTime: -8585090541087189431
+    m_lastTime: -8585089980516376024
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
     GuidInternal: 
-    m_lastTime: -8585069712458931087
+    m_lastTime: -8585057156529765328
     List:
     - name: 2DAmbience
       guid: 7d4f7d85f7b8234680764f9b71471123
@@ -374,7 +374,7 @@ MonoBehaviour:
     ParentPath: Events\NPC
     guid: 39e375f9dc6c404d95c24fcdb9488c40
     GuidInternal: 
-    m_lastTime: -8585069712459041111
+    m_lastTime: -8585057156529795246
     List: []
   - PhysicalPath: Events\NPCAttack.wwu
     PathAndIcons:
@@ -1139,7 +1139,7 @@ MonoBehaviour:
     ParentPath: Events\Player
     guid: 12ffdf418a3e8b4197bf9445c85538b8
     GuidInternal: 
-    m_lastTime: -8585069712459031108
+    m_lastTime: -8585057156529775300
     List: []
   - PhysicalPath: Events\Player_Health.wwu
     PathAndIcons:
@@ -1155,7 +1155,7 @@ MonoBehaviour:
     ParentPath: Events\Player\Player_Health
     guid: a4ac36f1665c8b4a8efbdbd500973d6f
     GuidInternal: 
-    m_lastTime: -8585069712459011104
+    m_lastTime: -8585057156529775300
     List:
     - name: Player_Damage
       guid: 3e1b719361503a41882b061b7c7fb7b9
@@ -1635,7 +1635,7 @@ MonoBehaviour:
     ParentPath: Events\UI
     guid: f5b3994a6414f9418fcdf0bc8f97d9ff
     GuidInternal: 
-    m_lastTime: -8585069712459001102
+    m_lastTime: -8585057156529765328
     List:
     - name: UI_Click
       guid: 94cdb715f56fd441a6cc69d21f1392ba
@@ -2051,7 +2051,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: b5ec24c972034b4581a42ad5b719e5e7
     GuidInternal: 
-    m_lastTime: -8585090541087759527
+    m_lastTime: -8585089980516376024
     List: []
   ExpandedFileSystemItemIds: 
   ExpandedWaapiItemIds: 05000000060000000c0000000d0000000f000000

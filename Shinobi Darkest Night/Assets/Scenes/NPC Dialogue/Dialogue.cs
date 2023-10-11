@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEditor.Experimental.GraphView;
 
 public class Dialogue : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class Dialogue : MonoBehaviour
     private GameObject worldCanvas;
     [SerializeField] private Image image_player;
     [SerializeField] private Image image_npc;
+    [SerializeField] private List<AnimateThis> playerAnimations;
+    [SerializeField] private List<AnimateThis> npcAnimations;
+    private int animationIndex;
+    private AnimateThis currentAnimation;
+    private float timebtwAnimations;
+
     [SerializeField] private List<OneDialogue> textToDisplay;
     [SerializeField] private List<OneDialogue> textByPlayer;
     private int textIndex;
@@ -90,6 +97,35 @@ public class Dialogue : MonoBehaviour
             {
                 worldCanvas.SetActive(true);
             }
+        }
+
+
+        if (isWriting && timebtwAnimations <= 0)
+        {
+            if (npcTalking)
+            {
+                image_npc.sprite = currentAnimation.sprites[animationIndex];
+            }
+            else
+            {
+                image_player.sprite = currentAnimation.sprites[animationIndex];
+            }
+
+            if (animationIndex+1 < currentAnimation.sprites.Count )
+            {
+                animationIndex++;
+                Debug.Log("add");
+            }
+            else
+            {
+                Debug.Log("too much");
+                animationIndex = 0;
+            }
+            timebtwAnimations = 0.1f;
+        }
+        else if (isWriting)
+        { 
+            timebtwAnimations -=Time.deltaTime;
         }
     }
 
@@ -181,6 +217,18 @@ public class Dialogue : MonoBehaviour
             {
                 text.text = string.Empty;
             }
+            if (cutScene)
+            {
+                if (npcTalking)
+                {
+                    currentAnimation = npcAnimations[Random.Range(0, npcAnimations.Count)];
+                }
+                else
+                {
+                    currentAnimation = playerAnimations[Random.Range(0, playerAnimations.Count)];
+                }
+                animationIndex = 0;
+            }
             isWriting = true;
             foreach (char letter in textToWrite.ToCharArray())
             {
@@ -245,3 +293,8 @@ public class OneDialogue
     public bool endDialogue;
 }
 
+[System.Serializable]
+public class AnimateThis
+{ 
+    public List<Sprite> sprites = new List<Sprite>();
+}

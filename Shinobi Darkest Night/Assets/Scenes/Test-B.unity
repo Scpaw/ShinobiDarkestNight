@@ -12541,6 +12541,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image_player: {fileID: 1156763032}
   image_npc: {fileID: 727606389}
+  playerAnimations:
+  - sprites:
+    - {fileID: -961856373, guid: 3241d2a8c1f510d41a381e19f6dc7c5c, type: 3}
+    - {fileID: -963058160, guid: 3241d2a8c1f510d41a381e19f6dc7c5c, type: 3}
+    - {fileID: 1474283322, guid: 3241d2a8c1f510d41a381e19f6dc7c5c, type: 3}
+  - sprites:
+    - {fileID: 1264017117, guid: 7222bc5aed739aa408a8d39f1fc3ec65, type: 3}
+    - {fileID: -1648816977, guid: 7222bc5aed739aa408a8d39f1fc3ec65, type: 3}
+    - {fileID: -1057354988, guid: 7222bc5aed739aa408a8d39f1fc3ec65, type: 3}
+  - sprites:
+    - {fileID: -6965248, guid: 1257988d83431aa48b5b6c241d7447b5, type: 3}
+    - {fileID: -1926962031, guid: 1257988d83431aa48b5b6c241d7447b5, type: 3}
+    - {fileID: 574303859, guid: 1257988d83431aa48b5b6c241d7447b5, type: 3}
+  npcAnimations:
+  - sprites:
+    - {fileID: 618634106, guid: 7b99f5036da5a6f46b4547809563bbf5, type: 3}
+    - {fileID: 510267277, guid: 7b99f5036da5a6f46b4547809563bbf5, type: 3}
+    - {fileID: 1345300975, guid: 7b99f5036da5a6f46b4547809563bbf5, type: 3}
+  - sprites:
+    - {fileID: 2067265093, guid: 97c38cb5af7349444863b5ad1691d69e, type: 3}
+    - {fileID: -956559538, guid: 97c38cb5af7349444863b5ad1691d69e, type: 3}
+    - {fileID: -376935895, guid: 97c38cb5af7349444863b5ad1691d69e, type: 3}
+    - {fileID: 216846760, guid: 97c38cb5af7349444863b5ad1691d69e, type: 3}
+    - {fileID: -719715428, guid: 97c38cb5af7349444863b5ad1691d69e, type: 3}
+    - {fileID: -369902504, guid: 97c38cb5af7349444863b5ad1691d69e, type: 3}
+    - {fileID: 183967953, guid: 97c38cb5af7349444863b5ad1691d69e, type: 3}
   textToDisplay:
   - text: text npc 1
     anotherDialogue: 0
