@@ -12,7 +12,7 @@ public class AI_Move : MonoBehaviour
     private Transform player;
     private DamageRange damageRange;
     private float offScreenSpeed;
-    private AiBrain room;
+    public AiBrain room;
     private Dash dash;
 
     public bool moving;

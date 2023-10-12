@@ -13,7 +13,6 @@ public class EnemyHealth : MonoBehaviour
     public bool canBeAttacked;
     public bool canDoDmg;
     private float canBeAttackedTimer;
-    public Vector3 startPos;
     public List<GameObject> projectiles;
     public float stundTime;
     public bool isStuned;
@@ -35,14 +34,6 @@ public class EnemyHealth : MonoBehaviour
         enemyHealthSlider.maxValue = enemyMaxHealth;
         enemyHealthSlider.value = enemyHealth;
         canBeAttacked = true;
-        if (startPos == Vector3.zero)
-        {
-            startPos = transform.position;
-        }
-        else
-        {
-            transform.position = startPos;
-        }
         transform.parent.GetComponent<RoomBrain>().enemiesActive++;
     }
 

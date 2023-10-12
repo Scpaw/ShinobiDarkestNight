@@ -61,22 +61,17 @@ public class RoomBrain : MonoBehaviour
 
         }
     }
-
-    private void Update()
-    {
-        //Debug.Log(pointNotOnScreen());
-    }
     public void startSpawnEnemies()
     {
         while (enemies.Count < enemyNumber)
         {
-           enemies.Add(Instantiate(enemiesToSpaw[Random.Range(0, enemiesToSpaw.Count)], pointNotOnScreen() ,Quaternion.Euler(Vector3.zero)));
-
-        }
-
-        foreach (GameObject enemy in enemies)
-        { 
-            enemy.transform.parent = transform;
+            Vector3 spawnPoint = pointNotOnScreen();
+            var enemy = Instantiate(enemiesToSpaw[Random.Range(0, enemiesToSpaw.Count)], spawnPoint, Quaternion.Euler(Vector3.zero),transform);
+            if (enemy.GetComponent<AI_Move>())
+            {
+                enemy.GetComponent<AI_Move>().room = GetComponent<AiBrain>();
+            }
+            enemies.Add(enemy);
         }
     }
 
@@ -120,7 +115,7 @@ public class RoomBrain : MonoBehaviour
         {
             if (!enemy.activeInHierarchy)
             {
-                enemy.GetComponent<EnemyHealth>().startPos = pointNotOnScreen();
+                enemy.transform.position = pointNotOnScreen();
                 enemy.SetActive(true);
             }
         }
