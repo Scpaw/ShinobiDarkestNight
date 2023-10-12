@@ -58,6 +58,8 @@ public class AnimationToCode : MonoBehaviour
 
     public void SpawnItaiken()
     { 
+        playerController.canAttack = true;
+        playerController.canMove = true;
         playerController.SpawnItaiken(false);
     }
 

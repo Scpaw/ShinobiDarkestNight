@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cf33fc7dc881b44982786d75196fe6, type: 3}
   m_Name: DirectionalAnimation_Idle
   m_EditorClassIdentifier: 
-  <Up>k__BackingField: {fileID: 7400000, guid: e0644d6792353f3449b35eb512bf7552, type: 2}
-  <Down>k__BackingField: {fileID: 7400000, guid: aacee192c08a5d544962412f9e3b6106, type: 2}
-  <Left>k__BackingField: {fileID: 7400000, guid: 221c204f311c93549a1a695e134ecc77, type: 2}
-  <Right>k__BackingField: {fileID: 7400000, guid: 8ccb5fd3814cbd04881849b897e06205, type: 2}
+  <Up>k__BackingField:
+  - {fileID: 7400000, guid: e0644d6792353f3449b35eb512bf7552, type: 2}
+  <Down>k__BackingField:
+  - {fileID: 7400000, guid: aacee192c08a5d544962412f9e3b6106, type: 2}
+  <Left>k__BackingField:
+  - {fileID: 7400000, guid: 221c204f311c93549a1a695e134ecc77, type: 2}
+  <Right>k__BackingField:
+  - {fileID: 7400000, guid: 8ccb5fd3814cbd04881849b897e06205, type: 2}

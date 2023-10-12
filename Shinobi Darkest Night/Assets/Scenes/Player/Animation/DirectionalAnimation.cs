@@ -7,13 +7,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DirectionalAnimation", menuName = "ShinobiInputActions/DirectionalAnimation")]
 public class DirectionalAnimation : ScriptableObject
 {
-    [field: SerializeField] public AnimationClip Up { get; private set; }
+    [field: SerializeField] public List<AnimationClip> Up { get; private set; }
 
-    [field: SerializeField] public AnimationClip Down { get; private set; }
+    [field: SerializeField] public List<AnimationClip> Down { get; private set; }
 
-    [field: SerializeField] public AnimationClip Left { get; private set; }
+    [field: SerializeField] public List<AnimationClip> Left { get; private set; }
 
-    [field: SerializeField] public AnimationClip Right { get; private set; }
+    [field: SerializeField] public List<AnimationClip> Right { get; private set; }
 
     public AnimationClip GetFacingClip(Vector2 facingDirection)
     {
@@ -21,19 +21,19 @@ public class DirectionalAnimation : ScriptableObject
 
         if(closestDirection == Vector2.left)
         {
-            return Left;
+            return Left[UnityEngine.Random.Range(0,Left.Count)];
         }
         else if(closestDirection == Vector2.right)
         {
-            return Right;
+            return Right[UnityEngine.Random.Range(0, Right.Count)];
         }
         else if (closestDirection == Vector2.up)
         {
-            return Up;
+            return Up[UnityEngine.Random.Range(0, Up.Count)];
         }
         else if (closestDirection == Vector2.down)
         {
-            return Down;
+            return Down[UnityEngine.Random.Range(0, Down.Count)];
         }
         else
         {

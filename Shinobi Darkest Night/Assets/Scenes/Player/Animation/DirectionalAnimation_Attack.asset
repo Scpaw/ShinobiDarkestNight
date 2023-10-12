@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cf33fc7dc881b44982786d75196fe6, type: 3}
   m_Name: DirectionalAnimation_Attack
   m_EditorClassIdentifier: 
-  <Up>k__BackingField: {fileID: 7400000, guid: 0f9d9e97d5bf71a41982764d5e35c0a6, type: 2}
-  <Down>k__BackingField: {fileID: 7400000, guid: bab8d8dd919b70d4288074de4e979dd1, type: 2}
-  <Left>k__BackingField: {fileID: 7400000, guid: c6ee100406ffc3c4ca78793fa60223eb, type: 2}
-  <Right>k__BackingField: {fileID: 7400000, guid: 6b1cd15acbfb88c4d961dc34dacc43b5, type: 2}
+  <Up>k__BackingField:
+  - {fileID: 7400000, guid: 0f9d9e97d5bf71a41982764d5e35c0a6, type: 2}
+  <Down>k__BackingField:
+  - {fileID: 7400000, guid: bab8d8dd919b70d4288074de4e979dd1, type: 2}
+  <Left>k__BackingField:
+  - {fileID: 7400000, guid: c6ee100406ffc3c4ca78793fa60223eb, type: 2}
+  <Right>k__BackingField:
+  - {fileID: 7400000, guid: 6b1cd15acbfb88c4d961dc34dacc43b5, type: 2}

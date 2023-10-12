@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f24d5420bb62e4f49a96aa4208bc46a5
+guid: bf5ca9133989168419e88013b9ef5c77
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Itaken_Projectile_0
+      name: Up_Slash_Attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e591196e6b08db45aba80453d369952
-      internalID: 823639972
+      spriteID: dc0c2a3dc4d99ad49ba48db500355935
+      internalID: 650168952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Itaken_Projectile_1
+      name: Up_Slash_Attack_1
       rect:
         serializedVersion: 2
         x: 768
@@ -152,14 +152,77 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b94746116f3b4494faf0f33c4695e44d
-      internalID: 153734934
+      spriteID: f43a6ccda47470748a75e328d0730c30
+      internalID: 742253044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Itaken_Projectile_2
+      name: Up_Slash_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1280
+        width: 768
+        height: 768
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3a05f12086027e4b87ce809e6ecf216
+      internalID: -2007042909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Up_Slash_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1280
+        width: 768
+        height: 768
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9630c7e59bdcb334da6e9b0fa68c2388
+      internalID: 1341560183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Up_Slash_Attack_4
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 1280
+        width: 768
+        height: 768
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35ed1292bef858449a8abe43a2f8eb6f
+      internalID: -1630963221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Up_Slash_Attack_5
       rect:
         serializedVersion: 2
         x: 0
@@ -173,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6103d1ef7f6da7c47a8e5b74e7401273
-      internalID: -1901810636
+      spriteID: a7b42f703d73f75468a19cefa74c73a3
+      internalID: -1068812651
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Itaken_Projectile_3
+      name: Up_Slash_Attack_6
       rect:
         serializedVersion: 2
         x: 768
@@ -194,8 +257,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 013fcb0ddaf961a42b24c0f6679a1f18
-      internalID: -1004399207
+      spriteID: 4ad1a17bc42c8694ba9002f9fc7da108
+      internalID: 1498931512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Up_Slash_Attack_7
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 768
+        height: 768
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c375df5006cfc554084185f36bd255fd
+      internalID: 651129978
       vertices: []
       indices: 
       edges: []
@@ -211,10 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Itaken_Projectile_0: 823639972
-      Itaken_Projectile_1: 153734934
-      Itaken_Projectile_2: -1901810636
-      Itaken_Projectile_3: -1004399207
+      Up_Slash_Attack_0: 650168952
+      Up_Slash_Attack_1: 742253044
+      Up_Slash_Attack_2: -2007042909
+      Up_Slash_Attack_3: 1341560183
+      Up_Slash_Attack_4: -1630963221
+      Up_Slash_Attack_5: -1068812651
+      Up_Slash_Attack_6: 1498931512
+      Up_Slash_Attack_7: 651129978
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f24d5420bb62e4f49a96aa4208bc46a5
+guid: a58c0cbc337c5e34e9669eca43c48cb9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Itaken_Projectile_0
+      name: Left_Slash_Part_1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e591196e6b08db45aba80453d369952
-      internalID: 823639972
+      spriteID: d41925b996364f7489bf1bd6a061f3e9
+      internalID: -1937125966
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Itaken_Projectile_1
+      name: Left_Slash_Part_1_1
       rect:
         serializedVersion: 2
         x: 768
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b94746116f3b4494faf0f33c4695e44d
-      internalID: 153734934
+      spriteID: fb7a92fcea0032e4ba2e854187f652dd
+      internalID: 1831359186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Itaken_Projectile_2
+      name: Left_Slash_Part_1_2
       rect:
         serializedVersion: 2
         x: 0
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6103d1ef7f6da7c47a8e5b74e7401273
-      internalID: -1901810636
+      spriteID: f4d778ed6e32489438ea2936e7a6e9a0
+      internalID: -430586684
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Itaken_Projectile_3
+      name: Left_Slash_Part_1_3
       rect:
         serializedVersion: 2
         x: 768
@@ -194,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 013fcb0ddaf961a42b24c0f6679a1f18
-      internalID: -1004399207
+      spriteID: 33392a3f2b861a24b91c9b20d1daecc9
+      internalID: -1810961361
       vertices: []
       indices: 
       edges: []
@@ -211,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Itaken_Projectile_0: 823639972
-      Itaken_Projectile_1: 153734934
-      Itaken_Projectile_2: -1901810636
-      Itaken_Projectile_3: -1004399207
+      Left_Slash_Part_1_0: -1937125966
+      Left_Slash_Part_1_1: 1831359186
+      Left_Slash_Part_1_2: -430586684
+      Left_Slash_Part_1_3: -1810961361
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
