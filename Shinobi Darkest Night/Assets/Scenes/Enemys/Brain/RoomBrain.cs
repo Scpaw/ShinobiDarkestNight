@@ -115,7 +115,10 @@ public class RoomBrain : MonoBehaviour
         {
             if (!enemy.activeInHierarchy)
             {
-                enemy.transform.position = pointNotOnScreen();
+                if (enemy.GetComponent<AI_Move>())
+                {
+                    enemy.transform.position = pointNotOnScreen();
+                }
                 enemy.SetActive(true);
             }
         }
