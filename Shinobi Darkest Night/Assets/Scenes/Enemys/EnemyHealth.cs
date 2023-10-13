@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
     public int canDeflect;
     public float deflectAgain;
     public bool deflectAtRandom;
+    public Vector3 startPos = Vector3.zero;
 
     public void Awake()
     {
@@ -35,6 +36,15 @@ public class EnemyHealth : MonoBehaviour
         enemyHealthSlider.value = enemyHealth;
         canBeAttacked = true;
         transform.parent.GetComponent<RoomBrain>().enemiesActive++;
+
+        if (startPos == Vector3.zero)
+        {
+            startPos = transform.localPosition;
+        }
+        else
+        { 
+            transform.localPosition = startPos;
+        }
     }
 
     public void enemyAddDamage(float Damage, bool dropProjectiles, bool useparticle)
