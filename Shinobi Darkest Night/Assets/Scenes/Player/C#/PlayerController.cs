@@ -179,7 +179,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Desumiru")]
     private bool desumiru;
-    public int desumiruState;
     [SerializeField] private float desumiuRadius;
     [SerializeField] AnimationClip[] desumiruAnimations;
     private float test;
@@ -187,7 +186,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 point2;
     Coroutine desumiruAttackCorutine;
     private bool timeToStopDesumiru;
-    private bool desumiruPressed;
+    public bool desumiruPressed;
 
     [Header("Death")]
     [SerializeField] private AnimationClip deathAnim;
@@ -254,7 +253,7 @@ public class PlayerController : MonoBehaviour
             if (timeToEndAnimation <= 0 && !dialogue)
             {
 
-                if (!isDashing && !shokyaku)
+                if (!isDashing && !shokyaku && !desumiru)
                 {
                     if (movementInput != Vector2.zero)
                     {
@@ -284,7 +283,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (currentState.CanExitWhilePlaying || timeToEndAnimation <= 0)
         {
-            if (!isDashing && !shokyaku && !isSpeedingUp && !itaiken && !dialogue)
+            if (!isDashing && !shokyaku && !isSpeedingUp && !itaiken && !dialogue &&!desumiru)
             {
                 if (movementInput != Vector2.zero)
                 {
@@ -572,6 +571,9 @@ public class PlayerController : MonoBehaviour
         { 
             powerCoolDown -= Time.deltaTime;
         }
+
+        //desumiru
+        myAnim.SetBool("Desumiru", desumiruPressed);
     }
 
 
@@ -647,9 +649,29 @@ public class PlayerController : MonoBehaviour
                 movementInput = movementDirection;
             }
         }
-        else
+        else if (!canMove && !desumiru)
         {
             rb.AddForce(Vector2.zero);
+        }
+        else if (!canMove && desumiruPressed)
+        {
+            Vector2 moveForce = movementInput/4 * MoveSpeed/3 * Time.deltaTime;
+            rb.AddForce(moveForce);
+
+            if (movementInput != Vector2.zero)
+            {
+                bool success = TryMove(movementInput);
+
+                if (!success)
+                {
+                    success = TryMove(new Vector2(movementInput.x, 0));
+
+                    if (!success)
+                    {
+                        success = TryMove(new Vector2(0, movementInput.y));
+                    }
+                }
+            }
         }
 
         if (dashCooldown < dashMaxCooldown)
@@ -723,7 +745,7 @@ public class PlayerController : MonoBehaviour
     //When one of WSAD was pressed
     public void OnMove(InputValue movementValue)
     {
-        if (canMove)
+        if (canMove && !desumiru)
         {
             movementInput = movementValue.Get<Vector2>();
 
@@ -732,14 +754,18 @@ public class PlayerController : MonoBehaviour
                 facingDirection = movementInput;
             }
         }
-        else
+        else if(!desumiruPressed && !canMove)
         {
             saveDirection = movementValue.Get<Vector2>();
         }
-        if (desumiru && canAttack)
+        if (desumiru && canAttack && !desumiruPressed)
         {
             StopDesumiru();
-        }    
+        }
+        else if (desumiru && desumiruPressed)
+        {
+            movementInput = movementValue.Get<Vector2>()/4;
+        }
     }
 
     //When Space was pressed
@@ -808,71 +834,66 @@ public class PlayerController : MonoBehaviour
     }
 
     //When LeftMouseButton(LMB) was pressed
-    public void OnFire()
+    public void OnFire(InputValue inputValue)
     {
-        if (canAttack && !isHealing && !desumiru && !itaiken && !inventoryOpen)
+        if (inputValue.Get<float>() == 1)
         {
-            if (stamina >= 5)
+            if (canAttack && !isHealing && !desumiru && !itaiken && !inventoryOpen)
             {
-                if (projectileNumber > 0)
+                if (stamina >= 5)
                 {
-                    if (isDashing == true)
+                    if (projectileNumber > 0)
                     {
-                        return;
-                    }
-                    SaveMovement();
-                    facingDirection = projectileSpawnPoint.position - transform.position;
-                    canMove = false;
-                    CurrentState = ThrowAnim;
-                    if (yokan <= 0)
-                    {
-                        UseStamina(5);
+                        if (isDashing == true)
+                        {
+                            return;
+                        }
+                        SaveMovement();
+                        facingDirection = projectileSpawnPoint.position - transform.position;
+                        canMove = false;
+                        CurrentState = ThrowAnim;
+                        if (yokan <= 0)
+                        {
+                            UseStamina(5);
+                        }
                     }
                 }
             }
-        }
-        else if (desumiru && canAttack && desumiruState < 4 && !desumiruPressed && !inventoryOpen)
-        {
-            if (stamina >= 12)
+            else if (desumiru && !inventoryOpen)
             {
-                canAttack = false;
-                desumiruState += 1;
-                DesumiruUse();
-                myAnim.SetTrigger("Desumiru");
+                desumiruPressed = true;
             }
-            else
+            else if (itaiken && canAttack && !inventoryOpen)
+            {
+                canMove = false;
+                canAttack = false;
+                CurrentState = ItaikenAttackAnim;
+                ChangeClip();
+            }
+            else if (inventoryOpen && candySpawned.Count > 0 && powerCoolDown <= 0)
+            {
+                topItem.GetComponent<candyScript>().DoStuff();
+                candy.Remove(candy.Find(x => x.name.ToString() + "(Clone)" == topItem.name.ToString()));
+                itemsOnScreen.Remove(itemsOnScreen.Find(x => x.name.ToString() + "(Clone)" == topItem.name.ToString()));
+                Destroy(topItem);
+                foreach (Transform child in shade.transform)
+                {
+                    if (child.name != "position" && !child.GetComponent<Text>())
+                    {
+                        Destroy(child.gameObject);
+                    }
+                }
+                inventoryOpen = false;
+            }
+        }
+        else if (inputValue.Get<float>() == 0)
+        {
+            desumiruPressed = false;
+            if (desumiru)
             {
                 StopDesumiru();
             }
-
         }
-        else if (desumiru && !canAttack && desumiruState < 4 && !inventoryOpen)
-        {
-            desumiruPressed = true;
-        }
-        else if (itaiken && canAttack && !inventoryOpen)
-        {
-            canMove = false;
-            canAttack = false;
-            CurrentState = ItaikenAttackAnim;
-            ChangeClip();
-        }
-        else if (inventoryOpen && candySpawned.Count > 0 && powerCoolDown <= 0)
-        {
-            topItem.GetComponent<candyScript>().DoStuff();
-            candy.Remove(candy.Find(x=> x.name.ToString() + "(Clone)" == topItem.name.ToString()));
-            itemsOnScreen.Remove(itemsOnScreen.Find(x => x.name.ToString() + "(Clone)" == topItem.name.ToString()));
-            Destroy(topItem);
-            foreach (Transform child in shade.transform)
-            {
-                if (child.name != "position" && !child.GetComponent<Text>())
-                {
-                    Destroy(child.gameObject);
-                }
-            }
-            inventoryOpen = false;
-        }
-        
     }
 
     public void OnHeal()
@@ -1044,12 +1065,12 @@ public class PlayerController : MonoBehaviour
     {
         if (canAttack && !desumiru && !itaiken)
         {
-            desumiruState = 0;
             desumiru = true;
             canDash = false;
             canMove = false;
             canAttack = false;
             myAnim.Play(desumiruAnimations[0].name);
+            movementInput = Vector2.zero;
         }
         else if (itaiken)
         {
@@ -1062,25 +1083,7 @@ public class PlayerController : MonoBehaviour
     {
         timeToStopDesumiru = false;
         canAttack = false;
-        slowWaitingTime = 0.05f;
-        if (desumiruState < 2)
-        {
-            desumiuRadius = 3;
-            UseStamina(5);
-            hp.AddDamage(10);
-        }
-        else if (desumiruState == 2)
-        {
-            desumiuRadius = 6;
-            UseStamina(7);
-            hp.AddDamage(10);
-        }
-        else if (desumiruState >= 3)
-        {
-            UseStamina(12); 
-            hp.AddDamage(15);
-        }
-        
+        slowWaitingTime = 0.05f;        
     }
 
     public void StopDesumiru()
@@ -1104,7 +1107,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void DesumiruAttack()
+    public void DesumiruAttack(bool right)
     {
         if (myAnim.GetComponent<AnimationToCode>().slowing != null)
         {
@@ -1114,12 +1117,12 @@ public class PlayerController : MonoBehaviour
         }
         if (desumiruAttackCorutine == null)
         {
-            desumiruAttackCorutine = StartCoroutine(DesumiruAttackUse());
+            desumiruAttackCorutine = StartCoroutine(DesumiruAttackUse(right));
         }
         else
         {
             StopCoroutine(desumiruAttackCorutine);
-            desumiruAttackCorutine = StartCoroutine(DesumiruAttackUse());
+            desumiruAttackCorutine = StartCoroutine(DesumiruAttackUse(right));
         }
         
     }
@@ -1273,19 +1276,16 @@ public class PlayerController : MonoBehaviour
             if (stamina >= 12)
             {
                 canAttack = false;
-                desumiruState += 1;
                 DesumiruUse();
-                myAnim.SetTrigger("Desumiru");
             }
             else
             {
                 StopDesumiru();
             }
-            desumiruPressed = false;
         }
         else
         {
-            while (slowWaitingTime > 0)
+            while (slowWaitingTime > 0 && !desumiruPressed)
             {
                 if (desumiruAttackCorutine == null)
                 {
@@ -1295,11 +1295,6 @@ public class PlayerController : MonoBehaviour
                 slowWaitingTime -= Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
-        }
-
-        if (timeToStopDesumiru)
-        {           
-            StopDesumiru();
         }
         StopCoroutine(TimeToNormal());
         StartCoroutine(TimeToNormal());
@@ -1317,7 +1312,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator DesumiruAttackUse()
+    private IEnumerator DesumiruAttackUse(bool right)
     {
         canAttack = false;
         List<Vector2> vectors = new List<Vector2>();
@@ -1331,7 +1326,15 @@ public class PlayerController : MonoBehaviour
             {
                 myAnim.GetComponent<EdgeCollider2D>().enabled = true;
             }
-            point2 = new Vector2(desumiuRadius * Mathf.Cos(((1 - test) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), desumiuRadius * Mathf.Sin(((1 - test) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
+            if (right)
+            {
+                point2 = new Vector2(desumiuRadius * Mathf.Cos(((1 - test) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), desumiuRadius * Mathf.Sin(((1 - test) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
+            }
+            else
+            {
+                point2 = new Vector2(desumiuRadius * Mathf.Cos((( test) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), desumiuRadius * Mathf.Sin(((test) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
+            }
+           
             test -= Time.deltaTime*2;
             vectors[1] = point2;
             myAnim.GetComponent<EdgeCollider2D>().SetPoints(vectors);

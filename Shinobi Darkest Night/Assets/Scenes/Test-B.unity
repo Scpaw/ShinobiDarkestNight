@@ -14934,6 +14934,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 7742314325190551375, guid: 5ba1344f34d5df3488050c4dce9b2d8d, type: 3}
+      propertyPath: button
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742314325190551375, guid: 5ba1344f34d5df3488050c4dce9b2d8d, type: 3}
+      propertyPath: cutScene
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ba1344f34d5df3488050c4dce9b2d8d, type: 3}
 --- !u!1001 &9100388535224689668
@@ -15008,6 +15016,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7400000, guid: 83e41434f0dbbf44f841a19c1ffb6a53, type: 2}
     - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: desumiuRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: candy.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -15027,6 +15039,10 @@ PrefabInstance:
       propertyPath: candy.Array.data[3]
       value: 
       objectReference: {fileID: 8190412815605609286, guid: 04e1a485dada22d42a034eb10a8b1ca0, type: 3}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: desumiruAnimations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: <ItaikenRunAnim>k__BackingField
       value: 
