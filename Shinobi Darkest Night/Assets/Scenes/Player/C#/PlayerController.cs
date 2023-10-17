@@ -185,7 +185,6 @@ public class PlayerController : MonoBehaviour
     private float slowWaitingTime;
     public Vector2 point2;
     Coroutine desumiruAttackCorutine;
-    private bool timeToStopDesumiru;
     public bool desumiruPressed;
 
     [Header("Death")]
@@ -245,7 +244,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Update()
-    {
+    {       
         timeToEndAnimation -= Time.deltaTime;
 
         if (currentState == ThrowAnim || currentState == AttackAnim )
@@ -1081,7 +1080,6 @@ public class PlayerController : MonoBehaviour
 
     void DesumiruUse()
     {
-        timeToStopDesumiru = false;
         canAttack = false;
         slowWaitingTime = 0.05f;        
     }
@@ -1257,8 +1255,7 @@ public class PlayerController : MonoBehaviour
     public IEnumerator SlowTime()
     {
         StopCoroutine(TimeToNormal());
-        slowWaitingTime = 1.4f;
-        timeToStopDesumiru = true;
+        slowWaitingTime = 0.4f;
         if (Time.timeScale > 0.4f)
         {
             while (Time.timeScale > 0.4f)
@@ -1295,6 +1292,10 @@ public class PlayerController : MonoBehaviour
                 slowWaitingTime -= Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
+            if (slowWaitingTime <= 0 && !desumiruPressed)
+            {
+                StopDesumiru();
+            }
         }
         StopCoroutine(TimeToNormal());
         StartCoroutine(TimeToNormal());
@@ -1316,7 +1317,8 @@ public class PlayerController : MonoBehaviour
     {
         canAttack = false;
         List<Vector2> vectors = new List<Vector2>();
-        test = 1;
+        test = myAnim.GetCurrentAnimatorStateInfo(0).length;
+        float starAnimTime = myAnim.GetCurrentAnimatorStateInfo(0).length;
         vectors.Add(Vector2.zero);
         vectors.Add(Vector2.zero);
         vectors[1] = point2;
@@ -1328,13 +1330,12 @@ public class PlayerController : MonoBehaviour
             }
             if (right)
             {
-                point2 = new Vector2(desumiuRadius * Mathf.Cos(((1 - test) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), desumiuRadius * Mathf.Sin(((1 - test) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
+                point2 = new Vector2(desumiuRadius * Mathf.Cos((((starAnimTime - test)/starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), desumiuRadius * Mathf.Sin((((starAnimTime - test) / starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
             }
             else
             {
-                point2 = new Vector2(desumiuRadius * Mathf.Cos((( test) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), desumiuRadius * Mathf.Sin(((test) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
+                point2 = new Vector2(desumiuRadius * Mathf.Cos((( test/starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), desumiuRadius * Mathf.Sin(((test/starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
             }
-           
             test -= Time.deltaTime*2;
             vectors[1] = point2;
             myAnim.GetComponent<EdgeCollider2D>().SetPoints(vectors);
