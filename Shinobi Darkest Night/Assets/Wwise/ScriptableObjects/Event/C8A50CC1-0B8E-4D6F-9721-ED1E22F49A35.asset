@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816d4218fe517604eaba4fc5734f3d5f, type: 3}
+  m_Name: C8A50CC1-0B8E-4D6F-9721-ED1E22F49A35
+  m_EditorClassIdentifier: 
+  objectName: Player_Healing_Drinking
+  id: 1926537714
+  guid: C8A50CC1-0B8E-4D6F-9721-ED1E22F49A35
