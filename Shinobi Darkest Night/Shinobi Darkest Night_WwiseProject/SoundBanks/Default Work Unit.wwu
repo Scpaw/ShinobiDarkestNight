@@ -5,7 +5,66 @@
 			<ChildrenList>
 				<SoundBank Name="Main" ID="{27AEA69E-BDFA-408E-8CF8-2F205143FF7E}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Enemy_Ronin_Attack" ID="{E6FDE889-9C64-4042-938D-72C74CFC61F9}" WorkUnitID="{2CB64DA0-D5A2-43F9-9D56-CAA7964CC451}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Shuriken_Grabbing" ID="{444CF490-95A3-4086-87C8-1EC9163C011E}" WorkUnitID="{0F5AB892-79EC-4060-9379-86712EC13CB1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Desumiru_Attack_ElektrycznyKusariGamy" ID="{D2366FF0-A22F-4093-8C62-51A7DA3414C9}" WorkUnitID="{0F5AB892-79EC-4060-9379-86712EC13CB1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_ScareCrow_Attack" ID="{7FC1A02E-BC34-409D-A152-02E03184E729}" WorkUnitID="{2CB64DA0-D5A2-43F9-9D56-CAA7964CC451}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Itaiken_Blood_Attack" ID="{9A54C6C7-D587-40A5-8213-96C49E331B8A}" WorkUnitID="{0F5AB892-79EC-4060-9379-86712EC13CB1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_SpearGuy_MovingLP" ID="{03562B88-C7A0-40B1-82FC-AF8DF0C0CD9A}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Damage" ID="{93711B3E-5061-413A-882B-061B7C7FB7B9}" WorkUnitID="{F136ACA4-5C66-4A8B-8EFB-DBD500973D6F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="UI_Click" ID="{15B7CD94-6FF5-41D4-A6CC-69D21F1392BA}" WorkUnitID="{4A99B3F5-1464-41F9-8FCD-F0BC8F97D9FF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_TestBeep_lp_3D" ID="{C18541E5-5395-4220-9616-CDDC28A0D94A}" WorkUnitID="{BF5B0DD2-D8FB-4C59-9A62-D66E65D6CBD6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Bull_Death" ID="{1A48BE9E-CEDC-4237-9352-0BC18BD37CFA}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_SpearGuy_Damage" ID="{005328F4-E7CC-4270-8B5E-BD0E0D7DDA67}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Enemy_Wlocznik_Moving" ID="{1A55FF58-34DE-4285-8546-005D78CD368F}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Enemy_SpearGuy_Moving" ID="{613638BF-FD17-42C2-A191-11491584B717}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_TestBeep_lp" ID="{B9C00458-804D-42DB-8FE1-7FF7BE966841}" WorkUnitID="{BF5B0DD2-D8FB-4C59-9A62-D66E65D6CBD6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Enemy_MiniOkubi_Moving" ID="{C01E9D35-4AED-436D-9F3B-0C39C2050018}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Bull_MovingLP" ID="{1690F3BE-A5F7-4390-9DAF-B6EAE48361E2}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Archer_Pull" ID="{219ACCE4-40EA-444F-B66F-2B385B18BF25}" WorkUnitID="{2CB64DA0-D5A2-43F9-9D56-CAA7964CC451}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Enemy_MiniOkubi_Dashing" ID="{E957A3F6-205E-445D-B41D-9C4FC583DEC5}" WorkUnitID="{2CB64DA0-D5A2-43F9-9D56-CAA7964CC451}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_SpearGuy_Death" ID="{FD02BD4A-3CFD-446B-A549-816CAEEDFAE1}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Eating_Slodycz" ID="{79174A8B-7674-44B5-A2E5-C05AFB1567FC}" WorkUnitID="{F136ACA4-5C66-4A8B-8EFB-DBD500973D6F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Healing_Zoom" ID="{6BEB322E-26B4-44B7-9123-D333DCA2D2C7}" WorkUnitID="{F136ACA4-5C66-4A8B-8EFB-DBD500973D6F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="UI_Point" ID="{85010125-8737-44FA-A370-ED7D4100C1BC}" WorkUnitID="{4A99B3F5-1464-41F9-8FCD-F0BC8F97D9FF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Bull_Damage" ID="{1F15C3F5-689A-4533-9053-35D3FB3910D2}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Desumiru_Attack_ObrotKusariGamy" ID="{BD6524ED-76C8-45F7-BFE8-8DB2AEDD4BBD}" WorkUnitID="{0F5AB892-79EC-4060-9379-86712EC13CB1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Wlocznik_Damage" ID="{E58DA749-7491-4619-A903-067E36A704B2}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Enemy_Archer_Moving" ID="{2E4D0407-3E3A-46EF-8A14-127827E42442}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_SpearGuy_Attack" ID="{5DD3A9A3-19CD-4784-8E55-7078EF3497FF}" WorkUnitID="{2CB64DA0-D5A2-43F9-9D56-CAA7964CC451}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Stop_TestBeep_lp" ID="{A9BD8BB4-BEAB-47D1-B3E1-E792E487A128}" WorkUnitID="{BF5B0DD2-D8FB-4C59-9A62-D66E65D6CBD6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Shuriken_Throwing" ID="{8D824D97-5300-482B-A700-EE5A90DA6F99}" WorkUnitID="{0F5AB892-79EC-4060-9379-86712EC13CB1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Shokyaku_Fire_Attack_Lp" ID="{0F7AB0A3-CD64-48F9-B0ED-C46846721F0C}" WorkUnitID="{0F5AB892-79EC-4060-9379-86712EC13CB1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Enemy_Bull_Moving" ID="{913DAA1D-D988-48FC-B41E-22EC7D3DF027}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_MiniOkubi_DashingLP" ID="{7BEF53CD-42A5-4936-8B01-6C638E83D2AE}" WorkUnitID="{2CB64DA0-D5A2-43F9-9D56-CAA7964CC451}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Slashing" ID="{23C18965-DA00-493F-B355-305CCDC8957C}" WorkUnitID="{0F5AB892-79EC-4060-9379-86712EC13CB1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Desumiru_Attack_KrecenieKusariGamy" ID="{10D1D782-F2FD-49AE-960D-74FFD78AA4E3}" WorkUnitID="{0F5AB892-79EC-4060-9379-86712EC13CB1}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Player_Dash" ID="{7B3A268E-62E5-4A5A-A7BF-FC338B880ACF}" WorkUnitID="{19978AE2-37A9-40BA-8C49-8831619280AE}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Stop_TestBeep_lp_3D" ID="{F802AB68-AF5B-4AAE-8511-E5C32B99C2A8}" WorkUnitID="{BF5B0DD2-D8FB-4C59-9A62-D66E65D6CBD6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Archer_Death" ID="{E4AC31BD-6B51-4AC9-A76B-E81E72F825D6}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Wlocznik_Death" ID="{B33E5A91-E03D-4B03-A967-C723B2F36705}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_TestBeep" ID="{5F99D9B4-26FD-4B2C-888C-708A05CED386}" WorkUnitID="{BF5B0DD2-D8FB-4C59-9A62-D66E65D6CBD6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Wlocznik_MovingLP" ID="{DC174257-5357-4B3A-965C-3B1889526DD1}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Ronin_Death" ID="{6A0CD907-AE78-4B8F-800C-810608A98FC5}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Ronin_MovingLP" ID="{669EF75E-D7B1-4BF5-A88A-37AE312B0C2A}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Enemy_ScareCrow_Standing" ID="{4465A2D3-B2F0-4BFA-8751-0086A7781E61}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Ronin_Damage" ID="{EA40DDE0-16C6-4C7E-B66E-EDCB3B519538}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Archer_Damage" ID="{4433CD59-6E68-4D0C-93D6-05DE71D93366}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Wlocznik_Attack" ID="{AC7E7F2D-2DC4-4D1C-A232-70BE5F883C1A}" WorkUnitID="{2CB64DA0-D5A2-43F9-9D56-CAA7964CC451}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Healing_Drinking" ID="{C8A50CC1-0B8E-4D6F-9721-ED1E22F49A35}" WorkUnitID="{F136ACA4-5C66-4A8B-8EFB-DBD500973D6F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_TestBeep_3D" ID="{DB5AFF53-E513-4DEA-86AD-65F4FB3FABEA}" WorkUnitID="{BF5B0DD2-D8FB-4C59-9A62-D66E65D6CBD6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_ScareCrow_StandingLP" ID="{B4B9464E-8FC1-4E29-A174-DFEFE9A6E1DF}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Archer_MovingLP" ID="{DC9FDF7D-0376-4E32-B573-EDF10B63D80C}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Shokyaku_Fire_Attack_Stop" ID="{5FE9BAD0-6599-4E62-85DF-7868A9547CBB}" WorkUnitID="{0F5AB892-79EC-4060-9379-86712EC13CB1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_MiniOkubi_Death" ID="{85B63FD2-72C7-4EA1-9F07-0AAA7E073B00}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_MiniOkubi_MovingLP" ID="{CC9243ED-4873-4ED9-9154-5B1BF2C8143D}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Death" ID="{EF107D93-5CE7-4EDF-AFE3-B151F91A5F8C}" WorkUnitID="{F136ACA4-5C66-4A8B-8EFB-DBD500973D6F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Itaiken_BloodSword_Attack" ID="{6B676E3A-CDB7-4EE3-A7B3-42F2172AE659}" WorkUnitID="{0F5AB892-79EC-4060-9379-86712EC13CB1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Bull_Attack" ID="{D58D82BC-8509-4F2A-A9AD-6F8018C2EB97}" WorkUnitID="{2CB64DA0-D5A2-43F9-9D56-CAA7964CC451}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_ScareCrow_Damage" ID="{131CCB58-B3F8-4F2B-8147-72839C357512}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_MiniOkubi_Damage" ID="{A38AF598-5A74-4F68-BB6B-EAD55B83D2E1}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Archer_Release" ID="{F0E26908-454F-4F6E-B462-3C84AA0C1ABC}" WorkUnitID="{2CB64DA0-D5A2-43F9-9D56-CAA7964CC451}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_ScareCrow_Death" ID="{77827938-5714-4FC2-A8DA-C8929CB077E2}" WorkUnitID="{185F163F-A077-4C33-A3E7-3C9CE33F7BC2}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
