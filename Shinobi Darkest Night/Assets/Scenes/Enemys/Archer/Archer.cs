@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Pathfinding;
 using Pathfinding.Util;
 using Unity.VisualScripting;
+using static UnityEditor.PlayerSettings;
 
 public class Archer : MonoBehaviour
 {
@@ -36,13 +37,15 @@ public class Archer : MonoBehaviour
     private bool canShootPlayer;
     private GameObject pointTarget;
     private float walkingTime;
+    [SerializeField] private float backRadius;
+    private float runBackTimer = 0;
 
     [Header("Archer melee")]
     [SerializeField] float meleeDamage;
     [SerializeField] float meleeAttackTime;
     private float meleeTime;
     private DamageRange damageRange;
-
+    private AIDestinationSetter target;
 
     public void Awake()
     {
@@ -72,10 +75,16 @@ public class Archer : MonoBehaviour
         {
             AI = GetComponent<AI_Move>();
         }
+
+        if (target == null)
+        {
+            target = GetComponent<AIDestinationSetter>();
+        }
         gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
         nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
         canShootPlayer = true;
     }
+
 
     void FixedUpdate()
     {
@@ -91,7 +100,7 @@ public class Archer : MonoBehaviour
 
         if (playerInRange)
         {
-            if (hit(transform.position).transform.gameObject.layer != 7)
+            if (hit(transform.position).transform.gameObject.layer != 7 && walkingTime <= 0)
             {
                 if (canShootPlayer && !shooting)
                 {
@@ -102,19 +111,35 @@ public class Archer : MonoBehaviour
                     walkingTime = 2;
                 }
             }
-            else if(canShootPlayer)
+            else if(canShootPlayer && walkingTime <=0)
             {
-                AI.canMove= false;
-                if (damageRange.playerInRange)
+
+                if (damageRange.playerInRange || (transform.position - player.transform.position).magnitude <= backRadius)
                 {
-                    if (Time.time > meleeTime)
+                    AI.canMove = false;
+                    if (Time.time > meleeTime && damageRange.playerInRange)
                     {
+                        walkingTime = 0;
                         EnemyAnim.SetTrigger("Melee");
                         meleeTime = Time.time + meleeAttackTime;
+                    }
+                    else if ((transform.position - player.transform.position).magnitude <= backRadius && !damageRange.playerInRange && (transform.position - player.transform.position).magnitude > 0.1f && runBackTimer <= 0)
+                    {
+ 
+                        EnemyAnim.SetTrigger("Back");
+                        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                        AI.canMove = true;
+                        canMove.maxSpeed = AI.enemySpeed;
+                        canShootPlayer = false;
+                        pointTarget.transform.position = RunBack();
+                        target.target = pointTarget.transform;
+                        walkingTime = 2;
+                        runBackTimer = 0.3f;
                     }
                 }
                 else
                 {
+                    AI.canMove = false;
                     if (Time.time > nextShoot)
                     {
                         nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
@@ -134,8 +159,7 @@ public class Archer : MonoBehaviour
 
                     }
                 }
-            }
-           
+            }          
         }
         else
         {
@@ -153,20 +177,26 @@ public class Archer : MonoBehaviour
         else
         {
             playerInRange = false;
+            walkingTime = 0;
         }
-        if (player.position.x -transform.position.x > 0 && transform.localScale.x < 0 || player.position.x - transform.position.x < 0 && transform.localScale.x > 0)
+        if (target.target.transform.position.x -transform.position.x > 0 && transform.localScale.x < 0 || target.target.transform.position.x - transform.position.x < 0 && transform.localScale.x > 0)
         {
             Flip(transform);
             Flip(projectileSpawnPoint.parent.transform);
             Flip(transform.GetComponentInChildren<Canvas>().transform);
         }
 
+        if (runBackTimer > 0)
+        {
+            runBackTimer -= Time.deltaTime;
+        }
         if (walkingTime > 0)
         {
             walkingTime -= Time.fixedDeltaTime;
         }
         if (((transform.position - pointTarget.transform.position).magnitude < 0.1f || walkingTime<0 )&& !canShootPlayer)
-        { 
+        {
+            walkingTime = 0;
             canShootPlayer = true;
             gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
         }
@@ -232,5 +262,55 @@ public class Archer : MonoBehaviour
         return posToReturn;
     }
 
+
+    private Vector3 RunBack()
+    {
+        float R = backRadius/2;
+        Vector3 posToReturn = new Vector3(0,0,0);
+        List<Vector3> points = new List<Vector3> ();
+        int i = 0;
+        while (i < 30)
+        {
+            Vector3 check = new Vector3();
+            check = (Random.insideUnitCircle * R) + new Vector2(transform.position.x, transform.position.y);
+            if (!CheckIfCanGo(check))
+            {
+                points.Add(check);
+            }
+            i++;
+        }
+        foreach (Vector3 check in points)
+        {
+            if (posToReturn == Vector3.zero || (check - player.position).magnitude > (posToReturn - player.position).magnitude)
+            { 
+                posToReturn = check;
+            }
+        }
+        if (posToReturn == Vector3.zero)
+        {
+            walkingTime = 0;
+            return transform.position;
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, -(transform.position - posToReturn).normalized, Color.green, 5);
+            return posToReturn;
+        }
+
+    }
+
+    private bool CheckIfCanGo(Vector3 pos)
+    {
+        if (Physics2D.CircleCast(transform.position, 0.23f, -(transform.position - pos).normalized, backRadius, layerToHit) || (pos - player.transform.position).magnitude <= backRadius)
+        {
+            Debug.DrawRay(transform.position, -(transform.position - pos).normalized, Color.red, 5);
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, -(transform.position - pos).normalized, Color.blue, 5);
+        }
+
+        return (Physics2D.CircleCast(transform.position, 0.23f, -(transform.position - pos).normalized, backRadius, layerToHit) || (pos - player.transform.position).magnitude <= backRadius);
+    }
 
 }

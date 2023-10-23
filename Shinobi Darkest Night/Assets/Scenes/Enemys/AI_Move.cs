@@ -18,10 +18,13 @@ public class AI_Move : MonoBehaviour
     public bool moving;
     public bool canMove;
 
+    private Coroutine reseting;
+
     private void Awake()
     {
         enemySpeed = GetComponent<AIPath>().maxSpeed;
         offScreenSpeed = enemySpeed * 2;
+        reseting = null;
     }
 
     private void OnEnable()
@@ -68,9 +71,9 @@ public class AI_Move : MonoBehaviour
             }
             else
             {
-                if (!moving)
+                if (!moving && reseting == null)
                 {
-                    StartCoroutine(ResetPathf());
+                    reseting= StartCoroutine(ResetPathf());
                 }
             }
         }
@@ -122,5 +125,6 @@ public class AI_Move : MonoBehaviour
             ai.maxSpeed += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+        reseting = null;
     }
 }

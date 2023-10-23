@@ -37,20 +37,23 @@ public class PlayerHealth : MonoBehaviour
 
     public void AddDamage(float Damage)
     {
-        GetComponent<PlayerController>().StopHealing();
-        if (playerController.sakuramochi > 0)
+        if (!playerController.godMode)
         {
-            playerCourrentHealth -= Damage/2;
-        }
-        else
-        {
-            playerCourrentHealth -= Damage;
+            GetComponent<PlayerController>().StopHealing();
+            if (playerController.sakuramochi > 0)
+            {
+                playerCourrentHealth -= Damage / 2;
+            }
+            else
+            {
+                playerCourrentHealth -= Damage;
 
-        }
-        playerHealthSlider.fillAmount = playerCourrentHealth / playerMaxHealth;
-        if (playerCourrentHealth <= 0)
-        {
-            MakeDead();
+            }
+            playerHealthSlider.fillAmount = playerCourrentHealth / playerMaxHealth;
+            if (playerCourrentHealth <= 0)
+            {
+                MakeDead();
+            }
         }
     }
 

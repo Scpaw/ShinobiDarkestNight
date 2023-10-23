@@ -39,6 +39,7 @@ public class MiniOkubi : MonoBehaviour
     private void OnDisable()
     {
         ai.maxSpeed -= enemyAddSpeed;
+        ai_Move.enemySpeed -= enemyAddSpeed;
         enemyAddSpeed = 0;
     }
     void Update()

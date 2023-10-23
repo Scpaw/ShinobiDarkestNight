@@ -214,6 +214,8 @@ public class PlayerController : MonoBehaviour
     public float mizuame;
     public float powerCoolDown;
 
+    public bool godMode;
+
     private void Awake()
     {
         Instance = this;
@@ -247,6 +249,11 @@ public class PlayerController : MonoBehaviour
     {       
         timeToEndAnimation -= Time.deltaTime;
 
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            godMode = !godMode;
+        }
         if (currentState == ThrowAnim || currentState == AttackAnim )
         {
             if (timeToEndAnimation <= 0 && !dialogue)
@@ -1143,18 +1150,21 @@ public class PlayerController : MonoBehaviour
 
     public void UseStamina(float staminaToUse)
     {
-        if (mizuame <=0)
+        if (!godMode)
         {
-            if (yokan > 0)
+            if (mizuame <= 0)
             {
-                stamina -= staminaToUse / 2;
-            }
-            else
-            {
-                stamina -= staminaToUse;
-            }
+                if (yokan > 0)
+                {
+                    stamina -= staminaToUse / 2;
+                }
+                else
+                {
+                    stamina -= staminaToUse;
+                }
 
-            staminaReg = 1f;
+                staminaReg = 1f;
+            }
         }
     }
 
