@@ -56,6 +56,9 @@ public class AnimationToCode : MonoBehaviour
     public void StartShokyaku()
     {
         playerController.shokyaku = true;
+        playerController.canAttack = true;
+        playerController.canMove = true;
+        playerController.CurrentState = playerController.RunAnim;
     }
 
 

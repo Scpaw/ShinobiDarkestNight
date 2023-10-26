@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using Pathfinding;
 using Pathfinding.Util;
-using Unity.VisualScripting;
-using static UnityEditor.PlayerSettings;
 
 public class Archer : MonoBehaviour
 {

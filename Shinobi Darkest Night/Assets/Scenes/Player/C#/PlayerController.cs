@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         {
             return currentState;
         }
-        private set
+         set
         {
             if (currentState != value)
             {
@@ -171,6 +171,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Shokyaku")]
     public bool shokyaku;
+    public bool shokyakuAttack;
     private Collider2D[] hits;
     public LayerMask enemyLayer;
     private float shokyakuTimer;
@@ -245,6 +246,14 @@ public class PlayerController : MonoBehaviour
         hp = GetComponent<PlayerHealth>();
     }
 
+    private void OnEnable()
+    {
+        if (shokyaku)
+        {
+            stopShokyaku = true;
+        }
+    }
+
     private void Update()
     {       
         timeToEndAnimation -= Time.deltaTime;
@@ -259,7 +268,7 @@ public class PlayerController : MonoBehaviour
             if (timeToEndAnimation <= 0 && !dialogue)
             {
 
-                if (!isDashing && !shokyaku && !desumiru)
+                if (!isDashing && !shokyakuAttack && !desumiru)
                 {
                     if (movementInput != Vector2.zero)
                     {
@@ -289,7 +298,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (currentState.CanExitWhilePlaying || timeToEndAnimation <= 0)
         {
-            if (!isDashing && !shokyaku && !isSpeedingUp && !itaiken && !dialogue &&!desumiru)
+            if (!isDashing && !shokyakuAttack && !isSpeedingUp && !itaiken && !dialogue &&!desumiru)
             {
                 if (movementInput != Vector2.zero)
                 {
@@ -377,10 +386,6 @@ public class PlayerController : MonoBehaviour
         if (isSpeedingUp)
         { 
             UseStamina(14* Time.deltaTime);
-            if (mizuame <= 0)
-            {
-                hp.AddDamage(8 * Time.deltaTime);
-            }
 
             if (stamina <= 0)
             {
@@ -391,21 +396,25 @@ public class PlayerController : MonoBehaviour
                 buttonUp = true;
             }
         }
+        if (shokyaku && stopShokyaku)
+        {
+            movementInput = saveDirection;
+            shokyaku = false;
+            shokyakuAttack = false;
+            canDash = true;
+            canMove = true;
+            canAttack = true;
+            currentState = RunAnim;
+            ChangeClip();
+            stopShokyaku = false;
+        }
 
         //Shokyaku
-        if (shokyaku)
+        if (shokyakuAttack)
         {
-            if (stopShokyaku)
-            {
-                movementInput = saveDirection;
-                shokyaku = false;
-                canDash = true;
-                canMove = true;
-                canAttack = true;
-                currentState = RunAnim;
-                ChangeClip();
-                stopShokyaku = false;
-            }
+            canDash = false;
+            canMove = false;
+            canAttack = false;
             if (currentState != ShokyakuAnim)
             {
                 
@@ -432,8 +441,9 @@ public class PlayerController : MonoBehaviour
                 hp.AddDamage(4 * Time.deltaTime);
             }
             shokyakuTimer -= Time.deltaTime;
-            if (shokyakuTimer <= 0)
+            if (shokyakuTimer <= 0 || stamina < 1)
             {
+                shokyakuAttack = false;
                 shokyaku = false;
                 movementInput = saveDirection;
                 shokyaku = false;
@@ -789,6 +799,18 @@ public class PlayerController : MonoBehaviour
     {
         if (canAttack && !isHealing && !desumiru)
         {
+            if (shokyaku)
+            {
+                movementInput = saveDirection;
+                shokyaku = false;
+                shokyakuAttack = false;
+                canDash = true;
+                canMove = true;
+                canAttack = true;
+                currentState = RunAnim;
+                ChangeClip();
+                stopShokyaku = false;
+            }
             StopItaken();
             if (attackCooldown <= 0 && stamina >= 5)
             {
@@ -844,7 +866,7 @@ public class PlayerController : MonoBehaviour
     {
         if (inputValue.Get<float>() == 1)
         {
-            if (canAttack && !isHealing && !desumiru && !itaiken && !inventoryOpen)
+            if (canAttack && !isHealing && !desumiru && !itaiken && !inventoryOpen & !shokyaku)
             {
                 if (stamina >= 5)
                 {
@@ -891,6 +913,10 @@ public class PlayerController : MonoBehaviour
                 }
                 inventoryOpen = false;
             }
+            else if (canAttack && shokyaku)
+            {
+                shokyakuAttack = true;
+            }
         }
         else if (inputValue.Get<float>() == 0)
         {
@@ -899,6 +925,13 @@ public class PlayerController : MonoBehaviour
             {
                 StopDesumiru();
             }
+            if (shokyakuAttack)
+            {
+                canAttack = true;
+                canDash = true;
+                canMove = true;
+                shokyakuAttack = false;
+            }
         }
     }
 
@@ -906,6 +939,10 @@ public class PlayerController : MonoBehaviour
     {
         if (canAttack)
         {
+            if (shokyaku)
+            {
+                stopShokyaku = true;
+            }
             StopItaken();
             StopDesumiru();
             if (hp.playerCourrentHealth < hp.playerMaxHealth)
@@ -990,19 +1027,6 @@ public class PlayerController : MonoBehaviour
                 currentClip = startShokyaku;
             }
         }
-        else if (movementValue.Get<float>() == 0 && !shokyaku && !itaiken && shokyakuTimer ==4)
-        {
-            stopShokyaku = true;
-        }
-        else if (movementValue.Get<float>() == 0 && shokyaku)
-        {
-            movementInput = saveDirection;
-            shokyaku = false;
-            canDash = true;
-            canMove = true;
-            canAttack = true;
-            currentState = RunAnim;
-        }
     }
 
     void OnInventory(InputValue inputValue)
@@ -1022,6 +1046,10 @@ public class PlayerController : MonoBehaviour
     {
         if (canAttack && !isHealing && stamina > 30 && !itaiken)
         {
+            if (shokyaku)
+            {
+                stopShokyaku = true;
+            }
             canAttack = false;
             canMove = false;
             myAnim.Play(startItaiken.name);
@@ -1071,6 +1099,10 @@ public class PlayerController : MonoBehaviour
     {
         if (canAttack && !desumiru && !itaiken)
         {
+            if (shokyaku)
+            {
+                stopShokyaku = true;
+            }
             desumiru = true;
             canDash = false;
             canMove = false;

@@ -15101,6 +15101,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: dashCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: startItaiken
       value: 
       objectReference: {fileID: 7400000, guid: 83e41434f0dbbf44f841a19c1ffb6a53, type: 2}
@@ -15109,8 +15113,16 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: dashMaxCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: candy.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: dushCooldownSpeed
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7015166003804982167, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: candy.Array.data[0]
