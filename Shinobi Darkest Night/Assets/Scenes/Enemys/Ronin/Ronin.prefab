@@ -83,7 +83,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.16578607, y: 0.3820421}
+  m_Size: {x: 0.45543188, y: 0.8403717}
   m_Direction: 0
 --- !u!1 &3001317616182747104
 GameObject:
@@ -334,13 +334,13 @@ MonoBehaviour:
   enemyCanvas: {fileID: 8787906696313087677}
   canBeAttacked: 0
   canDoDmg: 0
-  startPos: {x: 0, y: 0, z: 0}
   projectiles: []
   stundTime: 0
   isStuned: 0
   canDeflect: 0
   deflectAgain: 0
   deflectAtRandom: 0
+  startPos: {x: 0, y: 0, z: 0}
 --- !u!114 &915436973832493147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,6 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 0
   detectRadius: 5
+  room: {fileID: 0}
   moving: 0
   canMove: 0
 --- !u!1 &7331692480295649276
