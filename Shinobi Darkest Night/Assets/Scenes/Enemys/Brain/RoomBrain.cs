@@ -67,10 +67,12 @@ public class RoomBrain : MonoBehaviour
         {
             Vector3 spawnPoint = pointNotOnScreen();
             var enemy = Instantiate(enemiesToSpaw[Random.Range(0, enemiesToSpaw.Count)], spawnPoint, Quaternion.Euler(Vector3.zero),transform);
+            enemy.transform.position = spawnPoint;
             if (enemy.GetComponent<AI_Move>())
             {
                 enemy.GetComponent<AI_Move>().room = GetComponent<AiBrain>();
             }
+
             enemies.Add(enemy);
         }
     }

@@ -85,11 +85,12 @@ public class AnimationToCode : MonoBehaviour
     {
         if (collision.gameObject.layer == 6 && collision.GetComponent<EnemyHealth>())
         {
-            collision.GetComponent<EnemyHealth>().enemyAddDamage(20, true, true);
+
             StartCoroutine(collision.GetComponent<EnemyHealth>().Stuned(false));
 
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.parent.GetComponent<PlayerController>().point2 * 1, ForceMode2D.Impulse);
+            collision.GetComponent<EnemyHealth>().enemyAddDamage(20, true, true);
             //   if (transform.parent.GetComponent<PlayerController>().desumiruState == 2)
             //   {
             //       if (collision.gameObject.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)

@@ -143,10 +143,15 @@ MonoBehaviour:
   enemyHealthSlider: {fileID: 3034708425650630954}
   enemyCanvas: {fileID: 3034708427060015172}
   canBeAttacked: 0
-  startPos: {x: 0, y: 0, z: 0}
+  canDoDmg: 0
   projectiles: []
   stundTime: 0
   isStuned: 0
+  canDeflect: 0
+  deflectAgain: 0
+  deflectAtRandom: 0
+  startPos: {x: 0, y: 0, z: 0}
+  useParticles: 1
 --- !u!70 &2352237321646954228
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

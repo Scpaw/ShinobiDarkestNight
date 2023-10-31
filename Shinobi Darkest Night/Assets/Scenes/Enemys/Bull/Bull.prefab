@@ -207,13 +207,14 @@ MonoBehaviour:
   enemyCanvas: {fileID: 5931898600262639640}
   canBeAttacked: 0
   canDoDmg: 0
-  startPos: {x: 0, y: 0, z: 0}
   projectiles: []
   stundTime: 0
   isStuned: 0
   canDeflect: 0
   deflectAgain: 0
   deflectAtRandom: 0
+  startPos: {x: 0, y: 0, z: 0}
+  useParticles: 1
 --- !u!50 &5931898599962226194
 Rigidbody2D:
   serializedVersion: 4

@@ -112,7 +112,7 @@ public class Archer : MonoBehaviour
             else if(canShootPlayer && walkingTime <=0)
             {
 
-                if (damageRange.playerInRange || (transform.position - player.transform.position).magnitude <= backRadius)
+                if (damageRange.playerInRange || (transform.position - player.transform.position).magnitude <= backRadius && !AI.stop)
                 {
                     AI.canMove = false;
                     if (Time.time > meleeTime && damageRange.playerInRange)
@@ -123,7 +123,6 @@ public class Archer : MonoBehaviour
                     }
                     else if ((transform.position - player.transform.position).magnitude <= backRadius && !damageRange.playerInRange && (transform.position - player.transform.position).magnitude > 0.1f && runBackTimer <= 0)
                     {
- 
                         EnemyAnim.SetTrigger("Back");
                         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         AI.canMove = true;

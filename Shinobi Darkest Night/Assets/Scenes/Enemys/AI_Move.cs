@@ -17,6 +17,7 @@ public class AI_Move : MonoBehaviour
 
     public bool moving;
     public bool canMove;
+    public bool stop;
 
     private Coroutine reseting;
 
@@ -63,7 +64,7 @@ public class AI_Move : MonoBehaviour
     }
     void Update()
     {
-        if(room.playerIn && (player.position - transform.position).magnitude < detectRadius)
+        if(room.playerIn && (player.position - transform.position).magnitude < detectRadius && !stop)
         {
             if (enemyScript.stundTime > 0 || dash != null && !dash.canMove)
             {
@@ -82,7 +83,7 @@ public class AI_Move : MonoBehaviour
             moving = false;
         }
 
-        if (!canMove)
+        if (!canMove || stop)
         {
             ai.canMove = false;
             moving = false;

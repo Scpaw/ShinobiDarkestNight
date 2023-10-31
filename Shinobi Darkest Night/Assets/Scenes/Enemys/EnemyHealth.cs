@@ -20,22 +20,28 @@ public class EnemyHealth : MonoBehaviour
     public float deflectAgain;
     public bool deflectAtRandom;
     public Vector3 startPos = Vector3.zero;
+    [SerializeField] bool useParticles;
 
     public void Awake()
     {
         enemyHealth = enemyMaxHealth;
-        enemyHealthSlider.maxValue = enemyMaxHealth;
-        enemyHealthSlider.value = enemyHealth;
         canDoDmg = true;
     }
     private void OnEnable()
     {
         deflectAgain = 5;
         enemyHealth = enemyMaxHealth;
-        enemyHealthSlider.maxValue = enemyMaxHealth;
-        enemyHealthSlider.value = enemyHealth;
+        if (enemyHealthSlider != null)
+        {
+            enemyHealthSlider.maxValue = enemyMaxHealth;
+            enemyHealthSlider.value = enemyHealth;
+        }
         canBeAttacked = true;
-        transform.parent.GetComponent<RoomBrain>().enemiesActive++;
+        if (transform.parent != null)
+        {
+            transform.parent.GetComponent<RoomBrain>().enemiesActive++;
+        }
+
 
         if (startPos == Vector3.zero)
         {
@@ -51,12 +57,15 @@ public class EnemyHealth : MonoBehaviour
     {
         if (canDoDmg)
         {
-            if (useparticle)
+            if (useparticle && useParticles)
             {
                 ParticleManager.instance.UseParticle("Blood", transform.position, transform.rotation.eulerAngles);
             }
             enemyHealth -= Damage;
-            enemyHealthSlider.value = enemyHealth;
+            if (enemyHealthSlider != null)
+            {
+                enemyHealthSlider.value = enemyHealth;
+            }
             if (dropProjectiles)
             {
                 ProjectilesOff(0);
@@ -135,6 +144,9 @@ public class EnemyHealth : MonoBehaviour
         {
             StopAllCoroutines();
         }
-        transform.parent.GetComponent<RoomBrain>().enemiesActive--;
+        if (transform.parent != null)
+        {
+            transform.parent.GetComponent<RoomBrain>().enemiesActive--;
+        }
     }
 }

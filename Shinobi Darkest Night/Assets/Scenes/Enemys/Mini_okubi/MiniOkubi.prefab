@@ -368,13 +368,14 @@ MonoBehaviour:
   enemyCanvas: {fileID: 6005576388262366059}
   canBeAttacked: 0
   canDoDmg: 0
-  startPos: {x: 11.874953, y: 4.5400496, z: -0.130236}
   projectiles: []
   stundTime: 0
   isStuned: 0
   canDeflect: 0
   deflectAgain: 0
   deflectAtRandom: 0
+  startPos: {x: 11.874953, y: 4.5400496, z: -0.130236}
+  useParticles: 1
 --- !u!114 &6005576387323380243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,6 +515,7 @@ MonoBehaviour:
   room: {fileID: 0}
   moving: 0
   canMove: 0
+  stop: 0
 --- !u!1 &6005576387914953428
 GameObject:
   m_ObjectHideFlags: 0

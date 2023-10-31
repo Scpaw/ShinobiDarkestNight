@@ -502,7 +502,7 @@ MonoBehaviour:
   layerToHit:
     serializedVersion: 2
     m_Bits: 640
-  backRadius: 0
+  backRadius: 3
   meleeDamage: 5
   meleeAttackTime: 1
 --- !u!114 &814973070253928028
@@ -530,6 +530,7 @@ MonoBehaviour:
   deflectAgain: 0
   deflectAtRandom: 0
   startPos: {x: 0, y: 0, z: 0}
+  useParticles: 1
 --- !u!114 &3447344277481705385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,6 +658,7 @@ MonoBehaviour:
   room: {fileID: 0}
   moving: 0
   canMove: 0
+  stop: 0
 --- !u!1 &6566287230693355591
 GameObject:
   m_ObjectHideFlags: 0

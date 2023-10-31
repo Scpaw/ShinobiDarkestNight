@@ -341,6 +341,7 @@ MonoBehaviour:
   deflectAgain: 0
   deflectAtRandom: 0
   startPos: {x: 0, y: 0, z: 0}
+  useParticles: 1
 --- !u!114 &915436973832493147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,6 +507,7 @@ MonoBehaviour:
   room: {fileID: 0}
   moving: 0
   canMove: 0
+  stop: 0
 --- !u!1 &7331692480295649276
 GameObject:
   m_ObjectHideFlags: 0
