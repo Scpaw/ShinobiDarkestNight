@@ -374,7 +374,7 @@ public class PlayerController : MonoBehaviour
             }
         }
  
-        if (!Dialogue && !isHealing && cam.m_Lens.OrthographicSize <= startLensSize)
+        if (!Dialogue && !isHealing && cam.m_Lens.OrthographicSize <= startLensSize && cam.Follow == transform)
         {
             cam.m_Lens.OrthographicSize += 2*Time.deltaTime;
         }
@@ -1273,23 +1273,31 @@ public class PlayerController : MonoBehaviour
     }
     private IEnumerator ChangeCamSizeUp()
     {
-        if (isHealing)
+        if (cam.Follow == transform)
+        {
+            if (isHealing)
+            {
+                myAnim.Play(startHeal.name);
+                currentClip = startHeal;
+                while (cam.m_Lens.OrthographicSize >= changeLensSize)
+                {
+                    cam.m_Lens.OrthographicSize -= Time.deltaTime;
+                    yield return new WaitForEndOfFrame();
+                }
+            }
+            else if (dialogue)
+            {
+                while (cam.m_Lens.OrthographicSize >= changeLensSize * 1.5f)
+                {
+                    cam.m_Lens.OrthographicSize -= Time.deltaTime;
+                    yield return new WaitForEndOfFrame();
+                }
+            }
+        }
+        else
         {
             myAnim.Play(startHeal.name);
             currentClip = startHeal;
-            while (cam.m_Lens.OrthographicSize >= changeLensSize)
-            {
-                cam.m_Lens.OrthographicSize -= Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
-        }
-        else if (dialogue)
-        {
-            while (cam.m_Lens.OrthographicSize >= changeLensSize *1.5f)
-            {
-                cam.m_Lens.OrthographicSize -= Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
         }
     }
 

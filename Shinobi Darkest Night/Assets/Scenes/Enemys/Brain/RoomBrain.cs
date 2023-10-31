@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -21,6 +22,12 @@ public class RoomBrain : MonoBehaviour
     public float maxDeviationFromPoint;
 
     public int enemiesActive;
+
+    [Tooltip("Attaches camera to center of level")]
+    public bool bossRoom;
+
+    Coroutine cor;
+
     void Start()
     {
         foreach (Transform child in transform)
@@ -58,7 +65,33 @@ public class RoomBrain : MonoBehaviour
                     }
                 }
             }
+            if (bossRoom)
+            {
+                CameraScript.instance.gameObject.GetComponent<CinemachineVirtualCamera>().Follow = transform;
+                if (cor != null)
+                {
+                    StopCoroutine(cor);
+                }
+                cor = StartCoroutine(FixedCam());
+            }
 
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            if (bossRoom)
+            {
+                CameraScript.instance.gameObject.GetComponent<CinemachineVirtualCamera>().Follow = PlayerController.Instance.transform;
+                if (cor != null)
+                {
+                    StopCoroutine(cor);
+                }
+                cor = StartCoroutine(CamBack());
+            }
         }
     }
     public void startSpawnEnemies()
@@ -126,6 +159,32 @@ public class RoomBrain : MonoBehaviour
         }
 
 
+    }
+
+    IEnumerator FixedCam()
+    {
+        yield return new WaitForSeconds(0.1f);
+        CinemachineVirtualCamera cam = CameraScript.instance.gameObject.GetComponent<CinemachineVirtualCamera>();
+        Vector2 point = Camera.main.WorldToViewportPoint(new Vector3( GetComponent<BoxCollider2D>().bounds.max.x, transform.position.y,transform.position.z));
+        while (point.x < 0 || point.x >1)
+        {
+            cam.m_Lens.OrthographicSize += Time.deltaTime * 4;
+            point = Camera.main.WorldToViewportPoint(new Vector3(GetComponent<BoxCollider2D>().bounds.max.x, transform.position.y, transform.position.z));
+            yield return new WaitForEndOfFrame();
+        }
+        cor = null;
+    }
+
+    IEnumerator CamBack()
+    {
+        CinemachineVirtualCamera cam = CameraScript.instance.gameObject.GetComponent<CinemachineVirtualCamera>();
+        while (cam.m_Lens.OrthographicSize > 2.5f)
+        {
+            cam.m_Lens.OrthographicSize -= Time.deltaTime * 4;
+            yield return new WaitForEndOfFrame();
+        }
+        cam.m_Lens.OrthographicSize = 2.5f;
+        cor = null;
     }
 
     private void OnDrawGizmos()
