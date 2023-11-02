@@ -1,0 +1,4 @@
+repository "Shinobi Darkest Night@aleksgamers2002@cloud"
+  path "/"
+    br "/main"
+    co "/main"
