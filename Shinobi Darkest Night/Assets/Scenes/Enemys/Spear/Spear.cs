@@ -15,14 +15,21 @@ public class Spear : MonoBehaviour
     private Transform player;
     private Vector3 attackPoint;
     private float timebtwAttacks;
-    private EnemyDamage damageRange;
-    private float dmg;
+    private DamageRange damageRange;
+    [SerializeField]private float dmg;
     private bool hitPlayer;
     [SerializeField] LayerMask playerLayer;
     private GameObject hit;
     private float offScreenSpeed;
     private Dash dash;
     private AI_Move ai_Move;
+    private int changeDashState;
+    private Animator anim;
+
+    //attack
+    [SerializeField] float enemyDamage;
+    [SerializeField] float attackTime;
+    private float timeToAttack;
 
     private void Awake()
     {
@@ -51,19 +58,26 @@ public class Spear : MonoBehaviour
         }
         if (damageRange == null)
         {
-            damageRange = GetComponent<EnemyDamage>();
+            damageRange =  GetComponentInChildren<DamageRange>();
         }
         if (dash == null)
         { 
             dash = GetComponent<Dash>();
         }
+        if (anim == null)
+        { 
+            anim = GetComponentInChildren<Animator>();
+        }
+        if (ai_Move == null)
+        {
+            ai_Move = GetComponent<AI_Move>();
+        }
         timebtwAttacks = 0;
-        dmg = damageRange.enemyDamage;
         hitPlayer = false;
     }
     void Update()
-    { 
-        if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < attackRadius && timebtwAttacks < 0.3f &&GetComponent<EnemyHealth>().stundTime <0.1f)
+    {
+        if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < attackRadius && timebtwAttacks < 0.3f && GetComponent<EnemyHealth>().stundTime < 0.1f && !damageRange.playerInRange)
         {
             if (Physics2D.Raycast(transform.position, (player.position - transform.position).normalized, 30, LayerMask.GetMask("Player")))
             {
@@ -75,6 +89,10 @@ public class Spear : MonoBehaviour
                 }
             }
         }
+        else if (damageRange.playerInRange && timeToAttack < Time.time && changeDashState == 0)
+        {
+            Attack();
+        }
         if (timebtwAttacks > 0)
         { 
             timebtwAttacks -= Time.deltaTime;
@@ -83,11 +101,48 @@ public class Spear : MonoBehaviour
                 timebtwAttacks = 0;
             }
         }
+
+        if (dash.dashState != changeDashState)
+        {
+            changeDashState = dash.dashState;
+            anim.SetInteger("DashState", changeDashState);
+        }
+
+        if (player.transform.position.x - transform.position.x > 0 && transform.localScale.x < 0 || player.transform.position.x - transform.position.x < 0 && transform.localScale.x > 0)
+        {
+            Flip(transform);
+            Flip(transform.GetComponentInChildren<Canvas>().transform);
+        }
+
+        if (ai_Move.moving)
+        {
+            anim.SetFloat("Blend", 1);
+        }
+        else
+        {
+            anim.SetFloat("Blend", 0);
+        }
+
+    }
+    private void Flip(Transform changeThis)
+    {
+        changeThis.localScale = new Vector3(-changeThis.localScale.x, changeThis.localScale.y, changeThis.localScale.z);
+    }
+
+    public void Attack()
+    {
+        Debug.Log("Attack " + Time.time);
+        if (damageRange.playerInRange)
+        {
+            Debug.Log("Hit");
+            player.GetComponent<PlayerHealth>().AddDamage(dmg);
+            timeToAttack = Time.time + attackTime;
+        }
     }
 
     private void FixedUpdate()
     {
-        if (damageRange.playerIn || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
+        if (damageRange.playerInRange || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
         {
             ai.enabled = false;
         }
@@ -111,48 +166,5 @@ public class Spear : MonoBehaviour
             player.GetComponent<PlayerHealth>().AddDamage(dmg * 1.5f);
             hitPlayer = true;
         }
-    }
-    private IEnumerator SpearDash()
-    {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        Vector2 startPos = transform.position;
-        //canMove = false;
-        damageRange.enabled = false;
-        float i = 0.4f;
-        ai.canMove = false;
-   
-        while(i > 0)
-        {
-
-            if (Random.value < 0.3f )
-            {
-                transform.position = startPos + Random.insideUnitCircle / 30;
-            }
-
-            i -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        transform.position = startPos;
-        hit = Physics2D.Raycast(transform.position, -transform.position + player.position, 100, playerLayer).transform.gameObject;
-        if (hit.layer == player.gameObject.layer)
-        {
-            ParticleManager.instance.UseParticle("Dust", transform.position, Vector3.zero);
-            attackPoint = player.position + ((player.position - transform.position).normalized * 2);
-            i = 1;
-            rb.AddForce((attackPoint - transform.position) * 3, ForceMode2D.Impulse);
-            while (i > 0)
-            {
-                i -= Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
-        }
-        else
-        {
-            timebtwAttacks = 0;
-        }
-        //canMove = true;
-        damageRange.enabled = true;
-        hitPlayer = false;
-        StartCoroutine(ai_Move.ResetPathf());
     }
 }
