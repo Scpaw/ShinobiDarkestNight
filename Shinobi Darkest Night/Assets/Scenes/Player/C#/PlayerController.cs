@@ -109,8 +109,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dushCooldownSpeed = 10f;
     [SerializeField] float dashMaxCooldown = 1f;
     [SerializeField] float dashMinCooldown = -1f;
-    [SerializeField] Slider dashDelaySlider;
-    [SerializeField] GameObject Canvas;
     private float dashVelocityReset = 0f;
     float t = 0f;
     bool isDashing;
@@ -226,7 +224,6 @@ public class PlayerController : MonoBehaviour
         //facing
         rb = GetComponent<Rigidbody2D>();
         myAnim = transform.Find("Grafika").GetComponent<Animator>();
-        Canvas.SetActive(false);
         CurrentState = IdleAnim;
         canMove = true;
         startAttackCooldown = attackCooldown;
@@ -239,8 +236,6 @@ public class PlayerController : MonoBehaviour
         canAttack = true;
         canHeal = false;
 
-        dashDelaySlider.maxValue = dashMaxCooldown;
-        dashDelaySlider.minValue = dashMinCooldown;
         snap = true;
         inventoryText = shade.GetComponentInChildren<Text>();
         hp = GetComponent<PlayerHealth>();
@@ -696,7 +691,6 @@ public class PlayerController : MonoBehaviour
 
             dashCooldown = Mathf.Lerp(dashMinCooldown, dashMaxCooldown, t);
         }
-        dashDelaySlider.value = dashCooldown;
         inventoryText.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
@@ -737,7 +731,6 @@ public class PlayerController : MonoBehaviour
             //AkSoundEngine.PostEvent("Player_Dash", gameObject);
             UseStamina(10);
             canDash = false;            
-            Canvas.SetActive(true);
             isDashing = true;
             CurrentState = DashAnim;
             rb.velocity = new Vector2(movementDirection.x * dashSpeed, movementDirection.y * dashSpeed);           
@@ -747,7 +740,6 @@ public class PlayerController : MonoBehaviour
             t = 0.0f;
             dashCooldown -= dashCooldown;
             yield return new WaitUntil(() => dashCooldown >= dashMaxCooldown);
-            Canvas.SetActive(false);
             canDash = true;
         }
     }

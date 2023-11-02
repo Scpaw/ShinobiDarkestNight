@@ -21,6 +21,7 @@ public class Dash : MonoBehaviour
     public bool stopAtPlayer;
     public bool dontAttackWhileDashing;
     [SerializeField] float dashPower;
+    public bool shake;
 
     private void Awake()
     {
@@ -59,16 +60,19 @@ public class Dash : MonoBehaviour
         {
             damageRange.enabled = false;
         }
-        float i = 0.4f;
+        float i = 0.6f;
         ai.canMove = false;
 
         while (i > 0)
         {
-
-            if (Random.value < 0.3f)
+            if (shake)
             {
-                transform.position = startPos + Random.insideUnitCircle / 30;
+                if (Random.value < 0.3f)
+                {
+                    transform.position = startPos + Random.insideUnitCircle / 30;
+                }
             }
+
 
             i -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
@@ -87,6 +91,10 @@ public class Dash : MonoBehaviour
                 while (i >0)
                 {
                     i -= Time.deltaTime;
+                    if ((transform.position - player.position).magnitude > 0.2f || i < 0.3f)
+                    {
+                        dashState = 3;
+                    }
                     yield return new WaitForEndOfFrame();
                 }
             }
