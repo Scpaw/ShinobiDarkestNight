@@ -10,10 +10,12 @@ public class ProjectileToCollect : MonoBehaviour
     private Vector2 startpos;
     private Transform player;
     public float pickUpRange;
+    private bool onStartPickUp;
 
     private void Start()
     {
         player = PlayerController.Instance.GetPlayer().transform;
+        onStartPickUp = false;
     }
     private void FixedUpdate()
     {
@@ -39,6 +41,11 @@ public class ProjectileToCollect : MonoBehaviour
 
         if ((player.position - transform.position).magnitude <= pickUpRange && !onEnemy || player.GetComponent<PlayerController>().dango >0)
         {
+            if (!onStartPickUp)
+            {
+                onStartPickUp = true;
+                AkSoundEngine.PostEvent(AK.EVENTS.SHURIKEN_GRABBING, gameObject);
+            }
             transform.position = Vector2.MoveTowards(transform.position, player.position, Time.deltaTime * pickUpSpeed);
             if ((player.position - transform.position).magnitude < 0.1f)
             {
