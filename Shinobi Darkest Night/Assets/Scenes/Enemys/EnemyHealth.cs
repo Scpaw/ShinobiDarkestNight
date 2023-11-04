@@ -148,5 +148,9 @@ public class EnemyHealth : MonoBehaviour
         {
             transform.parent.GetComponent<RoomBrain>().enemiesActive--;
         }
+        if (GetComponent<activateEnemy>())
+        { 
+            GetComponent<activateEnemy>().Activate();
+        }
     }
 }

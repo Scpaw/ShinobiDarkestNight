@@ -86,7 +86,7 @@ public class Archer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (AI.moving)
+        if (AI.moving && !AI.stop)
         {
             EnemyAnim.SetFloat("Moving", 1);
         }

@@ -128,18 +128,21 @@ public class RoomBrain : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        int i = 0;
-        foreach (GameObject enemy in enemies)
+        if (points.Count > 0)
         {
-            if (enemy.activeInHierarchy)
+            int i = 0;
+            foreach (GameObject enemy in enemies)
             {
-                i++;
+                if (enemy.activeInHierarchy)
+                {
+                    i++;
+                }
             }
-        }
-        if(i == 0)
-        {
-            StartCoroutine(WaitToSpawn());
-        }
+            if (i == 0)
+            {
+                StartCoroutine(WaitToSpawn());
+            }
+        }      
     }
 
     IEnumerator WaitToSpawn()
