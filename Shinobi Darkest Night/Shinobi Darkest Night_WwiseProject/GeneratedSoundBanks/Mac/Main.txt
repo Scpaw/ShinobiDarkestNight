@@ -1,6 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	2394582229	Player_Dash			\Player\PlayerLocomotion\Player_Dash	
-
-In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	910453420	Player_Dash	C:\Unity Projects\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Mac\SFX\Player\Player_Locomotion\Dash_Player_01_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Locomotion\Player_Dash\Player_Dash		37074
-
