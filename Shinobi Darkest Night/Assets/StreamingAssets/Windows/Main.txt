@@ -1,0 +1,104 @@
+Event	ID	Name			Wwise Object Path	Notes
+	161393517	Play_TestBeep_lp_3D			\TestEvents\Play_TestBeep_lp_3D	
+	162003230	Itaiken_Blood_Attack			\Player\PlayerAttack\Itaiken_Blood_Attack	
+	330398815	Enemy_MiniOkubi_Damage			\NPC\NPCLocomotion\Enemy_MiniOkubi_Damage	
+	384837272	Player_Eating_Slodycz			\Player\Player_Health\Player_Eating_Slodycz	
+	458242830	Desumiru_Attack_ElektrycznyKusariGamy			\Player\PlayerAttack\Desumiru_Attack_ElektrycznyKusariGamy	
+	667626246	Enemy_SpearGuy_Damage			\NPC\NPCLocomotion\Enemy_SpearGuy_Damage	
+	686651427	Enemy_Archer_Pull			\NPC\NPCAttack\Enemy_Archer_Pull	
+	783605241	Enemy_SpearGuy_Attack			\NPC\NPCAttack\Enemy_SpearGuy_Attack	
+	802678365	Enemy_Ronin_Death			\NPC\NPCLocomotion\Enemy_Ronin_Death	
+	858964037	Play_TestBeep_lp			\TestEvents\Play_TestBeep_lp	
+	959072311	Stop_Enemy_ScareCrow_Standing			\NPC\NPCLocomotion\Stop_Enemy_ScareCrow_Standing	
+	965640407	Stop_Enemy_MiniOkubi_Dashing			\NPC\NPCAttack\Stop_Enemy_MiniOkubi_Dashing	
+	984524449	Shokyaku_Fire_Attack_Stop			\Player\PlayerAttack\Shokyaku_Fire_Attack_Stop	
+	1027764427	Stop_Enemy_MiniOkubi_Moving			\NPC\NPCLocomotion\Stop_Enemy_MiniOkubi_Moving	
+	1059221869	Enemy_SpearGuy_Death			\NPC\NPCLocomotion\Enemy_SpearGuy_Death	
+	1078365811	Enemy_Ronin_MovingLP			\NPC\NPCLocomotion\Enemy_Ronin_MovingLP	
+	1144400610	Enemy_Bull_MovingLP			\NPC\NPCLocomotion\Enemy_Bull_MovingLP	
+	1250704626	Desumiru_Attack_ObrotKusariGamy			\Player\PlayerAttack\Desumiru_Attack_ObrotKusariGamy	
+	1267737121	Stop_Enemy_Bull_Moving			\NPC\NPCLocomotion\Stop_Enemy_Bull_Moving	
+	1443145844	Enemy_Wlocznik_Attack			\NPC\NPCAttack\Enemy_Wlocznik_Attack	
+	1619838726	Play_Stop_TestBeep_lp_3D			\TestEvents\Play_Stop_TestBeep_lp_3D	
+	1681067324	Play_TestBeep_3D			\TestEvents\Play_TestBeep_3D	
+	1761771660	Enemy_MiniOkubi_DashingLP			\NPC\NPCAttack\Enemy_MiniOkubi_DashingLP	
+	1810806391	Stop_Enemy_Archer_Moving			\NPC\NPCLocomotion\Stop_Enemy_Archer_Moving	
+	1839043697	Enemy_ScareCrow_Damage			\NPC\NPCLocomotion\Enemy_ScareCrow_Damage	
+	1842470059	Enemy_Wlocznik_Damage			\NPC\NPCLocomotion\Enemy_Wlocznik_Damage	
+	1893567068	Player_Slashing			\Player\PlayerAttack\Player_Slashing	
+	1899396691	Shuriken_Grabbing			\Player\PlayerAttack\Shuriken_Grabbing	
+	1924261826	Enemy_MiniOkubi_MovingLP			\NPC\NPCLocomotion\Enemy_MiniOkubi_MovingLP	
+	1926537714	Player_Healing_Drinking			\Player\Player_Health\Player_Healing_Drinking	
+	1955951874	Play_TestBeep			\TestEvents\Play_TestBeep	
+	2074073782	Player_Damage			\Player\Player_Health\Player_Damage	
+	2110191999	Enemy_Bull_Damage			\NPC\NPCLocomotion\Enemy_Bull_Damage	
+	2249769530	UI_Click			\UI\UI_Click	
+	2383443770	Enemy_MiniOkubi_Death			\NPC\NPCLocomotion\Enemy_MiniOkubi_Death	
+	2394582229	Player_Dash			\Player\PlayerLocomotion\Player_Dash	
+	2444959333	Shokyaku_Fire_Attack_Lp			\Player\PlayerAttack\Shokyaku_Fire_Attack_Lp	
+	2599359430	Enemy_ScareCrow_Attack			\NPC\NPCAttack\Enemy_ScareCrow_Attack	
+	2717276446	Desumiru_Attack_KrecenieKusariGamy			\Player\PlayerAttack\Desumiru_Attack_KrecenieKusariGamy	
+	2805720177	Enemy_Archer_Release			\NPC\NPCAttack\Enemy_Archer_Release	
+	2902518741	Enemy_Archer_Damage			\NPC\NPCLocomotion\Enemy_Archer_Damage	
+	2917139710	Enemy_ScareCrow_StandingLP			\NPC\NPCLocomotion\Enemy_ScareCrow_StandingLP	
+	2963813288	Play_Stop_TestBeep_lp			\TestEvents\Play_Stop_TestBeep_lp	
+	3083087645	Player_Death			\Player\Player_Health\Player_Death	
+	3161759601	Itaiken_BloodSword_Attack			\Player\PlayerAttack\Itaiken_BloodSword_Attack	
+	3212818328	Enemy_Bull_Attack			\NPC\NPCAttack\Enemy_Bull_Attack	
+	3245943036	Enemy_Archer_MovingLP			\NPC\NPCLocomotion\Enemy_Archer_MovingLP	
+	3307141145	Player_Healing_Zoom			\Player\Player_Health\Player_Healing_Zoom	
+	3328007190	Enemy_Wlocznik_Death			\NPC\NPCLocomotion\Enemy_Wlocznik_Death	
+	3349970732	Stop_Enemy_SpearGuy_Moving			\NPC\NPCLocomotion\Stop_Enemy_SpearGuy_Moving	
+	3402709392	Enemy_Archer_Death			\NPC\NPCLocomotion\Enemy_Archer_Death	
+	3416602747	Shuriken_Throwing			\Player\PlayerAttack\Shuriken_Throwing	
+	3676569724	Enemy_ScareCrow_Death			\NPC\NPCLocomotion\Enemy_ScareCrow_Death	
+	3731808246	Enemy_Ronin_Damage			\NPC\NPCLocomotion\Enemy_Ronin_Damage	
+	3909859073	Stop_Enemy_Wlocznik_Moving			\NPC\NPCLocomotion\Stop_Enemy_Wlocznik_Moving	
+	3956532163	Enemy_SpearGuy_MovingLP			\NPC\NPCLocomotion\Enemy_SpearGuy_MovingLP	
+	4057789033	Enemy_Ronin_Attack			\NPC\NPCAttack\Enemy_Ronin_Attack	
+	4139684570	Enemy_Bull_Death			\NPC\NPCLocomotion\Enemy_Bull_Death	
+	4228838608	UI_Point			\UI\UI_Point	
+	4235526766	Enemy_Wlocznik_MovingLP			\NPC\NPCLocomotion\Enemy_Wlocznik_MovingLP	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	97568548	Enemy_MiniOkubi_MovingLP	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\NPC\NPC_Locomotion\Enemy_MiniOkubi_MovingLP_81238AE1.wem		\Actor-Mixer Hierarchy\NPC_Locomotion\Enemy_MiniOkubi_MovingLP\Enemy_MiniOkubi_MovingLP		235996
+	129784114	sfx_test_beep_100ms	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\TestFiles\sfx_test_beep_100ms_1F6317C1.wem		\Actor-Mixer Hierarchy\NPC_Attack\Enemy_Ronin_Attack\sfx_test_beep_100ms		16330
+	136372271	Enemy_Bull_Attack_03	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\NPC\NPC_Attack\Enemy_Bull_Attack_03_10C4C929.wem		\Actor-Mixer Hierarchy\NPC_Attack\Enemy_Bull_Attack\Enemy_Bull_Attack_03		48956
+	184700173	Shokyaku_Fire_Attack_03	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Attack\Shokyaku_Fire_Attack_03_6058A188.wem		\Actor-Mixer Hierarchy\Player_Attack\Player_Attack\Shokyaku_Fire_Attack\Shokyaku_Fire_Attack\Shokyaku_Fire_Attack_03		516742
+	189939382	Player_Slashing_01	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Attack\Player_Slashing_01_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Attack\Player_Attack\Player_Slashing\Player_Slashing_01		22290
+	207301667	Enemy_Bull_MovingLP	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\NPC\NPC_Locomotion\Enemy_Bull_MovingLP_D79FB2B7.wem		\Actor-Mixer Hierarchy\NPC_Locomotion\Enemy_Bull_MovingLP\Enemy_Bull_MovingLP		845780
+	263130091	Shokyaku_Fire_Attack_02	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Attack\Shokyaku_Fire_Attack_02_2A0D04FF.wem		\Actor-Mixer Hierarchy\Player_Attack\Player_Attack\Shokyaku_Fire_Attack\Shokyaku_Fire_Attack\Shokyaku_Fire_Attack_02		382898
+	347412380	UI_Point	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\UI\UI_Point_10C4C929.wem		\Actor-Mixer Hierarchy\UI\UI_Point\UI_Point		35800
+	368237272	UI_Click_03	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\UI\UI_Click_03_10C4C929.wem		\Actor-Mixer Hierarchy\UI\UI_Click\UI_Click_03		22128
+	387282032	Itaiken_BloodSword_Attack	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Attack\Itaiken_BloodSword_Attack_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Attack\Player_Attack\Itaiken_BloodSword_Attack\Itaiken_BloodSword_Attack		57340
+	398348492	Shuriken_Grabbing_01	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Attack\Shuriken_Grabbing_01_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Attack\Player_Attack\Shuriken_Grabbing\Shuriken_Grabbing_01		54160
+	406309436	Player_Healing_Drinking	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\SO_JP_perc_kagura_suzu_single_alt_mf_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Health\Player_Healing_Drinking\Player_Healing_Drinking		829052
+	431618901	sfx_test_beep_100ms	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\TestFiles\sfx_test_beep_100ms_1DF682B0.wem		\Actor-Mixer Hierarchy\NPC_Locomotion\Enemy_SpearGuy_Damage\sfx_test_beep_100ms		21538
+	437083078	Enemy_Bull_Death_03	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\NPC\NPC_Attack\Enemy_Bull_Death_03_10C4C929.wem		\Actor-Mixer Hierarchy\NPC_Locomotion\Enemy_Bull_Death\Enemy_Bull_Death_03		157178
+	459889052	Enemy_Bull_Damage_03	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\NPC\NPC_Attack\Enemy_Bull_Damage_03_10C4C929.wem		\Actor-Mixer Hierarchy\NPC_Locomotion\Enemy_Bull_Damage\Enemy_Bull_Damage_03		127954
+	502141701	Enemy_Bull_Damage_01	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\NPC\NPC_Attack\Enemy_Bull_Damage_01_10C4C929.wem		\Actor-Mixer Hierarchy\NPC_Locomotion\Enemy_Bull_Damage\Enemy_Bull_Damage_01		111062
+	516732090	Enemy_Bull_Death_02	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\NPC\NPC_Attack\Enemy_Bull_Death_02_10C4C929.wem		\Actor-Mixer Hierarchy\NPC_Locomotion\Enemy_Bull_Death\Enemy_Bull_Death_02		108732
+	523950822	Desumiru_Attack_ObrotKusariGamy	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Attack\Desumiru_Attack_ObrotKusariGamy_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Attack\Player_Attack\Desumiru_Attack_ObrotKusariGamy\Desumiru_Attack_ObrotKusariGamy		135786
+	556680965	Shuriken_Throwing_02	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Attack\Shuriken_Throwing_02_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Attack\Player_Attack\Shuriken_Throwing\Shuriken_Throwing_02		20496
+	583695923	Desumiru_Attack_ElektrycznyKusariGamy	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Attack\Desumiru_Attack_ElektrycznyKusariGamy_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Attack\Player_Attack\Desumiru_Attack_ElektrycznyKusariGamy\Desumiru_Attack_ElektrycznyKusariGamy		119922
+	672902290	Shuriken_Throwing_01	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Attack\Shuriken_Throwing_01_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Attack\Player_Attack\Shuriken_Throwing\Shuriken_Throwing_01		59028
+	771221959	Enemy_Bull_Attack_01	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\NPC\NPC_Attack\Enemy_Bull_Attack_01_10C4C929.wem		\Actor-Mixer Hierarchy\NPC_Attack\Enemy_Bull_Attack\Enemy_Bull_Attack_01		141446
+	785079252	Enemy_Bull_Damage_02	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\NPC\NPC_Attack\Enemy_Bull_Damage_02_10C4C929.wem		\Actor-Mixer Hierarchy\NPC_Locomotion\Enemy_Bull_Damage\Enemy_Bull_Damage_02		111066
+	796868013	Desumiru_Attack_KrecenieKusariGamy	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Attack\Desumiru_Attack_KrecenieKusariGamy_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Attack\Player_Attack\Desumiru_Attack_KrecenieKusariGamy\Desumiru_Attack_KrecenieKusariGamy		175732
+	809385130	Enemy_Bull_Death_01	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\NPC\NPC_Attack\Enemy_Bull_Death_01_10C4C929.wem		\Actor-Mixer Hierarchy\NPC_Locomotion\Enemy_Bull_Death\Enemy_Bull_Death_01		104340
+	811572902	Itaiken_Blood_Attack_01	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Attack\Itaiken_Blood_Attack_01_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Attack\Player_Attack\Itaiken_Blood_Attack\Itaiken_Blood_Attack_01		161838
+	825790690	Enemy_MiniOkubi_DashingLP	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\NPC\NPC_Attack\Enemy_MiniOkubi_Dashing_4911FCFF.wem		\Actor-Mixer Hierarchy\NPC_Attack\Enemy_MiniOkubi_DashingLP\Enemy_MiniOkubi_DashingLP		724510
+	874591271	Player_Death	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Health\Player_Death_01_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Health\Player_Death\Player_Death		190192
+	885044255	SO_JS_shamisen_pluck_hard_hi_D#	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\SO_JS_shamisen_pluck_hard_hi_D#_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Health\Player_Healing_Zoom\SO_JS_shamisen_pluck_hard_hi_D#		500984
+	910453420	Player_Dash	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Locomotion\Dash_Player_01_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Locomotion\Player_Dash\Player_Dash		37074
+	923524448	Enemy_Bull_Attack_02	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\NPC\NPC_Attack\Enemy_Bull_Attack_02_10C4C929.wem		\Actor-Mixer Hierarchy\NPC_Attack\Enemy_Bull_Attack\Enemy_Bull_Attack_02		125594
+	934375959	Player_Eating_Slodycz	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Health\Player_Eating_Slodycz_01_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Health\Player_Eating_Slodycz\Player_Eating_Slodycz		9934
+	938342743	Enemy_Bull_Death_04	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\NPC\NPC_Attack\Enemy_Bull_Death_04_10C4C929.wem		\Actor-Mixer Hierarchy\NPC_Locomotion\Enemy_Bull_Death\Enemy_Bull_Death_04		113386
+	956220953	sfx_test_beep_100ms	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\TestFiles\sfx_test_beep_100ms_10C4C929.wem		\Actor-Mixer Hierarchy\TestFiles\sfx_test_beep_100ms		177760
+	958698459	Shokyaku_Fire_Attack_01	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Attack\Shokyaku_Fire_Attack_01_67AB326D.wem		\Actor-Mixer Hierarchy\Player_Attack\Player_Attack\Shokyaku_Fire_Attack\Shokyaku_Fire_Attack\Shokyaku_Fire_Attack_01		432144
+	979391984	Player_Damage_01	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Health\Player_Damage_01_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Health\Player_Damage\Player_Damage_01		89920
+	1030336793	Shuriken_Grabbing_02	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\Player\Player_Attack\Shuriken_Grabbing_02_10C4C929.wem		\Actor-Mixer Hierarchy\Player_Attack\Player_Attack\Shuriken_Grabbing\Shuriken_Grabbing_02		20496
+	1032802026	UI_Click_01	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\UI\UI_Click_01_10C4C929.wem		\Actor-Mixer Hierarchy\UI\UI_Click\UI_Click_01		23342
+	1035443753	UI_Click_02	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\UI\UI_Click_02_10C4C929.wem		\Actor-Mixer Hierarchy\UI\UI_Click\UI_Click_02		22216
+	1036430562	sfx_test_beep_3000ms	C:\Users\zigor\Desktop\git\ShinobiDarkestNight\Shinobi Darkest Night\Shinobi Darkest Night_WwiseProject\.cache\Windows\SFX\TestFiles\sfx_test_beep_3000ms_D79FB2B7.wem		\Actor-Mixer Hierarchy\NPC_Locomotion\Enemy_SpearGuy_Moving\sfx_test_beep_3000ms		264306
+

@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Mac</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>../../../Assets/StreamingAssets/Windows/Mac</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="144697359" Type="Bus" Language="SFX" Hash="{253B770C-2EEF-F813-015D-83DDC808D30E}">
+			<ShortName>Outdoor</ShortName>
+			<Path>Bus/14/Outdoor.bnk</Path>
+			<AuxBusses>
+				<AuxBus Id="144697359" Name="Outdoor">
+					<AuxBusRefs>
+						<AuxBusRef Id="3545700988" Name="Reverbs"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{8A485A55-77E9-B67F-F64C-578B29245AFB}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="309309195" Name="2DAmbience"/>
+				<Bus Id="765206498" Name="PlayerCloth"/>
+				<Bus Id="1182634443" Name="AmbientBeds"/>
+				<Bus Id="1301074112" Name="3DAmbience"/>
+				<Bus Id="1459460693" Name="AmbientMaster"/>
+				<Bus Id="2033911932" Name="NPCMaster"/>
+				<Bus Id="2169369406" Name="PlayerAttack"/>
+				<Bus Id="2343802269" Name="PlayerLocomotion"/>
+				<Bus Id="3538689948" Name="PlayerMaster"/>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+				<Bus Id="4152869693" Name="2DAmbientBeds"/>
+			</Busses>
+			<AuxBusses>
+				<AuxBus Id="144697359" Name="Outdoor">
+					<AuxBusRefs>
+						<AuxBusRef Id="3545700988" Name="Reverbs"/>
+					</AuxBusRefs>
+				</AuxBus>
+				<AuxBus Id="3545700988" Name="Reverbs"/>
+				<AuxBus Id="4122393694" Name="Cave">
+					<AuxBusRefs>
+						<AuxBusRef Id="3545700988" Name="Reverbs"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+			<GameParameters>
+				<GameParameter Id="262290038" Name="RTPC_Distance"/>
+				<GameParameter Id="2653406601" Name="RTPC_PlayerSpeed"/>
+			</GameParameters>
+			<StateGroups>
+				<StateGroup Id="1045871717" Name="GameStatus">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="984691642" Name="InGame"/>
+						<State Id="3374585465" Name="InMenu"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="3979687176" Name="Area_State">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="2730119150" Name="Outdoors"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="4071417932" Name="Player_State">
+					<States>
+						<State Id="655265632" Name="Alive"/>
+						<State Id="748895195" Name="None"/>
+						<State Id="2044049779" Name="Dead"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
+			<SwitchGroups>
+				<SwitchGroup Id="151362964" Name="PlayerHealth">
+					<Switches>
+						<Switch Id="898449699" Name="NearDeath"/>
+						<Switch Id="1017222595" Name="LowHealth"/>
+						<Switch Id="2429688720" Name="FullHealth"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="2051106367" Name="PlayerSpeedSwitch">
+					<Switches>
+						<Switch Id="712161704" Name="Run"/>
+						<Switch Id="2108779966" Name="Walk"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{45462778-C2B4-13E5-F373-D3B8F89387E3}">
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="97568548" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NPC\NPC_Locomotion\Enemy_MiniOkubi_MovingLP.wav</ShortName>
+					<CachePath>SFX/NPC/NPC_Locomotion/Enemy_MiniOkubi_MovingLP_81238AE1.wem</CachePath>
+				</File>
+				<File Id="129784114" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>TestFiles\sfx_test_beep_100ms.wav</ShortName>
+					<CachePath>SFX/TestFiles/sfx_test_beep_100ms_1F6317C1.wem</CachePath>
+				</File>
+				<File Id="136372271" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NPC\NPC_Attack\Enemy_Bull_Attack_03.wav</ShortName>
+					<CachePath>SFX/NPC/NPC_Attack/Enemy_Bull_Attack_03_10C4C929.wem</CachePath>
+				</File>
+				<File Id="184700173" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Attack\Shokyaku_Fire_Attack_03.wav</ShortName>
+					<CachePath>SFX/Player/Player_Attack/Shokyaku_Fire_Attack_03_6058A188.wem</CachePath>
+				</File>
+				<File Id="189939382" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Attack\Player_Slashing_01.wav</ShortName>
+					<CachePath>SFX/Player/Player_Attack/Player_Slashing_01_10C4C929.wem</CachePath>
+				</File>
+				<File Id="207301667" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NPC\NPC_Locomotion\Enemy_Bull_MovingLP.wav</ShortName>
+					<CachePath>SFX/NPC/NPC_Locomotion/Enemy_Bull_MovingLP_D79FB2B7.wem</CachePath>
+				</File>
+				<File Id="263130091" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Attack\Shokyaku_Fire_Attack_02.wav</ShortName>
+					<CachePath>SFX/Player/Player_Attack/Shokyaku_Fire_Attack_02_2A0D04FF.wem</CachePath>
+				</File>
+				<File Id="347412380" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI\UI_Point.wav</ShortName>
+					<CachePath>SFX/UI/UI_Point_10C4C929.wem</CachePath>
+				</File>
+				<File Id="368237272" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI\UI_Click_03.wav</ShortName>
+					<CachePath>SFX/UI/UI_Click_03_10C4C929.wem</CachePath>
+				</File>
+				<File Id="387282032" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Attack\Itaiken_BloodSword_Attack.wav</ShortName>
+					<CachePath>SFX/Player/Player_Attack/Itaiken_BloodSword_Attack_10C4C929.wem</CachePath>
+				</File>
+				<File Id="398348492" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Attack\Shuriken_Grabbing_01.wav</ShortName>
+					<CachePath>SFX/Player/Player_Attack/Shuriken_Grabbing_01_10C4C929.wem</CachePath>
+				</File>
+				<File Id="406309436" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SO_JP_perc_kagura_suzu_single_alt_mf.wav</ShortName>
+					<CachePath>SFX/SO_JP_perc_kagura_suzu_single_alt_mf_10C4C929.wem</CachePath>
+				</File>
+				<File Id="431618901" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>TestFiles\sfx_test_beep_100ms.wav</ShortName>
+					<CachePath>SFX/TestFiles/sfx_test_beep_100ms_1DF682B0.wem</CachePath>
+				</File>
+				<File Id="437083078" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NPC\NPC_Attack\Enemy_Bull_Death_03.wav</ShortName>
+					<CachePath>SFX/NPC/NPC_Attack/Enemy_Bull_Death_03_10C4C929.wem</CachePath>
+				</File>
+				<File Id="459889052" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NPC\NPC_Attack\Enemy_Bull_Damage_03.wav</ShortName>
+					<CachePath>SFX/NPC/NPC_Attack/Enemy_Bull_Damage_03_10C4C929.wem</CachePath>
+				</File>
+				<File Id="502141701" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NPC\NPC_Attack\Enemy_Bull_Damage_01.wav</ShortName>
+					<CachePath>SFX/NPC/NPC_Attack/Enemy_Bull_Damage_01_10C4C929.wem</CachePath>
+				</File>
+				<File Id="516732090" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NPC\NPC_Attack\Enemy_Bull_Death_02.wav</ShortName>
+					<CachePath>SFX/NPC/NPC_Attack/Enemy_Bull_Death_02_10C4C929.wem</CachePath>
+				</File>
+				<File Id="523950822" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Attack\Desumiru_Attack_ObrotKusariGamy.wav</ShortName>
+					<CachePath>SFX/Player/Player_Attack/Desumiru_Attack_ObrotKusariGamy_10C4C929.wem</CachePath>
+				</File>
+				<File Id="556680965" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Attack\Shuriken_Throwing_02.wav</ShortName>
+					<CachePath>SFX/Player/Player_Attack/Shuriken_Throwing_02_10C4C929.wem</CachePath>
+				</File>
+				<File Id="583695923" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Attack\Desumiru_Attack_ElektrycznyKusariGamy.wav</ShortName>
+					<CachePath>SFX/Player/Player_Attack/Desumiru_Attack_ElektrycznyKusariGamy_10C4C929.wem</CachePath>
+				</File>
+				<File Id="672902290" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Attack\Shuriken_Throwing_01.wav</ShortName>
+					<CachePath>SFX/Player/Player_Attack/Shuriken_Throwing_01_10C4C929.wem</CachePath>
+				</File>
+				<File Id="771221959" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NPC\NPC_Attack\Enemy_Bull_Attack_01.wav</ShortName>
+					<CachePath>SFX/NPC/NPC_Attack/Enemy_Bull_Attack_01_10C4C929.wem</CachePath>
+				</File>
+				<File Id="785079252" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NPC\NPC_Attack\Enemy_Bull_Damage_02.wav</ShortName>
+					<CachePath>SFX/NPC/NPC_Attack/Enemy_Bull_Damage_02_10C4C929.wem</CachePath>
+				</File>
+				<File Id="796868013" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Attack\Desumiru_Attack_KrecenieKusariGamy.wav</ShortName>
+					<CachePath>SFX/Player/Player_Attack/Desumiru_Attack_KrecenieKusariGamy_10C4C929.wem</CachePath>
+				</File>
+				<File Id="809385130" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NPC\NPC_Attack\Enemy_Bull_Death_01.wav</ShortName>
+					<CachePath>SFX/NPC/NPC_Attack/Enemy_Bull_Death_01_10C4C929.wem</CachePath>
+				</File>
+				<File Id="811572902" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Attack\Itaiken_Blood_Attack_01.wav</ShortName>
+					<CachePath>SFX/Player/Player_Attack/Itaiken_Blood_Attack_01_10C4C929.wem</CachePath>
+				</File>
+				<File Id="825790690" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NPC\NPC_Attack\Enemy_MiniOkubi_Dashing.wav</ShortName>
+					<CachePath>SFX/NPC/NPC_Attack/Enemy_MiniOkubi_Dashing_4911FCFF.wem</CachePath>
+				</File>
+				<File Id="874591271" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Health\Player_Death_01.wav</ShortName>
+					<CachePath>SFX/Player/Player_Health/Player_Death_01_10C4C929.wem</CachePath>
+				</File>
+				<File Id="885044255" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SO_JS_shamisen_pluck_hard_hi_D#.wav</ShortName>
+					<CachePath>SFX/SO_JS_shamisen_pluck_hard_hi_D#_10C4C929.wem</CachePath>
+				</File>
+				<File Id="910453420" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Locomotion\Dash_Player_01.wav</ShortName>
+					<CachePath>SFX/Player/Player_Locomotion/Dash_Player_01_10C4C929.wem</CachePath>
+				</File>
+				<File Id="923524448" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NPC\NPC_Attack\Enemy_Bull_Attack_02.wav</ShortName>
+					<CachePath>SFX/NPC/NPC_Attack/Enemy_Bull_Attack_02_10C4C929.wem</CachePath>
+				</File>
+				<File Id="934375959" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Health\Player_Eating_Slodycz_01.wav</ShortName>
+					<CachePath>SFX/Player/Player_Health/Player_Eating_Slodycz_01_10C4C929.wem</CachePath>
+				</File>
+				<File Id="938342743" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NPC\NPC_Attack\Enemy_Bull_Death_04.wav</ShortName>
+					<CachePath>SFX/NPC/NPC_Attack/Enemy_Bull_Death_04_10C4C929.wem</CachePath>
+				</File>
+				<File Id="956220953" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>TestFiles\sfx_test_beep_100ms.wav</ShortName>
+					<CachePath>SFX/TestFiles/sfx_test_beep_100ms_10C4C929.wem</CachePath>
+				</File>
+				<File Id="958698459" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Attack\Shokyaku_Fire_Attack_01.wav</ShortName>
+					<CachePath>SFX/Player/Player_Attack/Shokyaku_Fire_Attack_01_67AB326D.wem</CachePath>
+				</File>
+				<File Id="979391984" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Health\Player_Damage_01.wav</ShortName>
+					<CachePath>SFX/Player/Player_Health/Player_Damage_01_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1030336793" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player\Player_Attack\Shuriken_Grabbing_02.wav</ShortName>
+					<CachePath>SFX/Player/Player_Attack/Shuriken_Grabbing_02_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1032802026" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI\UI_Click_01.wav</ShortName>
+					<CachePath>SFX/UI/UI_Click_01_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1035443753" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI\UI_Click_02.wav</ShortName>
+					<CachePath>SFX/UI/UI_Click_02_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1036430562" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>TestFiles\sfx_test_beep_3000ms.wav</ShortName>
+					<CachePath>SFX/TestFiles/sfx_test_beep_3000ms_D79FB2B7.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="458242830" Name="Desumiru_Attack_ElektrycznyKusariGamy" DurationType="OneShot" DurationMin="1.2119538" DurationMax="1.3231728">
+					<MediaRefs>
+						<MediaRef Id="583695923"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2717276446" Name="Desumiru_Attack_KrecenieKusariGamy" DurationType="OneShot" DurationMin="1.7764318" DurationMax="1.9394519">
+					<MediaRefs>
+						<MediaRef Id="796868013"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1250704626" Name="Desumiru_Attack_ObrotKusariGamy" DurationType="OneShot" DurationMin="1.3724067" DurationMax="1.4983501">
+					<MediaRefs>
+						<MediaRef Id="523950822"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2902518741" Name="Enemy_Archer_Damage" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3402709392" Name="Enemy_Archer_Death" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3245943036" Name="Enemy_Archer_MovingLP" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="1036430562"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="686651427" Name="Enemy_Archer_Pull" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2805720177" Name="Enemy_Archer_Release" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3212818328" Name="Enemy_Bull_Attack" DurationType="OneShot" DurationMin="0.50895834" DurationMax="1.4723958">
+					<MediaRefs>
+						<MediaRef Id="136372271"/>
+						<MediaRef Id="771221959"/>
+						<MediaRef Id="923524448"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2110191999" Name="Enemy_Bull_Damage" DurationType="OneShot" DurationMin="1.1558958" DurationMax="1.3318542">
+					<MediaRefs>
+						<MediaRef Id="459889052"/>
+						<MediaRef Id="502141701"/>
+						<MediaRef Id="785079252"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4139684570" Name="Enemy_Bull_Death" DurationType="OneShot" DurationMin="1.085875" DurationMax="1.6362709">
+					<MediaRefs>
+						<MediaRef Id="437083078"/>
+						<MediaRef Id="516732090"/>
+						<MediaRef Id="809385130"/>
+						<MediaRef Id="938342743"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1144400610" Name="Enemy_Bull_MovingLP" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="207301667"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="330398815" Name="Enemy_MiniOkubi_Damage" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1761771660" Name="Enemy_MiniOkubi_DashingLP" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="825790690"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2383443770" Name="Enemy_MiniOkubi_Death" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1924261826" Name="Enemy_MiniOkubi_MovingLP" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="97568548"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4057789033" Name="Enemy_Ronin_Attack" DurationType="OneShot" DurationMin="0.18405056" DurationMax="0.18405056">
+					<MediaRefs>
+						<MediaRef Id="129784114"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3731808246" Name="Enemy_Ronin_Damage" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="802678365" Name="Enemy_Ronin_Death" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1078365811" Name="Enemy_Ronin_MovingLP" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="1036430562"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2599359430" Name="Enemy_ScareCrow_Attack" DurationType="OneShot" DurationMin="0.18405056" DurationMax="0.18405056">
+					<MediaRefs>
+						<MediaRef Id="129784114"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1839043697" Name="Enemy_ScareCrow_Damage" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3676569724" Name="Enemy_ScareCrow_Death" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2917139710" Name="Enemy_ScareCrow_StandingLP" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="1036430562"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="783605241" Name="Enemy_SpearGuy_Attack" DurationType="OneShot" DurationMin="0.18405056" DurationMax="0.18405056">
+					<MediaRefs>
+						<MediaRef Id="129784114"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="667626246" Name="Enemy_SpearGuy_Damage" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1059221869" Name="Enemy_SpearGuy_Death" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3956532163" Name="Enemy_SpearGuy_MovingLP" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="1036430562"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1443145844" Name="Enemy_Wlocznik_Attack" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1842470059" Name="Enemy_Wlocznik_Damage" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3328007190" Name="Enemy_Wlocznik_Death" DurationType="OneShot" DurationMin="0.24310893" DurationMax="0.24310893">
+					<MediaRefs>
+						<MediaRef Id="431618901"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4235526766" Name="Enemy_Wlocznik_MovingLP" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="1036430562"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="162003230" Name="Itaiken_Blood_Attack" DurationType="OneShot" DurationMin="1.635904" DurationMax="1.7860281">
+					<MediaRefs>
+						<MediaRef Id="811572902"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3161759601" Name="Itaiken_BloodSword_Attack" DurationType="OneShot" DurationMin="0.5789819" DurationMax="0.63211405">
+					<MediaRefs>
+						<MediaRef Id="387282032"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2963813288" Name="Play_Stop_TestBeep_lp" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1619838726" Name="Play_Stop_TestBeep_lp_3D" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1955951874" Name="Play_TestBeep" DurationType="OneShot" DurationMin="2.014331" DurationMax="2.014331">
+					<MediaRefs>
+						<MediaRef Id="956220953"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1681067324" Name="Play_TestBeep_3D" MaxAttenuation="50" DurationType="OneShot" DurationMin="2.014331" DurationMax="2.014331">
+					<MediaRefs>
+						<MediaRef Id="956220953"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="858964037" Name="Play_TestBeep_lp" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="1036430562"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="161393517" Name="Play_TestBeep_lp_3D" MaxAttenuation="50" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="1036430562"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2074073782" Name="Player_Damage" DurationType="OneShot" DurationMin="0.9356667" DurationMax="0.9356667">
+					<MediaRefs>
+						<MediaRef Id="979391984"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2394582229" Name="Player_Dash" DurationType="OneShot" DurationMin="0.34835562" DurationMax="0.41378868">
+					<MediaRefs>
+						<MediaRef Id="910453420"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3083087645" Name="Player_Death" DurationType="OneShot" DurationMin="1.9517775" DurationMax="2.0101297">
+					<MediaRefs>
+						<MediaRef Id="874591271"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="384837272" Name="Player_Eating_Slodycz" MaxAttenuation="10" DurationType="OneShot" DurationMin="0.10247917" DurationMax="0.10247917">
+					<MediaRefs>
+						<MediaRef Id="934375959"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1926537714" Name="Player_Healing_Drinking" DurationType="OneShot" DurationMin="4.698934" DurationMax="4.698934">
+					<MediaRefs>
+						<MediaRef Id="406309436"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3307141145" Name="Player_Healing_Zoom" DurationType="OneShot" DurationMin="2.8391383" DurationMax="2.8391383">
+					<MediaRefs>
+						<MediaRef Id="885044255"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1893567068" Name="Player_Slashing" DurationType="OneShot" DurationMin="0.22447634" DurationMax="0.24507615">
+					<MediaRefs>
+						<MediaRef Id="189939382"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2444959333" Name="Shokyaku_Fire_Attack_Lp" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="184700173"/>
+						<MediaRef Id="263130091"/>
+						<MediaRef Id="958698459"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="984524449" Name="Shokyaku_Fire_Attack_Stop" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1899396691" Name="Shuriken_Grabbing" DurationType="OneShot" DurationMin="0.20633133" DurationMax="0.29849952">
+					<MediaRefs>
+						<MediaRef Id="398348492"/>
+						<MediaRef Id="1030336793"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3416602747" Name="Shuriken_Throwing" DurationType="OneShot" DurationMin="0.20633133" DurationMax="0.32537684">
+					<MediaRefs>
+						<MediaRef Id="556680965"/>
+						<MediaRef Id="672902290"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1810806391" Name="Stop_Enemy_Archer_Moving" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1267737121" Name="Stop_Enemy_Bull_Moving" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="965640407" Name="Stop_Enemy_MiniOkubi_Dashing" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1027764427" Name="Stop_Enemy_MiniOkubi_Moving" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="959072311" Name="Stop_Enemy_ScareCrow_Standing" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3349970732" Name="Stop_Enemy_SpearGuy_Moving" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3909859073" Name="Stop_Enemy_Wlocznik_Moving" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="2249769530" Name="UI_Click" DurationType="OneShot" DurationMin="0.2295" DurationMax="0.24214584">
+					<MediaRefs>
+						<MediaRef Id="368237272"/>
+						<MediaRef Id="1032802026"/>
+						<MediaRef Id="1035443753"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4228838608" Name="UI_Point" DurationType="OneShot" DurationMin="0.37191668" DurationMax="0.37191668">
+					<MediaRefs>
+						<MediaRef Id="347412380"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="3545700988" Type="Bus" Language="SFX" Hash="{59D6C742-A0DA-1C96-BA58-77669646CFE5}">
+			<ShortName>Reverbs</ShortName>
+			<Path>Bus/35/Reverbs.bnk</Path>
+			<AuxBusses>
+				<AuxBus Id="3545700988" Name="Reverbs"/>
+			</AuxBusses>
+		</SoundBank>
+		<SoundBank Id="4122393694" Type="Bus" Language="SFX" Hash="{E141F916-295F-AEEB-950E-10CFF5FEA5D6}">
+			<ShortName>Cave</ShortName>
+			<Path>Bus/41/Cave.bnk</Path>
+			<AuxBusses>
+				<AuxBus Id="4122393694" Name="Cave">
+					<AuxBusRefs>
+						<AuxBusRef Id="3545700988" Name="Reverbs"/>
+					</AuxBusRefs>
+				</AuxBus>
+			</AuxBusses>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{329ABE97-273A-5024-C268-7186A8B93954}</FileHash>
+</SoundBanksInfo>

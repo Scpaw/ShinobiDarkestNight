@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IgnorePropertyNameList: []
   GlobalPropertyNameList:
-  - UserSettings.m_BasePath
   - UserSettings.m_StartupLanguage
   - UserSettings.m_EngineLogging
   - UserSettings.m_MaximumNumberOfPositioningPaths
@@ -65,7 +64,7 @@ MonoBehaviour:
   - AdvancedSettings.m_MemoryAllocationSizeLimit
   - AdvancedSettings.m_MemoryDebugLevel
   UserSettings:
-    m_BasePath: Audio\GeneratedSoundBanks
+    m_BasePath: .\Assets\StreamingAssets\Mac
     m_StartupLanguage: English(US)
     m_EngineLogging: 1
     m_MaximumNumberOfPositioningPaths: 255
