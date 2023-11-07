@@ -78,10 +78,6 @@ public class AI_Move : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            moving = false;
-        }
 
         if (!canMove || stop)
         {
@@ -100,7 +96,7 @@ public class AI_Move : MonoBehaviour
         {
             moving = false;
         }
-        else
+        else if(room.playerIn)
         {
             moving = true;
         }

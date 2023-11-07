@@ -27,7 +27,6 @@ public class Spear : MonoBehaviour
     private Animator anim;
 
     //attack
-    [SerializeField] float enemyDamage;
     [SerializeField] float attackTime;
     private float timeToAttack;
 
@@ -114,6 +113,7 @@ public class Spear : MonoBehaviour
             Flip(transform.GetComponentInChildren<Canvas>().transform);
         }
 
+        //Debug.Log(ai_Move.moving);
         if (ai_Move.moving)
         {
             anim.SetFloat("Blend", 1);
@@ -131,10 +131,8 @@ public class Spear : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log("Attack " + Time.time);
         if (damageRange.playerInRange)
         {
-            Debug.Log("Hit");
             player.GetComponent<PlayerHealth>().AddDamage(dmg);
             timeToAttack = Time.time + attackTime;
         }

@@ -136,7 +136,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnDisable()
     {
-        if (transform.parent != null && enemyHealth <= 0)
+        if (transform.parent.GetComponent<RoomBrain>() && enemyHealth <= 0)
         {
             transform.parent.GetComponent<RoomBrain>().SpawnEnemies();
         }
@@ -144,13 +144,15 @@ public class EnemyHealth : MonoBehaviour
         {
             StopAllCoroutines();
         }
-        if (transform.parent != null)
+        if (transform.parent.GetComponent<RoomBrain>())
         {
             transform.parent.GetComponent<RoomBrain>().enemiesActive--;
         }
-        if (GetComponent<activateEnemy>())
-        { 
-            GetComponent<activateEnemy>().Activate();
+        else if (transform.parent.GetComponent<activateEnemy>())
+        {
+            
+            transform.parent.GetComponent<activateEnemy>().Activate();
         }
+        Debug.Log("chuj");
     }
 }

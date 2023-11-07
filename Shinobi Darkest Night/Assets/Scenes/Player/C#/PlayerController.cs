@@ -779,7 +779,7 @@ public class PlayerController : MonoBehaviour
     //When Space was pressed
     public void OnDash(InputValue dashValue)
     {
-        if (dashValue.Get<float>() == 1)
+        if (dashValue.Get<float>() == 1 && stamina >= 10)
         {
             StartCoroutine(Dash());
         }
