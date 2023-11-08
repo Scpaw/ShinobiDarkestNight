@@ -153,6 +153,5 @@ public class EnemyHealth : MonoBehaviour
             
             transform.parent.GetComponent<activateEnemy>().Activate();
         }
-        Debug.Log("chuj");
     }
 }

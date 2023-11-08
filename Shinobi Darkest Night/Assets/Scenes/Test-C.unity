@@ -109916,6 +109916,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Activate enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7377083883701792015, guid: 2f5328c1733cf0a4cb58140fab20ba3d, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f5328c1733cf0a4cb58140fab20ba3d, type: 3}
 --- !u!114 &7401342932244169516

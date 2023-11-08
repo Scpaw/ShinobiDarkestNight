@@ -87,7 +87,6 @@ public class Archer : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(AI.moving);
         if (AI.moving && !AI.stop)
         {
             EnemyAnim.SetFloat("Moving", 1);
@@ -139,6 +138,7 @@ public class Archer : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log("Shooting");
                     AI.canMove = false;
                     if (Time.time > nextShoot)
                     {
