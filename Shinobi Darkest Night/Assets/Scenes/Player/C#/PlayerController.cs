@@ -215,6 +215,10 @@ public class PlayerController : MonoBehaviour
 
     public bool godMode;
 
+    //things to find
+    public List<Find> thingsToFind;
+    public Canvas findDisplay;
+
     private void Awake()
     {
         Instance = this;
@@ -239,6 +243,7 @@ public class PlayerController : MonoBehaviour
         snap = true;
         inventoryText = shade.GetComponentInChildren<Text>();
         hp = GetComponent<PlayerHealth>();
+        findDisplay.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -1242,6 +1247,29 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(MoveNow(point));
         }
+    }
+
+
+
+    //things to find
+    public void AddFind(Find thatToAdd)
+    { 
+        thingsToFind.Add(thatToAdd);
+        StartCoroutine(DisplayText(thatToAdd.dialogue));
+    }
+
+    private IEnumerator DisplayText(string text)
+    {
+        yield return new WaitForSeconds(0.7f);
+        findDisplay.gameObject.SetActive(true);
+        Text textObject = findDisplay.GetComponentInChildren<Text>();
+        foreach (char letter in text.ToCharArray())
+        {
+            textObject.text += letter;
+            yield return new WaitForSeconds(0.05f);
+        }
+        yield return new WaitForSeconds(1);
+        findDisplay.gameObject.SetActive(false);
     }
 
     private IEnumerator MoveNow(Vector3 point)
