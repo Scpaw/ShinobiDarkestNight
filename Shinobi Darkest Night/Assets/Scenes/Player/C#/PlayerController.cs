@@ -215,6 +215,10 @@ public class PlayerController : MonoBehaviour
 
     public bool godMode;
 
+    //things to find
+    public List<Find> thingsToFind;
+    public Canvas findDisplay;
+
     private void Awake()
     {
         Instance = this;
@@ -239,6 +243,7 @@ public class PlayerController : MonoBehaviour
         snap = true;
         inventoryText = shade.GetComponentInChildren<Text>();
         hp = GetComponent<PlayerHealth>();
+        findDisplay.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -1242,6 +1247,53 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(MoveNow(point));
         }
+    }
+
+
+
+    //things to find
+    public void AddFind(Find thatToAdd)
+    { 
+        thingsToFind.Add(thatToAdd);
+        StartCoroutine(DisplayText(thatToAdd.dialogue,thatToAdd));
+    }
+
+    private IEnumerator DisplayText(string text, Find find)
+    {
+        yield return new WaitForSeconds(0.7f);
+        findDisplay.gameObject.SetActive(true);
+        findDisplay.transform.GetChild(0).gameObject.SetActive(true);
+        findDisplay.transform.GetChild(1).gameObject.SetActive(false);
+        Text textObject = findDisplay.transform.GetChild(0).GetComponentInChildren<Text>();
+        foreach (char letter in text.ToCharArray())
+        {
+            textObject.text += letter;
+            yield return new WaitForSeconds(0.05f);
+        }
+        yield return new WaitForSeconds(1);
+        findDisplay.gameObject.SetActive(false);
+        findDisplay.transform.GetChild(0).gameObject.SetActive(false);
+        findDisplay.transform.GetChild(1).gameObject.SetActive(false);
+        StartCoroutine(DisplayFind(find));
+    }
+
+    private IEnumerator DisplayFind(Find find)
+    {
+        yield return new WaitForSeconds(0.1f);
+        findDisplay.gameObject.SetActive(true);
+        findDisplay.transform.GetChild(1).gameObject.SetActive(true);
+        findDisplay.transform.GetChild(0).gameObject.SetActive(false);
+        Text textObject = findDisplay.transform.GetChild(1).GetComponentInChildren<Text>();
+        textObject.gameObject.GetComponentInChildren<Image>().sprite = find.sprite;
+        foreach (char letter in find.description.ToCharArray())
+        {
+            textObject.text += letter;
+            yield return new WaitForSeconds(0.05f);
+        }
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Mouse0));
+        findDisplay.gameObject.SetActive(false);
+        findDisplay.transform.GetChild(0).gameObject.SetActive(false);
+        findDisplay.transform.GetChild(1).gameObject.SetActive(false);
     }
 
     private IEnumerator MoveNow(Vector3 point)
