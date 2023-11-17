@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 80de50b12d395b47890403d93887404d
     GuidInternal: 
-    m_lastTime: -8585089980516376024
+    m_lastTime: -8585089575142343252
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 3ffdf234a4c5c649b5ee4b4e4a948d6b
     GuidInternal: 
-    m_lastTime: -8585057156529765328
+    m_lastTime: -8585028352123824094
     List:
     - name: 2DAmbience
       guid: 7d4f7d85f7b8234680764f9b71471123
@@ -320,7 +320,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 254d02f565124f4eaa0d213b541f7ff8
     GuidInternal: 
-    m_lastTime: -8585035166683981824
+    m_lastTime: -8585028352122183142
     List:
     - name: Main
       guid: 9ea6ae27fabd8e408cf82f205143ff7e
@@ -348,7 +348,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 65a1122963a23f4587bc63f0005c9e35
     GuidInternal: 
-    m_lastTime: -8585080503851104907
+    m_lastTime: -8585028352124545747
     List: []
   - PhysicalPath: Events\Locomotion.wwu
     PathAndIcons:
@@ -361,7 +361,7 @@ MonoBehaviour:
     ParentPath: Events\Locomotion
     guid: d4385467faecf646a9639109a404c320
     GuidInternal: 
-    m_lastTime: -8585080503851065033
+    m_lastTime: -8585028352124545747
     List: []
   - PhysicalPath: Events\NPC.wwu
     PathAndIcons:
@@ -374,7 +374,7 @@ MonoBehaviour:
     ParentPath: Events\NPC
     guid: 39e375f9dc6c404d95c24fcdb9488c40
     GuidInternal: 
-    m_lastTime: -8585057156529795246
+    m_lastTime: -8585028352124545747
     List: []
   - PhysicalPath: Events\NPCAttack.wwu
     PathAndIcons:
@@ -390,7 +390,7 @@ MonoBehaviour:
     ParentPath: Events\NPC\NPCAttack
     guid: a04db62ca2d5f9439d56caa7964cc451
     GuidInternal: 
-    m_lastTime: -8585057156529785272
+    m_lastTime: -8585028352124545747
     List:
     - name: Enemy_Archer_Pull
       guid: e4cc9a21ea404f44b66f2b385b18bf25
@@ -586,7 +586,7 @@ MonoBehaviour:
     ParentPath: Events\NPC\NPCLocomotion
     guid: 3f165f1877a0334ca3e73c9ce33f7bc2
     GuidInternal: 
-    m_lastTime: -8585057156529785272
+    m_lastTime: -8585028352124545747
     List:
     - name: Enemy_Archer_Damage
       guid: 59cd3344686e0c4d93d605de71d93366
@@ -1139,7 +1139,7 @@ MonoBehaviour:
     ParentPath: Events\Player
     guid: 12ffdf418a3e8b4197bf9445c85538b8
     GuidInternal: 
-    m_lastTime: -8585057156529775300
+    m_lastTime: -8585028352124535625
     List: []
   - PhysicalPath: Events\Player_Health.wwu
     PathAndIcons:
@@ -1155,7 +1155,7 @@ MonoBehaviour:
     ParentPath: Events\Player\Player_Health
     guid: a4ac36f1665c8b4a8efbdbd500973d6f
     GuidInternal: 
-    m_lastTime: -8585057156529775300
+    m_lastTime: -8585028352124535625
     List:
     - name: Player_Damage
       guid: 3e1b719361503a41882b061b7c7fb7b9
@@ -1271,7 +1271,7 @@ MonoBehaviour:
     ParentPath: Events\Player\PlayerAttack
     guid: 92b85a0fec796040937986712ec13cb1
     GuidInternal: 
-    m_lastTime: -8585057156529775300
+    m_lastTime: -8585028352124535625
     List:
     - name: Desumiru_Attack_ElektrycznyKusariGamy
       guid: f06f36d22fa293408c6251a7da3414c9
@@ -1487,7 +1487,7 @@ MonoBehaviour:
     ParentPath: Events\Player\PlayerLocomotion
     guid: e28a9719a937ba408c498831619280ae
     GuidInternal: 
-    m_lastTime: -8585080503850935370
+    m_lastTime: -8585028352124535625
     List:
     - name: Player_Dash
       guid: 8e263a7be5625a4aa7bffc338b880acf
@@ -1520,7 +1520,7 @@ MonoBehaviour:
     ParentPath: Events\TestEvents
     guid: d20d5bbffbd8594c9a62d66e65d6cbd6
     GuidInternal: 
-    m_lastTime: -8585080503850895474
+    m_lastTime: -8585028352124525623
     List:
     - name: Play_Stop_TestBeep_lp
       guid: b48bbda9abbed147b3e1e792e487a128
@@ -1635,7 +1635,7 @@ MonoBehaviour:
     ParentPath: Events\UI
     guid: f5b3994a6414f9418fcdf0bc8f97d9ff
     GuidInternal: 
-    m_lastTime: -8585057156529765328
+    m_lastTime: -8585028352124525623
     List:
     - name: UI_Click
       guid: 94cdb715f56fd441a6cc69d21f1392ba
@@ -1683,7 +1683,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 7a7abf8123fb7e48a74c296c566ad40c
     GuidInternal: 
-    m_lastTime: -8585080503850855582
+    m_lastTime: -8585028352124525623
     List:
     - name: RTPC_Distance
       guid: ab2cbf2793434f44bc12e7b089f45920
@@ -1725,7 +1725,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: dfa4eabd59b4eb46a79e81e60efe4498
     GuidInternal: 
-    m_lastTime: -8585080503849979431
+    m_lastTime: -8585028352122153089
     List:
     - name: Area_State
       guid: d788098583cadf48a5dcf84168bcfa2e
@@ -1921,7 +1921,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 3f75d3923174824d8407edbd89801c1d
     GuidInternal: 
-    m_lastTime: -8585080503849939496
+    m_lastTime: -8585028352122153089
     List:
     - name: PlayerHealth
       guid: b4a7ceeca061664bb032a88687f0284a
@@ -2051,11 +2051,11 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: b5ec24c972034b4581a42ad5b719e5e7
     GuidInternal: 
-    m_lastTime: -8585089980516376024
+    m_lastTime: -8585089575142343252
     List: []
   ExpandedFileSystemItemIds: 
   ExpandedWaapiItemIds: 
   AutoSyncSelection: 0
-  autoPopulateEnabled: 0
-  currentDataSource: 1
+  autoPopulateEnabled: 1
+  currentDataSource: 0
   CurrentPluginConfig: 
