@@ -8,11 +8,12 @@ public class FindsScroller : MonoBehaviour
     public float scrollSpeed;
     private RectTransform rect;
     private bool canScroll;
+    [SerializeField] private float scalingZone = 20f;
 
     void Start()
     {
         minY = transform.GetChild(0).GetComponent<RectTransform>().position.y - 5;
-        maxY = minY - 200;
+        maxY = minY - Screen.height/1.65f;
         rect = GetComponent<RectTransform>();
         foreach (Transform child in transform)
         {
@@ -20,6 +21,7 @@ public class FindsScroller : MonoBehaviour
             {
                 child.GetComponent<FindUI>().minY = minY;
                 child.GetComponent<FindUI>().maxY = maxY;
+                child.GetComponent<FindUI>().bufferZone = scalingZone;
             }
         }
     }

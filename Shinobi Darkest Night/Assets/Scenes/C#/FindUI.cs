@@ -6,53 +6,41 @@ public class FindUI : MonoBehaviour
     public float minY;
     public float maxY;
     private RectTransform rect;
+    private float scale;
+    public float bufferZone;
 
     private void Start()
     {
+        minY += 5;
+        maxY -= 5;
         rect = GetComponent<RectTransform>();
-        if (rect.position.y > minY + 10 )
-        {
-            float scale = 0;
-            transform.localScale = new Vector3(scale, scale, scale);
-        }
-        else if (rect.position.y < maxY - 10)
-        {
-            float scale = 0;
-            transform.localScale = new Vector3(scale, scale, scale);
-        }
     }
 
     void Update()
     {
-        if (rect.position.y > minY + 10 && transform.localScale.x > 0)
+        if ((rect.position.y > minY && rect.position.y < minY + bufferZone))
         {
-            float scale = 1-((rect.position.y - minY)/20);
-            transform.localScale = new Vector3(scale, scale, scale);
+            scale = 1 + (minY - rect.position.y) / bufferZone;
         }
-        else if (rect.position.y < maxY -10 && transform.localScale.x > 0)
+        else if (rect.position.y < minY && rect.position.y > maxY)
         {
-            float scale = ((rect.position.y - maxY) / 20);
-            transform.localScale = new Vector3(scale, scale, scale);
+            scale = 1;
         }
-        else if (transform.localScale.x < 1 &&( rect.position.y <= minY + 10 && rect.position.y >= maxY - 10))
+        else if ((rect.position.y < maxY && rect.position.y > maxY - bufferZone))
         {
-            if (Mathf.Abs(rect.position.y - minY) < Mathf.Abs(rect.position.y - maxY))
-            {
-                float scale = 1 - ((rect.position.y - minY) / 20);
-                transform.localScale = new Vector3(scale, scale, scale);
-            }
-            else
-            {
-                float scale = ((rect.position.y - maxY) / 20);
-                transform.localScale = new Vector3(scale, scale, scale);
-            }
+            scale = 1 - (maxY - rect.position.y) / bufferZone;
         }
+        else if (rect.position.y < maxY - 21 || rect.position.y > minY + bufferZone)
+        {
+            scale = 0;
+        }
+        transform.localScale = new Vector3(scale, scale, scale);
 
         if (transform.localScale.x < 0 && transform.GetChild(0).gameObject.activeInHierarchy)
         {
             transform.GetChild(0).gameObject.SetActive(false);
         }
-        else if (transform.localScale.x > 0 && !transform.GetChild(0).gameObject.activeInHierarchy)
+        else if (transform.localScale.x >= 0 && !transform.GetChild(0).gameObject.activeInHierarchy)
         {
             transform.GetChild(0).gameObject.SetActive(true);
         }
