@@ -215,10 +215,9 @@ public class PlayerController : MonoBehaviour
 
     public bool godMode;
 
-    [Header("things to find")]
+    //things to find
     public List<Find> thingsToFind;
     public Canvas findDisplay;
-    private bool skipPress;
 
     private void Awake()
     {
@@ -864,7 +863,7 @@ public class PlayerController : MonoBehaviour
     {
         if (inputValue.Get<float>() == 1)
         {
-            if (canAttack && !isHealing && !desumiru && !itaiken && !inventoryOpen & !shokyaku && !findDisplay.gameObject.activeInHierarchy)
+            if (canAttack && !isHealing && !desumiru && !itaiken && !inventoryOpen & !shokyaku)
             {
                 if (stamina >= 5)
                 {
@@ -914,10 +913,6 @@ public class PlayerController : MonoBehaviour
             else if (canAttack && shokyaku)
             {
                 shokyakuAttack = true;
-            }
-            else if (findDisplay.gameObject.activeInHierarchy)
-            { 
-                skipPress = true;
             }
         }
         else if (inputValue.Get<float>() == 0)
@@ -1260,16 +1255,12 @@ public class PlayerController : MonoBehaviour
     public void AddFind(Find thatToAdd)
     { 
         thingsToFind.Add(thatToAdd);
-        CurrentState = IdleAnim;
-        canMove = true;
         StartCoroutine(DisplayText(thatToAdd.dialogue,thatToAdd));
     }
 
     private IEnumerator DisplayText(string text, Find find)
     {
-        skipPress = false;
-        yield return new WaitForSeconds(0.2f);
-        canAttack = false;
+        yield return new WaitForSeconds(0.7f);
         findDisplay.gameObject.SetActive(true);
         findDisplay.transform.GetChild(0).gameObject.SetActive(true);
         findDisplay.transform.GetChild(1).gameObject.SetActive(false);
@@ -1277,18 +1268,9 @@ public class PlayerController : MonoBehaviour
         foreach (char letter in text.ToCharArray())
         {
             textObject.text += letter;
-            if (skipPress)
-            {
-                break;
-            }
             yield return new WaitForSeconds(0.05f);
         }
-        if (skipPress)
-        {
-            textObject.text = find.description;
-        }
-        skipPress = false;
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Mouse0));
+        yield return new WaitForSeconds(1);
         findDisplay.gameObject.SetActive(false);
         findDisplay.transform.GetChild(0).gameObject.SetActive(false);
         findDisplay.transform.GetChild(1).gameObject.SetActive(false);
@@ -1297,7 +1279,6 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DisplayFind(Find find)
     {
-        skipPress = false;
         yield return new WaitForSeconds(0.1f);
         findDisplay.gameObject.SetActive(true);
         findDisplay.transform.GetChild(1).gameObject.SetActive(true);
@@ -1307,22 +1288,12 @@ public class PlayerController : MonoBehaviour
         foreach (char letter in find.description.ToCharArray())
         {
             textObject.text += letter;
-            if (skipPress)
-            {
-                break;
-            }
             yield return new WaitForSeconds(0.05f);
         }
-        if (skipPress)
-        {
-            textObject.text = find.description;
-        }
-        skipPress = false;
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Mouse0));
         findDisplay.gameObject.SetActive(false);
         findDisplay.transform.GetChild(0).gameObject.SetActive(false);
         findDisplay.transform.GetChild(1).gameObject.SetActive(false);
-        canAttack = true;
     }
 
     private IEnumerator MoveNow(Vector3 point)
