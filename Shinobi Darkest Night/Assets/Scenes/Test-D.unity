@@ -1191,6 +1191,8 @@ MonoBehaviour:
   mizuame: 0
   powerCoolDown: 0
   godMode: 0
+  thingsToFind: []
+  findDisplay: {fileID: 0}
 --- !u!224 &2595981775494823161
 RectTransform:
   m_ObjectHideFlags: 0
