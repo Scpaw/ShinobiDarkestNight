@@ -11,8 +11,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static UnityEngine.EventSystems.EventTrigger;
-
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
@@ -215,9 +213,10 @@ public class PlayerController : MonoBehaviour
 
     public bool godMode;
 
-    //things to find
+    [Header("things to find")]
     public List<Find> thingsToFind;
     public Canvas findDisplay;
+    private bool skipPress;
 
     private void Awake()
     {
@@ -863,7 +862,7 @@ public class PlayerController : MonoBehaviour
     {
         if (inputValue.Get<float>() == 1)
         {
-            if (canAttack && !isHealing && !desumiru && !itaiken && !inventoryOpen & !shokyaku)
+            if (canAttack && !isHealing && !desumiru && !itaiken && !inventoryOpen & !shokyaku && !findDisplay.gameObject.activeInHierarchy)
             {
                 if (stamina >= 5)
                 {
@@ -913,6 +912,10 @@ public class PlayerController : MonoBehaviour
             else if (canAttack && shokyaku)
             {
                 shokyakuAttack = true;
+            }
+            else if (findDisplay.gameObject.activeInHierarchy)
+            {
+                skipPress = true;
             }
         }
         else if (inputValue.Get<float>() == 0)
@@ -1256,21 +1259,35 @@ public class PlayerController : MonoBehaviour
     { 
         thingsToFind.Add(thatToAdd);
         StartCoroutine(DisplayText(thatToAdd.dialogue,thatToAdd));
+        CurrentState = IdleAnim;
+        canMove = true;
     }
 
     private IEnumerator DisplayText(string text, Find find)
     {
-        yield return new WaitForSeconds(0.7f);
+        skipPress = false;
+        yield return new WaitForSeconds(0.2f);
+        canAttack = false;
         findDisplay.gameObject.SetActive(true);
         findDisplay.transform.GetChild(0).gameObject.SetActive(true);
         findDisplay.transform.GetChild(1).gameObject.SetActive(false);
         Text textObject = findDisplay.transform.GetChild(0).GetComponentInChildren<Text>();
+        textObject.text = string.Empty;
         foreach (char letter in text.ToCharArray())
         {
+            if (skipPress)
+            {
+                break;
+            }
             textObject.text += letter;
             yield return new WaitForSeconds(0.05f);
         }
-        yield return new WaitForSeconds(1);
+        if (skipPress)
+        {
+            textObject.text = find.description;
+        }
+        skipPress = false;
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Mouse0));
         findDisplay.gameObject.SetActive(false);
         findDisplay.transform.GetChild(0).gameObject.SetActive(false);
         findDisplay.transform.GetChild(1).gameObject.SetActive(false);
@@ -1279,21 +1296,33 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DisplayFind(Find find)
     {
+        skipPress = false;
         yield return new WaitForSeconds(0.1f);
         findDisplay.gameObject.SetActive(true);
         findDisplay.transform.GetChild(1).gameObject.SetActive(true);
         findDisplay.transform.GetChild(0).gameObject.SetActive(false);
         Text textObject = findDisplay.transform.GetChild(1).GetComponentInChildren<Text>();
+        textObject.text = string.Empty;
         textObject.gameObject.GetComponentInChildren<Image>().sprite = find.sprite;
         foreach (char letter in find.description.ToCharArray())
         {
+            if (skipPress)
+            {
+                break;
+            }
             textObject.text += letter;
             yield return new WaitForSeconds(0.05f);
         }
+        if (skipPress)
+        {
+            textObject.text = find.description;
+        }
+        skipPress = false;
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Mouse0));
         findDisplay.gameObject.SetActive(false);
         findDisplay.transform.GetChild(0).gameObject.SetActive(false);
         findDisplay.transform.GetChild(1).gameObject.SetActive(false);
+        canAttack = true;
     }
 
     private IEnumerator MoveNow(Vector3 point)
