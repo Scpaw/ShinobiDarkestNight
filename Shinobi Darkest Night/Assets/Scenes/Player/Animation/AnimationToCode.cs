@@ -71,7 +71,7 @@ public class AnimationToCode : MonoBehaviour
 
     public void TimeToDie()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void startItaiken()
