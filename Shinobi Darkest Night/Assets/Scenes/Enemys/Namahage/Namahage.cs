@@ -15,9 +15,8 @@ public class Namahage : MonoBehaviour
     private float scaleX;
     private float enemyAddSpeed;
     private AI_Move ai_Move;
-
-    //atak nozem
     private int attackNum;
+    private float bucketTimer;
 
     private void Awake()
     {
@@ -62,12 +61,14 @@ public class Namahage : MonoBehaviour
                 ai.maxSpeed = enemySpeed + enemyAddSpeed;
             }
         }
-        if (attackNum > Random.Range(3, 2 * x))
+        if (0 > Random.Range(1 - attackNum, x - attackNum) && !damage.playerIn && bucketTimer < Time.time)
         {
-            Debug.Log(x);
-            damage.attackAnim = false;
+            anim.SetTrigger("Bucket");
+            //damage.attackAnim = false;
             damage.attacksInt = 0;
             damage.canAttack = false;
+            ai_Move.canMove = false;
+            bucketTimer = Time.time + Random.Range(0.75f, 2.2f);
         }
         if (player.position.x > transform.position.x)
         {
@@ -77,7 +78,7 @@ public class Namahage : MonoBehaviour
         {
             anim.transform.localScale = new Vector3(scaleX, anim.transform.localScale.y, anim.transform.localScale.z);
         }
-        if (ai_Move.moving && !ai_Move.stop)
+        if (ai.maxSpeed > 0 && ai.enabled && ai_Move.moving)
         {
             anim.SetFloat("Moving", 1);
         }
@@ -85,5 +86,12 @@ public class Namahage : MonoBehaviour
         {
             anim.SetFloat("Moving", 0);
         }
+    }
+
+
+    public void AfterAtttack()
+    {
+        damage.canAttack = true;
+        ai_Move.canMove = true;
     }
 }

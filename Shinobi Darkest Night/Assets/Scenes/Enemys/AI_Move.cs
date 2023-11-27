@@ -74,7 +74,7 @@ public class AI_Move : MonoBehaviour
             {
                 if (!moving && reseting == null)
                 {
-                    reseting= StartCoroutine(ResetPathf());
+                    reseting = StartCoroutine(ResetPathf());
                 }
             }
         }
@@ -123,5 +123,10 @@ public class AI_Move : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         reseting = null;
+    }
+
+    public bool IsMoving()
+    {
+        return (reseting == null);
     }
 }

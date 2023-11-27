@@ -90,7 +90,7 @@ public class Ronin_AI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (ai.speed > 0 && ai.enabled)
+        if (ai.maxSpeed > 0 && ai.enabled)
         {
             anim.SetFloat("Blend", 1);
         }

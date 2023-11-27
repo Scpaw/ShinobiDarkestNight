@@ -20,6 +20,7 @@ public class EnemyDamage : MonoBehaviour
     Animator EnemyAnim;
     public bool playerIn;
     public bool canAttack;
+    [SerializeField] bool doDmgWhileAttack = true;
 
 
     private void OnEnable()
@@ -59,8 +60,12 @@ public class EnemyDamage : MonoBehaviour
         PlayerHealth thePlayerHealth = thePlayer.GetComponent<PlayerHealth>();
         if (enemyNextDamage <= Time.time)
         {
-            thePlayerHealth.AddDamage(enemyDamage);
+            if (doDmgWhileAttack)
+            {
+                thePlayerHealth.AddDamage(enemyDamage);
+            }
             enemyNextDamage = Time.time + enemyDamageRate;
+
             if (attackAnim)
             {
                 attacksInt++;
@@ -70,6 +75,12 @@ public class EnemyDamage : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Dmg()
+    {
+        PlayerHealth thePlayerHealth = thePlayer.GetComponent<PlayerHealth>();
+        thePlayerHealth.AddDamage(enemyDamage);
     }
 
 }
