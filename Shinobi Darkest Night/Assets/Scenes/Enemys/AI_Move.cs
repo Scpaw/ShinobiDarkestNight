@@ -127,6 +127,6 @@ public class AI_Move : MonoBehaviour
 
     public bool IsMoving()
     {
-        return (reseting == null);
+        return (enemyScript.stundTime <= 0 && moving);
     }
 }

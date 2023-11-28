@@ -18,6 +18,10 @@ public class Namahage : MonoBehaviour
     private int attackNum;
     private float bucketTimer;
 
+    //bucket
+    public GameObject projectile;
+    public float power;
+
     private void Awake()
     {
         startPos = transform.position;
@@ -64,7 +68,6 @@ public class Namahage : MonoBehaviour
         if (0 > Random.Range(1 - attackNum, x - attackNum) && !damage.playerIn && bucketTimer < Time.time)
         {
             anim.SetTrigger("Bucket");
-            //damage.attackAnim = false;
             damage.attacksInt = 0;
             damage.canAttack = false;
             ai_Move.canMove = false;
@@ -78,7 +81,7 @@ public class Namahage : MonoBehaviour
         {
             anim.transform.localScale = new Vector3(scaleX, anim.transform.localScale.y, anim.transform.localScale.z);
         }
-        if (ai.maxSpeed > 0 && ai.enabled && ai_Move.moving)
+        if (ai_Move.IsMoving() && ai.enabled )
         {
             anim.SetFloat("Moving", 1);
         }
