@@ -18,9 +18,15 @@ public class Namahage : MonoBehaviour
     private int attackNum;
     private float bucketTimer;
 
-    //bucket
+    [Header("Bucket")]
     public GameObject projectile;
     public float power;
+
+    [Header("Run stab")]
+    [SerializeField] private float startRunDistance;
+    public bool runing;
+    [SerializeField] private float jumpDistance;
+    public bool jumping;
 
     private void Awake()
     {
@@ -65,7 +71,7 @@ public class Namahage : MonoBehaviour
                 ai.maxSpeed = enemySpeed + enemyAddSpeed;
             }
         }
-        if (0 > Random.Range(1 - attackNum, x - attackNum) && !damage.playerIn && bucketTimer < Time.time)
+        if (0 > Random.Range(1 - attackNum, x - attackNum) && !damage.playerIn && bucketTimer < Time.time && !runing && !jumping)
         {
             anim.SetTrigger("Bucket");
             damage.attacksInt = 0;
@@ -88,6 +94,29 @@ public class Namahage : MonoBehaviour
         else
         {
             anim.SetFloat("Moving", 0);
+        }
+
+
+        //runing
+        if ((player.position - transform.position).magnitude > startRunDistance && !runing)
+        {
+            runing = true;
+            Debug.Log("run now");
+        }
+        else if (runing && ((player.position - transform.position).magnitude < jumpDistance + 0.3f && !jumping))
+        {
+            runing = false;
+            jumping = true;
+            Debug.Log("jump");
+        }
+
+        if (!runing && !jumping && !damage.canAttack)
+        {
+            damage.canAttack = true;
+        }
+        else if ((runing || jumping) && damage.canAttack)
+        {
+            damage.canAttack = false;
         }
     }
 
