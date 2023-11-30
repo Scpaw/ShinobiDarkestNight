@@ -4,6 +4,7 @@ public class NamahageProjectile : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float startForce = 1;
+    public float dmg;
 
     void Start()
     {
@@ -14,7 +15,7 @@ public class NamahageProjectile : MonoBehaviour
 
     private void Hit()
     {
-        PlayerController.Instance.gameObject.GetComponent<PlayerHealth>().AddDamage(10);
+        PlayerController.Instance.gameObject.GetComponent<PlayerHealth>().AddDamage(dmg);
         Destroy(gameObject, 0.1f);
     }
 

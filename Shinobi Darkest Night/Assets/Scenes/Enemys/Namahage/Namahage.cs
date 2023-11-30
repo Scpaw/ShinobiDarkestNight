@@ -21,6 +21,9 @@ public class Namahage : MonoBehaviour
     [Header("Bucket")]
     public GameObject projectile;
     public float power;
+    [Tooltip("variation of the bullet's firing angle")]
+    public float projectileVariation;
+    public float projectileDmg;
 
     [Header("Run stab")]
     [SerializeField] private float startRunDistance;
@@ -29,6 +32,7 @@ public class Namahage : MonoBehaviour
     public bool jumping;
     [SerializeField] private float runSpeed;
     [SerializeField] private float jumpingSpeed;
+    public float jumpStabDmg;
 
     private void Awake()
     {
@@ -133,7 +137,6 @@ public class Namahage : MonoBehaviour
 
         if (anim.GetBool("Jump") != jumping)
         {
-            //ai_Move.canMove = !jumping;
             anim.SetBool("Jump", jumping);
         }
         if (anim.GetBool("Run") != runing)
@@ -158,10 +161,9 @@ public class Namahage : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, pos, jumpingSpeed/100);
             timer -= Time.deltaTime;
-            Debug.Log("jumping");
             yield return new WaitForEndOfFrame();
         }
-        ai_Move.canMove = true;
 
+        ai_Move.canMove = true;
     }
 }
