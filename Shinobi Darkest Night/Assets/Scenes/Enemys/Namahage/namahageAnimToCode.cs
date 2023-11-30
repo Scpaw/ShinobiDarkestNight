@@ -38,4 +38,9 @@ public class namahageAnimToCode : MonoBehaviour
     {
         enemyDamage.Dmg();
     }
+
+    public void AfterJump()
+    { 
+        nam.jumping = false;
+    }
 }

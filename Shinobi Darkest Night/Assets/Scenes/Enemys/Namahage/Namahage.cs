@@ -27,6 +27,8 @@ public class Namahage : MonoBehaviour
     public bool runing;
     [SerializeField] private float jumpDistance;
     public bool jumping;
+    [SerializeField] private float runSpeed;
+    [SerializeField] private float jumpingSpeed;
 
     private void Awake()
     {
@@ -71,6 +73,7 @@ public class Namahage : MonoBehaviour
                 ai.maxSpeed = enemySpeed + enemyAddSpeed;
             }
         }
+        
         if (0 > Random.Range(1 - attackNum, x - attackNum) && !damage.playerIn && bucketTimer < Time.time && !runing && !jumping)
         {
             anim.SetTrigger("Bucket");
@@ -98,16 +101,25 @@ public class Namahage : MonoBehaviour
 
 
         //runing
-        if ((player.position - transform.position).magnitude > startRunDistance && !runing)
+        if ((player.position - transform.position).magnitude > startRunDistance && !runing && (player.position - transform.position).magnitude < ai_Move.detectRadius)
         {
             runing = true;
-            Debug.Log("run now");
+            ai_Move.enemySpeed += runSpeed;
+            ai.maxSpeed += runSpeed;
         }
-        else if (runing && ((player.position - transform.position).magnitude < jumpDistance + 0.3f && !jumping))
+        else if ((runing && ((player.position - transform.position).magnitude < jumpDistance + 0.3f && !jumping)))
         {
             runing = false;
             jumping = true;
-            Debug.Log("jump");
+            StartCoroutine(JumpStab());
+            ai_Move.enemySpeed -= runSpeed;
+            ai.maxSpeed -= runSpeed;
+        }
+        else if (runing && (player.position - transform.position).magnitude > ai_Move.detectRadius)
+        {
+            runing = false;
+            ai_Move.enemySpeed -= runSpeed;
+            ai.maxSpeed -= runSpeed;
         }
 
         if (!runing && !jumping && !damage.canAttack)
@@ -118,6 +130,16 @@ public class Namahage : MonoBehaviour
         {
             damage.canAttack = false;
         }
+
+        if (anim.GetBool("Jump") != jumping)
+        {
+            //ai_Move.canMove = !jumping;
+            anim.SetBool("Jump", jumping);
+        }
+        if (anim.GetBool("Run") != runing)
+        {
+            anim.SetBool("Run", runing);
+        }
     }
 
 
@@ -125,5 +147,21 @@ public class Namahage : MonoBehaviour
     {
         damage.canAttack = true;
         ai_Move.canMove = true;
+    }
+
+    private IEnumerator JumpStab()
+    {
+        ai_Move.canMove = false;
+        float timer = 2;
+        Vector3 pos = player.position;
+        while (timer > 0 && (pos - transform.position).magnitude > 0.1f)
+        {
+            transform.position = Vector3.Lerp(transform.position, pos, jumpingSpeed/100);
+            timer -= Time.deltaTime;
+            Debug.Log("jumping");
+            yield return new WaitForEndOfFrame();
+        }
+        ai_Move.canMove = true;
+
     }
 }

@@ -409,12 +409,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 197584941912202622}
     m_Modifications:
     - target: {fileID: 5791636363044146460, guid: 4f2f821a92f70bd49b88651ac6aa9aa1, type: 3}
+      propertyPath: runSpeed
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791636363044146460, guid: 4f2f821a92f70bd49b88651ac6aa9aa1, type: 3}
       propertyPath: jumpDistance
-      value: 0.3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791636363044146460, guid: 4f2f821a92f70bd49b88651ac6aa9aa1, type: 3}
+      propertyPath: jumpingSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5791636363044146460, guid: 4f2f821a92f70bd49b88651ac6aa9aa1, type: 3}
       propertyPath: startRunDistance
-      value: 2
+      value: 3.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791636363044146461, guid: 4f2f821a92f70bd49b88651ac6aa9aa1, type: 3}
+      propertyPath: detectRadius
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8809450899078116825, guid: 4f2f821a92f70bd49b88651ac6aa9aa1, type: 3}
       propertyPath: m_AnchorMax.x
