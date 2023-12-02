@@ -21,6 +21,7 @@ public class Archer : MonoBehaviour
     private int shots;
     private Transform player;
     public bool shooting;
+    [SerializeField] float lowHpShootingSpeed = 1;
 
     [Header("Archer Movement Parameters")]
     [SerializeField] float archerSpeed;
@@ -38,6 +39,7 @@ public class Archer : MonoBehaviour
     [SerializeField] private float backRadius;
     private float runBackTimer = 0;
     private int runBackIteration = 0;
+    private EnemyHealth health;
 
     [Header("Archer melee")]
     [SerializeField] float meleeDamage;
@@ -45,6 +47,7 @@ public class Archer : MonoBehaviour
     private float meleeTime;
     private DamageRange damageRange;
     private AIDestinationSetter target;
+    private int meleeAttackNum;
 
     public void Awake()
     {
@@ -79,15 +82,20 @@ public class Archer : MonoBehaviour
         {
             target = GetComponent<AIDestinationSetter>();
         }
+        if (health == null)
+        {
+            health = GetComponent<EnemyHealth>();
+        }
         gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
         nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
         canShootPlayer = true;
+        meleeAttackNum = 0;
     }
 
 
     void FixedUpdate()
     {
-        if (AI.moving && !AI.stop)
+        if (AI.IsMoving() && canMove.canMove && !AI.stop)
         {
             EnemyAnim.SetFloat("Moving", 1);
         }
@@ -103,7 +111,6 @@ public class Archer : MonoBehaviour
             {
                 if (canShootPlayer && !shooting)
                 {
-                    Debug.Log("1");
                     AI.canMove = true;
                     canShootPlayer = false;
                     pointTarget.transform.position = canShootPoint();
@@ -114,16 +121,17 @@ public class Archer : MonoBehaviour
             else if(canShootPlayer && walkingTime <=0)
             {
 
-                if (damageRange.playerInRange || (transform.position - player.transform.position).magnitude <= backRadius && !AI.stop)
+                if (damageRange.playerInRange || (transform.position - player.transform.position).magnitude <= backRadius && !AI.stop && meleeAttackNum > Random.Range(1, 2))
                 {
                     AI.canMove = false;
                     if (Time.time > meleeTime && damageRange.playerInRange)
                     {
                         walkingTime = 0;
                         EnemyAnim.SetTrigger("Melee");
+                        meleeAttackNum++;
                         meleeTime = Time.time + meleeAttackTime;
                     }
-                    else if ((transform.position - player.transform.position).magnitude <= backRadius && !damageRange.playerInRange && (transform.position - player.transform.position).magnitude > 0.1f && runBackTimer <= 0 && runBackIteration < 4)
+                    else if ((transform.position - player.transform.position).magnitude <= backRadius && !damageRange.playerInRange && (transform.position - player.transform.position).magnitude > 0.1f && runBackTimer <= 0 && runBackIteration < 4 && meleeAttackNum > Random.Range(1, 2))
                     {
                         EnemyAnim.SetTrigger("Back");
                         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -138,11 +146,20 @@ public class Archer : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Shooting");
                     AI.canMove = false;
                     if (Time.time > nextShoot)
                     {
-                        nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
+                        if (health.enemyHealth / health.enemyMaxHealth > 0.75f)
+                        {
+                            nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
+                            EnemyAnim.SetFloat("AnimationSpeed", 1);
+                        }
+                        else
+                        {
+                            EnemyAnim.SetFloat("AnimationSpeed", 1.5f);
+                            nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max)/lowHpShootingSpeed;
+                        }
+
 
                         if (shots > Random.Range(4, 6))
                         {
@@ -196,8 +213,8 @@ public class Archer : MonoBehaviour
         {
             walkingTime -= Time.fixedDeltaTime;
         }
-        if (((transform.position - pointTarget.transform.position).magnitude < 0.1f || walkingTime<0 ))
-        {
+        if (((transform.position - pointTarget.transform.position).magnitude < 0.1f || walkingTime<=0 ) && gameObject.GetComponent<AIDestinationSetter>().target != thePlayer.transform)
+        {         
             walkingTime = 0;
             canShootPlayer = true;
             gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
@@ -292,12 +309,14 @@ public class Archer : MonoBehaviour
         {
             runBackIteration++;
             walkingTime = 0;
+            meleeAttackNum = 100;
             return transform.position;
         }
         else
         {
             runBackIteration++;
             Debug.DrawRay(transform.position, -(transform.position - posToReturn).normalized, Color.green, 5);
+            meleeAttackNum = 0;
             return posToReturn;
         }
 
