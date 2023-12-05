@@ -17,7 +17,15 @@ public class hideObsticle : MonoBehaviour
         playerP = PlayerController.Instance.GetPlayer();
         playerSprite = playerP.transform.Find("Grafika").GetComponent<SpriteRenderer>();
         player = PlayerController.Instance.GetPlayer();
-        sprite = GetComponent<SpriteRenderer>();
+        if (GetComponent<SpriteRenderer>())
+        {
+            sprite = GetComponent<SpriteRenderer>();
+        }
+        else
+        {
+            sprite = GetComponentInChildren<SpriteRenderer>();
+        }
+
 
         O = gameObject.transform.position.y;
         playerT = playerP.transform.position.y;
@@ -34,11 +42,11 @@ public class hideObsticle : MonoBehaviour
             {
                 GetComponent<DropCandy>().Drop();
             }
-            if (playerT > O)
+            if (playerT > O && somethinIn > 0)
             {
                 sprite.sortingOrder = playerSprite.sortingOrder + 1;
             }
-            else if (O > playerT)
+            else if (O > playerT && somethinIn <=0)
             {
                 sprite.sortingOrder = playerSprite.sortingOrder - 1;
             }
