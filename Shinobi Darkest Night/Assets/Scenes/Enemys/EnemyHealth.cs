@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public float enemyMaxHealth;
     public float enemyHealth;
     [SerializeField] Slider enemyHealthSlider;
+    private Text enemyHealthText;
     [SerializeField] GameObject enemyCanvas;
     public bool canBeAttacked;
     public bool canDoDmg;
@@ -35,6 +36,8 @@ public class EnemyHealth : MonoBehaviour
         {
             enemyHealthSlider.maxValue = enemyMaxHealth;
             enemyHealthSlider.value = enemyHealth;
+            enemyHealthText = enemyHealthSlider.GetComponentInChildren<Text>();
+            enemyHealthText.text = ((int)enemyHealth).ToString();
         }
         canBeAttacked = true;
         if (transform.parent != null)
@@ -65,6 +68,7 @@ public class EnemyHealth : MonoBehaviour
             if (enemyHealthSlider != null)
             {
                 enemyHealthSlider.value = enemyHealth;
+                enemyHealthText.text = ((int) enemyHealth).ToString();
             }
             if (dropProjectiles)
             {
