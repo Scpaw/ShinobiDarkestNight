@@ -145,9 +145,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Stamina")]
     public Image staminaSlider;
+    private Text staminaText;
     float stamina = 100;
     float maxStamina;
-    float staminaReg;
     public float staminaRegRate;
     public bool canAttack;
 
@@ -243,6 +243,7 @@ public class PlayerController : MonoBehaviour
         inventoryText = shade.GetComponentInChildren<Text>();
         hp = GetComponent<PlayerHealth>();
         findDisplay.gameObject.SetActive(false);
+        staminaText = staminaSlider.transform.parent.GetComponentInChildren<Text>();
     }
 
     private void OnEnable()
@@ -348,18 +349,12 @@ public class PlayerController : MonoBehaviour
 
         //stamina
         staminaSlider.fillAmount = stamina/maxStamina;
+        staminaText.text = ((int) stamina).ToSafeString();
         if (canMove && !isDashing && canAttack)
         {
             if (stamina < maxStamina)
             {
-                if (staminaReg <= 0)
-                {
-                    stamina += staminaRegRate * Time.deltaTime;
-                }
-                else
-                {
-                    staminaReg -= Time.deltaTime;
-                }
+                stamina += staminaRegRate * Time.deltaTime;
             }
         }
 
@@ -589,6 +584,15 @@ public class PlayerController : MonoBehaviour
 
         //desumiru
         myAnim.SetBool("Desumiru", desumiruPressed);
+
+        if (Time.timeScale == 1 && Input.GetKeyDown(KeyCode.O))
+        {
+            Time.timeScale = 0.3f;
+        }
+        else if (Time.timeScale == 0.3f && Input.GetKeyDown(KeyCode.O))
+        {
+            Time.timeScale = 1f;
+        }
     }
 
 
@@ -1194,8 +1198,6 @@ public class PlayerController : MonoBehaviour
                 {
                     stamina -= staminaToUse;
                 }
-
-                staminaReg = 1f;
             }
         }
     }
@@ -1440,8 +1442,9 @@ public class PlayerController : MonoBehaviour
     {
         canAttack = false;
         List<Vector2> vectors = new List<Vector2>();
-        test = myAnim.GetCurrentAnimatorStateInfo(0).length;
-        float starAnimTime = myAnim.GetCurrentAnimatorStateInfo(0).length;
+        float animSpeed = myAnim.GetCurrentAnimatorStateInfo(0).speed;
+        test = myAnim.GetCurrentAnimatorStateInfo(0).length * animSpeed;
+        float starAnimTime = myAnim.GetCurrentAnimatorStateInfo(0).length * animSpeed;
         vectors.Add(Vector2.zero);
         vectors.Add(Vector2.zero);
         vectors[1] = point2;
@@ -1459,7 +1462,7 @@ public class PlayerController : MonoBehaviour
             {
                 point2 = new Vector2(desumiuRadius * Mathf.Cos((( test/starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), desumiuRadius * Mathf.Sin(((test/starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
             }
-            test -= Time.deltaTime*2;
+            test -= Time.deltaTime * animSpeed * 1.6f;
             vectors[1] = point2;
             myAnim.GetComponent<EdgeCollider2D>().SetPoints(vectors);
             yield return new WaitForEndOfFrame();

@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public float playerCourrentHealth;
     public float playerMaxHealth;
     [SerializeField] Image playerHealthSlider;
+    private Text healthText;
     private PlayerController playerController;
 
     void Awake()
@@ -50,6 +51,11 @@ public class PlayerHealth : MonoBehaviour
 
             }
             playerHealthSlider.fillAmount = playerCourrentHealth / playerMaxHealth;
+            if (healthText == null)
+            {
+                healthText = playerHealthSlider.transform.parent.GetComponentInChildren<Text>();
+            }
+            healthText.text = ((int)playerCourrentHealth).ToString();
             if (playerCourrentHealth <= 0)
             {
                 MakeDead();
