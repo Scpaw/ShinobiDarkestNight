@@ -40,7 +40,7 @@ public class EnemyHealth : MonoBehaviour
             enemyHealthText.text = ((int)enemyHealth).ToString();
         }
         canBeAttacked = true;
-        if (transform.parent != null)
+        if (transform.parent.transform.GetComponent<RoomBrain>() != null)
         {
             transform.parent.GetComponent<RoomBrain>().enemiesActive++;
         }
@@ -140,16 +140,17 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnDisable()
     {
-        if (transform.parent.GetComponent<RoomBrain>() && enemyHealth <= 0)
-        {
-            transform.parent.GetComponent<RoomBrain>().SpawnEnemies();
-        }
+
         if (!canBeAttacked)
         {
             StopAllCoroutines();
         }
         if (transform.parent.GetComponent<RoomBrain>())
         {
+            if (transform.parent.GetComponent<RoomBrain>() && enemyHealth <= 0)
+            {
+                transform.parent.GetComponent<RoomBrain>().SpawnEnemies();
+            }
             transform.parent.GetComponent<RoomBrain>().enemiesActive--;
         }
         else if (transform.parent.GetComponent<activateEnemy>())
