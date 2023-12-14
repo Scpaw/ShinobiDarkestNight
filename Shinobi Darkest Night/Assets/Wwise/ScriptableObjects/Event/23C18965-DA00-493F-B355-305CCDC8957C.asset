@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816d4218fe517604eaba4fc5734f3d5f, type: 3}
+  m_Name: 23C18965-DA00-493F-B355-305CCDC8957C
+  m_EditorClassIdentifier: 
+  objectName: Player_Slashing
+  id: 1893567068
+  guid: 23C18965-DA00-493F-B355-305CCDC8957C

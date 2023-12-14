@@ -96,9 +96,7 @@ GameObject:
   - component: {fileID: 7654466482024010683}
   - component: {fileID: -1392426499736606388}
   - component: {fileID: -6103161507828630214}
-  - component: {fileID: 4457233256292622997}
-  - component: {fileID: -6557449710668889565}
-  - component: {fileID: 5562195190918584790}
+  - component: {fileID: 2268455666784672392}
   m_Layer: 0
   m_Name: CandyToPickUp 1
   m_TagString: Untagged
@@ -174,7 +172,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4457233256292622997
+--- !u!114 &2268455666784672392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,86 +181,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7654466482024010629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6026fa33335ab4f8af423f30395df5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e156f8c52360a643aa35ca7419b893f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerList: f7f422d6
+  triggerList: 958ca0ea
   useOtherObject: 0
-  actionOnEventType: 2
+  actionOnEventType: 0
   curveInterpolation: 4
   enableActionOnEvent: 0
   data:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 67509d4ceb16c014f9037d08ce8b4d5d, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 7bc494eabcb92b948834d01cc28dc7df, type: 2}
   useCallbacks: 0
   Callbacks: []
   playingId: 0
   soundEmitterObject: {fileID: 0}
-  transitionDuration: 1
+  transitionDuration: 0
   eventIdInternal: 0
   valueGuidInternal: 
   m_callbackDataInternal: {fileID: 0}
-  MultiPositionType: 1
-  multiPositionTypeLabel: 0
-  attenuationSphereColor: {r: 1, g: 0, b: 0, a: 0.1}
-  LargeModePositions: []
-  multiPositionArray: []
---- !u!114 &-6557449710668889565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7654466482024010629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42dd08c9ec20a4744a9dff70a208a060, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: f7e1664c
-  useOtherObject: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: b4682809020ea7c4389354bac6ff34ef, type: 2}
-  decodeBank: 0
-  loadAsynchronous: 0
-  saveDecodedBank: 0
-  unloadTriggerList: 958ca0ea
-  bankNameInternal: 
-  valueGuidInternal: 
---- !u!114 &5562195190918584790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7654466482024010629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6026fa33335ab4f8af423f30395df5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: 
-  useOtherObject: 0
-  actionOnEventType: 2
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 67509d4ceb16c014f9037d08ce8b4d5d, type: 2}
-  useCallbacks: 0
-  Callbacks: []
-  playingId: 0
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 1
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
-  MultiPositionType: 1
-  multiPositionTypeLabel: 0
-  attenuationSphereColor: {r: 1, g: 0, b: 0, a: 0.1}
-  LargeModePositions: []
-  multiPositionArray: []
