@@ -34,6 +34,7 @@ public class PlayerHealth : MonoBehaviour
 
         }
         playerHealthSlider.fillAmount = playerCourrentHealth / playerMaxHealth;
+        AkSoundEngine.PostEvent("Player_Healing_Drinking", gameObject);
     }
 
     public void AddDamage(float Damage)
@@ -60,6 +61,8 @@ public class PlayerHealth : MonoBehaviour
             {
                 MakeDead();
             }
+
+            AkSoundEngine.PostEvent("Player_Damage", gameObject);
         }
     }
 
