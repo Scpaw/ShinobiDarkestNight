@@ -171,7 +171,7 @@ public class RoomBrain : MonoBehaviour
         Vector2 point = Camera.main.WorldToViewportPoint(new Vector3( GetComponent<BoxCollider2D>().bounds.max.x, transform.position.y,transform.position.z));
         while (point.x < 0 || point.x >1)
         {
-            cam.m_Lens.OrthographicSize += Time.deltaTime * 4;
+            cam.m_Lens.OrthographicSize += Time.deltaTime * 20;
             point = Camera.main.WorldToViewportPoint(new Vector3(GetComponent<BoxCollider2D>().bounds.max.x, transform.position.y, transform.position.z));
             yield return new WaitForEndOfFrame();
         }
@@ -181,12 +181,12 @@ public class RoomBrain : MonoBehaviour
     IEnumerator CamBack()
     {
         CinemachineVirtualCamera cam = CameraScript.instance.gameObject.GetComponent<CinemachineVirtualCamera>();
-        while (cam.m_Lens.OrthographicSize > 2.5f)
+        while (cam.m_Lens.OrthographicSize > 12.5f)
         {
-            cam.m_Lens.OrthographicSize -= Time.deltaTime * 4;
+            cam.m_Lens.OrthographicSize -= Time.deltaTime * 20;
             yield return new WaitForEndOfFrame();
         }
-        cam.m_Lens.OrthographicSize = 2.5f;
+        cam.m_Lens.OrthographicSize = 12.5f;
         cor = null;
     }
 

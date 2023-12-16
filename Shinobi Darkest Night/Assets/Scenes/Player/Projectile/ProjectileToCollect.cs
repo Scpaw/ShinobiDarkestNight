@@ -11,11 +11,13 @@ public class ProjectileToCollect : MonoBehaviour
     private Transform player;
     public float pickUpRange;
     private bool onStartPickUp;
+    private float startForce;
 
     private void Start()
     {
         player = PlayerController.Instance.GetPlayer().transform;
         onStartPickUp = false;
+        startForce = GetComponent<Rigidbody2D>().velocity.magnitude;
     }
     private void FixedUpdate()
     {
@@ -53,7 +55,7 @@ public class ProjectileToCollect : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        if (onEnemy && GetComponent<Rigidbody2D>().velocity.magnitude < 0.5f && transform.parent == null)
+        if (onEnemy && GetComponent<Rigidbody2D>().velocity.magnitude < 2.6f && transform.parent == null)
         {
             onEnemy = false;
         }

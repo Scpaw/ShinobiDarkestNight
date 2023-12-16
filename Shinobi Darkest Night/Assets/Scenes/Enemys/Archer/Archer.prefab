@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 784028375714771020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4172853482187600434}
@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.3}
+  m_AnchoredPosition: {x: 0, y: 1.596}
   m_SizeDelta: {x: 2, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2689934786405554506
@@ -164,7 +164,7 @@ Transform:
   m_GameObject: {fileID: 2245703922748510423}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.13773136}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6528833951103970083}
@@ -184,7 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0b89ee882ccdc43b3b3881579b1a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sightRange: 6
 --- !u!1 &2537837072140711374
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +212,7 @@ Transform:
   m_GameObject: {fileID: 2537837072140711374}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.06, z: 0.06403494}
-  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5314281755959136565}
@@ -491,13 +490,13 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2387455423589708352, guid: 936adce30506ee64f8f7f8f9a8c5d4d8, type: 3}
   projectileSpawnPoint: {fileID: 2939831863594488950}
   projectileRotation: {fileID: 2245703922748510423}
-  sightRange: 6
+  sightRange: 30
   shootingRate_Min: 1
   shootingRate_Max: 2
   nextShoot: 4
   shooting: 0
   lowHpShootingSpeed: 1
-  archerSpeed: 2
+  archerSpeed: 10
   stundTime: 0
   projectiles: []
   layerToHit:
@@ -587,7 +586,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.21758974, y: -0.3996191}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -598,7 +597,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.51}
+  m_Size: {x: 1.0337255, y: 3.4610271}
   m_EdgeRadius: 0
 --- !u!114 &5922625566340143472
 MonoBehaviour:
@@ -616,7 +615,7 @@ MonoBehaviour:
   radius: 0.5
   height: 2
   canMove: 1
-  maxSpeed: 1.5
+  maxSpeed: 7.5
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -655,7 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 0
-  detectRadius: 5
+  detectRadius: 25
   room: {fileID: 0}
   moving: 0
   canMove: 0
@@ -707,7 +706,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.0987791}
-  m_Size: {x: 1.2713217, y: 1.2713217}
+  m_Size: {x: 5.3964353, y: 5.3964353}
   m_Direction: 0
 --- !u!114 &9160574327863137129
 MonoBehaviour:
@@ -767,7 +766,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03675428, y: -0.124741584}
+  m_Offset: {x: 0.19, y: -0.124741584}
   m_Size: {x: 0.3240252, y: 0.75051683}
   m_Direction: 0
 --- !u!1 &7707810688034141888
@@ -1043,7 +1042,7 @@ Transform:
   m_GameObject: {fileID: 9121896362873526630}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.37100008, y: 0, z: -0.0014979541}
-  m_LocalScale: {x: 0.15, y: 0.10000003, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6804688858888018877}

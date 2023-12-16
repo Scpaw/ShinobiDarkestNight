@@ -18,7 +18,7 @@ public class PickUpCandy : MonoBehaviour
     {
         if ((player.position - transform.position).magnitude < detectDistance)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, Time.deltaTime * 4);
+            transform.position = Vector2.MoveTowards(transform.position, player.position, Time.deltaTime * 24);
             if ((player.position - transform.position).magnitude < 0.1f)
             {
                 player.GetComponent<PlayerController>().candy.Add(candy);

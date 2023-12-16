@@ -265,7 +265,7 @@ public class Archer : MonoBehaviour
     {
         Vector2 posToReturn = transform.position;
         int i = 0;
-         while (hit(posToReturn).transform.gameObject.layer != 7 && i <15)
+         while (hit(posToReturn).transform.gameObject.layer != 7 && i <75)
          {
             posToReturn = transform.position;
             if (i % 2 == 1)

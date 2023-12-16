@@ -164,6 +164,7 @@ public class PlayerController : MonoBehaviour
     [Header("Speeding Up")]
     private bool isSpeedingUp;
     private bool buttonUp;
+    private float startSpeed;
 
     [Header("Shokyaku")]
     public bool shokyaku;
@@ -244,6 +245,7 @@ public class PlayerController : MonoBehaviour
         hp = GetComponent<PlayerHealth>();
         findDisplay.gameObject.SetActive(false);
         staminaText = staminaSlider.transform.parent.GetComponentInChildren<Text>();
+        startSpeed = MoveSpeed;
     }
 
     private void OnEnable()
@@ -386,7 +388,7 @@ public class PlayerController : MonoBehaviour
                 isSpeedingUp = false;
                 canDash = true;
                 canAttack = true;
-                MoveSpeed = 3;
+                MoveSpeed = startSpeed;
                 buttonUp = true;
             }
         }
@@ -996,13 +998,13 @@ public class PlayerController : MonoBehaviour
             {
                 canDash = false;
                 canAttack = false;
-                MoveSpeed = 4.5f;
+                MoveSpeed = startSpeed + startSpeed/3;
             }
             else
             {
                 canDash = true;
                 canAttack = true;
-                MoveSpeed = 3;
+                MoveSpeed = startSpeed;
             }
         }
         else if (buttonUp)
