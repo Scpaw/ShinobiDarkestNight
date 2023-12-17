@@ -57,6 +57,7 @@ namespace AK
         static const AkUniqueID PLAYER_DASH = 2394582229U;
         static const AkUniqueID PLAYER_DEATH = 3083087645U;
         static const AkUniqueID PLAYER_EATING_SLODYCZ = 384837272U;
+        static const AkUniqueID PLAYER_FOOTSTEP = 2453392179U;
         static const AkUniqueID PLAYER_HEALING_DRINKING = 1926537714U;
         static const AkUniqueID PLAYER_HEALING_ZOOM = 3307141145U;
         static const AkUniqueID PLAYER_SLASHING = 1893567068U;

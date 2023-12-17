@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2453392179	Player_Footstep			\Player\PlayerLocomotion\Player_Footstep	
+

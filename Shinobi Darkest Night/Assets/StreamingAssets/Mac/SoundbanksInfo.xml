@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="145">
 	<RootPaths>
-		<ProjectRoot>../..</ProjectRoot>
-		<SourceFilesRoot>../../.cache/Mac</SourceFilesRoot>
+		<ProjectRoot>../../</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Mac/</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
 		<ExternalSourcesOutputRoot>../../../Assets/StreamingAssets/Windows/Mac</ExternalSourcesOutputRoot>
@@ -96,6 +96,24 @@
 					</Switches>
 				</SwitchGroup>
 			</SwitchGroups>
+		</SoundBank>
+		<SoundBank Id="2453392179" Type="Event" Language="SFX" Hash="{4B01045B-9E8C-AA0E-8C9B-A1F351A86CCE}">
+			<ShortName>Player_Footstep</ShortName>
+			<Path>Event/24/Player_Footstep.bnk</Path>
+			<Media>
+				<File Id="1061716306" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>Player\Player_Locomotion\Shinobi_Movement_ Loop.wav</ShortName>
+					<Path>Media/10/1061716306.wem</Path>
+					<CachePath>SFX/Player/Player_Locomotion/Shinobi_Movement_ Loop_D79FB2B7.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2453392179" Name="Player_Footstep" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="1061716306"/>
+					</MediaRefs>
+				</Event>
+			</Events>
 		</SoundBank>
 		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{45462778-C2B4-13E5-F373-D3B8F89387E3}">
 			<ShortName>Main</ShortName>
@@ -557,5 +575,5 @@
 			</AuxBusses>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{329ABE97-273A-5024-C268-7186A8B93954}</FileHash>
+	<FileHash>{B105AC35-8BD9-F5CA-E080-D61DD00B5CE2}</FileHash>
 </SoundBanksInfo>
