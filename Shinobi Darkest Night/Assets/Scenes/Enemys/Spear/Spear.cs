@@ -10,8 +10,8 @@ public class Spear : MonoBehaviour
     private AIPath ai;
     private EnemyHealth enemyScript;
     private float enemySpeed;
-    [SerializeField] float detectRadius;
     [SerializeField] float attackRadius;
+    private float attackRadiusToUse;
     private Transform player;
     private Vector3 attackPoint;
     private float timebtwAttacks;
@@ -73,10 +73,11 @@ public class Spear : MonoBehaviour
         }
         timebtwAttacks = 0;
         hitPlayer = false;
+        attackRadiusToUse = attackRadius + ai_Move.detectRadius/2;
     }
     void Update()
     {
-        if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < attackRadius && timebtwAttacks < 0.3f && GetComponent<EnemyHealth>().stundTime < 0.1f && !damageRange.playerInRange)
+        if (transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude < attackRadiusToUse && timebtwAttacks < 0.3f && GetComponent<EnemyHealth>().stundTime < 0.1f && !damageRange.playerInRange)
         {
             if (Physics2D.Raycast(transform.position, (player.position - transform.position).normalized, 30, LayerMask.GetMask("Player")))
             {
@@ -140,7 +141,7 @@ public class Spear : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (damageRange.playerInRange || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
+        if (damageRange.playerInRange || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > ai_Move.detectRadius)
         {
             ai.enabled = false;
         }
