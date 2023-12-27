@@ -143,6 +143,8 @@ public class Projectile : MonoBehaviour
         {
             if (enemyTrigger.activeInHierarchy)
             {
+                float scaleAdjustment = enemyTrigger.gameObject.transform.Find("Grafika").transform.localScale.x;
+                Debug.Log(scaleAdjustment);
                 GameObject hit = Instantiate(afterProjectile, enemyTrigger.transform.InverseTransformDirection(transform.position), transform.rotation, enemyTrigger.transform);
                 hit.GetComponent<ProjectileToCollect>().onEnemy = true;
                 hit.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;

@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.873, y: 0.564}
+  m_AnchoredPosition: {x: -0.873, y: 47.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8047339838733776362
@@ -263,12 +263,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908e0f887ad244144ae69a3a70c6a9b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectRadius: 8
-  attackRadius: 6
+  detectRadius: 40
+  attackRadius: 12
   playerLayer:
     serializedVersion: 2
     m_Bits: 640
-  dashMaxSpeed: 8
+  dashMaxSpeed: 15
   dmg: 20
 --- !u!114 &5931898599962226204
 MonoBehaviour:
@@ -383,7 +383,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5555069, y: 0.5295925}
+  m_Size: {x: 2.7775345, y: 2.6479626}
   m_EdgeRadius: 0
 --- !u!114 &825900872426546186
 MonoBehaviour:
@@ -406,7 +406,7 @@ MonoBehaviour:
   dashState: 0
   stopAtPlayer: 0
   dontAttackWhileDashing: 0
-  dashPower: 3
+  dashPower: 8
   shake: 0
 --- !u!114 &854976870410323945
 MonoBehaviour:
@@ -424,7 +424,7 @@ MonoBehaviour:
   radius: 0.5
   height: 2
   canMove: 1
-  maxSpeed: 1
+  maxSpeed: 5
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -497,7 +497,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0000009536743, y: 0.021897912}
-  m_Size: {x: 1.2973061, y: 1.2973061}
+  m_Size: {x: 6.48653, y: 6.48653}
   m_Direction: 0
 --- !u!114 &5931898600212221614
 MonoBehaviour:
@@ -540,7 +540,7 @@ RectTransform:
   m_GameObject: {fileID: 5931898600262639640}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5931898599589274107}
@@ -549,7 +549,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.342}
+  m_AnchoredPosition: {x: 0, y: 1.772}
   m_SizeDelta: {x: 2, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5931898600262639652
@@ -715,7 +715,7 @@ Transform:
   m_GameObject: {fileID: 5931898601066152250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5931898599962226198}
@@ -858,7 +858,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1216099735130020926}
-  - component: {fileID: 291052835772033955}
+  - component: {fileID: 4369425711335694144}
   m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
@@ -881,8 +881,8 @@ Transform:
   m_Father: {fileID: 5931898599962226198}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &291052835772033955
-CapsuleCollider2D:
+--- !u!58 &4369425711335694144
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -890,10 +890,10 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 5979023958222343227}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: c5dcb90b3f703ab4baaf0e2440d9ce1a, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0000009536743, y: -0.0007505119}
-  m_Size: {x: 0.2934912, y: 0.63513404}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
