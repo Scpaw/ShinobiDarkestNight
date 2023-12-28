@@ -372,7 +372,7 @@ public class PlayerController : MonoBehaviour
  
         if (!Dialogue && !isHealing && cam.m_Lens.OrthographicSize <= startLensSize && cam.Follow == transform)
         {
-            cam.m_Lens.OrthographicSize += 2*Time.deltaTime;
+            cam.m_Lens.OrthographicSize += 8*Time.deltaTime;
         }
         
 
@@ -1358,7 +1358,7 @@ public class PlayerController : MonoBehaviour
                 currentClip = startHeal;
                 while (cam.m_Lens.OrthographicSize >= changeLensSize)
                 {
-                    cam.m_Lens.OrthographicSize -= Time.deltaTime;
+                    cam.m_Lens.OrthographicSize -= Time.deltaTime *4;
                     yield return new WaitForEndOfFrame();
                 }
             }
@@ -1366,7 +1366,7 @@ public class PlayerController : MonoBehaviour
             {
                 while (cam.m_Lens.OrthographicSize >= changeLensSize * 1.5f)
                 {
-                    cam.m_Lens.OrthographicSize -= Time.deltaTime;
+                    cam.m_Lens.OrthographicSize -= Time.deltaTime * 4;
                     yield return new WaitForEndOfFrame();
                 }
             }

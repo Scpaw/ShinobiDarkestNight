@@ -143,12 +143,22 @@ public class Projectile : MonoBehaviour
         {
             if (enemyTrigger.activeInHierarchy)
             {
-                float scaleAdjustment = enemyTrigger.gameObject.transform.Find("Grafika").transform.localScale.x;
+                float scaleAdjustment = enemyTrigger.transform.localScale.x;
                 Debug.Log(scaleAdjustment);
+                if (scaleAdjustment > 0)
+                {
+                    scaleAdjustment = 1;
+                }
+                else
+                {
+                    scaleAdjustment = -1;
+                }
                 GameObject hit = Instantiate(afterProjectile, enemyTrigger.transform.InverseTransformDirection(transform.position), transform.rotation, enemyTrigger.transform);
+                hit.transform.localPosition = new Vector3(hit.transform.localPosition.x * scaleAdjustment, hit.transform.localPosition.y, hit.transform.localPosition.z);
                 hit.GetComponent<ProjectileToCollect>().onEnemy = true;
                 hit.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
                 enemyTrigger.GetComponent<EnemyHealth>().AddProjectile(hit);
+
             }
             else
             {
