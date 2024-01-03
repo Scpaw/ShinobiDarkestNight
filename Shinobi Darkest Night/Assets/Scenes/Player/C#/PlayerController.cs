@@ -137,7 +137,9 @@ public class PlayerController : MonoBehaviour
     private float startAttackCooldown;
     public float pushForce;
     public List<GameObject> enemiesToHit;
+    [SerializeField] private List<MeeleAttack> attackList;
     private PlayerHealth hp;
+
 
     [Header("Projectile")]
     public int projectileNumber;
@@ -814,41 +816,26 @@ public class PlayerController : MonoBehaviour
                 stopShokyaku = false;
             }
             StopItaken();
-            if (attackCooldown <= 0 && stamina >= 5)
+
+
+
+
+            if (stamina >= 5)
             {
-                if (isDashing == true)
+                if (projectileNumber > 0)
                 {
-                    return;
-                }
-                Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, projectileSpawnPoint.GetComponent<CircleCollider2D>().radius);
-                if (hit == null || hit.Length == 0)
-                {
-                    return;
-                }
-                foreach (Collider2D enemy in hit)
-                {
-                    if (enemy.gameObject.layer == 6 && enemy.gameObject != null)
+                    if (isDashing == true)
                     {
-                        if (enemy.gameObject.GetComponent<EnemyHealth>())
-                        {
-                            enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(attackDamage, true, true);
-                        }
-                        if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static && enemy.gameObject.GetComponent<EnemyHealth>().canBeAttacked && enemy.gameObject.GetComponent<EnemyHealth>().canDoDmg)
-                        {
-                            enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                            enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
-                            StartCoroutine(enemy.gameObject.GetComponent<EnemyHealth>().Stuned(true));
-                        }
+                        return;
                     }
-                }
-                SaveMovement();
-                facingDirection = projectileSpawnPoint.position - transform.position;
-                attackCooldown = startAttackCooldown;
-                CurrentState = AttackAnim;
-                canMove = false;
-                if (yokan <=0)
-                {
-                    UseStamina(5);
+                    SaveMovement();
+                    facingDirection = projectileSpawnPoint.position - transform.position;
+                    canMove = false;
+                    CurrentState = ThrowAnim;
+                    if (yokan <= 0)
+                    {
+                        UseStamina(5);
+                    }
                 }
             }
         }
@@ -868,25 +855,49 @@ public class PlayerController : MonoBehaviour
     {
         if (inputValue.Get<float>() == 1)
         {
-            if (canAttack && !isHealing && !desumiru && !itaiken && !inventoryOpen & !shokyaku && !findDisplay.gameObject.activeInHierarchy)
+            if ( !isHealing && !desumiru && !itaiken && !inventoryOpen & !shokyaku && !findDisplay.gameObject.activeInHierarchy)
             {
-                if (stamina >= 5)
+                Attack();
+
+                if (attackCooldown <= 0 && stamina >= 5)
                 {
-                    if (projectileNumber > 0)
-                    {
-                        if (isDashing == true)
-                        {
-                            return;
-                        }
-                        SaveMovement();
-                        facingDirection = projectileSpawnPoint.position - transform.position;
-                        canMove = false;
-                        CurrentState = ThrowAnim;
-                        if (yokan <= 0)
-                        {
-                            UseStamina(5);
-                        }
-                    }
+                    // if (isDashing == true)
+                    // {
+                    //     return;
+                    // }
+                    // Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, projectileSpawnPoint.GetComponent<CircleCollider2D>().radius);
+                    // if (hit == null || hit.Length == 0)
+                    // {
+                    //     return;
+                    // }
+                    // foreach (Collider2D enemy in hit)
+                    // {
+                    //     if (enemy.gameObject.layer == 6 && enemy.gameObject != null)
+                    //     {
+                    //         if (enemy.gameObject.GetComponent<EnemyHealth>())
+                    //         {
+                    //             enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(attackDamage, true, true);
+                    //         }
+                    //         if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static && enemy.gameObject.GetComponent<EnemyHealth>().canBeAttacked && enemy.gameObject.GetComponent<EnemyHealth>().canDoDmg)
+                    //         {
+                    //             enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    //             enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
+                    //             StartCoroutine(enemy.gameObject.GetComponent<EnemyHealth>().Stuned(true));
+                    //         }
+                    //     }
+                    // }
+                    // SaveMovement();
+                    // facingDirection = projectileSpawnPoint.position - transform.position;
+                    // attackCooldown = startAttackCooldown;
+                    // CurrentState = AttackAnim;
+                    // canMove = false;
+                    // if (yokan <= 0)
+                    // {
+                    //     UseStamina(5);
+                    // }
+
+                   
+
                 }
             }
             else if (desumiru && !inventoryOpen)
@@ -1256,6 +1267,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Attack()
+    {
+        int comboNum = -1;
+        foreach (MeeleAttack attack in attackList)
+        {
+            if (myAnim.GetCurrentAnimatorClipInfo(0)[0].clip == attack.animation)
+            {
+                comboNum = attackList.IndexOf(attack);
+            }
+        }
+
+        if (comboNum > -1 && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f && comboNum +1 < attackList.Count)
+        {
+            myAnim.Play(attackList[comboNum + 1].animation.name);
+            currentClip = attackList[comboNum + 1].animation;
+
+            Debug.Log(attackList[comboNum + 1].animation.name);
+            Debug.Log(myAnim.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+        }
+        else if(canAttack && comboNum <0 || (comboNum +1 >= attackList.Count && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f))
+        {
+            currentClip = attackList[0].animation;
+            myAnim.Play(currentClip.name);
+            Debug.Log(comboNum);
+        }
+    }
 
 
     //things to find
@@ -1488,4 +1525,10 @@ public class PlayerController : MonoBehaviour
     { 
         return myAnim.transform.GetChild(0).gameObject;
     }
+
+
+
+    
+
+    
 }

@@ -144,7 +144,6 @@ public class Projectile : MonoBehaviour
             if (enemyTrigger.activeInHierarchy)
             {
                 float scaleAdjustment = enemyTrigger.transform.localScale.x;
-                Debug.Log(scaleAdjustment);
                 if (scaleAdjustment > 0)
                 {
                     scaleAdjustment = 1;
