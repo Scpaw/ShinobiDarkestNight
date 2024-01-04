@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class MeeleAttack
 {
-    public AnimationClip animation;
+    public CharacterState animation;
     public float dmg;
     public int shurikenDrop;
     public float range;

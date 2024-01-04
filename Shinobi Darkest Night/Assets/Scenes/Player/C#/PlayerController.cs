@@ -139,6 +139,8 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> enemiesToHit;
     [SerializeField] private List<MeeleAttack> attackList;
     private PlayerHealth hp;
+    private bool combo;
+    private Coroutine comboStop;
 
 
     [Header("Projectile")]
@@ -310,7 +312,10 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    CurrentState = IdleAnim;
+                    if (!combo)
+                    {
+                        CurrentState = IdleAnim;
+                    }
                 }
             }
             else if (!isDashing && !shokyaku && isSpeedingUp && !itaiken)
@@ -1270,9 +1275,10 @@ public class PlayerController : MonoBehaviour
     private void Attack()
     {
         int comboNum = -1;
+        MeeleAttack animToPlay = null;
         foreach (MeeleAttack attack in attackList)
         {
-            if (myAnim.GetCurrentAnimatorClipInfo(0)[0].clip == attack.animation)
+            if (currentState == attack.animation)
             {
                 comboNum = attackList.IndexOf(attack);
             }
@@ -1280,17 +1286,51 @@ public class PlayerController : MonoBehaviour
 
         if (comboNum > -1 && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f && comboNum +1 < attackList.Count)
         {
-            myAnim.Play(attackList[comboNum + 1].animation.name);
-            currentClip = attackList[comboNum + 1].animation;
-
-            Debug.Log(attackList[comboNum + 1].animation.name);
-            Debug.Log(myAnim.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+            animToPlay = attackList[comboNum + 1];
         }
         else if(canAttack && comboNum <0 || (comboNum +1 >= attackList.Count && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f))
         {
-            currentClip = attackList[0].animation;
-            myAnim.Play(currentClip.name);
-            Debug.Log(comboNum);
+            animToPlay = attackList[0];
+          
+        }
+
+        if (animToPlay != null)
+        {
+            SaveMovement();
+            facingDirection = projectileSpawnPoint.position - transform.position;
+            canMove = false; // change to AnimationState.CanExitWhilePlaying !!!!!!!!!!
+            CurrentState = animToPlay.animation;
+            ChangeClip();
+            combo = true;
+            if (comboStop != null)
+            {
+                StopCoroutine(comboStop);
+            }
+            comboStop = StartCoroutine(StopCombo(myAnim.GetCurrentAnimatorStateInfo(0).length));
+
+            //Debug.DrawLine(transform.position, transform.position + new Vector3(0, animToPlay.range, 0),Color.red,2);
+
+            Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, animToPlay.range);
+            if (hit == null || hit.Length == 0)
+            {
+                return;
+            }
+            foreach (Collider2D enemy in hit)
+            {
+                if (enemy.gameObject.layer == 6 && enemy.gameObject != null)
+                {
+                    if (enemy.gameObject.GetComponent<EnemyHealth>())
+                    {
+                        enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(animToPlay.dmg, true, true);
+                    }
+                    if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static && enemy.gameObject.GetComponent<EnemyHealth>().canBeAttacked && enemy.gameObject.GetComponent<EnemyHealth>().canDoDmg)
+                    {
+                        enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                        enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
+                        StartCoroutine(enemy.gameObject.GetComponent<EnemyHealth>().Stuned(true));
+                    }
+                }
+            }
         }
     }
 
@@ -1301,6 +1341,13 @@ public class PlayerController : MonoBehaviour
         thingsToFind.Add(thatToAdd);
         StartCoroutine(DisplayText(thatToAdd.dialogue,thatToAdd));
         CurrentState = IdleAnim;
+        canMove = true;
+    }
+
+    private IEnumerator StopCombo(float timeToStop)
+    { 
+        yield return new WaitForSeconds(timeToStop);
+        combo = false;
         canMove = true;
     }
 
