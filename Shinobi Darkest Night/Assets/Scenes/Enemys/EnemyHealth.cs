@@ -98,19 +98,34 @@ public class EnemyHealth : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void ProjectilesOff(float projectileAddForce)
+    public void ProjectilesOff(float projectileAddForce,int projectilesToRemove = 9999)
     {
-        foreach (GameObject projectile in projectiles)
+        if (projectilesToRemove == 9999)
         {
-            projectile.transform.parent = null;
-            projectile.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            projectile.GetComponent<Rigidbody2D>().AddForce((projectile.transform.position - transform.position) * (4 + projectileAddForce), ForceMode2D.Impulse);
+            projectilesToRemove = projectiles.Count;
         }
-        if (projectiles.Count > 0)
+
+        while (projectilesToRemove > 0 && projectiles.Count > 0) 
         {
-            projectiles.Clear();
+            projectiles[projectilesToRemove - 1].transform.parent = null;
+            projectiles[projectilesToRemove - 1].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            projectiles[projectilesToRemove - 1].GetComponent<Rigidbody2D>().AddForce((projectiles[projectilesToRemove - 1].transform.position - transform.position) * (4 + projectileAddForce), ForceMode2D.Impulse);
+            projectiles.Remove(projectiles[projectilesToRemove - 1]);
+            projectilesToRemove--;
         }
+
+        //foreach (GameObject projectile in projectiles)
+        //{
+        //    projectile.transform.parent = null;
+        //    projectile.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        //    projectile.GetComponent<Rigidbody2D>().AddForce((projectile.transform.position - transform.position) * (4 + projectileAddForce), ForceMode2D.Impulse);
+        //}
+        //if (projectiles.Count > 0)
+        //{
+        //    projectiles.Clear();
+        //}
     }
+
 
     public IEnumerator Stuned(bool meeleAttack)
     {

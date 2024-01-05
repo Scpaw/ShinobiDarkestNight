@@ -304,7 +304,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (currentState.CanExitWhilePlaying || timeToEndAnimation <= 0)
         {
-            if (!isDashing && !shokyakuAttack && !isSpeedingUp && !itaiken && !dialogue &&!desumiru)
+            if (!isDashing && !shokyakuAttack && !isSpeedingUp && !itaiken && !dialogue &&!desumiru && !combo)
             {
                 if (movementInput != Vector2.zero)
                 {
@@ -312,10 +312,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    if (!combo)
-                    {
-                        CurrentState = IdleAnim;
-                    }
+                    CurrentState = IdleAnim;
                 }
             }
             else if (!isDashing && !shokyaku && isSpeedingUp && !itaiken)
@@ -1321,7 +1318,8 @@ public class PlayerController : MonoBehaviour
                 {
                     if (enemy.gameObject.GetComponent<EnemyHealth>())
                     {
-                        enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(animToPlay.dmg, true, true);
+                        enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(animToPlay.dmg, false, true);
+                        enemy.gameObject.GetComponent<EnemyHealth>().ProjectilesOff(0, animToPlay.shurikenDrop);
                     }
                     if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static && enemy.gameObject.GetComponent<EnemyHealth>().canBeAttacked && enemy.gameObject.GetComponent<EnemyHealth>().canDoDmg)
                     {

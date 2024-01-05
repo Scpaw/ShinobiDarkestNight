@@ -436,6 +436,18 @@ PrefabInstance:
       propertyPath: attackList.Array.data[2].animation
       value: 
       objectReference: {fileID: 11400000, guid: 5302b0b5171f02841890fae4994443ce, type: 2}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: attackList.Array.data[0].shurikenDrop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: attackList.Array.data[1].shurikenDrop
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: attackList.Array.data[2].shurikenDrop
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7974791837243099124, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: m_Size.x
       value: 1.2900021
@@ -861,6 +873,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 197584941912202622}
     m_Modifications:
+    - target: {fileID: 814973070253928028, guid: 063c54696ba70834598a2e856667bc4d, type: 3}
+      propertyPath: enemyMaxHealth
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 2223393438648209435, guid: 063c54696ba70834598a2e856667bc4d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
