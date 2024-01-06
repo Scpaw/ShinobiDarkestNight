@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -141,7 +142,9 @@ public class PlayerController : MonoBehaviour
     private PlayerHealth hp;
     private bool combo;
     private Coroutine comboStop;
-
+    private float attackInput;
+    private bool attackPressed;
+    [SerializeField] private float timeToFanAttack;
 
     [Header("Projectile")]
     public int projectileNumber;
@@ -599,6 +602,20 @@ public class PlayerController : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
+
+        //attack
+        if (attackPressed && currentState != AttackAnim)
+        {
+            attackInput += Time.deltaTime;
+            if (attackInput % timeToFanAttack < Time.deltaTime )
+            {
+                FanAttack();
+            }
+        }
+        else if (!attackPressed && attackInput > 0)
+        {
+            attackInput = 0;
+        }
     }
 
 
@@ -858,49 +875,8 @@ public class PlayerController : MonoBehaviour
         if (inputValue.Get<float>() == 1)
         {
             if ( !isHealing && !desumiru && !itaiken && !inventoryOpen & !shokyaku && !findDisplay.gameObject.activeInHierarchy)
-            {
-                Attack();
-
-                if (attackCooldown <= 0 && stamina >= 5)
-                {
-                    // if (isDashing == true)
-                    // {
-                    //     return;
-                    // }
-                    // Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, projectileSpawnPoint.GetComponent<CircleCollider2D>().radius);
-                    // if (hit == null || hit.Length == 0)
-                    // {
-                    //     return;
-                    // }
-                    // foreach (Collider2D enemy in hit)
-                    // {
-                    //     if (enemy.gameObject.layer == 6 && enemy.gameObject != null)
-                    //     {
-                    //         if (enemy.gameObject.GetComponent<EnemyHealth>())
-                    //         {
-                    //             enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(attackDamage, true, true);
-                    //         }
-                    //         if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static && enemy.gameObject.GetComponent<EnemyHealth>().canBeAttacked && enemy.gameObject.GetComponent<EnemyHealth>().canDoDmg)
-                    //         {
-                    //             enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                    //             enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
-                    //             StartCoroutine(enemy.gameObject.GetComponent<EnemyHealth>().Stuned(true));
-                    //         }
-                    //     }
-                    // }
-                    // SaveMovement();
-                    // facingDirection = projectileSpawnPoint.position - transform.position;
-                    // attackCooldown = startAttackCooldown;
-                    // CurrentState = AttackAnim;
-                    // canMove = false;
-                    // if (yokan <= 0)
-                    // {
-                    //     UseStamina(5);
-                    // }
-
-                   
-
-                }
+            {            
+                attackPressed = true;               
             }
             else if (desumiru && !inventoryOpen)
             {
@@ -939,6 +915,17 @@ public class PlayerController : MonoBehaviour
         }
         else if (inputValue.Get<float>() == 0)
         {
+
+            if (!isHealing && !desumiru && !itaiken && !inventoryOpen & !shokyaku && !findDisplay.gameObject.activeInHierarchy)
+            {
+                if (attackInput < timeToFanAttack)
+                {
+                    Attack();
+                }
+
+            }
+
+            attackPressed = false;
             desumiruPressed = false;
             if (desumiru)
             {
@@ -1266,6 +1253,47 @@ public class PlayerController : MonoBehaviour
         if (!dialogue && (transform.position - point).magnitude < 10f)
         {
             StartCoroutine(MoveNow(point));
+        }
+    }
+
+    private void FanAttack()
+    {
+        if (attackCooldown <= 0 && stamina >= 5)
+        {
+           if (isDashing == true)
+           {
+               return;
+           }
+           Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, projectileSpawnPoint.GetComponent<CircleCollider2D>().radius);
+           if (hit == null || hit.Length == 0)
+           {
+               return;
+           }
+           foreach (Collider2D enemy in hit)
+           {
+               if (enemy.gameObject.layer == 6 && enemy.gameObject != null)
+               {
+                   if (enemy.gameObject.GetComponent<EnemyHealth>())
+                   {
+                       enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(attackDamage, true, true);
+                   }
+                   if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static && enemy.gameObject.GetComponent<EnemyHealth>().canBeAttacked && enemy.gameObject.GetComponent<EnemyHealth>().canDoDmg)
+                   {
+                       enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                       enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
+                       StartCoroutine(enemy.gameObject.GetComponent<EnemyHealth>().Stuned(true));
+                   }
+               }
+           }
+           SaveMovement();
+           facingDirection = projectileSpawnPoint.position - transform.position;
+           attackCooldown = startAttackCooldown;
+           CurrentState = AttackAnim;
+           canMove = false;
+           if (yokan <= 0)
+           {
+               UseStamina(5);
+           }
         }
     }
 

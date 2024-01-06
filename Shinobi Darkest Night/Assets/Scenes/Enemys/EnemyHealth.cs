@@ -107,12 +107,16 @@ public class EnemyHealth : MonoBehaviour
 
         while (projectilesToRemove > 0 && projectiles.Count > 0) 
         {
-            projectiles[projectilesToRemove - 1].transform.parent = null;
-            projectiles[projectilesToRemove - 1].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            projectiles[projectilesToRemove - 1].GetComponent<Rigidbody2D>().AddForce((projectiles[projectilesToRemove - 1].transform.position - transform.position) * (4 + projectileAddForce), ForceMode2D.Impulse);
-            projectiles.Remove(projectiles[projectilesToRemove - 1]);
-            projectilesToRemove--;
+            if (projectiles.Count >= projectilesToRemove)
+            {
+                projectiles[projectilesToRemove - 1].transform.parent = null;
+                projectiles[projectilesToRemove - 1].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                projectiles[projectilesToRemove - 1].GetComponent<Rigidbody2D>().AddForce((projectiles[projectilesToRemove - 1].transform.position - transform.position) * (4 + projectileAddForce), ForceMode2D.Impulse);
+                projectiles.Remove(projectiles[projectilesToRemove - 1]);
+            }
+            projectilesToRemove--;        
         }
+
 
         //foreach (GameObject projectile in projectiles)
         //{

@@ -393,6 +393,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: timeToFanAttack
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: attackList.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -442,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: attackList.Array.data[1].shurikenDrop
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: attackList.Array.data[2].shurikenDrop

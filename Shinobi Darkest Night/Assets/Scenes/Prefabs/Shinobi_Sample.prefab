@@ -4648,7 +4648,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.17396939, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 1.8
 --- !u!1 &7544653538218679359
 GameObject:
   m_ObjectHideFlags: 0
@@ -5998,6 +5998,8 @@ MonoBehaviour:
   attackCooldown: 0.2
   pushForce: 3
   enemiesToHit: []
+  attackList: []
+  timeToFanAttack: 0
   projectileNumber: 20
   projectileText: {fileID: 8089664824007793151}
   staminaSlider: {fileID: 4114468013053367868}
@@ -6225,7 +6227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9043742366386256295}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -29.5, y: -21, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 10.697475, y: 10.697475, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
