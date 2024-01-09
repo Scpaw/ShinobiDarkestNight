@@ -23,7 +23,7 @@ public class Itaiken : MonoBehaviour
             {
                 collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position) * pushForce, ForceMode2D.Impulse);
-                StartCoroutine(collision.gameObject.GetComponent<EnemyHealth>().Stuned(false));
+                collision.gameObject.GetComponent<EnemyHealth>().Stun();
             }
         }
 

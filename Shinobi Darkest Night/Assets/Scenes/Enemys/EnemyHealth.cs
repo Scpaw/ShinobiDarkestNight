@@ -22,6 +22,7 @@ public class EnemyHealth : MonoBehaviour
     public bool deflectAtRandom;
     public Vector3 startPos = Vector3.zero;
     [SerializeField] bool useParticles;
+    private Coroutine stunCorutine;
 
     public void Awake()
     {
@@ -116,45 +117,44 @@ public class EnemyHealth : MonoBehaviour
             }
             projectilesToRemove--;        
         }
+    }
 
+    public void Stun()
+    {
+        if (canBeAttacked && canDoDmg && gameObject.activeInHierarchy)
+        {
+            if (stunCorutine != null)
+            {
+                StopCoroutine(stunCorutine);
+            }
 
-        //foreach (GameObject projectile in projectiles)
-        //{
-        //    projectile.transform.parent = null;
-        //    projectile.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-        //    projectile.GetComponent<Rigidbody2D>().AddForce((projectile.transform.position - transform.position) * (4 + projectileAddForce), ForceMode2D.Impulse);
-        //}
-        //if (projectiles.Count > 0)
-        //{
-        //    projectiles.Clear();
-        //}
+            stunCorutine = StartCoroutine(Stuned());
+        }
     }
 
 
-    public IEnumerator Stuned(bool meeleAttack)
+    public IEnumerator Stuned()
     {
-        if ((canBeAttacked || !meeleAttack) && canDoDmg)
+        isStuned = true;
+        stundTime = 0.75f;
+        while (stundTime > 0)
         {
-            isStuned = true;
-            stundTime = 0.75f;
-            while (stundTime > 0)
-            {
-                stundTime -= Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
-            isStuned = false;
-            if (meeleAttack)
-            {
-                canBeAttacked = false;
-                canBeAttackedTimer = 10f;
-                while (canBeAttackedTimer >0)
-                { 
-                    canBeAttackedTimer -= Time.deltaTime;
-                    yield return new WaitForEndOfFrame();
-                }
-                canBeAttacked = true;
-            }
+            stundTime -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
         }
+        isStuned = false;
+       //if (meeleAttack)
+       //{
+       //    canBeAttacked = false;
+       //    canBeAttackedTimer = 10f;
+       //    while (canBeAttackedTimer > 0)
+       //    {
+       //        canBeAttackedTimer -= Time.deltaTime;
+       //        yield return new WaitForEndOfFrame();
+       //    }
+       //    canBeAttacked = true;
+       //}
+
     }
 
     private void OnDisable()

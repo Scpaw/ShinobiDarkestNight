@@ -145,6 +145,7 @@ public class PlayerController : MonoBehaviour
     private float attackInput;
     private bool attackPressed;
     [SerializeField] private float timeToFanAttack;
+    [SerializeField] private float DmgFromShuriken;
 
     [Header("Projectile")]
     public int projectileNumber;
@@ -434,7 +435,7 @@ public class PlayerController : MonoBehaviour
                     enemy.GetComponent<EnemyHealth>().enemyAddDamage(40 * Time.deltaTime, false, false);
                     if (!enemy.GetComponent<EnemyHealth>().isStuned)
                     {
-                        StartCoroutine(enemy.GetComponent<EnemyHealth>().Stuned(false));
+                        enemy.GetComponent<EnemyHealth>().Stun();
                     }
                 }
             }
@@ -912,6 +913,22 @@ public class PlayerController : MonoBehaviour
             {
                 skipPress = true;
             }
+            else if(hp.playerCourrentHealth < hp.playerMaxHealth && canHeal && canAttack)
+            {
+                if (currentClip != loopHeal)
+                {
+                    myAnim.Play(loopHeal.name);
+                    currentClip = loopHeal;
+                }
+                if (sakuramochi > 0)
+                {
+                    hp.AddHealth(20);
+                }
+                else
+                {
+                    hp.AddHealth(10);
+                }
+            }
         }
         else if (inputValue.Get<float>() == 0)
         {
@@ -960,26 +977,6 @@ public class PlayerController : MonoBehaviour
                     isHealing = true;
                     StartHealing();
                     canMove = false;
-                }
-                else
-                {
-                    if (canHeal)
-                    {
-                        if (currentClip != loopHeal)
-                        {
-                            myAnim.Play(loopHeal.name);
-                            currentClip = loopHeal;
-                        }
-                        if (sakuramochi > 0)
-                        {
-                            hp.AddHealth(20);
-                        }
-                        else
-                        {
-                            hp.AddHealth(10);
-                        }
-
-                    }
                 }
             }
         }
@@ -1264,7 +1261,7 @@ public class PlayerController : MonoBehaviour
            {
                return;
            }
-           Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, projectileSpawnPoint.GetComponent<CircleCollider2D>().radius);
+           Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, projectileSpawnPoint.GetComponent<CircleCollider2D>().radius * projectileSpawnPoint.parent.localScale.x);
            if (hit == null || hit.Length == 0)
            {
                return;
@@ -1275,13 +1272,14 @@ public class PlayerController : MonoBehaviour
                {
                    if (enemy.gameObject.GetComponent<EnemyHealth>())
                    {
-                       enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(attackDamage, true, true);
+                        float shurikenDmg = enemy.gameObject.GetComponent<EnemyHealth>().projectiles.Count * DmgFromShuriken;
+                       enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(attackDamage + shurikenDmg, true, true);
                    }
                    if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static && enemy.gameObject.GetComponent<EnemyHealth>().canBeAttacked && enemy.gameObject.GetComponent<EnemyHealth>().canDoDmg)
                    {
                        enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                        enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
-                       StartCoroutine(enemy.gameObject.GetComponent<EnemyHealth>().Stuned(true));
+                       enemy.gameObject.GetComponent<EnemyHealth>().Stun();
                    }
                }
            }
@@ -1349,12 +1347,12 @@ public class PlayerController : MonoBehaviour
                         enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(animToPlay.dmg, false, true);
                         enemy.gameObject.GetComponent<EnemyHealth>().ProjectilesOff(0, animToPlay.shurikenDrop);
                     }
-                    if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static && enemy.gameObject.GetComponent<EnemyHealth>().canBeAttacked && enemy.gameObject.GetComponent<EnemyHealth>().canDoDmg)
-                    {
-                        enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                        enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
-                        StartCoroutine(enemy.gameObject.GetComponent<EnemyHealth>().Stuned(true));
-                    }
+                    //if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static && enemy.gameObject.GetComponent<EnemyHealth>().canBeAttacked && enemy.gameObject.GetComponent<EnemyHealth>().canDoDmg)
+                    //{
+                    //    enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    //    enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
+                    //    StartCoroutine(enemy.gameObject.GetComponent<EnemyHealth>().Stuned());
+                    //}
                 }
             }
         }
