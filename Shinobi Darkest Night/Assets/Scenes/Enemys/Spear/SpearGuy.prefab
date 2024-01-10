@@ -475,7 +475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66d947198238834ebd5d0a16d8d7f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectRadius: 5
   attackRadius: 2
   dmg: 5
   playerLayer:
@@ -508,6 +507,9 @@ MonoBehaviour:
   deflectAtRandom: 0
   startPos: {x: 0, y: 0, z: 0}
   useParticles: 1
+  hpPoint: {fileID: 601466799086799779, guid: 4f934e26b9e9d3f40aa7b41f434e2cca, type: 3}
+  minHpDrop: 0
+  maxHpDrop: 4
 --- !u!50 &8278420767519533005
 Rigidbody2D:
   serializedVersion: 4

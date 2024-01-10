@@ -458,6 +458,9 @@ MonoBehaviour:
   deflectAtRandom: 0
   startPos: {x: 11.874953, y: 4.5400496, z: -0.130236}
   useParticles: 1
+  hpPoint: {fileID: 601466799086799779, guid: 4f934e26b9e9d3f40aa7b41f434e2cca, type: 3}
+  minHpDrop: 0
+  maxHpDrop: 4
 --- !u!114 &6005576387323380243
 MonoBehaviour:
   m_ObjectHideFlags: 0

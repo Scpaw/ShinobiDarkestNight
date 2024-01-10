@@ -23,6 +23,11 @@ public class PlayerHealth : MonoBehaviour
     public void AddHealth(float Health)
     {
         playerCourrentHealth += Health;
+        if (playerCourrentHealth > playerMaxHealth)
+        {
+            playerCourrentHealth = playerMaxHealth;
+        }
+        healthText.text = ((int)playerCourrentHealth).ToString();
         if (playerCourrentHealth > playerMaxHealth) 
         { 
             playerCourrentHealth = playerMaxHealth;
@@ -31,7 +36,6 @@ public class PlayerHealth : MonoBehaviour
             {
                 GetComponent<PlayerController>().StopHealing();
             }
-
         }
         playerHealthSlider.fillAmount = playerCourrentHealth / playerMaxHealth;
         AkSoundEngine.PostEvent("Player_Healing_Drinking", gameObject);

@@ -23,6 +23,11 @@ public class EnemyHealth : MonoBehaviour
     public Vector3 startPos = Vector3.zero;
     [SerializeField] bool useParticles;
     private Coroutine stunCorutine;
+    
+    //hp drop
+    [SerializeField] GameObject hpPoint;
+    [SerializeField] int minHpDrop;
+    [SerializeField] int maxHpDrop;
 
     public void Awake()
     {
@@ -92,10 +97,22 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    private void DropHp()
+    {
+        int drop = Random.Range(minHpDrop, maxHpDrop + 1);
+        while (drop > 0)
+        {
+            Instantiate(hpPoint, transform.position, Quaternion.Euler(Vector3.zero), null);
+            Debug.Log("drop");
+            drop--;
+        }
+    }
+
     private void MakeDead()
     {
         StopAllCoroutines();
         ProjectilesOff(0);
+        DropHp();
         gameObject.SetActive(false);
     }
 
@@ -143,18 +160,6 @@ public class EnemyHealth : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         isStuned = false;
-       //if (meeleAttack)
-       //{
-       //    canBeAttacked = false;
-       //    canBeAttackedTimer = 10f;
-       //    while (canBeAttackedTimer > 0)
-       //    {
-       //        canBeAttackedTimer -= Time.deltaTime;
-       //        yield return new WaitForEndOfFrame();
-       //    }
-       //    canBeAttacked = true;
-       //}
-
     }
 
     private void OnDisable()
