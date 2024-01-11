@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public CharacterState ItaikenRunAnim { get; private set; }
     [field: SerializeField] public CharacterState ItaikenIdleAnim { get; private set; }
     [field: SerializeField] public CharacterState ItaikenAttackAnim { get; private set; }
+    [field: SerializeField] public CharacterState Katana_Combo1Anim { get; private set; }
+    [field: SerializeField] public CharacterState Katana_Combo2Anim { get; private set; }
+    [field: SerializeField] public CharacterState Katana_Combo3Anim { get; private set; }
     [field: SerializeField] public CharacterAnimationStateDictionary StateAnimations { get; private set; }
     [field: SerializeField] public float RunVelocityTreshchold { get; private set; } = 0.1f;
 
@@ -1307,11 +1310,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (comboNum > -1 && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f && comboNum +1 < attackList.Count)
+        if (comboNum > -1 && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && comboNum +1 < attackList.Count)
         {
             animToPlay = attackList[comboNum + 1];
         }
-        else if(canAttack && comboNum <0 || (comboNum +1 >= attackList.Count && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f))
+        else if(canAttack && comboNum <0 || (comboNum +1 >= attackList.Count && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f))
         {
             animToPlay = attackList[0];
           

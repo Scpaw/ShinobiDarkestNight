@@ -437,17 +437,29 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <Katana_Combo1Anim>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1be6bee17d6f8c6408d7134eb7941b8e, type: 2}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <Katana_Combo2Anim>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: d8b7aba76ff56f54a9e194173e9276ad, type: 2}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <Katana_Combo3Anim>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 6297f90e4f764ff47b7e0e38abb80adf, type: 2}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: attackList.Array.data[0].animation
       value: 
-      objectReference: {fileID: 11400000, guid: dd3b242b0c1422d448b348baca9a1166, type: 2}
+      objectReference: {fileID: 11400000, guid: 1be6bee17d6f8c6408d7134eb7941b8e, type: 2}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: attackList.Array.data[1].animation
       value: 
-      objectReference: {fileID: 11400000, guid: 75886f69195bd034f8bf5ce881a363fc, type: 2}
+      objectReference: {fileID: 11400000, guid: d8b7aba76ff56f54a9e194173e9276ad, type: 2}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: attackList.Array.data[2].animation
       value: 
-      objectReference: {fileID: 11400000, guid: 5302b0b5171f02841890fae4994443ce, type: 2}
+      objectReference: {fileID: 11400000, guid: 6297f90e4f764ff47b7e0e38abb80adf, type: 2}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: attackList.Array.data[0].shurikenDrop
       value: 1
@@ -460,6 +472,38 @@ PrefabInstance:
       propertyPath: attackList.Array.data[2].shurikenDrop
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_keys.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_values.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_keys.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1be6bee17d6f8c6408d7134eb7941b8e, type: 2}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_keys.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: d8b7aba76ff56f54a9e194173e9276ad, type: 2}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_keys.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6297f90e4f764ff47b7e0e38abb80adf, type: 2}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d1a1f3776b93db4cbbacdb2533cc49b, type: 2}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4bb8d2871df04c34bbc07ca4149efddd, type: 2}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: <StateAnimations>k__BackingField.m_values.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9934013d1af0e3043afde2f067ce7b4b, type: 2}
     - target: {fileID: 3159431962638118585, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: m_Radius
       value: 0.7
