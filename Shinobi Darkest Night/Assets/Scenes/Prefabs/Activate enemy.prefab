@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3178503731087391520}
   - component: {fileID: 3178503731087391521}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3178503731111468746}
   - component: {fileID: 3178503731111468747}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -227,9 +227,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3178503731163556437}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.405, y: 1.31, z: 0.013564712}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -3.19, y: 1.31, z: 0.013564712}
+  m_LocalScale: {x: 9, y: 9, z: 6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3178503731155812829}
   - {fileID: 3178503732159010934}
@@ -262,6 +262,10 @@ MonoBehaviour:
   deflectAtRandom: 0
   startPos: {x: 0, y: 0, z: 0}
   useParticles: 0
+  canAttackAgain: 0
+  hpPoint: {fileID: 0}
+  minHpDrop: 0
+  maxHpDrop: 0
 --- !u!61 &3178503731163556435
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -319,7 +323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3178503731442512690}
   - component: {fileID: 3178503731442512691}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -377,7 +381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3178503732159010934}
   - component: {fileID: 3178503732159010935}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -536,9 +540,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3178503732239337731}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.655, y: 1.31, z: 0.013564712}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -1.596, y: 1.31, z: 0.013564712}
+  m_LocalScale: {x: 9, y: 9, z: 6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3178503732231611019}
   - {fileID: 3178503731087391520}
@@ -571,6 +575,10 @@ MonoBehaviour:
   deflectAtRandom: 0
   startPos: {x: 0, y: 0, z: 0}
   useParticles: 0
+  canAttackAgain: 0
+  hpPoint: {fileID: 0}
+  minHpDrop: 0
+  maxHpDrop: 0
 --- !u!61 &3178503732239337733
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -729,9 +737,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3178503732282371305}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.93, y: 1.31, z: 0.013564712}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 1.31, z: 0.013564712}
+  m_LocalScale: {x: 9, y: 9, z: 6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3178503732257851233}
   - {fileID: 3178503731111468746}
@@ -764,6 +772,10 @@ MonoBehaviour:
   deflectAtRandom: 0
   startPos: {x: 0, y: 0, z: 0}
   useParticles: 0
+  canAttackAgain: 0
+  hpPoint: {fileID: 0}
+  minHpDrop: 0
+  maxHpDrop: 0
 --- !u!61 &3178503732282371311
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -838,9 +850,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3178503732420985105}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.147, y: 1.31, z: 0.013564712}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 1.625, y: 1.31, z: 0.013564712}
+  m_LocalScale: {x: 9, y: 9, z: 6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3178503732446816921}
   - {fileID: 3178503731442512690}
@@ -873,6 +885,10 @@ MonoBehaviour:
   deflectAtRandom: 0
   startPos: {x: 0, y: 0, z: 0}
   useParticles: 0
+  canAttackAgain: 0
+  hpPoint: {fileID: 0}
+  minHpDrop: 0
+  maxHpDrop: 0
 --- !u!61 &3178503732420985111
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1030,7 +1046,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7377083883701792015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -43.400677, y: -19.527544, z: -0.013564712}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1052,8 +1068,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.12, y: 1, z: 1}
-  m_Center: {x: -3.56, y: 2.02, z: 0}
+  m_Size: {x: 6.659026, y: 4.1525974, z: 1}
+  m_Center: {x: -0.7904868, y: 3.5962992, z: 0}
 --- !u!114 &7377083883701792001
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -44,7 +44,7 @@ public class EnemyDamage : MonoBehaviour
     void Update()
     {
         playerIn = damageR.playerInRange;
-        if (damageR.playerInRange && canAttack)
+        if (damageR.playerInRange && canAttack && GetComponent<EnemyHealth>().canAttackAgain <=0)
         {
             Attack();
             isAttacking = true;

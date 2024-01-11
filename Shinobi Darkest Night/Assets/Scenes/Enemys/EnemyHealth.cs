@@ -23,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
     public Vector3 startPos = Vector3.zero;
     [SerializeField] bool useParticles;
     private Coroutine stunCorutine;
+    public float canAttackAgain;
     
     //hp drop
     [SerializeField] GameObject hpPoint;
@@ -62,10 +63,19 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (canAttackAgain > 0)
+        {
+            canAttackAgain -= Time.deltaTime;
+        }
+    }
+
     public void enemyAddDamage(float Damage, bool dropProjectiles, bool useparticle)
     {
         if (canDoDmg)
         {
+            canAttackAgain = 0.4f;
             if (useparticle && useParticles)
             {
                 ParticleManager.instance.UseParticle("Blood", transform.position, transform.rotation.eulerAngles);

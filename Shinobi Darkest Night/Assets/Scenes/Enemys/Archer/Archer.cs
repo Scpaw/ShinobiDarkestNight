@@ -254,7 +254,7 @@ public class Archer : MonoBehaviour
     }
 
     private RaycastHit2D hit(Vector3 pos)
-    { 
+    {
         return Physics2D.CircleCast(pos, 0.2f, (player.position - pos).normalized, 30, layerToHit);
     }
     private Vector2 dir(Vector3 pos)
