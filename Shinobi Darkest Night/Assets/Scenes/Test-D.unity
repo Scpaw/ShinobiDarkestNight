@@ -867,7 +867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: fanStamina
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: speedStamina
@@ -875,7 +875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: attackStamina
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: desumiuRadius
@@ -887,7 +887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: itaikenStamina
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: DmgFromShuriken
@@ -895,15 +895,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: desumiruStamina
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: shokyakuStamina
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: shurikenStamina
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: timeToFanAttack
