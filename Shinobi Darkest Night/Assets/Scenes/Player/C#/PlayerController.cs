@@ -1335,7 +1335,7 @@ public class PlayerController : MonoBehaviour
             {
                 StopCoroutine(comboStop);
             }
-            comboStop = StartCoroutine(StopCombo(myAnim.GetCurrentAnimatorStateInfo(0).length));
+            comboStop = StartCoroutine(StopCombo());
 
             //Debug.DrawLine(transform.position, transform.position + new Vector3(0, animToPlay.range, 0),Color.red,2);
 
@@ -1374,11 +1374,14 @@ public class PlayerController : MonoBehaviour
         canMove = true;
     }
 
-    private IEnumerator StopCombo(float timeToStop)
-    { 
-        yield return new WaitForSeconds(timeToStop/2f);
+    private IEnumerator StopCombo()
+    {
+        SaveMovement();
+        yield return new WaitForEndOfFrame();
+        Debug.Log(myAnim.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+        yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length * 0.8f);
         canMove = true;
-        yield return new WaitForSeconds(0.12f);
+        yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length * 0.2f);
         combo = false;
         ChangeClip();
     }
