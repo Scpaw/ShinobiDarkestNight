@@ -3,7 +3,7 @@ using UnityEngine;
 public class NamahageProjectile : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float startForce = 1;
+    public float startForce;
     public float dmg;
 
     void Start()

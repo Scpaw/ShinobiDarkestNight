@@ -230,6 +230,15 @@ public class PlayerController : MonoBehaviour
     public Canvas findDisplay;
     private bool skipPress;
 
+    [Header("Stamina stats")]
+    [SerializeField] private float shurikenStamina;
+    [SerializeField] private float fanStamina;
+    [SerializeField] private float attackStamina;
+    [SerializeField] private float itaikenStamina;
+    [SerializeField] private float shokyakuStamina;
+    [SerializeField] private float desumiruStamina;
+    [SerializeField] private float speedStamina;
+
     private void Awake()
     {
         Instance = this;
@@ -311,7 +320,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (currentState.CanExitWhilePlaying || timeToEndAnimation <= 0)
         {
-            if (!isDashing && !shokyakuAttack && !isSpeedingUp && !itaiken && !dialogue &&!desumiru && !combo)
+            if (!isDashing && !shokyakuAttack && !isSpeedingUp && !itaiken && !dialogue && !desumiru && !combo)
             {
                 if (movementInput != Vector2.zero)
                 {
@@ -347,10 +356,7 @@ public class PlayerController : MonoBehaviour
             if (!(itaiken && !canMove))
             {
                 ChangeClip();
-            }
-       
-
-
+            }      
         }
 
         //attack cooldwon
@@ -392,7 +398,7 @@ public class PlayerController : MonoBehaviour
         //speed
         if (isSpeedingUp)
         { 
-            UseStamina(14* Time.deltaTime);
+            UseStamina(speedStamina* Time.deltaTime);
 
             if (stamina <= 0)
             {
@@ -442,7 +448,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-            UseStamina(10 * Time.deltaTime);
+            UseStamina(shokyakuStamina * Time.deltaTime);
             if (mizuame <= 0)
             {
                 hp.AddDamage(4 * Time.deltaTime);
@@ -625,6 +631,7 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeClip()
     {
+
         if (!isHealing)
         {
             if (Mathf.Abs(facingDirection.x) == Mathf.Abs(facingDirection.y) && facingDirection != Vector2.zero)
@@ -843,7 +850,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-            if (stamina >= 5)
+            if (stamina >= shurikenStamina)
             {
                 if (projectileNumber > 0)
                 {
@@ -857,7 +864,7 @@ public class PlayerController : MonoBehaviour
                     CurrentState = ThrowAnim;
                     if (yokan <= 0)
                     {
-                        UseStamina(5);
+                        UseStamina(shurikenStamina);
                     }
                 }
             }
@@ -938,9 +945,10 @@ public class PlayerController : MonoBehaviour
 
             if (!isHealing && !desumiru && !itaiken && !inventoryOpen & !shokyaku && !findDisplay.gameObject.activeInHierarchy)
             {
-                if (attackInput < timeToFanAttack)
+                if (attackInput < timeToFanAttack && stamina >= attackStamina)
                 {
                     Attack();
+                    UseStamina(attackStamina);
                 }
 
             }
@@ -1077,7 +1085,7 @@ public class PlayerController : MonoBehaviour
 
     public void SpawnItaiken(bool stopAfter)
     {
-        if (hp.playerCourrentHealth > 5)
+        if (stamina > itaikenStamina)
         {
             Instantiate(itaikenToSpawn, transform.position, Quaternion.Euler(projectileRotation.transform.eulerAngles.x, projectileRotation.transform.eulerAngles.y, projectileRotation.transform.eulerAngles.z - 90));
             canAttack = true;
@@ -1085,15 +1093,11 @@ public class PlayerController : MonoBehaviour
             ChangeClip();
             if (stopAfter)
             {
-                UseStamina(15);
-                hp.AddDamage(10);
                 StopItaken();
             }
-            else
-            {
-                //UseStamina(20);
-                hp.AddDamage(5);
-            }
+
+            UseStamina(itaikenStamina);
+
         }
         else
         {
@@ -1317,7 +1321,6 @@ public class PlayerController : MonoBehaviour
         else if(canAttack && comboNum <0 || (comboNum +1 >= attackList.Count && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f))
         {
             animToPlay = attackList[0];
-          
         }
 
         if (animToPlay != null)
@@ -1373,9 +1376,11 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator StopCombo(float timeToStop)
     { 
-        yield return new WaitForSeconds(timeToStop);
-        combo = false;
+        yield return new WaitForSeconds(timeToStop/2f);
         canMove = true;
+        yield return new WaitForSeconds(0.12f);
+        combo = false;
+        ChangeClip();
     }
 
     private IEnumerator DisplayText(string text, Find find)
@@ -1553,36 +1558,45 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DesumiruAttackUse(bool right)
     {
-        canAttack = false;
-        List<Vector2> vectors = new List<Vector2>();
-        float animSpeed = myAnim.GetCurrentAnimatorStateInfo(0).speed;
-        test = myAnim.GetCurrentAnimatorStateInfo(0).length * animSpeed;
-        float starAnimTime = myAnim.GetCurrentAnimatorStateInfo(0).length * animSpeed;
-        vectors.Add(Vector2.zero);
-        vectors.Add(Vector2.zero);
-        vectors[1] = point2;
-        while (test > 0)
+        if (stamina >= desumiruStamina)
         {
-            if (!myAnim.GetComponent<EdgeCollider2D>().enabled)
-            {
-                myAnim.GetComponent<EdgeCollider2D>().enabled = true;
-            }
-            if (right)
-            {
-                point2 = new Vector2(desumiuRadius * Mathf.Cos((((starAnimTime - test)/starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), desumiuRadius * Mathf.Sin((((starAnimTime - test) / starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
-            }
-            else
-            {
-                point2 = new Vector2(desumiuRadius * Mathf.Cos((( test/starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), desumiuRadius * Mathf.Sin(((test/starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
-            }
-            test -= Time.deltaTime * animSpeed * 1.6f;
+            UseStamina(desumiruStamina);
+            canAttack = false;
+            List<Vector2> vectors = new List<Vector2>();
+            float animSpeed = myAnim.GetCurrentAnimatorStateInfo(0).speed;
+            test = myAnim.GetCurrentAnimatorStateInfo(0).length * animSpeed;
+            float starAnimTime = myAnim.GetCurrentAnimatorStateInfo(0).length * animSpeed;
+            vectors.Add(Vector2.zero);
+            vectors.Add(Vector2.zero);
             vectors[1] = point2;
-            myAnim.GetComponent<EdgeCollider2D>().SetPoints(vectors);
-            yield return new WaitForEndOfFrame();
+            while (test > 0)
+            {
+                if (!myAnim.GetComponent<EdgeCollider2D>().enabled)
+                {
+                    myAnim.GetComponent<EdgeCollider2D>().enabled = true;
+                }
+                if (right)
+                {
+                    point2 = new Vector2(desumiuRadius * Mathf.Cos((((starAnimTime - test) / starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), desumiuRadius * Mathf.Sin((((starAnimTime - test) / starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
+                }
+                else
+                {
+                    point2 = new Vector2(desumiuRadius * Mathf.Cos(((test / starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), desumiuRadius * Mathf.Sin(((test / starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
+                }
+                test -= Time.deltaTime * animSpeed * 1.6f;
+                vectors[1] = point2;
+                myAnim.GetComponent<EdgeCollider2D>().SetPoints(vectors);
+                yield return new WaitForEndOfFrame();
+            }
+            myAnim.GetComponent<EdgeCollider2D>().enabled = false;
+            canAttack = true;
+            desumiruAttackCorutine = null;
         }
-        myAnim.GetComponent<EdgeCollider2D>().enabled = false;
-        canAttack = true;
-        desumiruAttackCorutine = null;
+        else
+        {
+            StopDesumiru();
+        }
+
     }
 
 

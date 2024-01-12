@@ -278,6 +278,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6005576387323380242, guid: 76c13839865229f4fa03b83e1f798596, type: 3}
+      propertyPath: startPos.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6005576387323380242, guid: 76c13839865229f4fa03b83e1f798596, type: 3}
+      propertyPath: startPos.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6005576387323380242, guid: 76c13839865229f4fa03b83e1f798596, type: 3}
+      propertyPath: startPos.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6005576387323380245, guid: 76c13839865229f4fa03b83e1f798596, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -854,6 +866,18 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: fanStamina
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: speedStamina
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: attackStamina
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: desumiuRadius
       value: 4
       objectReference: {fileID: 0}
@@ -862,8 +886,24 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: itaikenStamina
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: DmgFromShuriken
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: desumiruStamina
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: shokyakuStamina
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: shurikenStamina
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: timeToFanAttack
@@ -2114,6 +2154,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6005576386563601076, guid: 76c13839865229f4fa03b83e1f798596, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6005576387323380242, guid: 76c13839865229f4fa03b83e1f798596, type: 3}
+      propertyPath: startPos.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6005576387323380242, guid: 76c13839865229f4fa03b83e1f798596, type: 3}
+      propertyPath: startPos.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6005576387323380242, guid: 76c13839865229f4fa03b83e1f798596, type: 3}
+      propertyPath: startPos.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6005576387323380245, guid: 76c13839865229f4fa03b83e1f798596, type: 3}

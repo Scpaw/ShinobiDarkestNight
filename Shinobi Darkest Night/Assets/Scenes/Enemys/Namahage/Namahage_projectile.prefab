@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34341a9a520b94444a113fa7ce837df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startForce: 20
+  startForce: 15
   dmg: 0
 --- !u!1 &7773902209023889990
 GameObject:

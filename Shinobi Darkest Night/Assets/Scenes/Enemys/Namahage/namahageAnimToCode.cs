@@ -26,7 +26,6 @@ public class namahageAnimToCode : MonoBehaviour
 
         foreach (GameObject pro in projectile)
         {
-            pro.GetComponent<NamahageProjectile>().startForce = nam.power;
             pro.GetComponent<NamahageProjectile>().dmg = nam.projectileDmg;
         }
 
