@@ -858,6 +858,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: yokan
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: mizuame
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584859872609078429, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: dashSpeed
       value: 35
       objectReference: {fileID: 0}
@@ -1012,6 +1020,10 @@ PrefabInstance:
     - target: {fileID: 3159431962638118585, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: m_Radius
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425181482179341202, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7974791837243099124, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: m_Size.x

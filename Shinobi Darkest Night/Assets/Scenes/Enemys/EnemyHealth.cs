@@ -113,7 +113,6 @@ public class EnemyHealth : MonoBehaviour
         while (drop > 0)
         {
             Instantiate(hpPoint, transform.position, Quaternion.Euler(Vector3.zero), null);
-            Debug.Log("drop");
             drop--;
         }
     }

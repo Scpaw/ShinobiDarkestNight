@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
     Vector2 movementInput = Vector2.zero;
     Vector2 movementDirection;
     public ContactFilter2D movementFilter;
+    private Coroutine Mover;
 
     protected Rigidbody2D rb;
     protected ContactFilter2D contactFilter;
@@ -149,6 +150,7 @@ public class PlayerController : MonoBehaviour
     private bool attackPressed;
     [SerializeField] private float timeToFanAttack;
     [SerializeField] private float DmgFromShuriken;
+    private bool hitEnemy;
 
     [Header("Projectile")]
     public int projectileNumber;
@@ -626,6 +628,10 @@ public class PlayerController : MonoBehaviour
         {
             attackInput = 0;
         }
+
+
+        //tests
+        //Debug.Log(rb.velocity);
     }
 
 
@@ -672,10 +678,6 @@ public class PlayerController : MonoBehaviour
                 contactFilter.useLayerMask = true;
                 return;
             }
-
-
-
-
 
             //Prevent the player from blocking on collisions when moving
             if (movementInput != Vector2.zero)
@@ -814,7 +816,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (desumiru && desumiruPressed)
         {
-            movementInput = movementValue.Get<Vector2>()/4;
+            movementInput = movementValue.Get<Vector2>() / 4;
         }
     }
 
@@ -1304,6 +1306,7 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
+        hitEnemy = false;
         int comboNum = -1;
         MeeleAttack animToPlay = null;
         foreach (MeeleAttack attack in attackList)
@@ -1327,7 +1330,9 @@ public class PlayerController : MonoBehaviour
         {
             SaveMovement();
             facingDirection = projectileSpawnPoint.position - transform.position;
-            canMove = false; // change to AnimationState.CanExitWhilePlaying !!!!!!!!!!
+            AnimationClip clip = StateAnimations.GetFacingClipFromState(animToPlay.animation, facingDirection);
+            MoveByTime(facingDirection, 4.3f, clip.length * 0.65f);
+            canMove = false; 
             CurrentState = animToPlay.animation;
             ChangeClip();
             combo = true;
@@ -1335,33 +1340,18 @@ public class PlayerController : MonoBehaviour
             {
                 StopCoroutine(comboStop);
             }
-            comboStop = StartCoroutine(StopCombo());
-
-            //Debug.DrawLine(transform.position, transform.position + new Vector3(0, animToPlay.range, 0),Color.red,2);
-
-            Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, animToPlay.range);
-            if (hit == null || hit.Length == 0)
-            {
-                return;
-            }
-            foreach (Collider2D enemy in hit)
-            {
-                if (enemy.gameObject.layer == 6 && enemy.gameObject != null)
-                {
-                    if (enemy.gameObject.GetComponent<EnemyHealth>())
-                    {
-                        enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(animToPlay.dmg, false, true);
-                        enemy.gameObject.GetComponent<EnemyHealth>().ProjectilesOff(0, animToPlay.shurikenDrop);
-                    }
-                    //if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static && enemy.gameObject.GetComponent<EnemyHealth>().canBeAttacked && enemy.gameObject.GetComponent<EnemyHealth>().canDoDmg)
-                    //{
-                    //    enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                    //    enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
-                    //    StartCoroutine(enemy.gameObject.GetComponent<EnemyHealth>().Stuned());
-                    //}
-                }
-            }
+            comboStop = StartCoroutine(StopCombo(animToPlay));
         }
+    }
+
+    private void MoveByTime(Vector2 direction, float speed,float time)
+    {
+        if (Mover != null)
+        {
+            StopCoroutine(Mover);
+            rb.velocity = Vector2.zero;
+        }
+        Mover = StartCoroutine(Move(direction.normalized, speed, time));
     }
 
 
@@ -1374,16 +1364,46 @@ public class PlayerController : MonoBehaviour
         canMove = true;
     }
 
-    private IEnumerator StopCombo()
+    private IEnumerator StopCombo(MeeleAttack animToPlay)
     {
-        SaveMovement();
         yield return new WaitForEndOfFrame();
-        Debug.Log(myAnim.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+        yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length * 0.2f);
+        Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, animToPlay.range);
+        if (hit != null && hit.Length != 0)
+        {
+            hitEnemy = true;
+            foreach (Collider2D enemy in hit)
+            {
+                if (enemy.gameObject.layer == 6 && enemy.gameObject != null)
+                {
+                    if (enemy.gameObject.GetComponent<EnemyHealth>())
+                    {
+                        enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(animToPlay.dmg, false, true);
+                        enemy.gameObject.GetComponent<EnemyHealth>().ProjectilesOff(0, animToPlay.shurikenDrop);
+                    }
+                }
+            }
+        } 
         yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length * 0.8f);
         canMove = true;
-        yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length * 0.2f);
         combo = false;
         ChangeClip();
+    }
+
+    private IEnumerator Move(Vector2 direction, float speed, float time)
+    {
+        rb.velocity = Vector3.zero;
+        while (time > 0 && !hitEnemy)
+        {
+            rb.AddForce(direction * speed * 10);
+            time -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        rb.velocity = Vector3.zero;
+        yield return new WaitForEndOfFrame();
+        rb.velocity = Vector3.zero;
+        Mover = null;
+        yield return null;
     }
 
     private IEnumerator DisplayText(string text, Find find)
