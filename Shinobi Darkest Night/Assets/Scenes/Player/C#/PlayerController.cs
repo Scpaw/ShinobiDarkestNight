@@ -630,8 +630,11 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        //tests
-        //Debug.Log(rb.velocity);
+        //rb controll
+        if (Mover == null && !isDashing && rb.velocity.magnitude > 0.1f)
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 
 
@@ -1331,7 +1334,7 @@ public class PlayerController : MonoBehaviour
             SaveMovement();
             facingDirection = projectileSpawnPoint.position - transform.position;
             AnimationClip clip = StateAnimations.GetFacingClipFromState(animToPlay.animation, facingDirection);
-            MoveByTime(facingDirection, 4.3f, clip.length * 0.65f);
+            MoveByTime(facingDirection, 7.3f, clip.length * 0.85f);
             canMove = false; 
             CurrentState = animToPlay.animation;
             ChangeClip();
@@ -1349,7 +1352,7 @@ public class PlayerController : MonoBehaviour
         if (Mover != null)
         {
             StopCoroutine(Mover);
-            rb.velocity = Vector2.zero;
+            rb.velocity = Vector3.zero;
         }
         Mover = StartCoroutine(Move(direction.normalized, speed, time));
     }
@@ -1366,6 +1369,11 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator StopCombo(MeeleAttack animToPlay)
     {
+        Collider2D[] hit1 = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, animToPlay.range, LayerMask.GetMask("Enemy"));
+        if (hit1 != null && hit1.Length != 0)
+        {
+            hitEnemy = true;
+        }
         yield return new WaitForEndOfFrame();
         yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length * 0.2f);
         Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, animToPlay.range);
@@ -1399,8 +1407,6 @@ public class PlayerController : MonoBehaviour
             time -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-        rb.velocity = Vector3.zero;
-        yield return new WaitForEndOfFrame();
         rb.velocity = Vector3.zero;
         Mover = null;
         yield return null;
