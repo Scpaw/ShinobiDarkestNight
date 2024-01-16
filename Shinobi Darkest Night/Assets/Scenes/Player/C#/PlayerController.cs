@@ -1386,8 +1386,10 @@ public class PlayerController : MonoBehaviour
                 {
                     if (enemy.gameObject.GetComponent<EnemyHealth>())
                     {
-                        enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(animToPlay.dmg, false, true);
+                        //enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(animToPlay.dmg, false, true);
                         enemy.gameObject.GetComponent<EnemyHealth>().ProjectilesOff(0, animToPlay.shurikenDrop);
+                        enemy.gameObject.GetComponent<AI_Move>().Hit(0.1f, (enemy.transform.position - transform.position).normalized * 15, animToPlay.dmg);
+                        enemy.gameObject.GetComponent<AI_Move>().Hit(0.1f, (enemy.transform.position - transform.position).normalized * 15, animToPlay.dmg);
                     }
                 }
             }

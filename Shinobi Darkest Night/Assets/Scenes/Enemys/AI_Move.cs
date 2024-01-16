@@ -20,12 +20,14 @@ public class AI_Move : MonoBehaviour
     public bool stop;
 
     private Coroutine reseting;
+    public Coroutine hit;
 
     private void Awake()
     {
         enemySpeed = GetComponent<AIPath>().maxSpeed;
         offScreenSpeed = enemySpeed * 2;
         reseting = null;
+        hit = null;
     }
 
     private void OnEnable()
@@ -72,7 +74,7 @@ public class AI_Move : MonoBehaviour
             }
             else
             {
-                if (!moving && reseting == null)
+                if (!moving && reseting == null && hit == null)
                 {
                     reseting = StartCoroutine(ResetPathf());
                 }
@@ -109,6 +111,28 @@ public class AI_Move : MonoBehaviour
             ai.maxSpeed = offScreenSpeed;
         }
     }
+
+    public void Hit(float timeToWait,Vector2 pushForce, float dmg)
+    {
+        if (hit != null)
+        {
+            StopCoroutine(hit);
+        }
+        hit = StartCoroutine(HitAndPush(timeToWait, pushForce,dmg));
+    }
+
+    private IEnumerator HitAndPush(float timeToWait, Vector2 pushForce,float dmg)
+    {
+        canMove = false;
+        yield return new WaitForSeconds(timeToWait);
+        GetComponent<EnemyHealth>().enemyAddDamage(dmg, false, true);
+        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        GetComponent<Rigidbody2D>().AddForce(pushForce, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.2f);
+        canMove = true;
+        hit = null;
+    }
+
     public IEnumerator ResetPathf()
     {
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
