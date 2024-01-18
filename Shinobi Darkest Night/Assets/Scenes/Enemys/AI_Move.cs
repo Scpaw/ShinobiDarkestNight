@@ -123,6 +123,8 @@ public class AI_Move : MonoBehaviour
 
     private IEnumerator HitAndPush(float timeToWait, Vector2 pushForce,float dmg)
     {
+
+
         canMove = false;
         yield return new WaitForSeconds(timeToWait);
         GetComponent<EnemyHealth>().enemyAddDamage(dmg, false, true);
@@ -130,6 +132,7 @@ public class AI_Move : MonoBehaviour
         GetComponent<Rigidbody2D>().AddForce(pushForce, ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.2f);
         canMove = true;
+
         hit = null;
     }
 

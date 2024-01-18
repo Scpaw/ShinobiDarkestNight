@@ -772,18 +772,33 @@ public class PlayerController : MonoBehaviour
 
     //When Dash is pressed, the following order will be executed
     private IEnumerator Dash()
-    {
-        if (canDash && canMove)
+    {     
+        if (canDash && (canMove || Mover != null || comboStop != null) && movementDirection.magnitude >0.05f)
         {
+            if (Mover != null)
+            {
+                StopCoroutine(Mover);
+                canMove = true; combo = false;
+                movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            }
+            if (comboStop != null)
+            {
+                StopCoroutine(comboStop);
+                canMove = true; combo = false;
+                movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            }
+
+
+            rb.velocity = Vector2.zero;
             //AkSoundEngine.PostEvent("Player_Dash", gameObject);
             UseStamina(10);
             canDash = false;            
             isDashing = true;
             CurrentState = DashAnim;
-            rb.velocity = new Vector2(movementDirection.x * dashSpeed, movementDirection.y * dashSpeed);           
+            rb.velocity = new Vector2(movementDirection.normalized.x * dashSpeed, movementDirection.normalized.y * dashSpeed);           
             yield return new WaitForSeconds(dashDuration);
             isDashing = false;
-            rb.velocity = new Vector2(movementDirection.x * dashVelocityReset, movementDirection.y * dashVelocityReset);// <--- This line is necessary if you want to stop the player after initializing "Dash"
+            rb.velocity = new Vector2(movementDirection.normalized.x * dashVelocityReset, movementDirection.normalized.y * dashVelocityReset);// <--- This line is necessary if you want to stop the player after initializing "Dash"
             t = 0.0f;
             dashCooldown -= dashCooldown;
             yield return new WaitUntil(() => dashCooldown >= dashMaxCooldown);
@@ -1384,12 +1399,14 @@ public class PlayerController : MonoBehaviour
             {
                 if (enemy.gameObject.layer == 6 && enemy.gameObject != null)
                 {
-                    if (enemy.gameObject.GetComponent<EnemyHealth>())
+                    if (enemy.gameObject.GetComponent<EnemyHealth>() && enemy.gameObject.GetComponent<AI_Move>())
                     {
-                        //enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(animToPlay.dmg, false, true);
                         enemy.gameObject.GetComponent<EnemyHealth>().ProjectilesOff(0, animToPlay.shurikenDrop);
                         enemy.gameObject.GetComponent<AI_Move>().Hit(0.1f, (enemy.transform.position - transform.position).normalized * 15, animToPlay.dmg);
-                        enemy.gameObject.GetComponent<AI_Move>().Hit(0.1f, (enemy.transform.position - transform.position).normalized * 15, animToPlay.dmg);
+                    }
+                    else if (enemy.gameObject.GetComponent<EnemyHealth>())
+                    {
+                        enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(animToPlay.dmg, false, true);
                     }
                 }
             }

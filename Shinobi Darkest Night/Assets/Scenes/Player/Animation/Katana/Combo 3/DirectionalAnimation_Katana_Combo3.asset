@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: DirectionalAnimation_Katana_Combo3
   m_EditorClassIdentifier: 
   <Up>k__BackingField:
-  - {fileID: 7400000, guid: 4f8a62e1e65d2be42861aa97285774e4, type: 2}
+  - {fileID: 7400000, guid: 71adbf028b19f564a8e51b16b3c3207c, type: 2}
   <Down>k__BackingField:
-  - {fileID: 7400000, guid: 3206689fdf0061e44a751915e86e32b7, type: 2}
+  - {fileID: 7400000, guid: 04a51d22c7397ce4a9443d9e91cfd62f, type: 2}
   <Left>k__BackingField:
   - {fileID: 7400000, guid: 4f8a62e1e65d2be42861aa97285774e4, type: 2}
   <Right>k__BackingField:

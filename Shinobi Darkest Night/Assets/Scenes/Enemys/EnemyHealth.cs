@@ -75,7 +75,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (canDoDmg)
         {
-            canAttackAgain = 0.4f;
+            canAttackAgain = 0.9f;
             if (useparticle && useParticles)
             {
                 ParticleManager.instance.UseParticle("Blood", transform.position, transform.rotation.eulerAngles);
