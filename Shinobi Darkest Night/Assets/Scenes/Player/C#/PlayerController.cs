@@ -1349,7 +1349,7 @@ public class PlayerController : MonoBehaviour
             SaveMovement();
             facingDirection = projectileSpawnPoint.position - transform.position;
             AnimationClip clip = StateAnimations.GetFacingClipFromState(animToPlay.animation, facingDirection);
-            MoveByTime(facingDirection, 7.3f, clip.length * 0.85f);
+            Combo(facingDirection, 17, clip.length * 0.45f,animToPlay);
             canMove = false; 
             CurrentState = animToPlay.animation;
             ChangeClip();
@@ -1362,14 +1362,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void MoveByTime(Vector2 direction, float speed,float time)
+    private void Combo(Vector2 direction, float speed,float time, MeeleAttack animToPlay)
     {
         if (Mover != null)
         {
             StopCoroutine(Mover);
             rb.velocity = Vector3.zero;
         }
-        Mover = StartCoroutine(Move(direction.normalized, speed, time));
+        Mover = StartCoroutine(Move(direction.normalized, speed, time,animToPlay));
     }
 
 
@@ -1384,16 +1384,30 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator StopCombo(MeeleAttack animToPlay)
     {
-        Collider2D[] hit1 = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, animToPlay.range, LayerMask.GetMask("Enemy"));
-        if (hit1 != null && hit1.Length != 0)
-        {
-            hitEnemy = true;
-        }
         yield return new WaitForEndOfFrame();
-        yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length * 0.2f);
-        Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, animToPlay.range);
+        yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length);
+        canMove = true;
+        combo = false;
+        ChangeClip();
+    }
+
+    private IEnumerator Move(Vector2 direction, float speed, float time,MeeleAttack animToPlay)
+    {
+        rb.velocity = Vector3.zero;
+        while (time > 0 && !Physics2D.OverlapCircle(projectileSpawnPoint.position, 1.2f, LayerMask.GetMask("Enemy")))
+        {
+            if (rb.velocity.magnitude < speed)
+            {
+                rb.AddForce(direction * speed);
+            }
+            time -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, animToPlay.range, LayerMask.GetMask("Enemy"));
         if (hit != null && hit.Length != 0)
         {
+            CameraShake.instance.Shake();
             hitEnemy = true;
             foreach (Collider2D enemy in hit)
             {
@@ -1410,21 +1424,6 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-        } 
-        yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length * 0.8f);
-        canMove = true;
-        combo = false;
-        ChangeClip();
-    }
-
-    private IEnumerator Move(Vector2 direction, float speed, float time)
-    {
-        rb.velocity = Vector3.zero;
-        while (time > 0 && !hitEnemy)
-        {
-            rb.AddForce(direction * speed * 10);
-            time -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
         }
         rb.velocity = Vector3.zero;
         Mover = null;
@@ -1660,11 +1659,5 @@ public class PlayerController : MonoBehaviour
     public GameObject GetHead()
     { 
         return myAnim.transform.GetChild(0).gameObject;
-    }
-
-
-
-    
-
-    
+    }    
 }
