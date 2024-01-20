@@ -122,6 +122,7 @@ public class EnemyHealth : MonoBehaviour
         StopAllCoroutines();
         ProjectilesOff(0);
         DropHp();
+        CameraShake.instance.Shake(EShakeStrenght.extraStrong, EShakeShape.recoil);
         gameObject.SetActive(false);
     }
 

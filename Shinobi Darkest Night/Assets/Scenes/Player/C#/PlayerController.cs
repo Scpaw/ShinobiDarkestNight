@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
     private bool attackPressed;
     [SerializeField] private float timeToFanAttack;
     [SerializeField] private float DmgFromShuriken;
-    private bool hitEnemy;
+    private float lastAttack;
 
     [Header("Projectile")]
     public int projectileNumber;
@@ -634,6 +634,16 @@ public class PlayerController : MonoBehaviour
         if (Mover == null && !isDashing && rb.velocity.magnitude > 0.1f)
         {
             rb.velocity = Vector2.zero;
+        }
+
+        //health
+        if (lastAttack <= 0)
+        {
+            hp.DoHealth();
+        }
+        else
+        { 
+            lastAttack -= Time.deltaTime;
         }
     }
 
@@ -1284,15 +1294,31 @@ public class PlayerController : MonoBehaviour
     {
         if (attackCooldown <= 0 && stamina >= 5)
         {
-           if (isDashing == true)
-           {
-               return;
-           }
-           Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, projectileSpawnPoint.GetComponent<CircleCollider2D>().radius * projectileSpawnPoint.parent.localScale.x);
+            if (isDashing == true)
+            {
+                return;
+            }
+            SaveMovement();
+            facingDirection = projectileSpawnPoint.position - transform.position;
+            attackCooldown = startAttackCooldown;
+            CurrentState = AttackAnim;
+            canMove = false;
+            if (yokan <= 0)
+            {
+                UseStamina(5);
+            }
+            Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, projectileSpawnPoint.GetComponent<CircleCollider2D>().radius * projectileSpawnPoint.parent.localScale.x,LayerMask.GetMask("Enemy"));
            if (hit == null || hit.Length == 0)
            {
                return;
            }
+           else
+           {
+                lastAttack = 0.9f;
+                CameraShake.instance.Shake(EShakeStrenght.extraStrong, EShakeShape.recoil,transform.position - projectileSpawnPoint.position);
+           }
+
+
            foreach (Collider2D enemy in hit)
            {
                if (enemy.gameObject.layer == 6 && enemy.gameObject != null)
@@ -1310,21 +1336,11 @@ public class PlayerController : MonoBehaviour
                    }
                }
            }
-           SaveMovement();
-           facingDirection = projectileSpawnPoint.position - transform.position;
-           attackCooldown = startAttackCooldown;
-           CurrentState = AttackAnim;
-           canMove = false;
-           if (yokan <= 0)
-           {
-               UseStamina(5);
-           }
         }
     }
 
     private void Attack()
     {
-        hitEnemy = false;
         int comboNum = -1;
         MeeleAttack animToPlay = null;
         foreach (MeeleAttack attack in attackList)
@@ -1346,10 +1362,11 @@ public class PlayerController : MonoBehaviour
 
         if (animToPlay != null)
         {
+            lastAttack = 0.9f;
             SaveMovement();
             facingDirection = projectileSpawnPoint.position - transform.position;
             AnimationClip clip = StateAnimations.GetFacingClipFromState(animToPlay.animation, facingDirection);
-            Combo(facingDirection, 17, clip.length * 0.45f,animToPlay);
+            Combo(facingDirection, 15, clip.length * 0.55f,animToPlay);
             canMove = false; 
             CurrentState = animToPlay.animation;
             ChangeClip();
@@ -1394,7 +1411,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Move(Vector2 direction, float speed, float time,MeeleAttack animToPlay)
     {
         rb.velocity = Vector3.zero;
-        while (time > 0 && !Physics2D.OverlapCircle(projectileSpawnPoint.position, 1.2f, LayerMask.GetMask("Enemy")))
+        while (time > 0 && !Physics2D.OverlapCircle(projectileSpawnPoint.position, 1.6f, LayerMask.GetMask("Collider")))
         {
             if (rb.velocity.magnitude < speed)
             {
@@ -1407,8 +1424,14 @@ public class PlayerController : MonoBehaviour
         Collider2D[] hit = Physics2D.OverlapCircleAll(projectileSpawnPoint.position, animToPlay.range, LayerMask.GetMask("Enemy"));
         if (hit != null && hit.Length != 0)
         {
-            CameraShake.instance.Shake();
-            hitEnemy = true;
+            if (rb.velocity.magnitude > 0.1f && time > 0)
+            {
+                CameraShake.instance.Shake(EShakeStrenght.extraStrong, EShakeShape.recoil, transform.position - projectileSpawnPoint.position);
+            }
+            else
+            {
+                CameraShake.instance.Shake(EShakeStrenght.strong, EShakeShape.recoil, transform.position - projectileSpawnPoint.position);
+            }
             foreach (Collider2D enemy in hit)
             {
                 if (enemy.gameObject.layer == 6 && enemy.gameObject != null)

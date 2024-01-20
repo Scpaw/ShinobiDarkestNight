@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("Player Health")]
     public float playerCourrentHealth;
+    public float addHp;
     public float playerMaxHealth;
     [SerializeField] Image playerHealthSlider;
     private Text healthText;
@@ -20,13 +21,24 @@ public class PlayerHealth : MonoBehaviour
         playerController = GetComponent<PlayerController>();
     }
 
-    public void AddHealth(float Health)
+    public void DoHealth()
     {
-        playerCourrentHealth += Health;
-        if (playerCourrentHealth > playerMaxHealth)
+        if (playerCourrentHealth < playerMaxHealth && addHp > 0)
+        {
+            playerCourrentHealth += 13*Time.deltaTime;
+            addHp -= 13*Time.deltaTime;
+            playerHealthSlider.fillAmount = playerCourrentHealth / playerMaxHealth; healthText.text = ((int)playerCourrentHealth).ToString();
+        }
+        else if (playerCourrentHealth > playerMaxHealth)
         {
             playerCourrentHealth = playerMaxHealth;
+            addHp = 0;
         }
+    }
+
+    public void AddHealth(float Health)
+    {
+        addHp += Health;
         healthText.text = ((int)playerCourrentHealth).ToString();
         if (playerCourrentHealth > playerMaxHealth) 
         { 
