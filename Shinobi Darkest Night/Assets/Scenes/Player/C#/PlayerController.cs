@@ -650,7 +650,6 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeClip()
     {
-
         if (!isHealing)
         {
             if (Mathf.Abs(facingDirection.x) == Mathf.Abs(facingDirection.y) && facingDirection != Vector2.zero)
@@ -968,6 +967,7 @@ public class PlayerController : MonoBehaviour
                 {
                     hp.AddHealth(10);
                 }
+                timeToHeal = 0.3f;
             }
         }
         else if (inputValue.Get<float>() == 0)
@@ -1240,6 +1240,7 @@ public class PlayerController : MonoBehaviour
 
     public void MakeDeath()
     {
+        rb.velocity = Vector2.zero;
         canMove = false;
         canAttack = false;
         canDash = false;

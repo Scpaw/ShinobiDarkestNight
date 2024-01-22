@@ -2531,6 +2531,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4347990095582227006, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
+      propertyPath: regenSpeed
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 7124318050375545386, guid: 29161d8f462cca04a8300c7d7bf43197, type: 3}
       propertyPath: m_RootOrder
       value: 7

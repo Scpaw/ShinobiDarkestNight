@@ -10,7 +10,9 @@ public class PlayerHealth : MonoBehaviour
     public float playerCourrentHealth;
     public float addHp;
     public float playerMaxHealth;
+    [SerializeField] float regenSpeed = 13;
     [SerializeField] Image playerHealthSlider;
+    [SerializeField] Image addHpSlider;
     private Text healthText;
     private PlayerController playerController;
 
@@ -25,8 +27,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (playerCourrentHealth < playerMaxHealth && addHp > 0)
         {
-            playerCourrentHealth += 13*Time.deltaTime;
-            addHp -= 13*Time.deltaTime;
+            playerCourrentHealth += regenSpeed*Time.deltaTime;
+            addHp -= regenSpeed*Time.deltaTime;
             playerHealthSlider.fillAmount = playerCourrentHealth / playerMaxHealth; healthText.text = ((int)playerCourrentHealth).ToString();
         }
         else if (playerCourrentHealth > playerMaxHealth)
@@ -40,46 +42,48 @@ public class PlayerHealth : MonoBehaviour
     {
         addHp += Health;
         healthText.text = ((int)playerCourrentHealth).ToString();
-        if (playerCourrentHealth > playerMaxHealth) 
+        if (playerCourrentHealth+ addHp > playerMaxHealth) 
         { 
-            playerCourrentHealth = playerMaxHealth;
+            addHp = playerMaxHealth - playerCourrentHealth;
 
             if (GetComponent<PlayerController>().isHealing)
             {
                 GetComponent<PlayerController>().StopHealing();
             }
         }
-        playerHealthSlider.fillAmount = playerCourrentHealth / playerMaxHealth;
+        addHpSlider.fillAmount = (playerCourrentHealth + addHp) / playerMaxHealth;
         AkSoundEngine.PostEvent("Player_Healing_Drinking", gameObject);
     }
 
     public void AddDamage(float Damage)
     {
-        if (!playerController.godMode)
+        if (playerController.godMode || playerCourrentHealth < 0)
         {
-            GetComponent<PlayerController>().StopHealing();
-            if (playerController.sakuramochi > 0)
-            {
-                playerCourrentHealth -= Damage / 2;
-            }
-            else
-            {
-                playerCourrentHealth -= Damage;
-
-            }
-            playerHealthSlider.fillAmount = playerCourrentHealth / playerMaxHealth;
-            if (healthText == null)
-            {
-                healthText = playerHealthSlider.transform.parent.GetComponentInChildren<Text>();
-            }
-            healthText.text = ((int)playerCourrentHealth).ToString();
-            if (playerCourrentHealth <= 0)
-            {
-                MakeDead();
-            }
-
-            AkSoundEngine.PostEvent("Player_Damage", gameObject);
+            return;
         }
+        GetComponent<PlayerController>().StopHealing();
+        if (playerController.sakuramochi > 0)
+        {
+            playerCourrentHealth -= Damage / 2;
+        }
+        else
+        {
+            playerCourrentHealth -= Damage;
+
+        }
+        playerHealthSlider.fillAmount = playerCourrentHealth / playerMaxHealth;
+        addHpSlider.fillAmount = (playerCourrentHealth + addHp) / playerMaxHealth;
+        if (healthText == null)
+        {
+            healthText = playerHealthSlider.transform.parent.GetComponentInChildren<Text>();
+        }
+        healthText.text = ((int)playerCourrentHealth).ToString();
+        if (playerCourrentHealth <= 0)
+        {
+            MakeDead();
+        }
+
+        AkSoundEngine.PostEvent("Player_Damage", gameObject);
     }
 
     void MakeDead()
