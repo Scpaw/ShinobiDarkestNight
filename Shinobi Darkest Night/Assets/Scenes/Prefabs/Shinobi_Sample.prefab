@@ -2672,10 +2672,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 36336b2e58f3c5c45b7b7745ec688d67, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -3304,10 +3304,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 49844d2b6b9fc2248a117c83e092f86f, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -4430,10 +4430,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 58bf9e07d80e33147a78719bc8dab7eb, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -5197,6 +5197,10 @@ MonoBehaviour:
   shokyakuStamina: 5
   desumiruStamina: 7
   speedStamina: 0
+  shokyakuImage: {fileID: 4006021391675534325}
+  desumiruImage: {fileID: 4660559808628102814}
+  itaikenImage: {fileID: 8784728950146049685}
+  techuniquesRegenRate: 1
 --- !u!114 &4347990095582227006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5212,6 +5216,7 @@ MonoBehaviour:
   playerCourrentHealth: 0
   addHp: 0
   playerMaxHealth: 100
+  regenSpeed: 13
   playerHealthSlider: {fileID: 1638711498337735564}
   addHpSlider: {fileID: 7588471131703960381}
 --- !u!50 &3519503908584560993

@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         {
             return currentState;
         }
-         set
+        set
         {
             if (currentState != value)
             {
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     public bool canMove;
     [SerializeField] bool dialogue;
-    
+
     public bool Dialogue
     {
         get
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
                     ChangeClip();
                 }
                 else
-                { 
+                {
                     canAttack = true;
                     canMove = true;
                 }
@@ -213,7 +213,7 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> candySpawned = new List<GameObject>(); // this too
     private int currentCandyIndex;
     private float maxItemYPos;
-    private List<GameObject> itemsOnScreen =  new List<GameObject>();
+    private List<GameObject> itemsOnScreen = new List<GameObject>();
     private bool snap;
     private Text inventoryText;
     private GameObject topItem;
@@ -240,6 +240,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float shokyakuStamina;
     [SerializeField] private float desumiruStamina;
     [SerializeField] private float speedStamina;
+
+    [Header("UI techniques")]
+    [SerializeField] private Image shokyakuImage; 
+    [SerializeField] private Image desumiruImage;
+    [SerializeField] private Image itaikenImage;
+    [SerializeField] private float techuniquesRegenRate;
+
 
     private void Awake()
     {
@@ -458,6 +465,7 @@ public class PlayerController : MonoBehaviour
             shokyakuTimer -= Time.deltaTime;
             if (shokyakuTimer <= 0 || stamina < 1)
             {
+                shokyakuImage.fillAmount = 0;
                 shokyakuAttack = false;
                 shokyaku = false;
                 movementInput = saveDirection;
@@ -616,7 +624,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //attack
-        if (attackPressed && currentState != AttackAnim)
+        if (attackPressed && currentState != AttackAnim && canAttack)
         {
             attackInput += Time.deltaTime;
             if (attackInput % timeToFanAttack < Time.deltaTime )
@@ -644,6 +652,21 @@ public class PlayerController : MonoBehaviour
         else
         { 
             lastAttack -= Time.deltaTime;
+        }
+
+
+        //techuniques Regen
+        if (itaikenImage.fillAmount < 1)
+        {
+            itaikenImage.fillAmount += Time.deltaTime * techuniquesRegenRate/10;
+        }
+        if (desumiruImage.fillAmount < 1)
+        {
+            desumiruImage.fillAmount += Time.deltaTime * techuniquesRegenRate / 10;
+        }
+        if (shokyakuImage.fillAmount < 1)
+        {
+            shokyakuImage.fillAmount += Time.deltaTime * techuniquesRegenRate / 10;
         }
     }
 
@@ -873,6 +896,7 @@ public class PlayerController : MonoBehaviour
                 currentState = RunAnim;
                 ChangeClip();
                 stopShokyaku = false;
+                shokyakuImage.fillAmount = 0;
             }
             StopItaken();
 
@@ -1060,7 +1084,7 @@ public class PlayerController : MonoBehaviour
                 StopDesumiru();
                 StopItaken();
             }
-            else if (canAttack && !isHealing && canMove && !itaiken)
+            else if (canAttack && !isHealing && canMove && !itaiken && shokyakuImage.fillAmount >= 1)
             {
                 shokyakuTimer = 4;
                 canDash = false;
@@ -1088,7 +1112,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnItaiken()
     {
-        if (canAttack && !isHealing && stamina > 30 && !itaiken)
+        if (canAttack && !isHealing && stamina > 30 && !itaiken && itaikenImage.fillAmount >= 1)
         {
             if (shokyaku)
             {
@@ -1108,6 +1132,7 @@ public class PlayerController : MonoBehaviour
     {
         if (itaiken)
         {
+            itaikenImage.fillAmount = 0;
             itaiken = false;
         }
 
@@ -1137,7 +1162,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDesumiru()
     {
-        if (canAttack && !desumiru && !itaiken)
+        if (canAttack && !desumiru && !itaiken && desumiruImage.fillAmount >= 1)
         {
             if (shokyaku)
             {
@@ -1181,6 +1206,7 @@ public class PlayerController : MonoBehaviour
             slowWaitingTime = 0.01f;
             myAnim.Play(currentClip.name);
             ChangeClip();
+            desumiruImage.fillAmount =0;
         }
     }
 
