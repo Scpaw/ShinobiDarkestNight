@@ -75,6 +75,8 @@ public class EnemyHealth : MonoBehaviour
     {
         if (canDoDmg)
         {
+            PlayerController.Instance.RegenAttacks(Damage/2);
+
             canAttackAgain = 0.9f;
             if (useparticle && useParticles)
             {

@@ -242,10 +242,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedStamina;
 
     [Header("UI techniques")]
-    [SerializeField] private Image shokyakuImage; 
+    [SerializeField] private Image shokyakuImage;
     [SerializeField] private Image desumiruImage;
     [SerializeField] private Image itaikenImage;
-    [SerializeField] private float techuniquesRegenRate;
+
+    private float shokyakuCooldown;
+    private float itaikenCooldown;
+    private float desumiruCooldown;
+
+    [SerializeField] private float shokyakuMaxCooldown;
+    [SerializeField] private float itaikenMaxCooldown;
+    [SerializeField] private float desumiruMaxCooldown;
+
+    [SerializeField] private float shokyakuUseTime;
+    [SerializeField] private float itaikenUseTime;
+    [SerializeField] private float desumiruUseTime;
 
 
     private void Awake()
@@ -275,6 +286,10 @@ public class PlayerController : MonoBehaviour
         findDisplay.gameObject.SetActive(false);
         staminaText = staminaSlider.transform.parent.GetComponentInChildren<Text>();
         startSpeed = MoveSpeed;
+
+        itaikenCooldown = itaikenMaxCooldown;
+        shokyakuCooldown = shokyakuMaxCooldown;
+        desumiruCooldown = desumiruMaxCooldown;
     }
 
     private void OnEnable()
@@ -465,6 +480,7 @@ public class PlayerController : MonoBehaviour
             shokyakuTimer -= Time.deltaTime;
             if (shokyakuTimer <= 0 || stamina < 1)
             {
+                shokyakuCooldown = 0;
                 shokyakuImage.fillAmount = 0;
                 shokyakuAttack = false;
                 shokyaku = false;
@@ -658,15 +674,18 @@ public class PlayerController : MonoBehaviour
         //techuniques Regen
         if (itaikenImage.fillAmount < 1)
         {
-            itaikenImage.fillAmount += Time.deltaTime * techuniquesRegenRate/10;
+            itaikenCooldown += Time.deltaTime;
+            itaikenImage.fillAmount = itaikenCooldown / itaikenMaxCooldown;
         }
         if (desumiruImage.fillAmount < 1)
         {
-            desumiruImage.fillAmount += Time.deltaTime * techuniquesRegenRate / 10;
+            desumiruCooldown += Time.deltaTime;
+            desumiruImage.fillAmount = desumiruCooldown / desumiruMaxCooldown;
         }
         if (shokyakuImage.fillAmount < 1)
         {
-            shokyakuImage.fillAmount += Time.deltaTime * techuniquesRegenRate / 10;
+            shokyakuCooldown += Time.deltaTime;
+            shokyakuImage.fillAmount =  shokyakuCooldown / shokyakuMaxCooldown;
         }
     }
 
@@ -896,6 +915,7 @@ public class PlayerController : MonoBehaviour
                 currentState = RunAnim;
                 ChangeClip();
                 stopShokyaku = false;
+                shokyakuCooldown = 0;
                 shokyakuImage.fillAmount = 0;
             }
             StopItaken();
@@ -1093,6 +1113,7 @@ public class PlayerController : MonoBehaviour
                 SaveMovement();
                 myAnim.Play(startShokyaku.name);
                 currentClip = startShokyaku;
+                StartCoroutine(ShokyakuStop(shokyakuUseTime + startShokyaku.length));
             }
         }
     }
@@ -1121,6 +1142,7 @@ public class PlayerController : MonoBehaviour
             canAttack = false;
             canMove = false;
             myAnim.Play(startItaiken.name);
+            StartCoroutine(ItaikenStop(itaikenUseTime + startItaiken.length));
         }
         else if (itaiken)
         {
@@ -1132,6 +1154,7 @@ public class PlayerController : MonoBehaviour
     {
         if (itaiken)
         {
+            itaikenCooldown = 0;
             itaikenImage.fillAmount = 0;
             itaiken = false;
         }
@@ -1174,6 +1197,7 @@ public class PlayerController : MonoBehaviour
             canAttack = false;
             myAnim.Play(desumiruAnimations[0].name);
             movementInput = Vector2.zero;
+            StartCoroutine(DesumiruStop(desumiruUseTime + desumiruAnimations[0].length));
         }
         else if (itaiken)
         {
@@ -1206,6 +1230,7 @@ public class PlayerController : MonoBehaviour
             slowWaitingTime = 0.01f;
             myAnim.Play(currentClip.name);
             ChangeClip();
+            desumiruCooldown = 0;
             desumiruImage.fillAmount =0;
         }
     }
@@ -1314,6 +1339,41 @@ public class PlayerController : MonoBehaviour
         if (!dialogue && (transform.position - point).magnitude < 10f)
         {
             StartCoroutine(MoveNow(point));
+        }
+    }
+
+    public void RegenAttacks(float time)
+    {
+        List<float> attacks = new List<float>();
+
+        if (shokyakuCooldown < shokyakuMaxCooldown)
+        { 
+            attacks.Add(shokyakuCooldown);
+        }
+        if (itaikenCooldown < itaikenMaxCooldown)
+        { 
+            attacks.Add(itaikenCooldown);
+        }
+        if (desumiruCooldown < desumiruMaxCooldown)
+        {
+            attacks.Add(desumiruCooldown);
+        }
+        if (attacks.Count < 1)
+        {
+            return;
+        }
+
+        if (shokyakuCooldown < shokyakuMaxCooldown)
+        {
+            shokyakuCooldown += time/attacks.Count;
+        }
+        if (itaikenCooldown < itaikenMaxCooldown)
+        {
+            itaikenCooldown += time / attacks.Count;
+        }
+        if (desumiruCooldown < desumiruMaxCooldown)
+        {
+            desumiruCooldown += time / attacks.Count;
         }
     }
 
@@ -1561,6 +1621,36 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    private IEnumerator ShokyakuStop(float time)
+    { 
+        yield return new WaitForSeconds(time);
+        if (shokyakuAttack)
+        {
+            shokyakuCooldown = 0;
+            shokyakuImage.fillAmount = 0;
+            shokyakuAttack = false;
+            shokyaku = false;
+            movementInput = saveDirection;
+            shokyaku = false;
+            canDash = true;
+            canMove = true;
+            canAttack = true;
+        }
+    }
+
+    private IEnumerator ItaikenStop(float time)
+    {
+        yield return new WaitForSeconds(time);
+        StopItaken();
+    }
+
+    private IEnumerator DesumiruStop(float time)
+    {
+        yield return new WaitForSeconds(time);
+        StopDesumiru();
+    }
+
     private IEnumerator ChangeCamSizeUp()
     {
         if (cam.Follow == transform)

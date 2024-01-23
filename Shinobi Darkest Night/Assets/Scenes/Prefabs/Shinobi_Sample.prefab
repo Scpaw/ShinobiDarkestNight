@@ -5200,7 +5200,12 @@ MonoBehaviour:
   shokyakuImage: {fileID: 4006021391675534325}
   desumiruImage: {fileID: 4660559808628102814}
   itaikenImage: {fileID: 8784728950146049685}
-  techuniquesRegenRate: 1
+  shokyakuMaxCooldown: 120
+  itaikenMaxCooldown: 240
+  desumiruMaxCooldown: 180
+  shokyakuUseTime: 7
+  itaikenUseTime: 4
+  desumiruUseTime: 7
 --- !u!114 &4347990095582227006
 MonoBehaviour:
   m_ObjectHideFlags: 0
