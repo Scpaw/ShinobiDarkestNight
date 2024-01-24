@@ -90,7 +90,7 @@ public class AnimationToCode : MonoBehaviour
 
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.parent.GetComponent<PlayerController>().point2 * 1, ForceMode2D.Impulse);
-            collision.GetComponent<EnemyHealth>().enemyAddDamage(20, true, true);
+            collision.GetComponent<EnemyHealth>().enemyAddDamage(15, true, true);
             //   if (transform.parent.GetComponent<PlayerController>().desumiruState == 2)
             //   {
             //       if (collision.gameObject.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)

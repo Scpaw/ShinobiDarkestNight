@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
 
     [Header("Projectile properties")]
     [SerializeField] float projectileDamage;
+    [SerializeField] float maxDamage;
     [SerializeField] float aliveTime;
     [SerializeField] float moveSpeed;
     private Rigidbody2D prRb;
@@ -129,7 +130,15 @@ public class Projectile : MonoBehaviour
             }
             else
             {
-                theEnemyHealth.enemyAddDamage(projectileDamage, false, true);
+                if (projectileDamage + 2.5f * theEnemyHealth.projectiles.Count >= maxDamage)
+                {
+                    theEnemyHealth.enemyAddDamage(maxDamage, false, true);
+                }
+                else
+                {
+                    theEnemyHealth.enemyAddDamage(projectileDamage + 2.5f * theEnemyHealth.projectiles.Count, false, true);
+                }
+
             }
         }
     }

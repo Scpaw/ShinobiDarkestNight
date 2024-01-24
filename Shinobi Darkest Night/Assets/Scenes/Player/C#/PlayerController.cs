@@ -475,7 +475,7 @@ public class PlayerController : MonoBehaviour
             UseStamina(shokyakuStamina * Time.deltaTime);
             if (mizuame <= 0)
             {
-                hp.AddDamage(4 * Time.deltaTime);
+                hp.AddDamage(20 * Time.deltaTime);
             }
             shokyakuTimer -= Time.deltaTime;
             if (shokyakuTimer <= 0 || stamina < 1)
@@ -1157,6 +1157,7 @@ public class PlayerController : MonoBehaviour
             itaikenCooldown = 0;
             itaikenImage.fillAmount = 0;
             itaiken = false;
+            canAttack = true;
         }
 
     }
@@ -1385,6 +1386,7 @@ public class PlayerController : MonoBehaviour
             {
                 return;
             }
+            lastAttack = 0.9f;
             SaveMovement();
             facingDirection = projectileSpawnPoint.position - transform.position;
             attackCooldown = startAttackCooldown;
@@ -1401,7 +1403,6 @@ public class PlayerController : MonoBehaviour
            }
            else
            {
-                lastAttack = 0.9f;
                 CameraShake.instance.Shake(EShakeStrenght.extraStrong, EShakeShape.recoil,transform.position - projectileSpawnPoint.position);
            }
 

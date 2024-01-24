@@ -5140,11 +5140,11 @@ MonoBehaviour:
     shurikenDrop: 0
     range: 2.2
   - animation: {fileID: 11400000, guid: d8b7aba76ff56f54a9e194173e9276ad, type: 2}
-    dmg: 15
+    dmg: 13
     shurikenDrop: 0
     range: 2.2
   - animation: {fileID: 11400000, guid: 6297f90e4f764ff47b7e0e38abb80adf, type: 2}
-    dmg: 17.5
+    dmg: 20
     shurikenDrop: 4
     range: 2.5
   timeToFanAttack: 0.3
@@ -5152,7 +5152,7 @@ MonoBehaviour:
   projectileNumber: 20
   projectileText: {fileID: 8006055480557742860}
   staminaSlider: {fileID: 2758169562406151375}
-  staminaRegRate: 10
+  staminaRegRate: 20
   canAttack: 0
   isHealing: 0
   changeLensSize: 7
@@ -5185,14 +5185,14 @@ MonoBehaviour:
   sakuramochi: 0
   yokan: 0
   dango: 0
-  mizuame: 30000
+  mizuame: 0
   powerCoolDown: 0
   godMode: 0
   thingsToFind: []
   findDisplay: {fileID: 722882523640860553}
-  shurikenStamina: 3
-  fanStamina: 10
-  attackStamina: 5
+  shurikenStamina: 0
+  fanStamina: 5
+  attackStamina: 3
   itaikenStamina: 6
   shokyakuStamina: 5
   desumiruStamina: 7

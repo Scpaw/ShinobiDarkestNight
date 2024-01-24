@@ -159,7 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 825f2077e1db31e46802286529666c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileDamage: 10
+  projectileDamage: 5
+  maxDamage: 17.5
   aliveTime: 0.7
   moveSpeed: 25
   afterProjectile: {fileID: 4769426227854508189, guid: 2a8a4f6f560dd4041a86af267cdfcd16, type: 3}

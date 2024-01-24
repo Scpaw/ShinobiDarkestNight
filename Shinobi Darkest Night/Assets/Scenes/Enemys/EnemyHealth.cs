@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -75,6 +76,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (canDoDmg)
         {
+            //HitDropHp(Damage);
             PlayerController.Instance.RegenAttacks(Damage/2);
 
             canAttackAgain = 0.9f;
@@ -115,6 +117,29 @@ public class EnemyHealth : MonoBehaviour
         while (drop > 0)
         {
             Instantiate(hpPoint, transform.position, Quaternion.Euler(Vector3.zero), null);
+            drop--;
+        }
+    }
+
+    private void HitDropHp(float dmg)
+    {
+        if (dmg > 60)
+        {
+            dmg = 60;
+        }
+        int drop = Mathf.RoundToInt(1-(enemyHealth / enemyMaxHealth) + (dmg / 40) + Random.Range(-0.13f, 0.3f) - 0.3f);
+        Debug.Log((1 - (enemyHealth / enemyMaxHealth) + (dmg / 40)));
+
+        if (drop < 1)
+        {
+            return;
+        }
+
+        drop *= Random.Range(0, 3);
+        Debug.Log("Drop: " + drop);
+        while (drop > 0)
+        {
+            GameObject HPPoint = Instantiate(hpPoint, transform.position, Quaternion.Euler(Vector3.zero), null);
             drop--;
         }
     }

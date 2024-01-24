@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8bd7a59149952e44b6cf61982e5f744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMaxHealth: 100
+  enemyMaxHealth: 60
   enemyHealth: 100
   enemyHealthSlider: {fileID: 691301660596158894}
   enemyCanvas: {fileID: 3092937982863972908}
@@ -111,6 +111,7 @@ MonoBehaviour:
   deflectAtRandom: 0
   startPos: {x: 0, y: 0, z: 0}
   useParticles: 1
+  canAttackAgain: 0
   hpPoint: {fileID: 601466799086799779, guid: 4f934e26b9e9d3f40aa7b41f434e2cca, type: 3}
   minHpDrop: 0
   maxHpDrop: 4
