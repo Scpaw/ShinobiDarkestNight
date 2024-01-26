@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Test-D.unity
     guid: 402a47fc49392f74abd51d3dc6a55685
   - enabled: 0
-    path: Assets/Scenes/Mroczny Las/New Scene.unity
+    path: Assets/Scenes/Mroczny Las/Hub.unity
     guid: 2399e3b1435fef745b3a7c0fe02415da
   - enabled: 0
     path: Assets/Scenes/Mroczny Las/Okubi Garden.unity
