@@ -30,6 +30,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] GameObject hpPoint;
     [SerializeField] int minHpDrop;
     [SerializeField] int maxHpDrop;
+    private PlayerHealth playerHP;
 
     public void Awake()
     {
@@ -62,6 +63,11 @@ public class EnemyHealth : MonoBehaviour
         { 
             transform.localPosition = startPos;
         }
+
+        if (playerHP == null)
+        { 
+            playerHP = PlayerController.Instance.GetComponent<PlayerHealth>();
+        }    
     }
 
     private void Update()
@@ -76,7 +82,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (canDoDmg)
         {
-            //HitDropHp(Damage);
+
             PlayerController.Instance.RegenAttacks(Damage/2);
 
             canAttackAgain = 0.9f;
@@ -97,6 +103,10 @@ public class EnemyHealth : MonoBehaviour
             if (enemyHealth <= 0)
             {
                 MakeDead();
+            }
+            else
+            {
+                HitDropHp(Damage);
             }
             deflectAgain = 5;
         }
@@ -127,16 +137,14 @@ public class EnemyHealth : MonoBehaviour
         {
             dmg = 60;
         }
-        int drop = Mathf.RoundToInt(1-(enemyHealth / enemyMaxHealth) + (dmg / 40) + Random.Range(-0.13f, 0.3f) - 0.3f);
-        Debug.Log((1 - (enemyHealth / enemyMaxHealth) + (dmg / 40)));
+        int drop = Mathf.RoundToInt(1-(enemyHealth / enemyMaxHealth) + (dmg / enemyMaxHealth) + Random.Range(-0.07f, 0.07f) - 0.35f + 0.22f* (1- playerHP.GetPlayerHP()));
+        //Debug.Log((1 - (enemyHealth / enemyMaxHealth) + (dmg / enemyMaxHealth) + Random.Range(-0.07f, 0.07f)) - 0.35f + 0.22f * (1-playerHP.GetPlayerHP()));
 
-        if (drop < 1)
+        if (drop < 1 || Random.value > 0.65f)
         {
             return;
         }
 
-        drop *= Random.Range(0, 3);
-        Debug.Log("Drop: " + drop);
         while (drop > 0)
         {
             GameObject HPPoint = Instantiate(hpPoint, transform.position, Quaternion.Euler(Vector3.zero), null);
@@ -153,7 +161,7 @@ public class EnemyHealth : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void ProjectilesOff(float projectileAddForce,int projectilesToRemove = 9999)
+    public void ProjectilesOff(float projectileAddForce,int projectilesToRemove = 9999, float dmgFromProjectile = 0)
     {
         if (projectilesToRemove == 9999)
         {
@@ -164,6 +172,10 @@ public class EnemyHealth : MonoBehaviour
         {
             if (projectiles.Count >= projectilesToRemove)
             {
+                if (dmgFromProjectile > 0)
+                {
+                    enemyAddDamage(dmgFromProjectile, false, false);
+                }
                 projectiles[projectilesToRemove - 1].transform.parent = null;
                 projectiles[projectilesToRemove - 1].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                 projectiles[projectilesToRemove - 1].GetComponent<Rigidbody2D>().AddForce((projectiles[projectilesToRemove - 1].transform.position - transform.position) * (4 + projectileAddForce), ForceMode2D.Impulse);

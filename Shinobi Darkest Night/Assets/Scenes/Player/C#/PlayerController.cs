@@ -1413,8 +1413,8 @@ public class PlayerController : MonoBehaviour
                {
                    if (enemy.gameObject.GetComponent<EnemyHealth>())
                    {
-                        float shurikenDmg = enemy.gameObject.GetComponent<EnemyHealth>().projectiles.Count * DmgFromShuriken;
-                       enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(attackDamage + shurikenDmg, true, true);
+                       enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(attackDamage, false, true);
+                        enemy.gameObject.GetComponent<EnemyHealth>().ProjectilesOff(1, enemy.gameObject.GetComponent<EnemyHealth>().projectiles.Count, DmgFromShuriken);
                    }
                    if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static && enemy.gameObject.GetComponent<EnemyHealth>().canBeAttacked && enemy.gameObject.GetComponent<EnemyHealth>().canDoDmg)
                    {
@@ -1526,7 +1526,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (enemy.gameObject.GetComponent<EnemyHealth>() && enemy.gameObject.GetComponent<AI_Move>())
                     {
-                        enemy.gameObject.GetComponent<EnemyHealth>().ProjectilesOff(0, animToPlay.shurikenDrop);
+                        enemy.gameObject.GetComponent<EnemyHealth>().ProjectilesOff(0, animToPlay.shurikenDrop,4);
                         enemy.gameObject.GetComponent<AI_Move>().Hit(0.1f, (enemy.transform.position - transform.position).normalized * 15, animToPlay.dmg);
                     }
                     else if (enemy.gameObject.GetComponent<EnemyHealth>())

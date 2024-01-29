@@ -41,6 +41,10 @@ public class PlayerHealth : MonoBehaviour
     public void AddHealth(float Health)
     {
         addHp += Health;
+        if (healthText == null)
+        {
+            healthText = playerHealthSlider.transform.parent.GetComponentInChildren<Text>();
+        }
         healthText.text = ((int)playerCourrentHealth).ToString();
         if (playerCourrentHealth+ addHp > playerMaxHealth) 
         { 
@@ -89,5 +93,10 @@ public class PlayerHealth : MonoBehaviour
     void MakeDead()
     {
         GetComponent<PlayerController>().MakeDeath();
+    }
+
+    public float GetPlayerHP()
+    {
+        return (playerCourrentHealth + addHp) / playerMaxHealth;
     }
 }
