@@ -3293,8 +3293,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551387625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.39, y: 2.59, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -30.68, y: 9.03, z: 0}
+  m_LocalScale: {x: 0.54922, y: 0.54922, z: 0.54922}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4356,6 +4356,15 @@ MonoBehaviour:
   shokyakuStamina: 5
   desumiruStamina: 7
   speedStamina: 0
+  shokyakuImage: {fileID: 0}
+  desumiruImage: {fileID: 0}
+  itaikenImage: {fileID: 0}
+  shokyakuMaxCooldown: 0
+  itaikenMaxCooldown: 0
+  desumiruMaxCooldown: 0
+  shokyakuUseTime: 0
+  itaikenUseTime: 0
+  desumiruUseTime: 0
 --- !u!114 &812912221
 MonoBehaviour:
   m_ObjectHideFlags: 0
