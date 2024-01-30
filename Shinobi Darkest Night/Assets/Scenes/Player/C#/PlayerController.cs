@@ -304,7 +304,6 @@ public class PlayerController : MonoBehaviour
     {       
         timeToEndAnimation -= Time.deltaTime;
 
-
         if (Input.GetKeyDown(KeyCode.P))
         {
             godMode = !godMode;
@@ -1391,6 +1390,15 @@ public class PlayerController : MonoBehaviour
             facingDirection = projectileSpawnPoint.position - transform.position;
             attackCooldown = startAttackCooldown;
             CurrentState = AttackAnim;
+            if (Mover != null)
+            {
+                StopCoroutine(Mover);
+            }
+            if (comboStop != null)
+            {
+                StopCoroutine(comboStop);
+            }
+            //rb.velocity = Vector2.zero;
             canMove = false;
             if (yokan <= 0)
             {

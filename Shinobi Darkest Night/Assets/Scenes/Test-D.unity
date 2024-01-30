@@ -479,6 +479,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99d28234ce044864d94a155857b5bbda, type: 3}
+--- !u!1 &317260274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 317260275}
+  m_Layer: 11
+  m_Name: Test AI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &317260275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317260274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.86, y: -19.08, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &357965989
 GameObject:
   m_ObjectHideFlags: 0
@@ -2767,8 +2798,6 @@ MonoBehaviour:
   useParticles: 0
   canAttackAgain: 0
   hpPoint: {fileID: 0}
-  minHpDrop: 0
-  maxHpDrop: 0
 --- !u!50 &3178503730860046775
 Rigidbody2D:
   serializedVersion: 4
@@ -2938,8 +2967,6 @@ MonoBehaviour:
   useParticles: 0
   canAttackAgain: 0
   hpPoint: {fileID: 0}
-  minHpDrop: 0
-  maxHpDrop: 0
 --- !u!50 &3178503731695047759
 Rigidbody2D:
   serializedVersion: 4
@@ -3092,8 +3119,6 @@ MonoBehaviour:
   useParticles: 0
   canAttackAgain: 0
   hpPoint: {fileID: 0}
-  minHpDrop: 0
-  maxHpDrop: 0
 --- !u!50 &3178503731721236901
 Rigidbody2D:
   serializedVersion: 4
@@ -3487,8 +3512,6 @@ MonoBehaviour:
   useParticles: 0
   canAttackAgain: 0
   hpPoint: {fileID: 0}
-  minHpDrop: 0
-  maxHpDrop: 0
 --- !u!50 &3178503732792890099
 Rigidbody2D:
   serializedVersion: 4

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,8 +29,7 @@ public class EnemyHealth : MonoBehaviour
     
     //hp drop
     [SerializeField] GameObject hpPoint;
-    [SerializeField] int minHpDrop;
-    [SerializeField] int maxHpDrop;
+    private float canDropHp;
     private PlayerHealth playerHP;
 
     public void Awake()
@@ -75,6 +75,11 @@ public class EnemyHealth : MonoBehaviour
         if (canAttackAgain > 0)
         {
             canAttackAgain -= Time.deltaTime;
+        }
+
+        if (canDropHp > 0)
+        { 
+            canDropHp -= Time.deltaTime;
         }
     }
 
@@ -123,7 +128,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void DropHp()
     {
-        int drop = Random.Range(minHpDrop, maxHpDrop + 1);
+        int drop = (int)Random.Range(1, (enemyMaxHealth/35) * (1 - playerHP.GetPlayerHP()));
         while (drop > 0)
         {
             Instantiate(hpPoint, transform.position, Quaternion.Euler(Vector3.zero), null);
@@ -138,13 +143,13 @@ public class EnemyHealth : MonoBehaviour
             dmg = 60;
         }
         int drop = Mathf.RoundToInt(1-(enemyHealth / enemyMaxHealth) + (dmg / enemyMaxHealth) + Random.Range(-0.07f, 0.07f) - 0.35f + 0.22f* (1- playerHP.GetPlayerHP()));
-        //Debug.Log((1 - (enemyHealth / enemyMaxHealth) + (dmg / enemyMaxHealth) + Random.Range(-0.07f, 0.07f)) - 0.35f + 0.22f * (1-playerHP.GetPlayerHP()));
 
-        if (drop < 1 || Random.value > 0.65f)
+        if (drop < 1 || Random.value > 0.65f || canDropHp > 0)
         {
             return;
         }
 
+        canDropHp = 0.1f;
         while (drop > 0)
         {
             GameObject HPPoint = Instantiate(hpPoint, transform.position, Quaternion.Euler(Vector3.zero), null);

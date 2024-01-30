@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08126a896cabf534db4ed028436398a2, type: 3}
   m_Name: CharacterState_Attack
   m_EditorClassIdentifier: 
-  <CanMove>k__BackingField: 1
+  <CanMove>k__BackingField: 0
   <CanExitWhilePlaying>k__BackingField: 1
