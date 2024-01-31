@@ -31,6 +31,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] GameObject hpPoint;
     private float canDropHp;
     private PlayerHealth playerHP;
+    private float dropChance;
 
     public void Awake()
     {
@@ -142,13 +143,19 @@ public class EnemyHealth : MonoBehaviour
         {
             dmg = 60;
         }
-        int drop = Mathf.RoundToInt(1-(enemyHealth / enemyMaxHealth) + (dmg / enemyMaxHealth) + Random.Range(-0.07f, 0.07f) - 0.35f + 0.22f* (1- playerHP.GetPlayerHP()));
+        int drop = Mathf.RoundToInt(1-(enemyHealth / enemyMaxHealth) + (dmg / enemyMaxHealth) + Random.Range(-0.07f, 0.07f) - 0.35f + 0.22f* (1- playerHP.GetPlayerHP()) + dropChance);
 
         if (drop < 1 || Random.value > 0.65f || canDropHp > 0)
         {
+            if (canDropHp < 0 && drop > 0)
+            {
+                dropChance += 0.06f;
+            }
             return;
         }
 
+
+        dropChance = 0;
         canDropHp = 0.1f;
         while (drop > 0)
         {

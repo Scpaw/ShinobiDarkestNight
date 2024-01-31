@@ -474,7 +474,7 @@ public class PlayerController : MonoBehaviour
             UseStamina(shokyakuStamina * Time.deltaTime);
             if (mizuame <= 0)
             {
-                hp.AddDamage(20 * Time.deltaTime);
+                //hp.AddDamage(20 * Time.deltaTime);
             }
             shokyakuTimer -= Time.deltaTime;
             if (shokyakuTimer <= 0 || stamina < 1)
