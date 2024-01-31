@@ -168,7 +168,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 82d014f422522084ea1907673ccbd065, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -264,8 +264,6 @@ MonoBehaviour:
   useParticles: 0
   canAttackAgain: 0
   hpPoint: {fileID: 0}
-  minHpDrop: 0
-  maxHpDrop: 0
 --- !u!61 &3178503731163556435
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -481,7 +479,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 82d014f422522084ea1907673ccbd065, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -577,8 +575,6 @@ MonoBehaviour:
   useParticles: 0
   canAttackAgain: 0
   hpPoint: {fileID: 0}
-  minHpDrop: 0
-  maxHpDrop: 0
 --- !u!61 &3178503732239337733
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -678,7 +674,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 82d014f422522084ea1907673ccbd065, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -774,8 +770,6 @@ MonoBehaviour:
   useParticles: 0
   canAttackAgain: 0
   hpPoint: {fileID: 0}
-  minHpDrop: 0
-  maxHpDrop: 0
 --- !u!61 &3178503732282371311
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -887,8 +881,6 @@ MonoBehaviour:
   useParticles: 0
   canAttackAgain: 0
   hpPoint: {fileID: 0}
-  minHpDrop: 0
-  maxHpDrop: 0
 --- !u!61 &3178503732420985111
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -988,7 +980,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 82d014f422522084ea1907673ccbd065, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
