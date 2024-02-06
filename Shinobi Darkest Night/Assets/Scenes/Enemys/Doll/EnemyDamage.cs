@@ -21,6 +21,8 @@ public class EnemyDamage : MonoBehaviour
     public bool playerIn;
     public bool canAttack;
     [SerializeField] bool doDmgWhileAttack = true;
+    [SerializeField] bool EnemyAI = false;
+
 
 
     private void OnEnable()
@@ -39,6 +41,11 @@ public class EnemyDamage : MonoBehaviour
             damageR = GetComponentInChildren<DamageRange>();
         }
         canAttack = true;
+
+        if (GetComponent<NewAi>())
+        {
+            GetComponent<NewAi>().attackRate = enemyDamageRate;
+        }
     }
 
     void Update()
@@ -60,6 +67,11 @@ public class EnemyDamage : MonoBehaviour
         PlayerHealth thePlayerHealth = thePlayer.GetComponent<PlayerHealth>();
         if (enemyNextDamage <= Time.time)
         {
+            if (EnemyAI)
+            { 
+                GetComponent<NewAi>().EndAttack();
+            }
+
             if (doDmgWhileAttack)
             {
                 thePlayerHealth.AddDamage(enemyDamage);

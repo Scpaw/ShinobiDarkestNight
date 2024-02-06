@@ -27,8 +27,7 @@ public class Archer : MonoBehaviour
     [SerializeField] float archerSpeed;
     public float stundTime;
     Animator EnemyAnim;
-    private AIPath canMove;
-    private AI_Move AI;
+    private NewAi AI;
     private Vector3 startPos;
     private GameObject thePlayer;
     public List<GameObject> projectiles;
@@ -59,10 +58,6 @@ public class Archer : MonoBehaviour
     }
     private void OnEnable()
     {
-        if (canMove == null)
-        {
-            canMove = gameObject.GetComponent<AIPath>();
-        }
         if (EnemyAnim == null)
         {
             EnemyAnim = transform.Find("Grafika").GetComponent<Animator>();
@@ -75,7 +70,7 @@ public class Archer : MonoBehaviour
         }
         if (AI == null)
         {
-            AI = GetComponent<AI_Move>();
+            AI = GetComponent<NewAi>();
         }
 
         if (target == null)
@@ -95,7 +90,7 @@ public class Archer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (AI.IsMoving() && canMove.canMove && !AI.stop)
+        if (AI.canMove)
         {
             EnemyAnim.SetFloat("Moving", 1);
         }
@@ -121,22 +116,21 @@ public class Archer : MonoBehaviour
             else if(canShootPlayer && walkingTime <=0)
             {
 
-                if (damageRange.playerInRange || (transform.position - player.transform.position).magnitude <= backRadius && !AI.stop && meleeAttackNum > Random.Range(1, 2))
+                if (damageRange.playerInRange || (transform.position - player.transform.position).magnitude <= backRadius && AI.canMove && meleeAttackNum > Random.Range(1, 2))
                 {
                     AI.canMove = false;
-                    if (Time.time > meleeTime && damageRange.playerInRange)
+                    if (Time.time > meleeTime && damageRange.playerInRange && !shooting)
                     {
                         walkingTime = 0;
                         EnemyAnim.SetTrigger("Melee");
                         meleeAttackNum++;
                         meleeTime = Time.time + meleeAttackTime;
                     }
-                    else if ((transform.position - player.transform.position).magnitude <= backRadius && !damageRange.playerInRange && (transform.position - player.transform.position).magnitude > 0.1f && runBackTimer <= 0 && runBackIteration < 4 && meleeAttackNum > Random.Range(1, 2))
+                    else if ((transform.position - player.transform.position).magnitude <= backRadius &&!damageRange.playerInRange && (transform.position - player.transform.position).magnitude > 0.1f && runBackTimer <= 0 && runBackIteration < 4 && meleeAttackNum > Random.Range(1, 2))
                     {
                         EnemyAnim.SetTrigger("Back");
                         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         AI.canMove = true;
-                        canMove.maxSpeed = AI.enemySpeed;
                         canShootPlayer = false;
                         pointTarget.transform.position = RunBack();
                         target.target = pointTarget.transform;
@@ -146,7 +140,7 @@ public class Archer : MonoBehaviour
                 }
                 else
                 {
-                    AI.canMove = false;
+                    //AI.canMove = false;
                     if (Time.time > nextShoot)
                     {
                         if (health.enemyHealth / health.enemyMaxHealth > 0.75f)
@@ -178,7 +172,18 @@ public class Archer : MonoBehaviour
 
                     }
                 }
-            }          
+            }
+
+
+            if (!shooting)
+            {
+                AI.canMove = true;
+            }
+            else
+            {
+                AI.canMove = false;
+            }
+
         }
         else
         {
@@ -231,6 +236,7 @@ public class Archer : MonoBehaviour
         if (damageRange.playerInRange)
         {
             player.GetComponent<PlayerHealth>().AddDamage(meleeDamage);
+            AI.EndAttack();
         }
     }
     public void SpawnPoint(bool triple)

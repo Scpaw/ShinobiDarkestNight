@@ -10,7 +10,7 @@ public class NewAi : MonoBehaviour
 
     //AI
     [SerializeField] private float speed;
-    [SerializeField] private bool canMove;
+    public bool canMove;
     [SerializeField] private LayerMask whatCanSee;
     [SerializeField] private float seeRadius;
     [SerializeField] private List<Vector2> directions;
@@ -43,12 +43,13 @@ public class NewAi : MonoBehaviour
     [SerializeField] private float playerRange;
     [SerializeField] private float playerZone;
     [SerializeField] private float changeDirectionSpeed;
-    [SerializeField] private float detectionRange;
+    public float detectionRange;
 
     //attack
     [Header("Attack")]
     private float lastAttack;
     [SerializeField] bool attack;
+    public float attackRate;
     public float attackRange = 1.1f;
 
     //rigidbody
@@ -80,7 +81,7 @@ public class NewAi : MonoBehaviour
         //test
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Stun(0.4f, (transform.position - player.transform.position).normalized * 300);
+            Stun(0.4f, (transform.position - player.transform.position).normalized * 3);
         }
 
 
@@ -89,18 +90,19 @@ public class NewAi : MonoBehaviour
             Attack();
         }
 
-        if(attack && (transform.position - player.transform.position).magnitude < attackRange)
-        {
-            EndAttack();
-        }
 
         if (lastFlip > 0)
         { 
             lastFlip -= Time.deltaTime;
         }
 
-        if (canMove && (player.position - transform.position).magnitude < detectionRange)
+        if (canMove && (player.position - transform.position).magnitude < detectionRange && stuned == null)
         {
+            if (!astar.enabled)
+            {
+                astar.enabled = true;
+            }
+
             if (checkAgain < Time.time)
             {
                 CheckDirection(20);
@@ -134,7 +136,6 @@ public class NewAi : MonoBehaviour
                 movingDirection = Vector2.zero;
             }
         }
-
 
         if (debugMode)
         {
@@ -288,7 +289,7 @@ public class NewAi : MonoBehaviour
     {
         attack = false;
         velocityControl = 1;
-        lastAttack = Time.time + Random.Range(1.3f, 4f);
+        lastAttack = Time.time + Random.Range(attackRate * 1.3f,attackRate * 0.7f);
     }
 
     private void Flip()
@@ -313,6 +314,8 @@ public class NewAi : MonoBehaviour
     private IEnumerator StunMe(float time, Vector2 force)
     {
         canMove = false;
+        astar.enabled = false;
+        rb.velocity = Vector2.zero;
         rb.AddForce(force,ForceMode2D.Impulse);
         while (time > 0)
         { 

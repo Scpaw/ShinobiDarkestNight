@@ -465,9 +465,17 @@ public class PlayerController : MonoBehaviour
                 if (enemy.GetComponent<EnemyHealth>())
                 {
                     enemy.GetComponent<EnemyHealth>().enemyAddDamage(40 * Time.deltaTime, false, false);
-                    if (!enemy.GetComponent<EnemyHealth>().isStuned)
+                    if (enemy.GetComponent<NewAi>())
                     {
-                        enemy.GetComponent<EnemyHealth>().Stun();
+                        enemy.GetComponent<NewAi>().Stun(Time.deltaTime, enemy.transform.position - transform.position);
+                    }
+                    else
+                    {
+
+                        if (!enemy.GetComponent<EnemyHealth>().isStuned)
+                        {
+                            enemy.GetComponent<EnemyHealth>().Stun();
+                        }
                     }
                 }
             }
@@ -1426,9 +1434,16 @@ public class PlayerController : MonoBehaviour
                    }
                    if (enemy.gameObject.GetComponent<Rigidbody2D>() != null && enemy.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static && enemy.gameObject.GetComponent<EnemyHealth>().canBeAttacked && enemy.gameObject.GetComponent<EnemyHealth>().canDoDmg)
                    {
-                       enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                       enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
-                       enemy.gameObject.GetComponent<EnemyHealth>().Stun();
+                        enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                        if (enemy.gameObject.GetComponent<NewAi>())
+                        {
+                            enemy.gameObject.GetComponent<NewAi>().Stun(1.4f, projectileSpawnPoint.right * pushForce);
+                        }
+                        else
+                        {
+                            enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
+                        }
+                        enemy.gameObject.GetComponent<EnemyHealth>().Stun();
                    }
                }
            }
@@ -1501,7 +1516,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(myAnim.GetCurrentAnimatorStateInfo(0).length);
         canMove = true;
         combo = false;
-        ChangeClip();
+        //ChangeClip();
     }
 
     private IEnumerator Move(Vector2 direction, float speed, float time,MeeleAttack animToPlay)
@@ -1532,10 +1547,18 @@ public class PlayerController : MonoBehaviour
             {
                 if (enemy.gameObject.layer == 6 && enemy.gameObject != null)
                 {
-                    if (enemy.gameObject.GetComponent<EnemyHealth>() && enemy.gameObject.GetComponent<AI_Move>())
+                    if (enemy.gameObject.GetComponent<EnemyHealth>() && enemy.gameObject.GetComponent<NewAi>())
                     {
                         enemy.gameObject.GetComponent<EnemyHealth>().ProjectilesOff(0, animToPlay.shurikenDrop,4);
-                        enemy.gameObject.GetComponent<AI_Move>().Hit(0.1f, (enemy.transform.position - transform.position).normalized * 15, animToPlay.dmg);
+                        enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(animToPlay.dmg, false, true);
+                        if (enemy.gameObject.GetComponent<NewAi>())
+                        {
+                            enemy.gameObject.GetComponent<NewAi>().Stun(0.7f, projectileSpawnPoint.right * 5.3f);
+                        }
+                        else
+                        {
+                            enemy.gameObject.GetComponent<Rigidbody2D>().AddForce(projectileSpawnPoint.right * pushForce, ForceMode2D.Impulse);
+                        }
                     }
                     else if (enemy.gameObject.GetComponent<EnemyHealth>())
                     {

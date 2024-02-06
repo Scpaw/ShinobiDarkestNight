@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Itaiken : MonoBehaviour
@@ -19,11 +20,20 @@ public class Itaiken : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(damage, true, true);
-            if (collision.GetComponent<Rigidbody2D>().bodyType != RigidbodyType2D.Static)
+            if (collision.GetComponent<Rigidbody2D>())
             {
-                collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position) * pushForce, ForceMode2D.Impulse);
-                collision.gameObject.GetComponent<EnemyHealth>().Stun();
+                if (collision.GetComponent<NewAi>())
+                {
+                    collision.GetComponent<NewAi>().Stun(1.2f, (collision.transform.position - transform.position) * pushForce);
+                }
+                else
+                {
+
+                    collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    collision.gameObject.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position) * pushForce, ForceMode2D.Impulse);
+                    collision.gameObject.GetComponent<EnemyHealth>().Stun();
+                }
+
             }
         }
 

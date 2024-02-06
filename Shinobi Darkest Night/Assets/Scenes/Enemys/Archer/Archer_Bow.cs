@@ -11,7 +11,7 @@ public class Archer_Bow : MonoBehaviour
     private void Start()
     {
         player = PlayerController.Instance.GetPlayer();
-        sightRange = GetComponentInParent<AI_Move>().detectRadius;
+        sightRange = GetComponentInParent<NewAi>().detectionRange;
     }
     void Update()
     {
