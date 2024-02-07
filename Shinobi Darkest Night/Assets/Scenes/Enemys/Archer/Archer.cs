@@ -13,7 +13,7 @@ public class Archer : MonoBehaviour
     [SerializeField] private GameObject projectileRotation;
 
     [Header("Archer Projectile Parameters")]
-    [SerializeField] public int sightRange;
+    [SerializeField] public float sightRange;
     [SerializeField] float shootingRate_Min = 4f;
     [SerializeField] float shootingRate_Max = 6f;
     [SerializeField] float nextShoot = 0.5f;
@@ -90,7 +90,7 @@ public class Archer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (AI.canMove)
+        if (AI.IsMoving())
         {
             EnemyAnim.SetFloat("Moving", 1);
         }
@@ -100,109 +100,99 @@ public class Archer : MonoBehaviour
         }
             
 
-        if (playerInRange)
+        if ((player.transform.position - transform.position).magnitude < sightRange)
         {
-            if (hit(transform.position).transform.gameObject.layer != 7 && walkingTime <= 0)
-            {
-                if (canShootPlayer && !shooting)
-                {
-                    AI.canMove = true;
-                    canShootPlayer = false;
-                    pointTarget.transform.position = canShootPoint();
-                    gameObject.GetComponent<AIDestinationSetter>().target = pointTarget.transform;
-                    walkingTime = 2;
-                }
-            }
-            else if(canShootPlayer && walkingTime <=0)
+            //if (hit(transform.position).transform.gameObject.layer != 7 && walkingTime <= 0)
+            //{
+            //    //if (canShootPlayer && !shooting)
+            //    //{
+            //    //    AI.canMove = true;
+            //    //    canShootPlayer = false;
+            //    //    pointTarget.transform.position = canShootPoint();
+            //    //    gameObject.GetComponent<AIDestinationSetter>().target = pointTarget.transform;
+            //    //    walkingTime = 2;
+            //    //}
+            //}
+            //else 
+            //if(canShootPlayer && walkingTime <=0)
+            //{
+            //
+            //    if (damageRange.playerInRange || (transform.position - player.transform.position).magnitude <= backRadius && AI.canMove && meleeAttackNum > Random.Range(1, 2))
+            //    {
+            //
+            //    }
+            //    else
+            //    {
+            //        
+            //    }
+            //}
+
+
+            if (Time.time > meleeTime && damageRange.playerInRange && !shooting)
             {
 
-                if (damageRange.playerInRange || (transform.position - player.transform.position).magnitude <= backRadius && AI.canMove && meleeAttackNum > Random.Range(1, 2))
+                Debug.Log("Melee");
+                //AI.canMove = false;
+                //walkingTime = 0;
+                EnemyAnim.SetTrigger("Melee");
+                meleeAttackNum++;
+                meleeTime = Time.time + meleeAttackTime;
+            }
+            else if(Time.time > nextShoot)
+            {
+                if (health.enemyHealth / health.enemyMaxHealth > 0.75f)
                 {
-                    AI.canMove = false;
-                    if (Time.time > meleeTime && damageRange.playerInRange && !shooting)
-                    {
-                        walkingTime = 0;
-                        EnemyAnim.SetTrigger("Melee");
-                        meleeAttackNum++;
-                        meleeTime = Time.time + meleeAttackTime;
-                    }
-                    else if ((transform.position - player.transform.position).magnitude <= backRadius &&!damageRange.playerInRange && (transform.position - player.transform.position).magnitude > 0.1f && runBackTimer <= 0 && runBackIteration < 4 && meleeAttackNum > Random.Range(1, 2))
-                    {
-                        EnemyAnim.SetTrigger("Back");
-                        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                        AI.canMove = true;
-                        canShootPlayer = false;
-                        pointTarget.transform.position = RunBack();
-                        target.target = pointTarget.transform;
-                        walkingTime = 2;
-                        runBackTimer = 0.3f;
-                    }
+                    nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
+                    EnemyAnim.SetFloat("AnimationSpeed", 1);
                 }
                 else
                 {
-                    //AI.canMove = false;
-                    if (Time.time > nextShoot)
-                    {
-                        if (health.enemyHealth / health.enemyMaxHealth > 0.75f)
-                        {
-                            nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max);
-                            EnemyAnim.SetFloat("AnimationSpeed", 1);
-                        }
-                        else
-                        {
-                            EnemyAnim.SetFloat("AnimationSpeed", 1.5f);
-                            nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max)/lowHpShootingSpeed;
-                        }
-
-
-                        if (shots > Random.Range(4, 6))
-                        {
-                            shooting = true;
-                            runBackIteration = 0;
-                            EnemyAnim.SetTrigger("3shot");
-                            shots = 0;
-                        }
-                        else
-                        {
-                            shooting = true;
-                            runBackIteration = 0;
-                            EnemyAnim.SetTrigger("shot");
-                            shots++;
-                        }
-
-                    }
+                    EnemyAnim.SetFloat("AnimationSpeed", 1.5f);
+                    nextShoot = Time.time + Random.Range(shootingRate_Min, shootingRate_Max) / lowHpShootingSpeed;
                 }
+
+
+                if (shots > Random.Range(4, 6))
+                {
+                    shooting = true;
+                    runBackIteration = 0;
+                    EnemyAnim.SetTrigger("3shot");
+                    shots = 0;
+                }
+                else
+                {
+                    shooting = true;
+                    runBackIteration = 0;
+                    EnemyAnim.SetTrigger("shot");
+                    shots++;
+                }
+
             }
 
 
-            if (!shooting)
-            {
-                AI.canMove = true;
-            }
-            else
-            {
-                AI.canMove = false;
-            }
 
+
+        }
+
+        if (!shooting)
+        {
+            AI.canMove = true;
         }
         else
         {
-            if (!shooting)
-            {
-                AI.canMove = true;
-            }
-
+            AI.canMove = false;
         }
 
-        if(fireRange())
-        {
-            playerInRange = true;
-        }
-        else
-        {
-            playerInRange = false;
-            walkingTime = 0;
-        }
+
+        //if(fireRange())
+        //{
+        //    playerInRange = true;
+        //}
+        //else
+        //{
+        //    playerInRange = false;
+        //    walkingTime = 0;
+        //}
         if (target.target.transform.position.x -transform.position.x > 0 && transform.localScale.x < 0 || target.target.transform.position.x - transform.position.x < 0 && transform.localScale.x > 0)
         {
             Flip(transform);
@@ -210,33 +200,33 @@ public class Archer : MonoBehaviour
             Flip(transform.GetComponentInChildren<Canvas>().transform);
         }
 
-        if (runBackTimer > 0)
-        {
-            runBackTimer -= Time.deltaTime;
-        }
-        if (walkingTime > 0)
-        {
-            walkingTime -= Time.fixedDeltaTime;
-        }
-        if (((transform.position - pointTarget.transform.position).magnitude < 0.1f || walkingTime<=0 ) && gameObject.GetComponent<AIDestinationSetter>().target != thePlayer.transform)
-        {         
-            walkingTime = 0;
-            canShootPlayer = true;
-            gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
-        }
+        //if (runBackTimer > 0)
+        //{
+        //    runBackTimer -= Time.deltaTime;
+        //}
+        //if (walkingTime > 0)
+        //{
+        //    walkingTime -= Time.fixedDeltaTime;
+        //}
+        //if (((transform.position - pointTarget.transform.position).magnitude < 0.1f || walkingTime<=0 ) && gameObject.GetComponent<AIDestinationSetter>().target != thePlayer.transform)
+        //{         
+        //    walkingTime = 0;
+        //    canShootPlayer = true;
+        //    gameObject.GetComponent<AIDestinationSetter>().target = thePlayer.transform;
+        //}
 
     }
 
-    bool fireRange()
-    {
-        return (Camera.main.WorldToScreenPoint(transform.position).x < Screen.width * 0.93 && Camera.main.WorldToScreenPoint(transform.position).x > Screen.width*0.07f && Camera.main.WorldToScreenPoint(transform.position).y < Screen.height *0.93 && Camera.main.WorldToScreenPoint(transform.position).y > Screen.height * 0.07);
-    }
+    //bool fireRange()
+    //{
+    //    return (Camera.main.WorldToScreenPoint(transform.position).x < Screen.width * 0.93 && Camera.main.WorldToScreenPoint(transform.position).x > Screen.width*0.07f && Camera.main.WorldToScreenPoint(transform.position).y < Screen.height *0.93 && Camera.main.WorldToScreenPoint(transform.position).y > Screen.height * 0.07);
+    //}
     public void Attack()
     {
+        AI.EndAttack();
         if (damageRange.playerInRange)
         {
             player.GetComponent<PlayerHealth>().AddDamage(meleeDamage);
-            AI.EndAttack();
         }
     }
     public void SpawnPoint(bool triple)
@@ -259,88 +249,88 @@ public class Archer : MonoBehaviour
         changeThis.localScale = new Vector3(-changeThis.localScale.x, changeThis.localScale.y, changeThis.localScale.z);
     }
 
-    private RaycastHit2D hit(Vector3 pos)
-    {
-        return Physics2D.CircleCast(pos, 0.2f, (player.position - pos).normalized, 30, layerToHit);
-    }
-    private Vector2 dir(Vector3 pos)
-    { 
-        return (player.position - pos).normalized;
-    }
-    private Vector3 canShootPoint()
-    {
-        Vector2 posToReturn = transform.position;
-        int i = 0;
-         while (hit(posToReturn).transform.gameObject.layer != 7 && i <75)
-         {
-            posToReturn = transform.position;
-            if (i % 2 == 1)
-            {
-                posToReturn = posToReturn + new Vector2( dir(posToReturn).x * i/2,0);
-            }
-            else
-            {
-                posToReturn = posToReturn + new Vector2 (0,dir(posToReturn).y * i);
-            }
-            i++;
-         }
-        return posToReturn;
-    }
+    //private RaycastHit2D hit(Vector3 pos)
+    //{
+    //    return Physics2D.CircleCast(pos, 0.2f, (player.position - pos).normalized, 30, layerToHit);
+    //}
+    //private Vector2 dir(Vector3 pos)
+    //{ 
+    //    return (player.position - pos).normalized;
+    //}
+    //private Vector3 canShootPoint()
+    //{
+    //    Vector2 posToReturn = transform.position;
+    //    int i = 0;
+    //     while (hit(posToReturn).transform.gameObject.layer != 7 && i <75)
+    //     {
+    //        posToReturn = transform.position;
+    //        if (i % 2 == 1)
+    //        {
+    //            posToReturn = posToReturn + new Vector2( dir(posToReturn).x * i/2,0);
+    //        }
+    //        else
+    //        {
+    //            posToReturn = posToReturn + new Vector2 (0,dir(posToReturn).y * i);
+    //        }
+    //        i++;
+    //     }
+    //    return posToReturn;
+    //}
 
 
-    private Vector3 RunBack()
-    {
-        float R = backRadius/2;
-        Vector3 posToReturn = new Vector3(0,0,0);
-        List<Vector3> points = new List<Vector3> ();
-        int i = 0;
-        while (i < 30)
-        {
-            Vector3 check = new Vector3();
-            check = (Random.insideUnitCircle * R) + new Vector2(transform.position.x, transform.position.y);
-            if (!CheckIfCanGo(check))
-            {
-                points.Add(check);
-            }
-            i++;
-        }
-        foreach (Vector3 check in points)
-        {
-            if (posToReturn == Vector3.zero || (check - player.position).magnitude > (posToReturn - player.position).magnitude)
-            { 
-                posToReturn = check;
-            }
-        }
-        if (posToReturn == Vector3.zero)
-        {
-            runBackIteration++;
-            walkingTime = 0;
-            meleeAttackNum = 100;
-            return transform.position;
-        }
-        else
-        {
-            runBackIteration++;
-            Debug.DrawRay(transform.position, -(transform.position - posToReturn).normalized, Color.green, 5);
-            meleeAttackNum = 0;
-            return posToReturn;
-        }
+    //private Vector3 RunBack()
+    //{
+    //    float R = backRadius/2;
+    //    Vector3 posToReturn = new Vector3(0,0,0);
+    //    List<Vector3> points = new List<Vector3> ();
+    //    int i = 0;
+    //    while (i < 30)
+    //    {
+    //        Vector3 check = new Vector3();
+    //        check = (Random.insideUnitCircle * R) + new Vector2(transform.position.x, transform.position.y);
+    //        if (!CheckIfCanGo(check))
+    //        {
+    //            points.Add(check);
+    //        }
+    //        i++;
+    //    }
+    //    foreach (Vector3 check in points)
+    //    {
+    //        if (posToReturn == Vector3.zero || (check - player.position).magnitude > (posToReturn - player.position).magnitude)
+    //        { 
+    //            posToReturn = check;
+    //        }
+    //    }
+    //    if (posToReturn == Vector3.zero)
+    //    {
+    //        runBackIteration++;
+    //        walkingTime = 0;
+    //        meleeAttackNum = 100;
+    //        return transform.position;
+    //    }
+    //    else
+    //    {
+    //        runBackIteration++;
+    //        Debug.DrawRay(transform.position, -(transform.position - posToReturn).normalized, Color.green, 5);
+    //        meleeAttackNum = 0;
+    //        return posToReturn;
+    //    }
+    //
+    //
+    //}
 
-
-    }
-
-    private bool CheckIfCanGo(Vector3 pos)
-    {
-        if (Physics2D.CircleCast(transform.position, 0.23f, -(transform.position - pos).normalized, backRadius, layerToHit) || (pos - player.transform.position).magnitude <= backRadius)
-        {
-            Debug.DrawRay(transform.position, -(transform.position - pos).normalized, Color.red, 5);
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, -(transform.position - pos).normalized, Color.blue, 5);
-        }
-
-        return (Physics2D.CircleCast(transform.position, 0.23f, -(transform.position - pos).normalized, backRadius, layerToHit) || (pos - player.transform.position).magnitude <= backRadius);
-    }
+    //private bool CheckIfCanGo(Vector3 pos)
+    //{
+    //    if (Physics2D.CircleCast(transform.position, 0.23f, -(transform.position - pos).normalized, backRadius, layerToHit) || (pos - player.transform.position).magnitude <= backRadius)
+    //    {
+    //        Debug.DrawRay(transform.position, -(transform.position - pos).normalized, Color.red, 5);
+    //    }
+    //    else
+    //    {
+    //        Debug.DrawRay(transform.position, -(transform.position - pos).normalized, Color.blue, 5);
+    //    }
+    //
+    //    return (Physics2D.CircleCast(transform.position, 0.23f, -(transform.position - pos).normalized, backRadius, layerToHit) || (pos - player.transform.position).magnitude <= backRadius);
+    //}
 
 }

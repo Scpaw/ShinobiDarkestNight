@@ -529,9 +529,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 3
-  m_LinearDrag: 5
-  m_AngularDrag: 3
+  m_Mass: 1
+  m_LinearDrag: 3
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -554,8 +554,8 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 2375163274998556102}
   projectileRotation: {fileID: 1661951660586131815}
   sightRange: 30
-  shootingRate_Min: 1
-  shootingRate_Max: 3
+  shootingRate_Min: 3
+  shootingRate_Max: 5
   nextShoot: 4
   shooting: 0
   lowHpShootingSpeed: 1

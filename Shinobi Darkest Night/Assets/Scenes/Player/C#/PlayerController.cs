@@ -1437,7 +1437,7 @@ public class PlayerController : MonoBehaviour
                         enemy.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         if (enemy.gameObject.GetComponent<NewAi>())
                         {
-                            enemy.gameObject.GetComponent<NewAi>().Stun(1.4f, projectileSpawnPoint.right * pushForce);
+                            enemy.gameObject.GetComponent<NewAi>().Stun(0.9f, projectileSpawnPoint.right * pushForce);
                         }
                         else
                         {
@@ -1553,7 +1553,7 @@ public class PlayerController : MonoBehaviour
                         enemy.gameObject.GetComponent<EnemyHealth>().enemyAddDamage(animToPlay.dmg, false, true);
                         if (enemy.gameObject.GetComponent<NewAi>())
                         {
-                            enemy.gameObject.GetComponent<NewAi>().Stun(0.7f, projectileSpawnPoint.right * 5.3f);
+                            enemy.gameObject.GetComponent<NewAi>().Stun(0.4f, projectileSpawnPoint.right * 5.3f);
                         }
                         else
                         {

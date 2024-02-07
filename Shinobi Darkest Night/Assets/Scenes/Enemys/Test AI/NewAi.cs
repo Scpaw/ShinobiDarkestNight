@@ -57,6 +57,7 @@ public class NewAi : MonoBehaviour
 
     //hit
     private Coroutine stuned;
+    private bool stop;
 
     //debug
     [SerializeField] private bool debugMode;
@@ -96,7 +97,7 @@ public class NewAi : MonoBehaviour
             lastFlip -= Time.deltaTime;
         }
 
-        if (canMove && (player.position - transform.position).magnitude < detectionRange && stuned == null)
+        if (canMove && (player.position - transform.position).magnitude < detectionRange && stuned == null && !stop)
         {
             if (!astar.enabled)
             {
@@ -109,7 +110,7 @@ public class NewAi : MonoBehaviour
                 checkAgain = Time.time + timeToCheck;
             }
 
-            if ( attack || (player.position - transform.position).magnitude > seeRadius)
+            if ( attack || (player.position - transform.position).magnitude > playerRange + playerZone)
             {
                 movingDirection = Vector2.LerpUnclamped(movingDirection, astar.desiredVelocity.normalized + enemyNear/10, changeDirectionSpeed * Time.deltaTime);
             }
@@ -149,6 +150,11 @@ public class NewAi : MonoBehaviour
         {
             inZone = false;
             directions.Add(astar.desiredVelocity.normalized * movingDirValue);
+        }
+        else
+        {
+            inZone = true;
+            Debug.Log("inzone");
         }
         enemyNear = Vector2.zero;
         wantToMoveDirection = Vector2.zero;
@@ -313,7 +319,7 @@ public class NewAi : MonoBehaviour
 
     private IEnumerator StunMe(float time, Vector2 force)
     {
-        canMove = false;
+        stop = true;
         astar.enabled = false;
         rb.velocity = Vector2.zero;
         rb.AddForce(force,ForceMode2D.Impulse);
@@ -322,7 +328,8 @@ public class NewAi : MonoBehaviour
             time-= Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-        canMove = true;
+        stop = false;
+        stuned = null;
     }
 
     private Vector2 RotateVector(Vector2 v, float delta)
@@ -338,7 +345,10 @@ public class NewAi : MonoBehaviour
         return Vector2.Angle(vec1,vec2);
     }
 
-   
+    public bool IsMoving()
+    {
+        return (canMove && stuned == null && !stop);
+    }
 
     private void OnDrawGizmos()
     {
