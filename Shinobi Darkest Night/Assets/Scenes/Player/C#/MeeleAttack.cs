@@ -5,8 +5,16 @@ using UnityEngine;
 [System.Serializable]
 public class MeeleAttack
 {
-    public CharacterState animation;
+    public DirectionalAnimation animation;
     public float dmg;
     public int shurikenDrop;
     public float range;
+    [Range(0f,1f)]
+    public float movingDuration;
+
+    public AnimationClip GetFacingAnimation(Vector2 facingDirection)
+    {
+        return animation.GetFacingClip(facingDirection);
+    }
+
 }

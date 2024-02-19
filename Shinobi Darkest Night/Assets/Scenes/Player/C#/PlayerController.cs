@@ -715,7 +715,7 @@ public class PlayerController : MonoBehaviour
             AnimationClip expectedClip = StateAnimations.GetFacingClipFromState(currentState, facingDirection);
             if (currentClip == null || currentClip != expectedClip)
             {
-                myAnim.Play(expectedClip.name);
+                //myAnim.Play(expectedClip.name);
                 currentClip = expectedClip;
             }
         }
@@ -873,6 +873,7 @@ public class PlayerController : MonoBehaviour
     //When one of WSAD was pressed
     public void OnMove(InputValue movementValue)
     {
+
         if (canMove && !desumiru)
         {
             movementInput = movementValue.Get<Vector2>();
@@ -1452,42 +1453,43 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        int comboNum = -1;
-        MeeleAttack animToPlay = null;
-        foreach (MeeleAttack attack in attackList)
-        {
-            if (currentState == attack.animation)
-            {
-                comboNum = attackList.IndexOf(attack);
-            }
-        }
-
-        if (comboNum > -1 && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && comboNum +1 < attackList.Count)
-        {
-            animToPlay = attackList[comboNum + 1];
-        }
-        else if(canAttack && comboNum <0 || (comboNum +1 >= attackList.Count && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f))
-        {
-            animToPlay = attackList[0];
-        }
-
-        if (animToPlay != null)
-        {
-            lastAttack = 0.9f;
-            SaveMovement();
-            facingDirection = projectileSpawnPoint.position - transform.position;
-            AnimationClip clip = StateAnimations.GetFacingClipFromState(animToPlay.animation, facingDirection);
-            Combo(facingDirection, 15, clip.length * 0.55f,animToPlay);
-            canMove = false; 
-            CurrentState = animToPlay.animation;
-            ChangeClip();
-            combo = true;
-            if (comboStop != null)
-            {
-                StopCoroutine(comboStop);
-            }
-            comboStop = StartCoroutine(StopCombo(animToPlay));
-        }
+       // int comboNum = -1;
+       // MeeleAttack animToPlay = null;
+       // foreach (MeeleAttack attack in attackList)
+       // {
+       //     if (currentState == attack.animation)
+       //     {
+       //         comboNum = attackList.IndexOf(attack);
+       //     }
+       // }
+       //
+       // if (comboNum > -1 && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && comboNum +1 < attackList.Count)
+       // {
+       //     animToPlay = attackList[comboNum + 1];
+       // }
+       // else if(canAttack && comboNum <0 || (comboNum +1 >= attackList.Count && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f))
+       // {
+       //     animToPlay = attackList[0];
+       // }
+       //
+       // if (animToPlay != null)
+       // {
+       //     lastAttack = 0.9f;
+       //     SaveMovement();
+       //     facingDirection = projectileSpawnPoint.position - transform.position;
+       //     AnimationClip clip = null;
+       //     //AnimationClip clip = StateAnimations.GetFacingClipFromState(animToPlay.animation, facingDirection);
+       //     Combo(facingDirection, 15, clip.length * 0.55f,animToPlay);
+       //     canMove = false; 
+       //     //CurrentState = animToPlay.animation;
+       //     ChangeClip();
+       //     combo = true;
+       //     if (comboStop != null)
+       //     {
+       //         StopCoroutine(comboStop);
+       //     }
+       //     comboStop = StartCoroutine(StopCombo(animToPlay));
+       // }
     }
 
     private void Combo(Vector2 direction, float speed,float time, MeeleAttack animToPlay)

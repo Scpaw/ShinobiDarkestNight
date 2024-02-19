@@ -154,7 +154,6 @@ public class NewAi : MonoBehaviour
         else
         {
             inZone = true;
-            Debug.Log("inzone");
         }
         enemyNear = Vector2.zero;
         wantToMoveDirection = Vector2.zero;
