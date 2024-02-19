@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5538361200390252869}
   - component: {fileID: 7604736304859194407}
   - component: {fileID: 9077549044564408906}
-  - component: {fileID: 9077549044564408905}
+  - component: {fileID: 4191746263704106367}
   m_Layer: 6
   m_Name: New Doll
   m_TagString: Enemy
@@ -260,7 +260,7 @@ MonoBehaviour:
   attackRate: 0
   attackRange: 1.5
   debugMode: 1
---- !u!58 &9077549044564408905
+--- !u!58 &4191746263704106367
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

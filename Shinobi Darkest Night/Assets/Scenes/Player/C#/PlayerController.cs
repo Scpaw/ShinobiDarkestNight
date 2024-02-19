@@ -715,7 +715,7 @@ public class PlayerController : MonoBehaviour
             AnimationClip expectedClip = StateAnimations.GetFacingClipFromState(currentState, facingDirection);
             if (currentClip == null || currentClip != expectedClip)
             {
-                //myAnim.Play(expectedClip.name);
+                myAnim.Play(expectedClip.name);
                 currentClip = expectedClip;
             }
         }
