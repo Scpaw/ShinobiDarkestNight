@@ -107332,11 +107332,13 @@ MonoBehaviour:
     - PS_Run
     - PS_Projectile
     - PS_Fan
+    - PS_Dash
     m_values:
     - {fileID: 11400000, guid: 3fc774e6528c0c047883e6decde614f1, type: 2}
     - {fileID: 11400000, guid: b3fec87c884e6d341a153754a3f01e50, type: 2}
     - {fileID: 11400000, guid: e726cf76072e5654caa9f8179aace070, type: 2}
     - {fileID: 11400000, guid: 003d765770655e141b1d0c59c7058867, type: 2}
+    - {fileID: 11400000, guid: 96fac82b4badf1c4eaaf72c527fddc73, type: 2}
   facingDirection: {x: 0, y: 0}
   movingDirection: {x: 0, y: 0}
   saveDirection: {x: 0, y: 0}
@@ -107358,10 +107360,12 @@ MonoBehaviour:
     range: 2.2
     movingDuration: 1
   attackIndex: 0
-  katanaSpeed: 20
+  katanaSpeed: 8
   pushForce: 15
   shurikenDropDmg: 5
   fanDmg: 10
+  LMBPressTime: 0
+  LMBPressed: 0
   rb: {fileID: 0}
   moveSpeed: 15
   movementFilter:
@@ -107394,6 +107398,11 @@ MonoBehaviour:
     maxNormalAngle: 0
   collisionOffset: 0.05
   projectileSpawnPoint: {fileID: 935366537049146929}
+  dashSpeed: 30
+  dashDuration: 0.3
+  dashVelocityReset: 0
+  dashCooldown: 0.2
+  canDash: 0
 --- !u!4 &9043742366294242400
 Transform:
   m_ObjectHideFlags: 0

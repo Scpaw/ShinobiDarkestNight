@@ -13,6 +13,7 @@ public class PS_Fan : PlayerState
     public override void Enter(PlayerStateMachine player)
     {
         directionalAnimationsIndex = this.GetType().FullName;
+        player.SetLastAttack(true);
 
         Collider2D[] hit = Physics2D.OverlapCircleAll(player.projectileSpawnPoint.position, player.projectileSpawnPoint.GetComponent<CircleCollider2D>().radius * player.projectileSpawnPoint.parent.localScale.x, LayerMask.GetMask("Enemy"));
         if (hit == null || hit.Length == 0)
@@ -62,7 +63,7 @@ public class PS_Fan : PlayerState
     }
     public override void Exit(PlayerStateMachine player)
     {
-
+        player.SetLastAttack(false);
     }
     public override void LMB(PlayerStateMachine player, float value)
     {

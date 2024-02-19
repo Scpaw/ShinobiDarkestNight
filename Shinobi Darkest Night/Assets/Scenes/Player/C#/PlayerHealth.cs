@@ -73,7 +73,6 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             playerCourrentHealth -= Damage;
-
         }
         playerHealthSlider.fillAmount = playerCourrentHealth / playerMaxHealth;
         addHpSlider.fillAmount = (playerCourrentHealth + addHp) / playerMaxHealth;

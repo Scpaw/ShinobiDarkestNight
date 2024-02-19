@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PS_Katana : PlayerState
 {
@@ -16,7 +15,9 @@ public class PS_Katana : PlayerState
     private bool attacked;
     public override void Enter(PlayerStateMachine player)
     {
+        player.SetLastAttack(true);
         attackInfo = player.katanaAttacks[player.attackIndex];
+        player.facingDirection = player.projectileSpawnPoint.position - player.transform.position;
         time = attackInfo.movingDuration * attackInfo.animation.GetFacingClip(player.facingDirection).length;
         attacked = false;
         player.rb.velocity = Vector3.zero;
@@ -73,10 +74,7 @@ public class PS_Katana : PlayerState
                 player.rb.velocity = Vector3.zero;
                 attacked = true;
             }
-
         }
-
-
     }
     public override void FixedUpdate(PlayerStateMachine player)
     {
@@ -85,6 +83,7 @@ public class PS_Katana : PlayerState
     public override void Exit(PlayerStateMachine player)
     {
         player.rb.velocity = Vector3.zero;
+        player.SetLastAttack(false);
     }
     public override void LMB(PlayerStateMachine player, float value)
     {

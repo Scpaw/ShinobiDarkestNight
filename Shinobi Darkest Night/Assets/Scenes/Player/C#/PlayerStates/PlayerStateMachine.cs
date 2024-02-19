@@ -14,6 +14,7 @@ public class PlayerStateMachine : MonoBehaviour
     public PS_Projectile ps_projectile = new PS_Projectile();
     public PS_Fan ps_fan = new PS_Fan();
     public PS_Katana ps_katana = new PS_Katana();
+    public PS_Dash ps_dash = new PS_Dash();
 
     //animations
     [field: SerializeField] public StateDictionary StateAnimations { get; private set; }
@@ -29,6 +30,7 @@ public class PlayerStateMachine : MonoBehaviour
     public int attackIndex;
     public float katanaSpeed;
     public float pushForce;
+    public Coroutine lastAttack;
 
     //fan
     public float shurikenDropDmg;
@@ -47,6 +49,12 @@ public class PlayerStateMachine : MonoBehaviour
     //projectile
     public Transform projectileSpawnPoint;
 
+    //dash
+    public float dashSpeed = 10f;
+    public float dashDuration = 1f;
+    public float dashVelocityReset = 0f;
+    public float dashCooldown;
+    public bool canDash = true;
 
     void Start()
     {
@@ -55,6 +63,7 @@ public class PlayerStateMachine : MonoBehaviour
         currentState.Enter(this);
         facingDirection = Vector2.zero;
         rb = GetComponent<Rigidbody2D>();
+        canDash = true;
     }
 
 
@@ -74,7 +83,7 @@ public class PlayerStateMachine : MonoBehaviour
         if (LMBPressed)
         {
             LMBPressTime += Time.deltaTime;
-            if (LMBPressTime > 0.3f)
+            if (LMBPressTime > 0.4f)
             {
                 facingDirection = projectileSpawnPoint.position - transform.position;
                 ChangeStates(ps_fan);
@@ -95,7 +104,10 @@ public class PlayerStateMachine : MonoBehaviour
         currentState.Enter(this);
         if (movingDirection.magnitude > 0)
         {
-            facingDirection = movingDirection;
+            if (currentState.canMove)
+            {
+                facingDirection = movingDirection;
+            }
             currentState.Move(this, facingDirection);
         }
         ChangeAnimation(facingDirection);
@@ -118,12 +130,21 @@ public class PlayerStateMachine : MonoBehaviour
     //When LeftMouseButton(LMB) was pressed
     public void OnFire(InputValue inputValue)
     {
+        LMBPressed = inputValue.Get<float>() > 0;
+        LMBPressTime = 0;
+
+        //Debug.Log(inputValue.Get<float>() > 0);
+
         if (!currentState.canAttack)
         {
+            if (LMBPressed)
+            { 
+                LMBPressed = false;
+                LMBPressTime = 0;
+            }
             return;
         }
 
-        LMBPressed = inputValue.Get<float>() > 0;
 
 
         if ((currentState == ps_idle || currentState == ps_run) && !LMBPressed && LMBPressTime < 0.3f)
@@ -148,6 +169,15 @@ public class PlayerStateMachine : MonoBehaviour
         ChangeStates(ps_projectile);
 
         currentState.RMB(this, inputValue.Get<float>());
+    }
+
+    public void OnDash(InputValue dashValue)
+    {
+        if (dashValue.Get<float>() == 1 && currentState.canMove && movingDirection.magnitude > 0.01f && canDash)
+        {
+            ChangeStates(ps_dash);
+        }
+
     }
 
     public void ChangeAnimation(Vector2 direction)
@@ -188,9 +218,17 @@ public class PlayerStateMachine : MonoBehaviour
         animationTime = Time.time + currentAnimation.length;
     }
 
-    public void DoSomething()
+    public void SetLastAttack(bool onlyStop)
     {
-        Debug.Log("something");
+        if (lastAttack != null)
+        {
+            StopCoroutine(lastAttack);
+        }
+
+        if (!onlyStop)
+        {
+            lastAttack = StartCoroutine(TimeSinceLastAttack(0.2f));
+        }
     }
 
     public void ChangeToIdle()
@@ -203,6 +241,24 @@ public class PlayerStateMachine : MonoBehaviour
         {
             ChangeStates(ps_idle);
         }
+    }
 
+    public void ResetDash()
+    {
+        StopCoroutine(DashReseting());
+        StartCoroutine(DashReseting());
+    }
+
+    private IEnumerator DashReseting()
+    { 
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+    }
+
+    private IEnumerator TimeSinceLastAttack(float time)
+    { 
+        yield return new WaitForSeconds(time);
+        Debug.Log("Stop");
+        lastAttack = null;
     }
 }
