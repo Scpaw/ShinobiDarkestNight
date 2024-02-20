@@ -68,7 +68,7 @@ public class NewAi : MonoBehaviour
         astar = GetComponent<AIPath>();
         astar.maxSpeed = speed/100;
         rb = GetComponent<Rigidbody2D>();
-        player = PlayerController.Instance.transform;
+        player = PlayerStateMachine.Instance.transform;
         playerRange += Random.Range(-3f, 1f);
         attack = false;
         canMove = true;
@@ -146,7 +146,7 @@ public class NewAi : MonoBehaviour
 
     private void CheckDirection(int numberOfDirections)
     {
-        if (((PlayerController.Instance.transform.position - transform.position).magnitude > playerRange + playerZone || (PlayerController.Instance.transform.position - transform.position).magnitude < playerRange - playerZone))
+        if (((PlayerStateMachine.Instance.transform.position - transform.position).magnitude > playerRange + playerZone || (PlayerStateMachine.Instance.transform.position - transform.position).magnitude < playerRange - playerZone))
         {
             inZone = false;
             directions.Add(astar.desiredVelocity.normalized * movingDirValue);
@@ -200,13 +200,13 @@ public class NewAi : MonoBehaviour
                 else if (hit.transform.tag == "Player")
                 {
                     //player
-                    if (!((PlayerController.Instance.transform.position - transform.position).magnitude < playerRange + playerZone && (PlayerController.Instance.transform.position - transform.position).magnitude > playerRange - playerZone))
+                    if (!((PlayerStateMachine.Instance.transform.position - transform.position).magnitude < playerRange + playerZone && (PlayerStateMachine.Instance.transform.position - transform.position).magnitude > playerRange - playerZone))
                     {
                         if (debugMode)
                         {
                             Debug.DrawLine(transform.position, (transform.position + direction.normalized * playerValue * (seeRadius - (hit.point - new Vector2(transform.position.x, transform.position.y)).magnitude)), Color.blue, timeToCheck);
                         }
-                        directions.Add(direction.normalized * playerValue * ((PlayerController.Instance.transform.position - transform.position).magnitude - playerRange));
+                        directions.Add(direction.normalized * playerValue * ((PlayerStateMachine.Instance.transform.position - transform.position).magnitude - playerRange));
                     }
                     else
                     {
@@ -253,7 +253,7 @@ public class NewAi : MonoBehaviour
 
             if (right)
             {
-                Vector2 perpendicular = RotateVector(Vector2.Perpendicular(PlayerController.Instance.transform.position - transform.position), -15);
+                Vector2 perpendicular = RotateVector(Vector2.Perpendicular(PlayerStateMachine.Instance.transform.position - transform.position), -15);
                 directions.Add(perpendicular);
                 if (debugMode)
                 {
@@ -262,7 +262,7 @@ public class NewAi : MonoBehaviour
             }
             else
             {
-                Vector2 perpendicular = RotateVector(Vector2.Perpendicular(PlayerController.Instance.transform.position - transform.position), 15);
+                Vector2 perpendicular = RotateVector(Vector2.Perpendicular(PlayerStateMachine.Instance.transform.position - transform.position), 15);
                 directions.Add(-perpendicular);
                 if (debugMode)
                 {
@@ -309,6 +309,11 @@ public class NewAi : MonoBehaviour
 
     public void Stun(float time, Vector2 force)
     {
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
+
         if (stuned != null)
         { 
             StopCoroutine(stuned);
@@ -356,10 +361,10 @@ public class NewAi : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position, seeRadius);
             Gizmos.color = Color.blue;
             Gizmos.color = Color.red;
-            if (PlayerController.Instance != null)
+            if (PlayerStateMachine.Instance != null)
             {
-                Gizmos.DrawWireSphere(PlayerController.Instance.transform.position, playerRange + playerZone);
-                Gizmos.DrawWireSphere(PlayerController.Instance.transform.position, playerRange - playerZone);
+                Gizmos.DrawWireSphere(PlayerStateMachine.Instance.transform.position, playerRange + playerZone);
+                Gizmos.DrawWireSphere(PlayerStateMachine.Instance.transform.position, playerRange - playerZone);
             }
         }
     }

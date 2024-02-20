@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class PlayerStateMachine : MonoBehaviour
 {
+    public static PlayerStateMachine Instance;
    
     //states
     PlayerState currentState;
@@ -46,8 +48,6 @@ public class PlayerStateMachine : MonoBehaviour
     public List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public float collisionOffset = 0.05f;
 
-    //projectile
-    public Transform projectileSpawnPoint;
 
     //dash
     public float dashSpeed = 10f;
@@ -55,6 +55,21 @@ public class PlayerStateMachine : MonoBehaviour
     public float dashVelocityReset = 0f;
     public float dashCooldown;
     public bool canDash = true;
+
+    //projectile
+    public int projectileNumber;
+    public Text projectileText;
+    public GameObject projectilePrefab;
+    public Transform projectileSpawnPoint;
+    public GameObject projectileRotation;
+
+    //test
+    public bool godMode;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -64,6 +79,7 @@ public class PlayerStateMachine : MonoBehaviour
         facingDirection = Vector2.zero;
         rb = GetComponent<Rigidbody2D>();
         canDash = true;
+        projectileText.text = projectileNumber.ToString();
     }
 
 
@@ -89,6 +105,12 @@ public class PlayerStateMachine : MonoBehaviour
                 ChangeStates(ps_fan);
                 LMBPressTime = 0;
             }
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            godMode = !godMode;
         }
     }
 
@@ -165,8 +187,12 @@ public class PlayerStateMachine : MonoBehaviour
             return;
         }
 
-        facingDirection = projectileSpawnPoint.position - transform.position;
-        ChangeStates(ps_projectile);
+        if (projectileNumber > 0)
+        {
+            facingDirection = projectileSpawnPoint.position - transform.position;
+            ChangeStates(ps_projectile);
+        }
+
 
         currentState.RMB(this, inputValue.Get<float>());
     }
@@ -229,6 +255,13 @@ public class PlayerStateMachine : MonoBehaviour
         {
             lastAttack = StartCoroutine(TimeSinceLastAttack(0.2f));
         }
+    }
+
+    public void Shoot()
+    {
+        GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.Euler(projectileSpawnPoint.transform.rotation.eulerAngles));
+        projectileNumber -= 1;
+        projectileText.text = projectileNumber.ToString();
     }
 
     public void ChangeToIdle()

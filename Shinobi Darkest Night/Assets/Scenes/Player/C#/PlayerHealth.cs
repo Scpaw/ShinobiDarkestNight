@@ -14,13 +14,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Image playerHealthSlider;
     [SerializeField] Image addHpSlider;
     private Text healthText;
-    private PlayerController playerController;
+    private PlayerStateMachine playerController;
 
     void Awake()
     {
         playerCourrentHealth = playerMaxHealth;
         playerHealthSlider.fillAmount = playerCourrentHealth/playerMaxHealth;
-        playerController = GetComponent<PlayerController>();
+        playerController = GetComponent<PlayerStateMachine>();
     }
 
     public void DoHealth()
@@ -50,10 +50,10 @@ public class PlayerHealth : MonoBehaviour
         { 
             addHp = playerMaxHealth - playerCourrentHealth;
 
-            if (GetComponent<PlayerController>().isHealing)
-            {
-                GetComponent<PlayerController>().StopHealing();
-            }
+            //if (GetComponent<PlayerController>().isHealing)
+            //{
+            //    GetComponent<PlayerController>().StopHealing();
+            //}
         }
         addHpSlider.fillAmount = (playerCourrentHealth + addHp) / playerMaxHealth;
         AkSoundEngine.PostEvent("Player_Healing_Drinking", gameObject);
@@ -65,15 +65,8 @@ public class PlayerHealth : MonoBehaviour
         {
             return;
         }
-        GetComponent<PlayerController>().StopHealing();
-        if (playerController.sakuramochi > 0)
-        {
-            playerCourrentHealth -= Damage / 2;
-        }
-        else
-        {
-            playerCourrentHealth -= Damage;
-        }
+        //GetComponent<PlayerController>().StopHealing();
+        playerCourrentHealth -= Damage;
         playerHealthSlider.fillAmount = playerCourrentHealth / playerMaxHealth;
         addHpSlider.fillAmount = (playerCourrentHealth + addHp) / playerMaxHealth;
         if (healthText == null)
@@ -91,7 +84,8 @@ public class PlayerHealth : MonoBehaviour
 
     void MakeDead()
     {
-        GetComponent<PlayerController>().MakeDeath();
+        //GetComponent<PlayerController>().MakeDeath();
+        Debug.Log("Dead");
     }
 
     public float GetPlayerHP()

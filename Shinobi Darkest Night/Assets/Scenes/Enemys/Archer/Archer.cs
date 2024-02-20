@@ -48,11 +48,11 @@ public class Archer : MonoBehaviour
     private AIDestinationSetter target;
     private int meleeAttackNum;
 
-    public void Awake()
+    public void Start()
     {
         startPos = transform.position;
         playerInRange = false;
-        player = PlayerController.Instance.GetPlayer().transform;
+        player = PlayerStateMachine.Instance.transform;
         damageRange = GetComponentInChildren<DamageRange>();
         pointTarget = Instantiate(new GameObject(), transform.position, transform.rotation);
     }
@@ -66,7 +66,7 @@ public class Archer : MonoBehaviour
         playerInRange = false;
         if (thePlayer == null)
         {
-            thePlayer = PlayerController.Instance.GetPlayer();
+            thePlayer = PlayerStateMachine.Instance.gameObject;
         }
         if (AI == null)
         {

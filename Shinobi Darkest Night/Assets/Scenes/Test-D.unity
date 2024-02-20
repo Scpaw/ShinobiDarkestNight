@@ -6339,167 +6339,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -59}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2584859873036632486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9043742365911485471}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 673b35f0a661bc44b9d8cd0a31b12fba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <IdleAnim>k__BackingField: {fileID: 11400000, guid: 4acd3e30a3a76dd4797310304fa2ab06, type: 2}
-  <RunAnim>k__BackingField: {fileID: 11400000, guid: 3cd21ca54cf92d54eb30975e07029747, type: 2}
-  <DashAnim>k__BackingField: {fileID: 11400000, guid: 5302b0b5171f02841890fae4994443ce, type: 2}
-  <ThrowAnim>k__BackingField: {fileID: 11400000, guid: b019e01b97d6089468c2bcc14a1cb845, type: 2}
-  <AttackAnim>k__BackingField: {fileID: 11400000, guid: 75886f69195bd034f8bf5ce881a363fc, type: 2}
-  <ShokyakuAnim>k__BackingField: {fileID: 11400000, guid: c17d39614ee489a45a0c6e6ae049638e, type: 2}
-  <MezameAnim>k__BackingField: {fileID: 11400000, guid: 3b7cf861d58951845859e35e61f90a19, type: 2}
-  <ItaikenRunAnim>k__BackingField: {fileID: 11400000, guid: dd3b242b0c1422d448b348baca9a1166, type: 2}
-  <ItaikenIdleAnim>k__BackingField: {fileID: 11400000, guid: 15dd4abac55e0c14c9b2b3d8d19b30b5, type: 2}
-  <ItaikenAttackAnim>k__BackingField: {fileID: 11400000, guid: 5c81043bc22ceae489aae166dab8445a, type: 2}
-  <Katana_Combo1Anim>k__BackingField: {fileID: 11400000, guid: 1be6bee17d6f8c6408d7134eb7941b8e, type: 2}
-  <Katana_Combo2Anim>k__BackingField: {fileID: 11400000, guid: d8b7aba76ff56f54a9e194173e9276ad, type: 2}
-  <Katana_Combo3Anim>k__BackingField: {fileID: 11400000, guid: 6297f90e4f764ff47b7e0e38abb80adf, type: 2}
-  <StateAnimations>k__BackingField:
-    m_keys:
-    - {fileID: 11400000, guid: 4acd3e30a3a76dd4797310304fa2ab06, type: 2}
-    - {fileID: 11400000, guid: 3cd21ca54cf92d54eb30975e07029747, type: 2}
-    - {fileID: 11400000, guid: 5302b0b5171f02841890fae4994443ce, type: 2}
-    - {fileID: 11400000, guid: b019e01b97d6089468c2bcc14a1cb845, type: 2}
-    - {fileID: 11400000, guid: 75886f69195bd034f8bf5ce881a363fc, type: 2}
-    - {fileID: 11400000, guid: c17d39614ee489a45a0c6e6ae049638e, type: 2}
-    - {fileID: 11400000, guid: 3b7cf861d58951845859e35e61f90a19, type: 2}
-    - {fileID: 11400000, guid: 15dd4abac55e0c14c9b2b3d8d19b30b5, type: 2}
-    - {fileID: 11400000, guid: dd3b242b0c1422d448b348baca9a1166, type: 2}
-    - {fileID: 11400000, guid: 5c81043bc22ceae489aae166dab8445a, type: 2}
-    - {fileID: 11400000, guid: 1be6bee17d6f8c6408d7134eb7941b8e, type: 2}
-    - {fileID: 11400000, guid: d8b7aba76ff56f54a9e194173e9276ad, type: 2}
-    - {fileID: 11400000, guid: 6297f90e4f764ff47b7e0e38abb80adf, type: 2}
-    m_values:
-    - {fileID: 11400000, guid: 3fc774e6528c0c047883e6decde614f1, type: 2}
-    - {fileID: 11400000, guid: b3fec87c884e6d341a153754a3f01e50, type: 2}
-    - {fileID: 11400000, guid: 96fac82b4badf1c4eaaf72c527fddc73, type: 2}
-    - {fileID: 11400000, guid: e726cf76072e5654caa9f8179aace070, type: 2}
-    - {fileID: 11400000, guid: 003d765770655e141b1d0c59c7058867, type: 2}
-    - {fileID: 11400000, guid: 7f65340de3255204b8fa1c2a03748886, type: 2}
-    - {fileID: 11400000, guid: 1ef0c381c7a4fd0419a3093231bb4d04, type: 2}
-    - {fileID: 11400000, guid: 22cc9eeeb2890f44185c5459b4cca6aa, type: 2}
-    - {fileID: 11400000, guid: e490d19917df1954599c4c0db15a74ae, type: 2}
-    - {fileID: 11400000, guid: 35d4e2f61d7ad9e4ba5bd7d28bfcccee, type: 2}
-    - {fileID: 11400000, guid: 6d1a1f3776b93db4cbbacdb2533cc49b, type: 2}
-    - {fileID: 11400000, guid: 4bb8d2871df04c34bbc07ca4149efddd, type: 2}
-    - {fileID: 11400000, guid: 9934013d1af0e3043afde2f067ce7b4b, type: 2}
-  <RunVelocityTreshchold>k__BackingField: 0.1
-  <MoveSpeed>k__BackingField: 15
-  collisionOffset: 0.1
-  movementFilter:
-    useTriggers: 0
-    useLayerMask: 1
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 128
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  canMove: 0
-  dialogue: 0
-  dashSpeed: 35
-  dashDuration: 0.2
-  dashCooldown: 1
-  dushCooldownSpeed: 0.2
-  dashMaxCooldown: 1
-  dashMinCooldown: -1
-  projectilePrefab: {fileID: 1071034174669369741, guid: 8b90b984a78b5a142943dde9147136f8, type: 3}
-  projectileSpawnPoint: {fileID: 935366537049146929}
-  projectileRotation: {fileID: 9043742365801860005}
-  attackDamage: 10
-  attackCooldown: 0.2
-  pushForce: 15
-  enemiesToHit: []
-  attackList:
-  - animation: {fileID: 0}
-    dmg: 10
-    shurikenDrop: 0
-    range: 2.2
-    movingDuration: 0
-  - animation: {fileID: 0}
-    dmg: 13
-    shurikenDrop: 0
-    range: 2.2
-    movingDuration: 0
-  - animation: {fileID: 0}
-    dmg: 20
-    shurikenDrop: 4
-    range: 2.5
-    movingDuration: 0
-  timeToFanAttack: 0.3
-  DmgFromShuriken: 7
-  projectileNumber: 20
-  projectileText: {fileID: 8089664824116581572}
-  staminaSlider: {fileID: 4114468013464673031}
-  staminaRegRate: 20
-  canAttack: 0
-  isHealing: 0
-  changeLensSize: 7
-  canHeal: 0
-  startHeal: {fileID: 7400000, guid: 115dbcf0d9b204d458e2bda958533358, type: 2}
-  loopHeal: {fileID: 7400000, guid: c1eea861526d02241a6bc37041546c4a, type: 2}
-  shokyaku: 0
-  shokyakuAttack: 0
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  startShokyaku: {fileID: 7400000, guid: ed356e45acb8dc74db074940e022924a, type: 2}
-  desumiuRadius: 4
-  desumiruAnimations:
-  - {fileID: 7400000, guid: 3135d280bb9df2f43b458671ef8a5183, type: 2}
-  point2: {x: 0, y: 0}
-  desumiruPressed: 0
-  deathAnim: {fileID: 7400000, guid: 03132896f8af4ec4b8bd1c8dad575896, type: 2}
-  itaikenToSpawn: {fileID: 6801172585692787830, guid: 50a3fa96988499e4a9820a75c57bc5bd, type: 3}
-  startItaiken: {fileID: 7400000, guid: 83e41434f0dbbf44f841a19c1ffb6a53, type: 2}
-  itaiken: 0
-  shade: {fileID: 9128807906128926511}
-  inventoryOpen: 0
-  candy:
-  - {fileID: 8190412815605609286, guid: 41facba3c0a623f47baa591e26598097, type: 3}
-  - {fileID: 8190412815605609286, guid: 0f39d1baa84bdcd429a965da7adf4407, type: 3}
-  - {fileID: 8190412815605609286, guid: 13e13cd7bc98c5f4e92cabdfa5572fab, type: 3}
-  - {fileID: 8190412815605609286, guid: 04e1a485dada22d42a034eb10a8b1ca0, type: 3}
-  candySpawned: []
-  sakuramochi: 0
-  yokan: 0
-  dango: 0
-  mizuame: 0
-  powerCoolDown: 0
-  godMode: 0
-  thingsToFind: []
-  findDisplay: {fileID: 1537780888613695553}
-  shurikenStamina: 0
-  fanStamina: 5
-  attackStamina: 3
-  itaikenStamina: 6
-  shokyakuStamina: 5
-  desumiruStamina: 7
-  speedStamina: 0
-  shokyakuImage: {fileID: 2938393673356284989}
-  desumiruImage: {fileID: 6913826101663508822}
-  itaikenImage: {fileID: 7401342931187800413}
-  shokyakuMaxCooldown: 120
-  itaikenMaxCooldown: 240
-  desumiruMaxCooldown: 180
-  shokyakuUseTime: 7
-  itaikenUseTime: 4
-  desumiruUseTime: 7
 --- !u!222 &2601405060342127834
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -107277,7 +107116,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9043742365911485922}
   - component: {fileID: 4771594641112347879}
-  - component: {fileID: 2584859873036632486}
   - component: {fileID: 2524359631583565302}
   - component: {fileID: 3425181482624198313}
   - component: {fileID: 5536620695609332676}
@@ -107397,12 +107235,17 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   collisionOffset: 0.05
-  projectileSpawnPoint: {fileID: 935366537049146929}
   dashSpeed: 30
   dashDuration: 0.3
   dashVelocityReset: 0
   dashCooldown: 0.2
   canDash: 0
+  projectileNumber: 20
+  projectileText: {fileID: 8089664824116581572}
+  projectilePrefab: {fileID: 1071034174669369741, guid: 8b90b984a78b5a142943dde9147136f8, type: 3}
+  projectileSpawnPoint: {fileID: 935366537049146929}
+  projectileRotation: {fileID: 0}
+  godMode: 0
 --- !u!4 &9043742366294242400
 Transform:
   m_ObjectHideFlags: 0

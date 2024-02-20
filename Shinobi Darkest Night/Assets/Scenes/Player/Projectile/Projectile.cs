@@ -95,7 +95,7 @@ public class Projectile : MonoBehaviour
             else if (Triggered.tag == "Player" && Triggered.GetComponent<PlayerHealth>() && deflected)
             {
                 Triggered.GetComponent<PlayerHealth>().AddDamage(projectileDamage);
-                ParticleManager.instance.UseParticle("Blood", PlayerController.Instance.GetPlayer().transform.position, Vector3.zero);
+                ParticleManager.instance.UseParticle("Blood", PlayerStateMachine.Instance.transform.position, Vector3.zero);
                 Destroy(gameObject, 0);
             }
         }
@@ -117,7 +117,7 @@ public class Projectile : MonoBehaviour
                 }
                 else
                 {
-                    prRb.velocity = -(transform.position - PlayerController.Instance.GetPlayer().transform.position).normalized * prRb.velocity.magnitude;
+                    prRb.velocity = -(transform.position - PlayerStateMachine.Instance.transform.position).normalized * prRb.velocity.magnitude;
                 }
                 deflectedTime = Time.time + 0.05f;
                 enemyHit = false;
@@ -144,7 +144,7 @@ public class Projectile : MonoBehaviour
     }
     private void OnDestroy()
     {
-        if (!enemyHit || PlayerController.Instance.dango >0)
+        if (!enemyHit)
         {
             Instantiate(afterProjectile, transform.position, transform.rotation);
         }

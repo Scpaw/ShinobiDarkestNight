@@ -14,9 +14,9 @@ public class hideObsticle : MonoBehaviour
     private int somethinIn;
     private void Start()
     {
-        playerP = PlayerController.Instance.GetPlayer();
+        playerP = PlayerStateMachine.Instance.gameObject;
         playerSprite = playerP.transform.Find("Grafika").GetComponent<SpriteRenderer>();
-        player = PlayerController.Instance.GetPlayer();
+        player = PlayerStateMachine.Instance.gameObject;
         if (GetComponent<SpriteRenderer>())
         {
             sprite = GetComponent<SpriteRenderer>();
