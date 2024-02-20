@@ -34,7 +34,7 @@ public class EnemyDamage : MonoBehaviour
         }
         if (thePlayer == null)
         {
-            thePlayer = PlayerController.Instance.GetPlayer();
+            thePlayer = PlayerStateMachine.Instance.gameObject;
         }
         if (damageR == null)
         {

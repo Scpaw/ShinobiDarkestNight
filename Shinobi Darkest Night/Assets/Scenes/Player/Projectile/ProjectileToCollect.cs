@@ -15,7 +15,7 @@ public class ProjectileToCollect : MonoBehaviour
 
     private void Start()
     {
-        player = PlayerController.Instance.GetPlayer().transform;
+        player = PlayerStateMachine.Instance.transform;
         onStartPickUp = false;
         startForce = GetComponent<Rigidbody2D>().velocity.magnitude;
     }
@@ -41,17 +41,18 @@ public class ProjectileToCollect : MonoBehaviour
             }
         }
 
-        if ((player.position - transform.position).magnitude <= pickUpRange && !onEnemy || player.GetComponent<PlayerController>().dango >0)
+        if ((player.position - transform.position).magnitude <= pickUpRange && !onEnemy )
         {
             if (!onStartPickUp)
             {
                 onStartPickUp = true;
-                AkSoundEngine.PostEvent(AK.EVENTS.SHURIKEN_GRABBING, gameObject);
+                //AkSoundEngine.PostEvent(AK.EVENTS.SHURIKEN_GRABBING, gameObject);
             }
             transform.position = Vector2.MoveTowards(transform.position, player.position, Time.deltaTime * pickUpSpeed);
             if ((player.position - transform.position).magnitude < 0.1f)
             {
-                player.GetComponent<PlayerController>().projectileNumber += 1;
+                player.GetComponent<PlayerStateMachine>().projectileNumber += 1;
+                player.GetComponent<PlayerStateMachine>().projectileText.text = player.GetComponent<PlayerStateMachine>().projectileNumber.ToString();
                 Destroy(gameObject);
             }
         }

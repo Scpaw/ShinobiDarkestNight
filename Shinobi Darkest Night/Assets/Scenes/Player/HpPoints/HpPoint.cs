@@ -15,7 +15,7 @@ public class HpPoint : MonoBehaviour
 
     void Start()
     {
-        player = PlayerController.Instance.transform;
+        player = PlayerStateMachine.Instance.transform;
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(Random.insideUnitCircle * startForce, ForceMode2D.Impulse);
         waitTime = 0.3f;

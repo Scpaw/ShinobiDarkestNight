@@ -6,67 +6,67 @@ using UnityEngine;
 public class AnimationToCode : MonoBehaviour
 {
     public Coroutine slowing;
-    private PlayerController playerController;
+    private PlayerStateMachine player;
     private void Awake()
     {
-        playerController = transform.parent.GetComponent<PlayerController>();
+        player = transform.parent.GetComponent<PlayerStateMachine>();
     }
     public void Shoot()
     {
-        if (playerController != null)
+        if (player != null)
         {
-            playerController.SpawnPoint();
+            player.Shoot();
         }
     }
 
     public void StartHeal()
     {
-        playerController.canHeal = true;
+        //player.canHeal = true;
     }
 
     public void DesumiruAttackRight()
     {
-        playerController.DesumiruAttack(true);
+        //player.DesumiruAttack(true);
     }
     public void DesumiruAttackleft()
     {
-        playerController.DesumiruAttack(false);
+        //player.DesumiruAttack(false);
     }
 
     public void SlowTime()
     {
-        if (!playerController.desumiruPressed)
-        {
-            if (slowing != null)
-            {
-                StopCoroutine(slowing);
-                slowing = StartCoroutine(playerController.SlowTime());
-            }
-            else
-            {
-                slowing = StartCoroutine(playerController.SlowTime());
-            }
-        }
+       //if (!player.desumiruPressed)
+       //{
+       //    if (slowing != null)
+       //    {
+       //        StopCoroutine(slowing);
+       //        slowing = StartCoroutine(player.SlowTime());
+       //    }
+       //    else
+       //    {
+       //        slowing = StartCoroutine(player.SlowTime());
+       //    }
+       //}
     }
     public void StopDesumiru()
     { 
-        playerController.StopDesumiru();
+        //player.StopDesumiru();
     }
 
     public void StartShokyaku()
     {
-        playerController.shokyaku = true;
-        playerController.canAttack = true;
-        playerController.canMove = true;
-        playerController.CurrentState = playerController.RunAnim;
+       //player.shokyaku = true;
+       //player.canAttack = true;
+       //player.canMove = true;
+       //player.CurrentState = player.RunAnim;
     }
 
 
     public void SpawnItaiken()
     { 
-        playerController.canAttack = true;
-        playerController.canMove = true;
-        playerController.SpawnItaiken(false);
+       //player.canAttack = true;
+       //player.canMove = true;
+       //player.SpawnItaiken(false);
     }
 
     public void TimeToDie()
@@ -76,9 +76,9 @@ public class AnimationToCode : MonoBehaviour
 
     public void startItaiken()
     { 
-        playerController.itaiken = true;
-        playerController.canAttack = true;
-        playerController.canMove = true;
+        //player.itaiken = true;
+        //player.canAttack = true;
+        //player.canMove = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
