@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class Spear : MonoBehaviour
 {
-    private AIPath ai;
     private EnemyHealth enemyScript;
     private float enemySpeed;
     [SerializeField] float attackRadius;
@@ -22,9 +21,12 @@ public class Spear : MonoBehaviour
     private GameObject hit;
     private float offScreenSpeed;
     private Dash dash;
-    private AI_Move ai_Move;
+    //private AI_Move ai_Move;
+    private NewAi AI;
     private int changeDashState;
     private Animator anim;
+    [SerializeField] private float detectRadius;
+    private bool moving;
 
     //attack
     [SerializeField] float attackTime;
@@ -38,10 +40,6 @@ public class Spear : MonoBehaviour
 
     private void OnEnable()
     {
-        if (ai == null)
-        {
-            ai = GetComponent<AIPath>();
-        }
         if (enemyScript == null)
         {
             enemyScript = GetComponent<EnemyHealth>();
@@ -67,13 +65,14 @@ public class Spear : MonoBehaviour
         { 
             anim = GetComponentInChildren<Animator>();
         }
-        if (ai_Move == null)
+        if (AI == null)
         {
-            ai_Move = GetComponent<AI_Move>();
+            AI = GetComponent<NewAi>();
         }
         timebtwAttacks = 0;
         hitPlayer = false;
-        attackRadiusToUse = attackRadius + ai_Move.detectRadius/2;
+        //attackRadiusToUse = attackRadius + AI.detectRadius/2;
+        attackRadiusToUse = attackRadius + detectRadius / 2;
     }
     void Update()
     {
@@ -115,7 +114,7 @@ public class Spear : MonoBehaviour
         }
 
         //Debug.Log(ai_Move.moving);
-        if (ai_Move.moving)
+        if (moving)
         {
             anim.SetFloat("Blend", 1);
         }
@@ -141,21 +140,13 @@ public class Spear : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (damageRange.playerInRange || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > ai_Move.detectRadius)
+        if (damageRange.playerInRange || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
         {
-            ai.enabled = false;
+            AI.canMove = false;
         }
         else
         {
-            ai.enabled = true;
-        }
-        if (Camera.main.WorldToScreenPoint(transform.position).x > 0 && Camera.main.WorldToScreenPoint(transform.position).x < Screen.width && Camera.main.WorldToScreenPoint(transform.position).y > 0 && Camera.main.WorldToScreenPoint(transform.position).y < Screen.height)
-        {
-            ai.maxSpeed = enemySpeed;
-        }
-        else
-        {
-            ai.maxSpeed = offScreenSpeed;
+            AI.canMove = true;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
