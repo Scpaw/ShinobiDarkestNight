@@ -9,6 +9,7 @@ public class PS_Katana : PlayerState
     public override bool canExitAnim { get { return false; } }
     public override bool loops { get { return false; } }
     public override bool canTakeDmg { get { return true; } }
+    public override bool ability { get { return false; } }
 
     private MeeleAttack attackInfo;
     private float time;
@@ -87,7 +88,6 @@ public class PS_Katana : PlayerState
     }
     public override void LMB(PlayerStateMachine player, float value)
     {
-
         if (value > 0 && player.anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.66)
         {
             if (player.attackIndex + 1 >= player.katanaAttacks.Count)

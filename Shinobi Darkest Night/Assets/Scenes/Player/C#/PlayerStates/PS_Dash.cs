@@ -9,6 +9,7 @@ public class PS_Dash : PlayerState
     public override bool canExitAnim { get { return false; } }
     public override bool loops { get { return false; } }
     public override bool canTakeDmg { get { return true; } }
+    public override bool ability { get { return false; } }
 
     private float dashDuration;
     private float dashCooldown;
@@ -29,7 +30,7 @@ public class PS_Dash : PlayerState
         }
         else
         {
-            player.ChangeStates(player.ps_idle);
+            player.ChangeStates(player.lastState);
         }   
     }
     public override void FixedUpdate(PlayerStateMachine player)
@@ -57,7 +58,8 @@ public class PS_Dash : PlayerState
 
     public override void ChangeStateAfterAnim(PlayerStateMachine player)
     {
-        player.ChangeStates(player.ps_idle);
+        Debug.Log(player.lastState);
+        player.ChangeStates(player.lastState);
     }
 
 

@@ -130,8 +130,6 @@ public class Archer : MonoBehaviour
 
             if (Time.time > meleeTime && damageRange.playerInRange && !shooting)
             {
-
-                Debug.Log("Melee");
                 //AI.canMove = false;
                 //walkingTime = 0;
                 EnemyAnim.SetTrigger("Melee");

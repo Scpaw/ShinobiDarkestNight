@@ -51,7 +51,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Heal",
+                    "name": "Key4",
                     "type": "Button",
                     "id": "67faa2f6-35c9-4174-a37f-8e8c5b64947b",
                     "expectedControlType": "Button",
@@ -69,16 +69,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Shokyaku",
-                    "type": "Value",
+                    "name": "Key1",
+                    "type": "Button",
                     "id": "1cfc85c8-ba87-43bd-93cd-08c215efa352",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
-                    "name": "Desumiru",
+                    "name": "Key3",
                     "type": "Button",
                     "id": "393d1b39-dcc4-41f0-bdec-fae805cc587e",
                     "expectedControlType": "Button",
@@ -87,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Itaiken",
+                    "name": "Key2",
                     "type": "Button",
                     "id": "7dfa16fe-3cdf-44f8-9bc0-24a16e915743",
                     "expectedControlType": "Button",
@@ -342,7 +342,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Heal",
+                    "action": "Key4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -364,7 +364,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Shokyaku",
+                    "action": "Key1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -375,7 +375,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Desumiru",
+                    "action": "Key3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -386,7 +386,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Itaiken",
+                    "action": "Key2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

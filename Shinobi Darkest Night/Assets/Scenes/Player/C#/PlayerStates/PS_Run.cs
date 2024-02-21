@@ -11,7 +11,7 @@ public class PS_Run : PlayerState
     public override bool canExitAnim { get { return true; } }
     public override bool loops { get { return true; } }
     public override bool canTakeDmg { get { return true; } }
-
+    public override bool ability { get { return false; } }
 
     public override void Enter(PlayerStateMachine player)
     {
@@ -30,7 +30,7 @@ public class PS_Run : PlayerState
         }
 
 
-        Vector2 moveForce = player.movingDirection * player.moveSpeed * Time.deltaTime;
+        Vector2 moveForce = player.movingDirection * player.moveSpeed * Time.fixedDeltaTime;
         player.rb.AddForce(moveForce);
 
 

@@ -9,7 +9,8 @@ public class PlayerStateMachine : MonoBehaviour
     public static PlayerStateMachine Instance;
    
     //states
-    PlayerState currentState;
+    public PlayerState currentState;
+    public PlayerState lastState;
 
     public PS_Idle ps_idle = new PS_Idle();
     public PS_Run ps_run = new PS_Run();
@@ -70,11 +71,11 @@ public class PlayerStateMachine : MonoBehaviour
     //itaiken
     public GameObject itaikenToSpawn;
 
+    //shokyaku
+    public LayerMask enemyLayer;
+
     //health
     public PlayerHealth hp;
-
-    //ability
-    public bool abilityOn;
 
     //test
     public bool godMode;
@@ -94,6 +95,7 @@ public class PlayerStateMachine : MonoBehaviour
         canDash = true;
         projectileText.text = projectileNumber.ToString();
         hp = GetComponent<PlayerHealth>();
+
     }
 
 
@@ -110,7 +112,6 @@ public class PlayerStateMachine : MonoBehaviour
         { 
             currentState.ChangeStateAfterAnim(this);
         }
-
 
 
         //activate attack
@@ -136,11 +137,6 @@ public class PlayerStateMachine : MonoBehaviour
         {
             godMode = !godMode;
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ChangeStates(ps_start_itaiken);
-        }
     }
 
     private void FixedUpdate()
@@ -150,9 +146,20 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void ChangeStates(PlayerState state)
     {
+        if (state == null)
+        {
+            return;
+        }
+
         currentState.Exit(this);
         currentState = state;
         currentState.Enter(this);
+        float convert = 0;
+        if (LMBPressed)
+        {
+            convert = 1;
+        }
+        currentState.LMB(this,convert);
         if (movingDirection.magnitude > 0)
         {
             if (currentState.canMove)
@@ -202,8 +209,6 @@ public class PlayerStateMachine : MonoBehaviour
             ChangeStates(ps_katana);
             LMBPressTime = 0;
         }
-
-
     }
 
     //When RightMouseButton(RMB) was pressed
@@ -227,9 +232,59 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (dashValue.Get<float>() == 1 && currentState.canMove && movingDirection.magnitude > 0.01f && canDash)
         {
+            lastState = currentState;
             ChangeStates(ps_dash);
         }
     }
+
+    public void OnKey1()
+    {
+        if (currentState.canAttack && !currentState.ability && ability.Count > 0)
+        {
+            ChangeStates(ability[0]);
+        }
+        else if(currentState.canExitAnim && currentState.ability)
+        { 
+            ChangeToIdle();
+        }
+    }
+
+    public void OnKey2() 
+    {
+        if (currentState.canAttack && !currentState.ability && ability.Count > 1)
+        {
+            ChangeStates(ability[1]);
+        }
+        else if (currentState.canExitAnim && currentState.ability)
+        {
+            ChangeToIdle();
+        }
+    }
+
+    public void OnKey3()
+    {
+        if (currentState.canAttack && !currentState.ability && ability.Count > 2)
+        {
+            ChangeStates(ability[2]);
+        }
+        else if (currentState.canExitAnim && currentState.ability)
+        {
+            ChangeToIdle();
+        }
+    }
+
+    public void OnKey4()
+    {
+        if (currentState.canAttack && !currentState.ability && ability.Count > 3)
+        {
+            ChangeStates(ability[3]);
+        }
+        else if (currentState.canExitAnim && currentState.ability)
+        {
+            ChangeToIdle();
+        }
+    }
+
 
     public void ChangeAnimation(Vector2 direction)
     {
@@ -316,4 +371,12 @@ public class PlayerStateMachine : MonoBehaviour
         yield return new WaitForSeconds(time);
         lastAttack = null;
     }
+
+
+
+    public GameObject GetHead()
+    {
+        return anim.transform.GetChild(0).gameObject;
+    }
+
 }

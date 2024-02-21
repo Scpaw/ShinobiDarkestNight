@@ -53,7 +53,7 @@ public class ParticleManager : MonoBehaviour
             }
             if (particles[particleToPlay].name.ToString() == "Fire(Clone)")
             {
-                particles[particleToPlay].transform.position = PlayerController.Instance.GetHead().transform.position;
+                particles[particleToPlay].transform.position = PlayerStateMachine.Instance.GetHead().transform.position;
             }
             else
             {

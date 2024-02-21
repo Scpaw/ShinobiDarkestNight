@@ -9,7 +9,7 @@ public class PS_Projectile : PlayerState
     public override bool canExitAnim { get { return false; } }
     public override bool loops { get { return false; } }
     public override bool canTakeDmg { get { return true; } }
-
+    public override bool ability { get { return false; } }
     public override void Enter(PlayerStateMachine player)
     {
         directionalAnimationsIndex = this.GetType().FullName;

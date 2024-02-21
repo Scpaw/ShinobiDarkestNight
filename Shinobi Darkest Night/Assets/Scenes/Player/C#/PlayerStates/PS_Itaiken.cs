@@ -10,6 +10,7 @@ public class PS_Itaiken : PlayerState
     public override bool canExitAnim { get { return true; } }
     public override bool loops { get { return true; } }
     public override bool canTakeDmg { get { return true; } }
+    public override bool ability { get { return true; } }
 
     private bool changeAnimBack;
     public override void Enter(PlayerStateMachine player)

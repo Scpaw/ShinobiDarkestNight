@@ -107075,6 +107075,7 @@ GameObject:
   - component: {fileID: 5536620695609332676}
   - component: {fileID: 7974791836882127567}
   - component: {fileID: 9043742365911485923}
+  - component: {fileID: 9043742365911485924}
   m_Layer: 7
   m_Name: Shinobi_Sample
   m_TagString: Player
@@ -107127,6 +107128,9 @@ MonoBehaviour:
     - PS_Itaiken_Idle
     - PS_Itaiken_Attack
     - PS_Itaiken_Run
+    - PS_Start_Shokyaku
+    - PS_Shokyaku
+    - PS_Start_Desumiru
     m_values:
     - {fileID: 11400000, guid: 3fc774e6528c0c047883e6decde614f1, type: 2}
     - {fileID: 11400000, guid: b3fec87c884e6d341a153754a3f01e50, type: 2}
@@ -107137,6 +107141,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 22cc9eeeb2890f44185c5459b4cca6aa, type: 2}
     - {fileID: 11400000, guid: 35d4e2f61d7ad9e4ba5bd7d28bfcccee, type: 2}
     - {fileID: 11400000, guid: e490d19917df1954599c4c0db15a74ae, type: 2}
+    - {fileID: 11400000, guid: cecd8538b43bbfd439b18da4e8849639, type: 2}
+    - {fileID: 11400000, guid: 7f65340de3255204b8fa1c2a03748886, type: 2}
+    - {fileID: 11400000, guid: 2405000febfcb674994b5b5e264b7742, type: 2}
   currentAnimation: {fileID: 0}
   animationTime: 0
   facingDirection: {x: 0, y: 0}
@@ -107208,9 +107215,36 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 935366537049146929}
   projectileRotation: {fileID: 0}
   itaikenToSpawn: {fileID: 6801172585692787830, guid: 50a3fa96988499e4a9820a75c57bc5bd, type: 3}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
   hp: {fileID: 0}
-  abilityOn: 0
   godMode: 0
+--- !u!114 &9043742365911485924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9043742365911485471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40259e0f4e61faa4ea8a3e834c39207d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Itaiken:
+    add: 1
+    key: 1
+  Shokyaku:
+    add: 1
+    key: 2
+  Desumiru:
+    add: 0
+    key: 0
+  Heal:
+    add: 0
+    key: 0
+  Abilities: []
 --- !u!4 &9043742366294242400
 Transform:
   m_ObjectHideFlags: 0

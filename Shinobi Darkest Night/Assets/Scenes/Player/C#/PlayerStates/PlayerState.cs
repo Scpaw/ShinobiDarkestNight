@@ -10,7 +10,7 @@ public abstract class PlayerState
     public abstract bool canExitAnim { get; }
     public abstract bool canTakeDmg { get; }
     public abstract bool loops { get; }
-
+    public abstract bool ability { get; }
     public  string directionalAnimationsIndex { get; set; }
 
     public abstract void Enter(PlayerStateMachine player);
