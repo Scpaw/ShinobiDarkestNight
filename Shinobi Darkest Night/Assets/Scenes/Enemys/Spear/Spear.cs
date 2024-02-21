@@ -46,7 +46,7 @@ public class Spear : MonoBehaviour
         }
         if (player == null)
         {
-            player = PlayerController.Instance.GetPlayer().transform;
+            player = PlayerStateMachine.Instance.transform;
         }
 
         if (transform.GetComponent<AIDestinationSetter>().target == null)
@@ -73,6 +73,8 @@ public class Spear : MonoBehaviour
         hitPlayer = false;
         //attackRadiusToUse = attackRadius + AI.detectRadius/2;
         attackRadiusToUse = attackRadius + detectRadius / 2;
+
+        AI.attackRate = attackTime;
     }
     void Update()
     {
@@ -88,7 +90,7 @@ public class Spear : MonoBehaviour
                 }
             }
         }
-        else if (damageRange.playerInRange && timeToAttack < Time.time && changeDashState == 0)
+        else if (damageRange.playerInRange && changeDashState == 0)
         {
             Attack();
         }
@@ -114,7 +116,7 @@ public class Spear : MonoBehaviour
         }
 
         //Debug.Log(ai_Move.moving);
-        if (moving)
+        if (AI.IsMoving())
         {
             anim.SetFloat("Blend", 1);
         }
@@ -131,10 +133,10 @@ public class Spear : MonoBehaviour
 
     public void Attack()
     {
-        if (damageRange.playerInRange)
+        if (damageRange.playerInRange && AI.attack)
         {
             player.GetComponent<PlayerHealth>().AddDamage(dmg);
-            timeToAttack = Time.time + attackTime;
+            AI.EndAttack();
         }
     }
 

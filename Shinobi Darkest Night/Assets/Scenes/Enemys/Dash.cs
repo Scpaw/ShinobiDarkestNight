@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class Dash : MonoBehaviour
 {
-    private AIPath ai;
+    //private AIPath ai;
+    private NewAi AI;
     private Transform player;
     private Vector3 attackPoint;
     public float timebtwAttacks;
@@ -25,8 +26,8 @@ public class Dash : MonoBehaviour
 
     private void Awake()
     {
-        ai = GetComponent<AIPath>();
-        player = PlayerController.Instance.GetPlayer().transform;
+        AI = GetComponent<NewAi>();
+        player = PlayerStateMachine.Instance.transform;
         if (GetComponent<EnemyDamage>())
         {
             damageRange = GetComponent<EnemyDamage>();
@@ -35,7 +36,7 @@ public class Dash : MonoBehaviour
 
     private void OnEnable()
     {
-        canMove = true;
+        AI.canMove = true;
     }
 
     public void StartDash()
@@ -46,7 +47,7 @@ public class Dash : MonoBehaviour
             if (hit.layer == player.gameObject.layer)
             {
                 dashing = StartCoroutine(DashCor());
-                timebtwAttacks = 1;
+                timebtwAttacks = 5;
             }
         }
     }
@@ -55,13 +56,13 @@ public class Dash : MonoBehaviour
         dashState = 1;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         Vector2 startPos = transform.position;
-        canMove = false;
+        AI.canMove = false;
         if (GetComponent<EnemyDamage>())
         {
             damageRange.enabled = false;
         }
         float i = 0.6f;
-        ai.canMove = false;
+        AI.canMove = false;
 
         while (i > 0)
         {
@@ -78,8 +79,8 @@ public class Dash : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         dashState = 2;
-        transform.position = startPos;
-        hit = Physics2D.Raycast(transform.position, -transform.position + player.position, 100, playerLayer).transform.gameObject;
+        //transform.position = startPos;
+        //hit = Physics2D.Raycast(transform.position, -transform.position + player.position, 100, playerLayer).transform.gameObject;
         if (hit.layer == player.gameObject.layer)
         {
             ParticleManager.instance.UseParticle("Dust", transform.position, Vector3.zero);
@@ -120,7 +121,7 @@ public class Dash : MonoBehaviour
         dashState = 3;
         yield return new WaitForSeconds(0.1f);
         dashState = 0;
-        canMove = true;
+        AI.canMove = true;
         if (GetComponent<EnemyDamage>())
         {
             damageRange.enabled = true;

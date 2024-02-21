@@ -6,13 +6,13 @@ public class SpearAnimations : MonoBehaviour
 {
     public void StartMoving()
     {
-        transform.GetComponentInParent<AI_Move>().canMove = true;
+        transform.GetComponentInParent<NewAi>().canMove = true;
     }
 
 
     public void StopMoving()
     {
-        transform.GetComponentInParent<AI_Move>().canMove = false;
+        transform.GetComponentInParent<NewAi>().canMove = false;
         transform.GetComponentInParent<Rigidbody2D>().velocity = Vector3.zero;
         transform.GetComponentInParent<Spear>().Attack();
     }

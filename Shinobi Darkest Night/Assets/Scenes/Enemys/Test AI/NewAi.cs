@@ -48,7 +48,7 @@ public class NewAi : MonoBehaviour
     //attack
     [Header("Attack")]
     private float lastAttack;
-    [SerializeField] bool attack;
+    [SerializeField] public bool attack {get; protected set;}
     public float attackRate;
     public float attackRange = 1.1f;
 
