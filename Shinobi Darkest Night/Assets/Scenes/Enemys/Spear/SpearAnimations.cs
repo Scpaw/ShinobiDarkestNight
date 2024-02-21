@@ -12,7 +12,8 @@ public class SpearAnimations : MonoBehaviour
 
     public void StopMoving()
     {
-        transform.GetComponentInParent<NewAi>().canMove = false;
+        //Debug.Log(transform.GetComponentInParent<Dash>().dashState);
+        transform.GetComponentInParent<NewAi>().Stun((1 - GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime) * GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length, Vector2.zero);
         transform.GetComponentInParent<Rigidbody2D>().velocity = Vector3.zero;
         transform.GetComponentInParent<Spear>().Attack();
     }

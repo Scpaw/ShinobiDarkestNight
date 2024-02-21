@@ -71,7 +71,6 @@ public class Spear : MonoBehaviour
         }
         timebtwAttacks = 0;
         hitPlayer = false;
-        //attackRadiusToUse = attackRadius + AI.detectRadius/2;
         attackRadiusToUse = attackRadius + detectRadius / 2;
 
         AI.attackRate = attackTime;
@@ -108,6 +107,12 @@ public class Spear : MonoBehaviour
             changeDashState = dash.dashState;
             anim.SetInteger("DashState", changeDashState);
         }
+        
+        if (dash.dashState == 2 && transform.position == player.position)
+        {
+            changeDashState++;
+            anim.SetInteger("DashState", changeDashState);
+        }
 
         if (player.transform.position.x - transform.position.x > 0 && transform.localScale.x < 0 || player.transform.position.x - transform.position.x < 0 && transform.localScale.x > 0)
         {
@@ -141,14 +146,17 @@ public class Spear : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        if (damageRange.playerInRange || transform.parent.GetComponent<AiBrain>().playerIn && (player.position - transform.position).magnitude > detectRadius)
+    {   if (dash.dashState == 0)
         {
-            AI.canMove = false;
-        }
-        else
-        {
-            AI.canMove = true;
+            if (transform.parent.GetComponent<AiBrain>().playerIn 
+                && (player.position - transform.position).magnitude > detectRadius)
+            {
+                AI.canMove = false;
+            }
+            else
+            {
+                AI.canMove = true;
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

@@ -97,8 +97,9 @@ public class NewAi : MonoBehaviour
             lastFlip -= Time.deltaTime;
         }
 
-        if (canMove && (player.position - transform.position).magnitude < detectionRange && stuned == null && !stop)
+        if (canMove == true && (player.position - transform.position).magnitude < detectionRange && stuned == null && !stop)
         {
+            //sprawdzi? astar
             if (!astar.enabled)
             {
                 astar.enabled = true;

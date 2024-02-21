@@ -68,7 +68,7 @@ public class AI_Move : MonoBehaviour
     {
         if(room.playerIn && (player.position - transform.position).magnitude < detectRadius && !stop)
         {
-            if (enemyScript.stundTime > 0 || dash != null && !dash.canMove)
+            if (enemyScript.stundTime > 0 || dash != null)
             {
                 moving = false;
             }
