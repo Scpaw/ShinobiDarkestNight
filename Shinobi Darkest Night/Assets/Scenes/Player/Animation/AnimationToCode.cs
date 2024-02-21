@@ -63,10 +63,9 @@ public class AnimationToCode : MonoBehaviour
 
 
     public void SpawnItaiken()
-    { 
-       //player.canAttack = true;
-       //player.canMove = true;
-       //player.SpawnItaiken(false);
+    {
+        Instantiate(player.itaikenToSpawn, player.transform.position, Quaternion.Euler(new Vector3(player.projectileSpawnPoint.transform.eulerAngles.x, player.projectileSpawnPoint.transform.eulerAngles.y, player.projectileSpawnPoint.transform.eulerAngles.z - 90)));
+        //player.SpawnItaiken(false);
     }
 
     public void TimeToDie()

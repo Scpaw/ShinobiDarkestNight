@@ -5859,28 +5859,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &1724513877521428901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9043742365911485471}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f98c8695f2862745b6f2edb57a6ac7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_listeners:
-    initialListenerList: []
-    useDefaultListeners: 1
-  isEnvironmentAware: 1
-  isStaticObject: 0
-  m_positionOffsetData:
-    KeepMe: 0
-    positionOffset: {x: 0, y: 0, z: 0}
-  m_posOffsetData: {fileID: 0}
-  listenerMask: 1
 --- !u!222 &1751710597963695700
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6246,30 +6224,6 @@ MonoBehaviour:
   minY: 0
   maxY: 0
   bufferZone: 0
---- !u!114 &2508796277110510501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9043742365911485471}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42dd08c9ec20a4744a9dff70a208a060, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: f7e1664c
-  useOtherObject: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: b4682809020ea7c4389354bac6ff34ef, type: 2}
-  decodeBank: 0
-  loadAsynchronous: 0
-  saveDecodedBank: 0
-  unloadTriggerList: 958ca0ea
-  bankNameInternal: 
-  valueGuidInternal: 
 --- !u!114 &2524359631583565302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107120,8 +107074,6 @@ GameObject:
   - component: {fileID: 3425181482624198313}
   - component: {fileID: 5536620695609332676}
   - component: {fileID: 7974791836882127567}
-  - component: {fileID: 2508796277110510501}
-  - component: {fileID: 1724513877521428901}
   - component: {fileID: 9043742365911485923}
   m_Layer: 7
   m_Name: Shinobi_Sample
@@ -107171,12 +107123,22 @@ MonoBehaviour:
     - PS_Projectile
     - PS_Fan
     - PS_Dash
+    - PS_Start_Itaiken
+    - PS_Itaiken_Idle
+    - PS_Itaiken_Attack
+    - PS_Itaiken_Run
     m_values:
     - {fileID: 11400000, guid: 3fc774e6528c0c047883e6decde614f1, type: 2}
     - {fileID: 11400000, guid: b3fec87c884e6d341a153754a3f01e50, type: 2}
     - {fileID: 11400000, guid: e726cf76072e5654caa9f8179aace070, type: 2}
     - {fileID: 11400000, guid: 003d765770655e141b1d0c59c7058867, type: 2}
     - {fileID: 11400000, guid: 96fac82b4badf1c4eaaf72c527fddc73, type: 2}
+    - {fileID: 11400000, guid: 8a5c8e0bece330648a658d45e3d720bf, type: 2}
+    - {fileID: 11400000, guid: 22cc9eeeb2890f44185c5459b4cca6aa, type: 2}
+    - {fileID: 11400000, guid: 35d4e2f61d7ad9e4ba5bd7d28bfcccee, type: 2}
+    - {fileID: 11400000, guid: e490d19917df1954599c4c0db15a74ae, type: 2}
+  currentAnimation: {fileID: 0}
+  animationTime: 0
   facingDirection: {x: 0, y: 0}
   movingDirection: {x: 0, y: 0}
   saveDirection: {x: 0, y: 0}
@@ -107245,6 +107207,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1071034174669369741, guid: 8b90b984a78b5a142943dde9147136f8, type: 3}
   projectileSpawnPoint: {fileID: 935366537049146929}
   projectileRotation: {fileID: 0}
+  itaikenToSpawn: {fileID: 6801172585692787830, guid: 50a3fa96988499e4a9820a75c57bc5bd, type: 3}
+  hp: {fileID: 0}
+  abilityOn: 0
   godMode: 0
 --- !u!4 &9043742366294242400
 Transform:
