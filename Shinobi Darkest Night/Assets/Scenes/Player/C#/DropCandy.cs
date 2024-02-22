@@ -19,8 +19,10 @@ public class DropCandy : MonoBehaviour
 
     private IEnumerator Dropping()
     {
-        Vector2 point = new Vector2( transform.position.x + Mathf.Cos(Random.Range(0,360)) * 1.1f, transform.position.y + Mathf.Sin(Random.Range(0, 360)) * 1.1f);
-        Vector2 point2 = new Vector2(Mathf.Lerp(transform.position.x, point.x, 0.2f), Mathf.Lerp(transform.position.y, point.y, 0.2f));
+        Vector2 point = new Vector2( transform.position.x + Mathf.Cos(Random.Range(0,360)) * 1.1f,
+            transform.position.y + Mathf.Sin(Random.Range(0, 360)) * 1.1f);
+        Vector2 point2 = new Vector2(Mathf.Lerp(transform.position.x, point.x, 0.2f),
+            Mathf.Lerp(transform.position.y, point.y, 0.2f));
         GameObject candy = Instantiate(candyToDrop, transform.position, Quaternion.Euler(0, 0, 0));
         candy.GetComponent<PickUpCandy>().enabled = false;
         float timer = 1;
