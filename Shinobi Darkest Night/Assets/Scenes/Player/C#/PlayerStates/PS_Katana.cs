@@ -22,6 +22,7 @@ public class PS_Katana : PlayerState
         time = attackInfo.movingDuration * attackInfo.animation.GetFacingClip(player.facingDirection).length;
         attacked = false;
         player.rb.velocity = Vector3.zero;
+        player.rb.AddForce(player.facingDirection * player.katanaSpeed / 1.4f,ForceMode2D.Impulse);
     }
     public override void Update(PlayerStateMachine player)
     {
