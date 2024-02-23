@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PS_Start_Desumiru : PlayerState
+public class PS_Start_Heal : PlayerState
 {
     public override bool canMove { get { return false; } }
     public override bool canAttack { get { return false; } }
@@ -43,6 +43,6 @@ public class PS_Start_Desumiru : PlayerState
 
     public override void ChangeStateAfterAnim(PlayerStateMachine player)
     {
-        player.ChangeStates(new PS_Desumiru());
+        player.ChangeStates(new PS_Heal());
     }
 }

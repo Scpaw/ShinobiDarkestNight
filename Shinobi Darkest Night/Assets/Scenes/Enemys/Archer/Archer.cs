@@ -232,8 +232,8 @@ public class Archer : MonoBehaviour
         if (triple)
         {
             Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileRotation.transform.rotation);
-            Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.Euler(projectileRotation.transform.rotation.eulerAngles.x, projectileRotation.transform.rotation.eulerAngles.y, projectileRotation.transform.rotation.eulerAngles.z -15 ));
-            Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.Euler(projectileRotation.transform.rotation.eulerAngles.x, projectileRotation.transform.rotation.eulerAngles.y, projectileRotation.transform.rotation.eulerAngles.z +15 ));
+            Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.Euler(projectileRotation.transform.rotation.eulerAngles.x, projectileRotation.transform.rotation.eulerAngles.y, projectileRotation.transform.rotation.eulerAngles.z -35 ));
+            Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.Euler(projectileRotation.transform.rotation.eulerAngles.x, projectileRotation.transform.rotation.eulerAngles.y, projectileRotation.transform.rotation.eulerAngles.z +35 ));
         }
         else
         {

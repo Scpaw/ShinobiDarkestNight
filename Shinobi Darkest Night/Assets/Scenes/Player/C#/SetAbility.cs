@@ -15,6 +15,7 @@ public class SetAbility : MonoBehaviour
     public PS_Start_Desumiru ps_desumiru = new PS_Start_Desumiru(); 
 
     public AddAbility Heal;
+    PS_Start_Heal ps_Heal = new PS_Start_Heal();
 
     public List<Ability> Abilities = new List<Ability>();
 
@@ -46,8 +47,15 @@ public class SetAbility : MonoBehaviour
             ab.key = Desumiru.key;
             Abilities.Add(ab);
         }
+        if (Heal.add)
+        {
+            Ability ab = new Ability();
+            ab.state = ps_Heal;
+            ab.key = Heal.key;
+            Abilities.Add(ab);
+        }
 
-        while (curentKey < 4)
+        while (curentKey <= 4)
         {
             AddThis(curentKey);
             curentKey++;

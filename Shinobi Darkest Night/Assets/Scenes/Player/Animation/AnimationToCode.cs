@@ -7,6 +7,8 @@ public class AnimationToCode : MonoBehaviour
 {
     public Coroutine slowing;
     private PlayerStateMachine player;
+    private Coroutine cor;
+    private Vector2 point2; 
     private void Awake()
     {
         player = transform.parent.GetComponent<PlayerStateMachine>();
@@ -26,11 +28,11 @@ public class AnimationToCode : MonoBehaviour
 
     public void DesumiruAttackRight()
     {
-        //player.DesumiruAttack(true);
+        DesumiruAttack(true);
     }
     public void DesumiruAttackleft()
     {
-        //player.DesumiruAttack(false);
+        DesumiruAttack(false);
     }
 
     public void SlowTime()
@@ -86,7 +88,7 @@ public class AnimationToCode : MonoBehaviour
         {
             if (collision.GetComponent<NewAi>())
             {
-                collision.GetComponent<NewAi>().Stun(0.8f, transform.parent.GetComponent<PlayerController>().point2*3f);
+                collision.GetComponent<NewAi>().Stun(0.8f, point2*3f);
             }
             else if(collision.GetComponent<Rigidbody2D>())
             {
@@ -114,4 +116,45 @@ public class AnimationToCode : MonoBehaviour
             //   }
         }
     }
+
+    public void DesumiruAttack(bool right)
+    {
+        if (cor != null)
+        { 
+            StopCoroutine(cor);
+        }
+        cor = StartCoroutine(DesumiruAttackUse(right));
+    }
+
+    private IEnumerator DesumiruAttackUse(bool right)
+    {
+            List<Vector2> vectors = new List<Vector2>();
+            float animSpeed = player.anim.GetCurrentAnimatorStateInfo(0).speed;
+            float test = player.anim.GetCurrentAnimatorStateInfo(0).length * animSpeed;
+            float starAnimTime = player.anim.GetCurrentAnimatorStateInfo(0).length * animSpeed;
+            vectors.Add(Vector2.zero);
+            vectors.Add(Vector2.zero);
+            vectors[1] = point2;
+            while (test > 0)
+            {
+                if (!GetComponent<EdgeCollider2D>().enabled)
+                {
+                    GetComponent<EdgeCollider2D>().enabled = true;
+                }
+                if (right)
+                {
+                    point2 = new Vector2(player.desumiuRadius * Mathf.Cos((((starAnimTime - test) / starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), player.desumiuRadius * Mathf.Sin((((starAnimTime - test) / starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
+                }
+                else
+                {
+                    point2 = new Vector2(player.desumiuRadius * Mathf.Cos(((test / starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)), player.desumiuRadius * Mathf.Sin(((test / starAnimTime) * 360 * Mathf.Deg2Rad) - (Mathf.Deg2Rad * 90)));
+                }
+                test -= Time.deltaTime * animSpeed * 1.6f;
+                vectors[1] = point2;
+                GetComponent<EdgeCollider2D>().SetPoints(vectors);
+                yield return new WaitForEndOfFrame();
+            }
+            GetComponent<EdgeCollider2D>().enabled = false;
+    }
+
 }

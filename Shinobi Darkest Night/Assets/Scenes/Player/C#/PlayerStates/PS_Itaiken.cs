@@ -51,8 +51,11 @@ public class PS_Itaiken : PlayerState
 
     public override void LMB(PlayerStateMachine player, float value)
     {
-        player.facingDirection = player.projectileSpawnPoint.position - player.transform.position;
-        player.ChangeStates(new PS_Itaiken_Attack());
+        if (value > 0)
+        {
+            player.facingDirection = player.projectileSpawnPoint.position - player.transform.position;
+            player.ChangeStates(new PS_Itaiken_Attack());
+        }
     }
     public override void RMB(PlayerStateMachine player, float value)
     {

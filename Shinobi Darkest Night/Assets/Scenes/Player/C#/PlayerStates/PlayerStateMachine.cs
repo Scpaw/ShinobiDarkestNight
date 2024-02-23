@@ -74,6 +74,9 @@ public class PlayerStateMachine : MonoBehaviour
     //shokyaku
     public LayerMask enemyLayer;
 
+    //desumire
+    public float desumiuRadius;
+
     //health
     public PlayerHealth hp;
 
@@ -95,7 +98,6 @@ public class PlayerStateMachine : MonoBehaviour
         canDash = true;
         projectileText.text = projectileNumber.ToString();
         hp = GetComponent<PlayerHealth>();
-
     }
 
 

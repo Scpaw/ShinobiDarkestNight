@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void AddDamage(float Damage)
     {
-        if (playerController.godMode || playerCourrentHealth < 0)
+        if (playerController.godMode || playerCourrentHealth < 0 || !playerController.currentState.canTakeDmg)
         {
             return;
         }
