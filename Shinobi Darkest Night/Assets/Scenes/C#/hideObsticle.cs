@@ -13,7 +13,7 @@ public class hideObsticle : MonoBehaviour
     private GameObject playerP;
     //private float playerT;
     private SpriteRenderer playerSprite;
-    //private Coroutine changeCorutine;
+    private Coroutine changeCorutine;
     //private float O;
     //private int somethinIn;
     public bool somethingBehind;
@@ -47,27 +47,34 @@ public class hideObsticle : MonoBehaviour
         /*O = gameObject.transform.position.y;
         playerT = playerP.transform.position.y;*/
 
-        if(gameObject.tag == "Obstacle"  && (playerP.transform.position - transform.position).magnitude < 3)
+/*        if(gameObject.tag == "Obstacle"  && (playerP.transform.position - transform.position).magnitude < 3)
         {
             if (GetComponent<DropCandy>())
             {
                 GetComponent<DropCandy>().Drop();
             }
-/*            if (playerT > O && somethingBehind)
+*//*            if (playerT > O && somethingBehind)
             {
                 obstacleSprite.sortingOrder = playerSprite.sortingOrder + 1;
             }
             else if (O > playerT && !somethingBehind)
             {
                 obstacleSprite.sortingOrder = playerSprite.sortingOrder - 1;
-            }*/
-        }
+            }*//*
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == playerP )//|| collision.gameObject.layer == enemy)
         {
+            if (GetComponent<DropCandy>())
+            {
+                GetComponent<DropCandy>().Drop();
+            }
+
+            StartChange(behindColor);
+
             /*            if (!somethingBehind)
                         {
                             if (changeCorutine != null)
@@ -81,7 +88,7 @@ public class hideObsticle : MonoBehaviour
                             }
                         }*/
 
-            obstacleSprite.color = behindColor;
+            //obstacleSprite.color = behindColor;
             somethingBehind = true;
             obstacleSprite.sortingOrder = playerSprite.sortingOrder + 1;
         }
@@ -97,7 +104,8 @@ public class hideObsticle : MonoBehaviour
     {
         if (collision.gameObject == playerP )//|| collision.gameObject.layer == enemy)
         {
-            obstacleSprite.color = startColor;
+            StartChange(startColor);
+            //obstacleSprite.color = startColor;
             somethingBehind = false;
             obstacleSprite.sortingOrder = playerSprite.sortingOrder - 1;
 
@@ -120,24 +128,48 @@ public class hideObsticle : MonoBehaviour
 
     }
 
+    void StartChange(Color normalCol)
+    {
+        if (changeCorutine != null)
+        {
+            StopCoroutine(changeCorutine);
+        }
+        changeCorutine = StartCoroutine(Change(normalCol));
+    }
+
+    IEnumerator Change(Color col)
+    {
+        float timer = .5f;
+        while (timer > 0)
+        {
+            obstacleSprite.color = Color.Lerp(obstacleSprite.color, col, 3f * Time.deltaTime);
+            timer -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
 /*    IEnumerator Change(float changeTo)
     {
-        float alpha = obstacleSprite.color.a;
-        if (obstacleSprite.color.a > changeTo)
-        {
-            while (obstacleSprite.color.a > changeTo)
-            {
-                obstacleSprite.color = new Color(obstacleSprite.color.r, obstacleSprite.color.g, obstacleSprite.color.b, alpha -=2*Time.deltaTime);
-                yield return new WaitForEndOfFrame();
-            }
-        }
-        else if (obstacleSprite.color.a < changeTo)
-        {
-            while (obstacleSprite.color.a < changeTo)
-            {
-                obstacleSprite.color = new Color(obstacleSprite.color.r, obstacleSprite.color.g, obstacleSprite.color.b, alpha += 2*Time.deltaTime);
-                yield return new WaitForEndOfFrame();
-            }
-        }
-    }*/
+        obstacleSprite.color = behindColor;
+        somethingBehind = true;
+        obstacleSprite.sortingOrder = playerSprite.sortingOrder + 1;*/
+
+        /*        float alpha = obstacleSprite.color.a;
+                if (obstacleSprite.color.a > changeTo)
+                {
+                    while (obstacleSprite.color.a > changeTo)
+                    {
+                        obstacleSprite.color = new Color(obstacleSprite.color.r, obstacleSprite.color.g, obstacleSprite.color.b, alpha -= 2 * Time.deltaTime);
+                        yield return new WaitForEndOfFrame();
+                    }
+                }
+                else if (obstacleSprite.color.a < changeTo)
+                {
+                    while (obstacleSprite.color.a < changeTo)
+                    {
+                        obstacleSprite.color = new Color(obstacleSprite.color.r, obstacleSprite.color.g, obstacleSprite.color.b, alpha += 2 * Time.deltaTime);
+                        yield return new WaitForEndOfFrame();
+                    }
+                }*/
+    //}
 }

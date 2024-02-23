@@ -33,12 +33,14 @@ public class DropCandy : MonoBehaviour
             if (timer > 0.7)
             {
                 scale = Mathf.Lerp(1, 1.5f,(1- timer)/0.3f);
-                candy.transform.position = new Vector2(Mathf.Lerp(transform.position.x, point2.x, (1 - timer) / 0.3f), Mathf.Lerp(transform.position.y, point2.y, (1 - timer) / 0.3f));
+                candy.transform.position = new Vector2(Mathf.Lerp(transform.position.x, point2.x, (1 - timer) / 0.3f),
+                    Mathf.Lerp(transform.position.y, point2.y, (1 - timer) / 0.3f));
             }
             else
             {
                 scale = Mathf.Lerp(1.5f, 1, 1- timer/0.7f);
-                candy.transform.position = new Vector2(Mathf.Lerp(point2.x, point.x, 1 - timer / 0.7f), Mathf.Lerp(point2.y, point.y, 1 - timer / 0.7f));
+                candy.transform.position = new Vector2(Mathf.Lerp(point2.x, point.x, 1 - timer / 0.7f),
+                    Mathf.Lerp(point2.y, point.y, 1 - timer / 0.7f));
             }
             candy.transform.localScale = new Vector3 (scale, scale, scale);
             timer -= Time.deltaTime *2;

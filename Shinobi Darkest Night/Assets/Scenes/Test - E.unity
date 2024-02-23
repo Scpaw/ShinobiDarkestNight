@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSprite: {fileID: 38912379}
-  behindColor: {r: 1, g: 1, b: 1, a: 0.47058824}
+  behindColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   enemy:
     serializedVersion: 2
     m_Bits: 64
@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSprite: {fileID: 103257769}
-  behindColor: {r: 1, g: 1, b: 1, a: 0.47058824}
+  behindColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   enemy:
     serializedVersion: 2
     m_Bits: 64
@@ -85778,7 +85778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSprite: {fileID: 297926945}
-  behindColor: {r: 1, g: 1, b: 1, a: 0.47058824}
+  behindColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   enemy:
     serializedVersion: 2
     m_Bits: 64
@@ -87192,7 +87192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSprite: {fileID: 801137287}
-  behindColor: {r: 1, g: 1, b: 1, a: 0.47058824}
+  behindColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   enemy:
     serializedVersion: 2
     m_Bits: 64
@@ -88060,7 +88060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSprite: {fileID: 1019688540}
-  behindColor: {r: 1, g: 1, b: 1, a: 0.47058824}
+  behindColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   enemy:
     serializedVersion: 2
     m_Bits: 64
@@ -88341,7 +88341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSprite: {fileID: 1066758100}
-  behindColor: {r: 1, g: 1, b: 1, a: 0.47058824}
+  behindColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   enemy:
     serializedVersion: 2
     m_Bits: 64
@@ -89201,7 +89201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSprite: {fileID: 1345691049}
-  behindColor: {r: 1, g: 1, b: 1, a: 0.47058824}
+  behindColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   enemy:
     serializedVersion: 2
     m_Bits: 64
@@ -89332,7 +89332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSprite: {fileID: 1417565194}
-  behindColor: {r: 1, g: 1, b: 1, a: 0.47058824}
+  behindColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   enemy:
     serializedVersion: 2
     m_Bits: 64
@@ -89463,7 +89463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSprite: {fileID: 1432056553}
-  behindColor: {r: 1, g: 1, b: 1, a: 0.47058824}
+  behindColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   enemy:
     serializedVersion: 2
     m_Bits: 64
@@ -90223,7 +90223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSprite: {fileID: 1783665799}
-  behindColor: {r: 1, g: 1, b: 1, a: 0.47058824}
+  behindColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   enemy:
     serializedVersion: 2
     m_Bits: 64
@@ -90402,7 +90402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSprite: {fileID: 1857515591}
-  behindColor: {r: 1, g: 1, b: 1, a: 0.47058824}
+  behindColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   enemy:
     serializedVersion: 2
     m_Bits: 64
@@ -99397,7 +99397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSprite: {fileID: 2003262876}
-  behindColor: {r: 1, g: 1, b: 1, a: 0.47058824}
+  behindColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   enemy:
     serializedVersion: 2
     m_Bits: 64
@@ -99647,7 +99647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSprite: {fileID: 2056936598}
-  behindColor: {r: 1, g: 1, b: 1, a: 0.47058824}
+  behindColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   enemy:
     serializedVersion: 2
     m_Bits: 64
@@ -99778,7 +99778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSprite: {fileID: 2078268215}
-  behindColor: {r: 1, g: 1, b: 1, a: 0.47058824}
+  behindColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   enemy:
     serializedVersion: 2
     m_Bits: 64
